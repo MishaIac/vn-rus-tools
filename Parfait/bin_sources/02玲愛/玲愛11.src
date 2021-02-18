@@ -1,0 +1,399 @@
+// ●玲愛11：仲直り、したいときには兄はなし
+// 種類：重要イベント（玲愛チェーン２－１：玲愛攻略に必須。由飛ＴＲＵＥに必須）
+// 条件：第４クォーター、フードコート（curio）を選択@n　　　玲愛の好意度が規定値をクリアしていること。@n　　　玲愛03を発生させていること。
+// 概要：最終日前、玲愛の由飛に対する気持ちを聞く
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：curio店内（薄暗く）＞
+	//----------------------------------------------------------------------------
+
+	// ＜ＳＥ：ドアベル＞
+	SetVisual( BG_CURIOF_03A );
+	BGMPlay(BGM_KISSATEN);
+	SEPlay("L_Door05A");
+	SEPlay("L_Bell03");
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020382「あ、申し訳ありません。@n本日は閉店いたしておりま@t0386@k");
+	SetStand(REA_0102HT, CENTER, MOVE_LEFT);
+	AddMessage("…え？」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…知ってるよ」");
+	SetMessage(UNIT_REA, REA_0101NO, "玲愛", "@v02020383「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「どうしたんだよ？」");
+	SetMessage(UNIT_REA, REA_0102NY, "玲愛", "@v02020384「ファミーユの店長」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前…俺は高村仁だっつ～の！@n最近はちゃんと呼んでくれてたじゃんかよ花鳥」");
+	SetMessage(UNIT_REA, REA_0102NY, "玲愛", "@v02020385「あんたが初めてここに来たときのこと、@n思い出したのよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…？」");
+	SetMessage(UNIT_REA, REA_0102IK3, "玲愛", "@v02020386「あのとき、あんた私のことを@n『キュリオのチーフ』って呼んだのよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うあ…」");
+	SetMessage(UNIT_REA, REA_0102BS, "玲愛", "@v02020387「ま、最近はちゃんと呼んでくれてるけどね。@n『花鳥』って」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あの頃は、お互いギスギスしてたねぇ」");
+	// ＜玲愛、さらっと流されて不満そう＞
+
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v02020388「………」");
+
+	SetMessage(UNIT_ETC, -1, "", "売り上げ勝負とか、土下座とか。");
+	SetMessage(UNIT_ETC, -1, "", "まだ勝負は継続してるけど、@n今みたいな『ライバル』じゃなくて、@n純粋な『敵』だった。");
+
+	SetMessage(UNIT_REA, REA_0101AK, "玲愛", "@v02020389「で？　何の用？@nまだ掃除が残ってるんだけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「こっちは終わったもんね」");
+	SetMessage(UNIT_REA, REA_0101NO, "玲愛", "@v02020390「まあそれは良かったわね。@nお疲れさま」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だから手伝いに来た」");
+
+	SetMessage(UNIT_REA, REA_0102BS, "玲愛", "@v02020391「………」");
+	// ＜玲愛、微笑む＞
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「早く終わらせて帰ろうぜ」");
+	SetMessage(UNIT_REA, REA_0102BS, "玲愛", "@v02020392「…一緒に？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まぁ、そうなるわな。@n隣同士なんだし」");
+	SetMessage(UNIT_REA, REA_0102NY, "玲愛", "@v02020393「どしよっかなぁ…」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「グダグダ言ってる間にモップ出せ。@nお前最近ちと不真面目だぞ」");
+	SetMessage(UNIT_ETC, -1, "", "昔はツインテールが刺さりそうなくらいに堅物だったのに。");
+
+	SetMessage(UNIT_REA, REA_0101NO, "玲愛", "@v02020394「ま、いいか。@nはいこれ。あとはこっち、半分だけだから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はいこれ…って、これお前が使ってた奴だろ？」");
+	SetMessage(UNIT_REA, REA_0102IK, "玲愛", "@v02020395「私の使いかけなんか使えるか…ってこと？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうでなくて、お前は？@n俺に一人で押しつける気？」");
+	SetMessage(UNIT_REA, REA_0102NY, "玲愛", "@v02020396「だってウチ、モップ１つしかないから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「嘘だ嘘！@nこの前オープンスペースで由飛がカップ落としたとき、@nそっちからモップが３つ出てきたはずだ！」");
+	SetMessage(UNIT_REA, REA_0102BS, "玲愛", "@v02020397「感謝しなさいよね。手伝ってあげたんだから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だから今回も手伝えよぅ」");
+	SetMessage(UNIT_ETC, -1, "", "て言うか、俺が手伝いの身なんだけど…");
+
+	SetMessage(UNIT_REA, REA_0102BS, "玲愛", "@v02020398「私、コーヒー淹れてくるから。@n終わったら休憩しよう？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な…」");
+	SetMessage(UNIT_REA, REA_0102HT, "玲愛", "@v02020399「なに？　それとも紅茶の方がいい？@nだったらどの葉？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ミルクセーキ」");
+	SetMessage(UNIT_REA, REA_0101AK, "玲愛", "@v02020400「そんなメニュー、キュリオにはないんだけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_REA, REA_0102TN, "玲愛", "@v02020401「…わかった。@n@t0180@h0102MJ味は保証しないわよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「モップがけなんてすぐ終わらせてやるぜ！」");
+	DelWindow();
+
+	// ＜画面暗転＞
+	BGMFadeOut(SLOWER);
+	FadeOut(SLOW);
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：curio店内（薄暗く）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_CURIOF_03A );
+	BGMPlay(BGM_NICHIJOU1);
+	FadeIn();
+
+	SEPlay("L_Dish01");
+	Wait(50);
+	SetStand(REA_0102NO);
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0102NO, "玲愛", "@v02020402「どう？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「イマイチにあと二つほど届かない」");
+	SetMessage(UNIT_REA, REA_0102IK, "玲愛", "@v02020403「だったら自分で作りなさい」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺が作ったら美味いに決まってんじゃん。@n何言ってんのお前」");
+	SetMessage(UNIT_REA, REA_0102TN, "玲愛", "@v02020404「…もう二度とあんたのために何かしてあげない」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「冗談だって。@n花鳥と話してると、たまに喧嘩が恋しくなってね」");
+	SetMessage(UNIT_REA, REA_0102KM_, "玲愛", "@v02020405「…あんた嫌ぃ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「女みたいな声出すなよ」");
+	SetMessage(UNIT_ETC, -1, "", "ハっとするほど可愛くなっちまうからよくない。");
+	SetMessage(UNIT_REA, REA_0102TN, "玲愛", "@v02020406「大体、コーヒーだったら美味しく淹れられるんだから。@n@t0430@h0102KMまぁ、ほうじ茶の方が得意だけど」");
+	SetMessage(UNIT_ETC, -1, "", "相変わらず、外見と似合わない言動をする奴だ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…で？」");
+
+	SetMessage(UNIT_REA, REA_0102HT, "玲愛", "@v02020407「で…って？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「話、あるんだろ？@nだから俺の無茶な注文だって聞いた」");
+	SetMessage(UNIT_REA, REA_0102TN, "玲愛", "@v02020408「…ふん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なに？@nわざわざ敵の大将に相談事なんてさ」");
+
+	//口から糞たれる前と後にサーイエッサーをつけるのを忘れるな
+	SetMessage(UNIT_REA, REA_0102IK2, "玲愛", "@v02020409「あんたなんか大将の腰巾着の軍曹のくせに」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「帰るぞ」");
+	SetMessage(UNIT_ETC, -1, "", "イチイチ真理を突かれると、人間は激怒する。");
+
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v02020410「そっちの店員さんのこと…」");
+
+	BGMFade(SLOWER, 0);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…なるほど」");
+	SetMessage(UNIT_ETC, -1, "", "軽く答えながらも、俺は心の中で、@n思いっきり緊張してた。");
+	SetMessage(UNIT_ETC, -1, "", "花鳥の方から、由飛のことで相談なんて、@n今まで、あるはずのないことだったから。");
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v02020411「どうすればいいかなぁ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それじゃ何が言いたいのかわからん」");
+
+	SetMessage(UNIT_REA, REA_0101KM, "玲愛", "@v02020412「最近、よくキュリオを覗き込んでくるのよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ふうん…」");
+	SetMessage(UNIT_REA, REA_0101KM, "玲愛", "@v02020413「この前は、帰ろうとしたら出口で待ってて」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうか…」");
+	SetMessage(UNIT_ETC, -1, "", "なんだよ…頑張ってるじゃん、由飛。");
+	SetMessage(UNIT_ETC, -1, "", "いつも適当に感性で生きてるように見えるから、@n地道な努力してるってのがイメージできなかったけど。");
+	SetMessage(UNIT_REA, REA_0101SN, "玲愛", "@v02020414「で、裏口から逃げた」");
+
+	ShakeScreen(8);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おいおいおい！」");
+
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v02020415「だって…何話せばいいのか、わからない」");
+
+	BGMFade(SLOWER, 100);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はあぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "せっかく２人のうちの１人が前向きになったってのに、@nもう１人の方は、このていたらくか…");
+	SetMessage(UNIT_ETC, -1, "", "そりゃ、部外者の俺に相談したくもなるわなぁ。");
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v02020416「どうすればいいかなぁ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「話せよ」");
+	SetMessage(UNIT_REA, REA_0101KN, "玲愛", "@v02020417「何を？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「とりあえず由飛の話を聞け。@nそれから考えたらいいだろ？」");
+	SetMessage(UNIT_ETC, -1, "", "もう…なんちゅうか、手のかかる姉妹だ。");
+	SetMessage(UNIT_ETC, -1, "", "どちらも、出口を探してて、@nどちらも、それが目の前にあることに気づかない。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛のこと、嫌いか？」");
+	SetMessage(UNIT_REA, REA_0102TN, "玲愛", "@v02020418「そんなわけないでしょ」");
+
+	SetMessage(UNIT_ETC, -1, "", "即答。");
+	SetMessage(UNIT_ETC, -1, "", "できるのに、こういう答え。");
+	SetMessage(UNIT_ETC, -1, "", "それがどうして、こうなってしまうんだろうな。");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だったらいい加減、あいつのこと許してやれよ」");
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v02020419「許すも何も…@n向こうに落ち度はないもの。@n謝られたって困るわよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛はそう思ってないみたいだぞ？@n進学のこととか…」");
+	SetMessage(UNIT_ETC, -1, "", "養女である由飛が大学へ行き、@n実の娘の玲愛が就職した。");
+	SetMessage(UNIT_ETC, -1, "", "それは、親子間では問題のない選択なのかもしれない。");
+	SetMessage(UNIT_ETC, -1, "", "けど、姉妹間では、微妙な影を落としたはずだ。");
+
+	BGMFade(SLOWER, 0);
+
+	//伊藤：切る
+	SetMessage(UNIT_REA, REA_0101KN, "玲愛", "@v02020420「仕方ない…彼女は天才だもん。@n私みたいな凡人とは、出来が違う…@t0628@h0102AS@k");
+
+	// ＜ＳＥ：椅子ごとこける＞
+	ShakeScreen(16);
+	SEPlay("L_Fall03");
+	SEPlay("L_Fall06");
+	SEPlay("L_Inpact05");
+	SEPlay("L_Inpact06");
+	SEPlay("L_Inpact12");
+	ScrollFadeOut(FAST, 6);
+
+	AddMessage("って大丈夫？」");
+
+	BGMFade(SLOWER, 100);
+	FadeIn();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「い…いてて…」");
+
+	SetMessage(UNIT_ETC, -1, "", "今の花鳥の言葉は、俺の全身の力を無に帰すのに@n十分な威力を持っていた。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「天才って………由飛が？」");
+	SetMessage(UNIT_REA,  REA_0102NO , "玲愛", "@v02020421「ウチの親が、どうして彼女を引き取ったのか、@n聞いてるでしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ピアノ…だっけ？」");
+	SetMessage(UNIT_REA, REA_0101SN, "玲愛", "@v02020422「私も子供の頃から、お爺様の影響で@n習わされてたけど、相手にならなかった」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	BGMFade(SLOWER, 0);
+
+	//伊藤：切る
+	SetMessage(UNIT_REA, REA_0102NO, "玲愛", "@v02020423「音大だって、トップ合格だったし…@t0272@h0102AS@k");
+
+	// ＜ＳＥ：椅子ごとこける＞
+	ShakeScreen(16);
+	SEPlay("L_Fall03");
+	SEPlay("L_Fall06");
+	SEPlay("L_Inpact05");
+	SEPlay("L_Inpact06");
+	SEPlay("L_Inpact12");
+	ScrollFadeOut(FAST, 6);
+
+	AddMessage("って大丈夫？」");
+
+	BGMFade(SLOWER, 100);
+	FadeIn();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「い…いてて…」");
+
+	SetMessage(UNIT_ETC, -1, "", "もう何だか『あなたの知らない世界』のオンパレード。");
+	SetMessage(UNIT_REA, REA_0101SN, "玲愛", "@v02020424「私がどれだけ頑張っても、@n才能一つであっさりひっくり返される。@nなんか納得いかなくて、ね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺は今の話そのものが納得いかない」");
+	SetMessage(UNIT_REA, REA_0101AK, "玲愛", "@v02020425「あんた、彼女に惹かれてるでしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な、なんだぁ突然！？」");
+	SetMessage(UNIT_REA, REA_0101AK, "玲愛", "@v02020426「そうなった理由とか、考えたことある？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっと待て。@n俺の返事も聞かずに話を進めるな」");
+	SetMessage(UNIT_REA, REA_0102NO, "玲愛", "@v02020427「それも、彼女の才能。@n自然と人を惹きつけてしまう天才なのよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	BGMFadeOut(SLOWER);
+
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v02020428「ごめん、今からの一言だけはすぐ忘れて。@n@t0800@h0102KN………妬ましい」");
+
+	SetStand(REA_0102TN);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "忘れなくちゃいけないのに、@n忘れられそうもない、強烈な感情の発露。");
+	SetMessage(UNIT_ETC, -1, "", "いつも怒っている花鳥玲愛の…");
+	SetMessage(UNIT_ETC, -1, "", "それでも、ただ一つだけ持ち合わせていないと、@nずっと信じてた種類の感情。");
+
+	BGMFadePlay(BGM_HUAN);
+
+	SetMessage(UNIT_REA, REA_0101KN, "玲愛", "@v02020429「好きなんだよ彼女のこと…@nでも、どんどんマイナスが湧き出てきて、@nいつしかプラスを覆い隠してしまう」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「花鳥…」");
+	SetMessage(UNIT_REA, REA_0102NK, "玲愛", "@v02020430「っ…@nあ、ごめん」");
+	SetMessage(UNIT_ETC, -1, "", "うわ…見ちまった。");
+	SetMessage(UNIT_ETC, -1, "", "こいつの目から流れるもの…@n畜生、なんてもの見せやがるんだ。");
+	SetMessage(UNIT_REA, REA_0102NK, "玲愛", "@v02020431「これもついでにすぐ忘れて…@nごめん、本当にごめんなさい。@nすごく困ったよね、今？」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そりゃ、困るわ…@nだってお前、ここって普通、@n黙って抱きしめる場面じゃん」");
+	SetMessage(UNIT_REA, REA_0102KN, "玲愛", "@v02020432「もしかして…そういうことする？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「できないから困ってんだよ！」");
+	SetMessage(UNIT_REA, REA_0101SN_, "玲愛", "@v02020433「そ、それもそうか…何言ってんだろ、私…」");
+	SetMessage(UNIT_ETC, -1, "", "な、なんでこんな…");
+	SetMessage(UNIT_ETC, -1, "", "どんどん、恋人同士みたいな空気になっていくんだ？");
+
+	SetMessage(UNIT_REA, REA_0101KM_, "玲愛", "@v02020434「ど、どうしようか…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「どうしようかって言ってもなぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "間抜けだ…@p@nなんて間抜けな会話なんだ。");
+	SetMessage(UNIT_ETC, -1, "", "そりゃ、仕方ないよな。@n今までの関係が今までなんだから、@nいきなりこういう怪しい雰囲気になられたって…");
+	SetMessage(UNIT_ETC, -1, "", "だったら、どうすれば…");
+	SetMessage(UNIT_ETC, -1, "", "………");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「花鳥…」");
+	SetMessage(UNIT_REA, REA_0102KM_, "玲愛", "@v02020435「…ん？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「仲直り…」");
+	SetMessage(UNIT_REA, REA_0101KM, "玲愛", "@v02020436「え？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「したいときには、兄はなし」");
+	SetMessage(UNIT_REA, REA_0101KM, "玲愛", "@v02020437「あ…兄？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「もちろん、『兄』を『姉』に置き換えたって、@n意味は通じるから」");
+	SetMessage(UNIT_REA, REA_0102KM_, "玲愛", "@v02020438「それって…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「コンプレックス持ちだった弟の体験談だ。@n心して刻め」");
+	SetMessage(UNIT_REA, REA_0101SN, "玲愛", "@v02020439「………」");
+	SetMessage(UNIT_ETC, -1, "", "どうするかって…そんなの決まってる。");
+	SetMessage(UNIT_ETC, -1, "", "微妙に年上なのを利用して、@n先輩風吹かせればいいんだ。");
+	SetMessage(UNIT_ETC, -1, "", "『男と女』ではなく。@n『人間と人間』として。@n本気で話せばいいんだ。");
+	SetMessage(UNIT_REA, REA_0102KM_, "玲愛", "@v02020440「あんた…も？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「詳しいことは仲直りしたら教えてやる」");
+	SetMessage(UNIT_REA, REA_0102IK2_, "玲愛", "@v02020441「逃げてるし」");
+
+	ShakeScreen(8);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「今回、俺は関係ないだろうがオラァ！」");
+	SetMessage(UNIT_REA, REA_0102IK2_, "玲愛", "@v02020442「逆ギレしてるし」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う…」");
+	SetMessage(UNIT_REA, REA_0102TN_, "玲愛", "@v02020443「しかも、関係ないと思い込んでるし」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっと待て。@n今のはどういう意味だ？」");
+
+	SetMessage(UNIT_REA, REA_0102TN, "玲愛", "@v02020444「わかった…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「何が！？」");
+
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_REA, REA_0102NY, "玲愛", "@v02020445「頑張ってみる」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_REA, REA_0102BS, "玲愛", "@v02020446「『弟』の言うこと、試してみる」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、そうか？」");
+	SetMessage(UNIT_ETC, -1, "", "つ、通じた…？");
+	SetMessage(UNIT_ETC, -1, "", "もしかして俺、@n花鳥玲愛を説得できたのって、これが初めて？");
+
+	SetMessage(UNIT_ETC, -1, "", "カトレア記念日？");
+	SetMessage(UNIT_REA, REA_0102BS, "玲愛", "@v02020447「長いこと引き留めて悪かったわね。@nそれじゃ、帰りましょうか」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お、おう…送ってくから。@nいいよな？」");
+	SetMessage(UNIT_REA, REA_0101AK, "玲愛", "@v02020448「当たり前でしょう。@n隣に住んでるんだから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お…おう…」");
+	SetMessage(UNIT_ETC, -1, "", "その隣人を猛ダッシュで振り切ろうとした人物がいたんで、@n懐疑的になってるんだよ…");
+	SetMessage(UNIT_REA, REA_0102NO, "玲愛", "@v02020449「あ、そうだ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま、まだ何か！？」");
+	SetMessage(UNIT_ETC, -1, "", "花鳥の方は、ちょっと思い出したふうな言い方でも、@n極度の緊張から解放された俺にとっては、@n過剰反応してしまうわけで。");
+	SetMessage(UNIT_REA, REA_0101AK, "玲愛", "@v02020450「花鳥って…もう区別つかないんだけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え？　あ…」");
+	SetMessage(UNIT_REA, REA_0101AK, "玲愛", "@v02020451「花鳥由飛と、花鳥玲愛。@nどっちのこと言ってるのかわからない」");
+
+	//伊藤：切る
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@m16「いや、そんなことないだろ？@n由飛は由飛って呼んで…！？」@e");
+
+	Wait(20);
+	// ＜玲愛、睨んでいる＞
+
+	//SEFadePlay(0,"L_Yure01",SLOW,60);
+
+	SetMessage(UNIT_REA, REA_0102IK, "玲愛", "@v02020452「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な…な…？」");
+	SetMessage(UNIT_ETC, -1, "", "何だこの強烈なプレッシャーは？");
+	SetMessage(UNIT_ETC, -1, "", "こいつ、まだこんな怒りを隠し持っていたのか！？");
+	SetMessage(UNIT_REA, REA_0102EG2, "玲愛", "@v02020453「区別、つきませんわよね？」");
+	SetMessage(UNIT_ETC, -1, "", "しかも言葉が丁寧に！？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な、何を言ってんだ…かと…@e");
+
+	Wait(20);
+	SetStand(REA_0102IK);
+	ShakeScreen(8);
+
+	AddMessage("ひぃぃっ！？」");
+
+	//SEFade(0,SLOW,70);
+
+	// ＜玲愛、さらに睨んでいる＞
+	SetMessage(UNIT_REA, REA_0102IK, "玲愛", "@v02020454「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	// ＜玲愛、ものすごく睨んでいる＞
+
+	//SEFade(0,SLOW,80);
+
+	SetMessage(UNIT_REA, REA_0102IK, "玲愛", "@v02020455「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "えっと…まさか…？");
+	// ＜玲愛、恐ろしく睨んでいる＞
+
+	//SEFade(0,SLOW,100);
+
+	SetMessage(UNIT_REA, REA_0102IK, "玲愛", "@v02020456「………」");
+
+	//SEFadeOut(0,SLOW);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…玲愛？」");
+
+	// ＜玲愛、普通の表情に戻る＞
+	BGMFadePlay(BGM_YASURAGI, SLOWER);
+
+	SetMessage(UNIT_REA, REA_0102NY, "玲愛", "@v02020457「行こうか、仁」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	HideDay();
+	DelWindow();
+
+	// ＜画面暗転＞
+
+	SetVisual(BG_SORA_03A);
+	DelStand();
+	CrossFade(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "@m08結局…");
+	SetMessage(UNIT_ETC, -1, "", "@m08それからの帰り道…@n『玲愛』は、俺のことを、４８回『仁』と呼んだ。");
+	SetMessage(UNIT_ETC, -1, "", "@m00こっちは別に『高村』って呼んでも区別はつくのに。");
+	HideMenu();
+	DelWindow();
+
+	Wait(50);
+
+	BGMFadeOut(SLOWER);
+	FadeOut(SLOWER);
+	DelVisual();
+
+	Wait(300);
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

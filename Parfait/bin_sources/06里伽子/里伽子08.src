@@ -1,0 +1,409 @@
+// ●里伽子08：欧風喫茶店の面目躍如
+// 種類：通常イベント
+// 条件：第３クォーター、フロアを選択
+// 概要：外国人の来客に、パニックになる店内。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ファミーユフロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_01A );
+	SEFadePlay(0, "L_Zattou04", SLOW);
+	SEFadePlay(1, "L_Dish03", SLOW, 30);
+	BGMFadePlay(BGM_COMICAL, SLOWER);
+	FadeIn(SLOW);
+	SetWindow();
+
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160023「A blueberry tart, tea-flavoured chiffon cake,@nand a cup of tea with milk, please.」");
+	// ＜「ブルーベリータルトに、紅茶シフォン。飲み物はダージリン。ミルクで」＞
+
+	// (；´ー`).oO( 保留～
+	SetStand(ASUKA_0101AS);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0101AS, "明日香", "@v06030001「………」");
+	// ＜笑顔を貼り付けたまま大汗＞
+
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160024「I'd also like three pieces of apple pie,@nstrawberry mille-feuille and custard pudding to@ngo.」");
+	// ＜「あと、持ち帰りで、アップルパイと、いちごのミルフィーユ、カスタードプディング、それぞれ３つずつ」＞
+
+	SetMessage(UNIT_ASUKA, ASUKA_0101AS, "明日香", "@v06030002「は…はは…」");
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160025「Oh, how long does the pudding keep?@nMy friend's home is a little far.」");
+	// ＜「あ、プディングは何時間くらい保つかしら？　友達の家がちょっと遠くなのよ」＞
+
+	SetMessage(UNIT_ASUKA, ASUKA_0101AS, "明日香", "@v06030003「あ、あは、あはははは…@n@t0357じゃすたも～めんとぉ！」");
+
+	DelStand(CENTER,MOVE_RIGHT);
+	SEPlay("L_Dash03");
+
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160026「Excuse me..?」");
+	// ＜「あ、ちょっと…？」＞
+
+	DelWindow();
+	CurtainFadeOut();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ショーケース＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEE_01A );
+	CurtainFadeIn();
+	SetWindow();
+
+	SetMessage(UNIT_ASUKA, ASUKA_0102OD, "明日香", "@v06030004「由飛さんっ！」");
+
+	SetStand(YUI_0101NO);
+
+	SetMessage(UNIT_YUI, YUI_0101NO, "由飛", "@v06010019「明日香ちゃん？　どしたの？@n外国の人に道を尋ねられたような@nせっぱ詰まったような顔して」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102KS, "明日香", "@v06030005「その洞察力に敬意を表して、バトンタッチ！」");
+	SetMessage(UNIT_YUI, YUI_0102OD2, "由飛", "@v06010020「はい？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102KS, "明日香", "@v06030006「ここはわたしに任せて、@nあなたはフロアへと行って～！」");
+
+	DelWindow();
+	CurtainFadeOut();
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ファミーユフロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_01A );
+	CurtainFadeIn();
+	SetWindow();
+
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160027「As I said earlier,@nA blueberry tart, tea-flavoured chiffon cake,@nand a cup of tea with milk, please.」");
+	// ＜「だからまずはブルーベリータルトと、紅茶シフォンとダージリンのミルクティーを持ってきて頂戴」＞
+
+	SetStand(YUI_0101AS);
+
+	SetMessage(UNIT_YUI, YUI_0101AS, "由飛", "@v06010021「………」");
+	// ＜笑顔を貼り付けたまま大汗＞
+
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160028「Later I'll order cakes to go.@nPlease bring me my first order right away.」");
+	// ＜「持ち帰りのケーキは後にするから。とにかく今言ったものだけでも早く」＞
+
+	SetMessage(UNIT_YUI, YUI_0101AS, "由飛", "@v06010022「うぇいとぷり～ず！」");
+
+	DelStand(CENTER,MOVE_RIGHT);
+	SEPlay("L_Dash03");
+
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160029「Hey, hey! Wait!」");
+	// ＜「だから待ってってば…」＞
+
+	DelWindow();
+	CurtainFadeOut();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フードコート＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FOODCOURT_01A );
+	CurtainFadeIn();
+	SetWindow();
+
+	SetMessage(UNIT_YUI, YUI_0101AS, "由飛", "@v06010023「かすりさん、かすりさぁ～ん！」");
+
+	SetStand(KASURI_0101AK);
+
+	SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v06040001「だからその芝居がかった口調なんとかしなさい」");
+	SetMessage(UNIT_YUI, YUI_0101AS, "由飛", "@v06010024「その年上の落ち着きに期待してバトンタッチ！」");
+	SetMessage(UNIT_KASURI, KASURI_0102OD, "かすり", "@v06040002「はぁ？」");
+	SetMessage(UNIT_YUI, YUI_0101MJ, "由飛", "@v06010025「外はわたしが守ってみせます。@nかすりさんは、店内を…っ」");
+
+	DelWindow();
+	CurtainFadeOut();
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ファミーユフロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_01A );
+	CurtainFadeIn();
+	SetWindow();
+
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160030「How many times have I told you?@nA blueberry tart, tea-flavoured chiffon cake,@nand a cup of tea with milk!」");
+	// ＜「何度言ったらわかるのかしら？　ブルーベリータルトと、紅茶シフォンと、ミルクティーよ！」＞
+
+	SetStand(KASURI_0102AS);
+
+	SetMessage(UNIT_KASURI, KASURI_0102AS, "かすり", "@v06040003「………」");
+	// ＜笑顔を貼り付けたまま大汗＞
+
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160031「Can you hear me?@nA blueberry tart and tea-flavoured chiffon cake.@nDo you understand?」");
+	// ＜「聞き取れなかった？　ブルーベリータルトと、紅茶シフォン。ここまではわかる？」＞
+
+	SetMessage(UNIT_KASURI, KASURI_0102AS2, "かすり", "@v06040004「ぶ、ぶるーべりー…しふぉん？」");
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160032「Something seems strange...」");
+	// ＜「…何かが違うような気がするわ」＞
+
+	SetMessage(UNIT_KASURI, KASURI_0102AS2, "かすり", "@v06040005「あ、あはは、あはははは…@n@t0382まね～じゃ～！　まね～じゃ～かも～ん！」");
+
+	DelStand(CENTER,MOVE_RIGHT);
+	SEPlay("L_Dash03");
+
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160033「...Again?」");
+	// ＜「…また？」＞
+
+	DelWindow();
+	SEFadeOut(0);
+	SEFadeOut(1);
+	CurtainFadeOut();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+	SEFadePlay(1, "L_Dish03", NORMAL, 20);
+	SEFadePlay(2, "L_Factory01", NORMAL, 50);
+	CurtainFadeIn();
+
+	SetWindow();
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だからって三人揃ってキッチンに押しかけるな～！」");
+
+	SetStand(ASUKA_0102KM);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0102KM, "明日香", "@v06030007「そんなこと言ったって～！」");
+
+	SetStand(YUI_0101MU,LEFT,MOVE_LEFT, FAST, 1);
+	MoveStand(CENTER,RIGHT);
+
+	SetMessage(UNIT_YUI, YUI_0101MU, "由飛", "@v06010026「仁、大学生じゃない～！@nなんとかしてよ～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「待て！　そもそもお前も大学生だろ！？」");
+	SetMessage(UNIT_YUI, YUI_0101MU, "由飛", "@v06010027「わたしは音大のピアノ科だもん！　喋れなくて当然～！」");
+
+	DelStand(LEFT,MOVE_LEFT,FAST,1);
+	DelStand(RIGHT,MOVE_RIGHT);
+	SetStand(KASURI_0102NY);
+
+	SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v06040006「そこ行くと仁くんなんかは、@n英文科が全国的に有名な八橋大だもんね～」");
+
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺は経済学部だ～！」");
+
+	DelStand();
+	SetStand(EMA_0101MJ);
+
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v06050001「文系なんだから、英語できないなんて言わせないわよ？@nここで喋れなかったら、お父さんたちが仕送り止めるかも」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま～姉ちゃん…あんた…」");
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v06050002「あ～、わたしに期待するだけ無駄よ？@n調理師学校の英語なんて、@nお料理とお菓子の名前しか教えないんだから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「嘘くさ～い」");
+
+	DelStand();
+
+	SetMessage(UNIT_ETC, -1, "", "一人のフォーリナーなお客様のご来店で、@n我が店は今、学歴逆自慢がブームとなってしまった。");
+	SetMessage(UNIT_ASUKA, ASUKA_0101AS, "明日香", "@v06030008「で、それはそれとして、どうしよう？@nかなりお客様待たせちゃってるよ」");
+	SetMessage(UNIT_YUI, YUI_0101HA, "由飛", "@v06010028「どうしようって…どうしようか？」");
+	SetMessage(UNIT_KASURI, KASURI_0101OT, "かすり", "@v06040007「こんなことになるってわかってたら、@n上の階にある英会話教室に通っておけば…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんて思ってないだろ？」");
+	SetMessage(UNIT_KASURI, KASURI_0102AS, "かすり", "@v06040008「だってほら、和菓子屋の娘だし」");
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v06050003「やっぱりこの中では仁くんが一番適任じゃないかな？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う…」");
+
+	SetStand(ASUKA_0101NO,CENTER,MOVE_LEFT);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0101NO, "明日香", "@v06030009「てんちょだし」");
+
+	DelStand(CENTER,MOVE_RIGHT);
+	SetStand(YUI_0101NO,CENTER,MOVE_LEFT);
+
+	SetMessage(UNIT_YUI, YUI_0101NO, "由飛", "@v06010029「文系学生だし」");
+
+	DelStand(CENTER,MOVE_RIGHT);
+	SetStand(KASURI_0102NO,CENTER,MOVE_LEFT);
+
+	SetMessage(UNIT_KASURI, KASURI_0102NO, "かすり", "@v06040009「男の子だもんね」");
+
+	DelStand(CENTER,MOVE_RIGHT);
+	SetStand(EMA_0101KS,CENTER,MOVE_LEFT);
+
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v06050004「ごめん、仁くん…@n今回だけは、かばえない」");
+
+	DelStand(CENTER,MOVE_RIGHT);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ひ～ん」");
+
+	FadeOut();
+
+	SetMessage(UNIT_ETC, -1, "", "俺の唯一の苦手科目である語学…@nいや、最近じゃそれって致命的だけどさ。");
+
+	// ＜ＳＥ：ドアベル＞
+	SEPlay("L_Door05A", 50);
+	SEPlay("L_Bell02", 50);
+
+	SetMessage(UNIT_ETC, -1, "", "ああ、こんなときに、英語がペラペラな店員がいたら…");
+	SetMessage(UNIT_ETC, -1, "", "そいや昔は…いたんだよなぁ。@nそんなスーパーエグゼクティブウェイトレスが。");
+	SetMessage(UNIT_ETC, -1, "", "けど、今となっては…");
+
+	SetStand(RIKAKO_0102MJ);
+	BGMFadeOut();
+	//FadeIn();
+
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060238「ちょっと、どうして店に誰もいないの？」");
+
+	ShakeScreen(8);
+	SEPlay("L_Sound01");
+	SEPlay("L_Sound04");
+	ZoomFlashIn(FAST,300);
+	ShakeScreen(16);
+
+	SetMessage(UNIT_ETC, -1, "", "@s0004…いたぁ！");
+
+	SetStand(RIKAKO_0101OD);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「里伽子！」");
+
+	SetStand(RIKAKO_0102AS);
+
+	SetMessage(UNIT_EMA, EMA_0101EG, "恵麻", "@v06050005「リカちゃん！」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101EG, "明日香", "@v06030010「里伽子さん！」");
+	SetMessage(UNIT_KASURI, KASURI_0101NO, "かすり", "@v06040010「リカちゃ～ん！」");
+	SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v06010030「里伽子さ～ん♪」");
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102AS, "里伽子", "@v06060239「な、なに？　なんなの？」");
+	SetMessage(UNIT_ETC, -1, "", "…一人、理由もわからず、@nただ相乗りしてるだけの奴がいる。");
+	SetMessage(UNIT_ETC, -1, "", "まぁ、それはともかく…");
+	DelWindow();
+
+	// ＜画面暗転＞
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	FadeOut(SLOW);
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ファミーユフロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_01A );
+	SEFadePlay(0, "L_Zattou04");
+	SEFadePlay(1, "L_Dish03", NORMAL, 30);
+	BGMFadePlay(BGM_RIKAKO,SLOWER);
+	FadeIn();
+
+	SetStand(RIKAKO_0101BS);
+
+	SetWindow();
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101BS, "里伽子", "@v06060240「I'm very sorry.@nI will serve the cakes and drink right away.」");
+	// ＜「申し訳ありません。ご注文の品、すぐにお持ちします」＞
+
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160034「As soon as possible, please.」");
+	// ＜「なるべく急いでね」＞
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MJ, "里伽子", "@v06060241「ブルーベリータルトに紅茶シフォン。@nダージリンのミルクティー、超特急！」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102OD, "明日香", "@v06030011「は、はいぃ～！」");
+
+//	( ´∀`).oO( The pudding will keep  for half a day,in a ice pack. How far do you have to go?
+//	となっているようだが…？
+// (´-`)修正
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101BS, "里伽子", "@v06060242「The pudding will keep for half a day,@nin a ice pack.@nHow far do you have to go?」");
+	// ＜「プディングは、保冷剤を入れておけば、半日は大丈夫ですよ。お友達の家はどちらですか？」＞
+
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160035「Oh, no problem.@nJust 2 hours away by train.」");
+	// ＜「ああ、それなら問題ないわ。ここから電車で２時間くらいなの」＞
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MJ, "里伽子", "@v06060243「アップルパイと、いちごのミルフィーユ、@nカスタードプディング３つずつお持ち帰り。@n箱には保冷剤入れておいて」");
+	SetMessage(UNIT_YUI, YUI_0101NO, "由飛", "@v06010031「か、かしこまりました～」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MJ, "里伽子", "@v06060244「Sorry to keep you waiting.@nHere is a complimentary treat from us.」");
+	// ＜「お待たせして大変申し訳ありませんでした。こちら、サービスとなっております」＞
+
+	SetMessage(UNIT_KASURI, KASURI_0102AS, "かすり", "@v06040011「ど、どうも～、@nサービスのマドレーヌです」");
+	SetMessage(UNIT_FEMALE, -1, "外国人", "@v06160036「Oh? Thank you.」");
+	// ＜「あら？　どうもありがとう」＞
+
+	SetStand(RIKAKO_0101BS);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101BS, "里伽子", "@v06060245「Thank you very much.」");
+	// ＜「こちらこそ、ありがとうございます」＞
+
+	// ＜画面暗転＞
+	DelWindow();
+	SEFadeOut(0);
+	SEFadeOut(1);
+	FadeOut(SLOW);
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "…完璧。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ショーケース＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEE_01A );
+	FadeIn(SLOW);
+
+	SetStand(RIKAKO_0101NO);
+	SetWindow();
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v06060246「ごちそうさま。@n本当にお代はいいの？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102KS, "明日香", "@v06030012「恩人からお金なんて取れないよ」");
+	SetMessage(UNIT_KASURI, KASURI_0101KS, "かすり", "@v06040012「やっぱり早く戻ってきてよ～@nボンクラ店長がどれだけ頼りにならないか、@n今日で身に染みたわよ～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ひどいや…」");
+	SetMessage(UNIT_ETC, -1, "", "ここ一ヶ月で築き上げた信頼が…@nたった１０分で塵と消え…");
+	SetMessage(UNIT_ETC, -1, "", "ただ、みんなと一緒にオタオタしてただけで、@nこの仕打ち…");
+	SetMessage(UNIT_YUI, YUI_0101BS, "由飛", "@v06010032「でも、本当に凄いですね。@nさすが八橋大生」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102AK, "里伽子", "@v06060247「ヒアリングの授業にちゃんと出てれば、@nあのくらい簡単なはずなんだけど…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ひどいや…」");
+
+	SetMessage(UNIT_ETC, -1, "", "俺は知ってる…@nあいつは、それだけじゃなくて、英文科の授業も、@nモグリで聴講していることを。");
+	SetMessage(UNIT_ETC, -1, "", "自分勝手に人一倍努力しやがって、@nそれを当たり前のように言われたら、こっちの立つ瀬が…");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "そうさ、俺が悪いよ！　悪かったなぁ！");
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102NO, "里伽子", "@v06060248「それじゃ、お疲れさま。@nあと少し、頑張ってね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なあ、里伽子」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102NO, "里伽子", "@v06060249「ん？」");
+
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「就職が決まってからでいいからさ…@n卒業までの間でもいいからさ…@nやっぱ、戻ってこないか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102NO, "里伽子", "@v06060250「………」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101BS, "明日香", "@v06030013「そうだよ、戻っておいでよ。@nまた、いつてんちょが恥をかくかわかんないよ？」");
+	SetMessage(UNIT_KASURI, KASURI_0102NO, "かすり", "@v06040013「一人くらい、真面目なのがいないとね。@nキュリオだってそうだし」");
+	SetMessage(UNIT_YUI, YUI_0101BS, "由飛", "@v06010033「カッコ良かったですよ」");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v06050006「いつでもいいから…待ってるからね？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KN, "里伽子", "@v06060251「みんな…」");
+	SetMessage(UNIT_ETC, -1, "", "@m08里伽子は…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102HB, "里伽子", "@v06060252「ごめん、ね」");
+	SetMessage(UNIT_ETC, -1, "", "@m08寂しそうにうつむき、泣きそうな瞳と、@nそして、口の端をちょっとだけ上げた笑顔を見せた。@k");
+
+	Wait(100);
+	FadeOut(SLOWER);
+	DelStand();
+	DelVisual();
+	MessageWait();
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	Wait(300);
+
+	LoadEvent(EVENT_03_02);
+end();

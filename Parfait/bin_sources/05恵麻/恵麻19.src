@@ -1,0 +1,390 @@
+// ●恵麻19：仁くんの本命はわたしなのに～（泣）
+// 種類：重要イベント
+// 条件：恵麻ＴＲＵＥルートで、恵麻18の直後に発生
+// 概要：里伽子に気を使うファミーユの面々。仁と引き離されて涙の恵麻
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	BGMFadePlay( BGM_KISSATEN );
+	SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+	SEFadePlay(1, "L_Dish03", NORMAL, 20);
+	SEFadePlay(2, "L_Factory01", NORMAL, 50);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「姉さん、タルトがそろそろやばい」");
+	SetMessage(UNIT_ETC, -1, "", "ショーケースで売り子をやってる由飛からの情報によると、@nどうやら、タルト系はどれもあと２、３個しか@n残っていないとか。");
+	SetMessage(UNIT_EMA, EMA_0101AS, "恵麻", "@v05051074「え？　そうなの？@nどうしよう、こっち今手が離せないのに」");
+	SetMessage(UNIT_ETC, -1, "", "姉さんはと言うと、ちょうど今、@nシューの中にクリームを詰めようとしているところ。");
+	SetMessage(UNIT_ETC, -1, "", "確かに、手が離せる状況じゃない。@p@nということは…");
+	DelWindow();
+
+	// ＜画面暗転＞
+	SEFadeOut(0, SLOW);
+	SEFadeOut(1, SLOW);
+	SEFadeOut(2, SLOW);
+	FilterFadeOut(SLOW, FADEFILTER_UZU);
+
+	Wait(100);
+
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	SetStand(KASURI_0102EG2);
+	SEFadePlay(0, "L_Zattou04", SLOW, 50);
+	SEFadePlay(1, "L_Dish03", SLOW, 20);
+	SEFadePlay(2, "L_Factory01", SLOW, 50);
+	FilterFadeIn(SLOW, FADEFILTER_UZU);
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0102EG2, "かすり", "@v05040061「了解～♪@nすぐ着替えてくるね」");
+	SetMessage(UNIT_ETC, -1, "", "というわけで、フロアに出ていたかすりさんを呼び戻し、@nもう一度、キッチンに入ってもらう。");
+	SetMessage(UNIT_EMA, EMA_0101AS, "恵麻", "@v05051075「ごめんね、かすりちゃん…」");
+	SetMessage(UNIT_KASURI, KASURI_0102BS, "かすり", "@v05040062「なんのなんの～@nイートインの方は今お客様少ないから大丈夫」");
+	SetMessage(UNIT_ETC, -1, "", "確かに、今日はやたらとテイクアウトの比率が高い。");
+	SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v05040063「それに、ケーキとなると仁くん役立たずだしねぇ。@n卵かき混ぜるしか能がないし～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うわ！　うわ！　うわ！」");
+	SetMessage(UNIT_KASURI, KASURI_0102EG2, "かすり", "@v05040064「じゃ、３分で早変わりしてきます～@nそれまで頑張ってキッチンを守り抜いてね～」");
+
+	DelStand(CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「や、やかましいわ！」");
+	DelWindow();
+
+	// ＜ＳＥ：更衣室のドア開閉＞
+	SEPlay( "L_Door09A" );
+	Wait(150);
+	SEPlay( "L_Door09B" );
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "と、次から次へと頭に浮かぶ罵詈雑言を口に出す前に、@n更衣室に逃げられてしまった…");
+
+	SetStand(EMA_0101BS);
+
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05051076「ささ、じゃ、あと３分だけ持ちこたえようか、仁くん。@n小麦粉取ってくれる？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はいはい、どうせ雑用くらいしかできませんからね～」");
+	SetMessage(UNIT_EMA, EMA_0101BS2, "恵麻", "@v05051077「ふふ…何いじけてるのよ。@n仁くんは、この上なく役に立ってるじゃないの。@n@t0763@h0101EG何しろ、店長さんなんだから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それは向かいの店を見てると@n誉め言葉にならないんですが」");
+	DelWindow();
+
+	SEFadeOut(0);
+	SEFadeOut(1);
+	SEFadeOut(2);
+	FilterFadeOut(NORMAL, FADEFILTER_RYUUSEN | FADEFILTER_MIRROR);
+	DelStand();
+
+	// ＜ＢＧ：キュリオフロア＞
+	SetVisual( BG_CURIOF_01A );
+	SEFadePlay(0, "L_Zattou04");
+	SEFadePlay(1, "L_Dish03", NORMAL, 30);
+	FilterFadeIn(NORMAL, FADEFILTER_RYUUSEN);
+	SetStand(ITABASHI_0101NO, CENTER, MOVE_LEFT);
+
+	SetWindow();
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080058「みんな聞いてくれ！@nさっきボク、ものすごいアイデアを考えついたんだけど」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101MJ, "瑞奈", "@v05070013「あ、店長、すいませんそこどいて」");
+
+	SetStand(ITABASHI_0101KT);
+	MoveStand(CENTER, CENTERRIGHT);
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v05080059「おっと」");
+	SetMessage(UNIT_REA, REA_0102NO, "玲愛", "@v05020086「芳美は今から休憩に入って。@n悪いけど、３０分で済ませてくれる？」");
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101NO, "芳美", "@v05100009「了解です」");
+
+	SetStand(ITABASHI_0101AS, CENTERRIGHT);
+	MoveStand(CENTERRIGHT, CENTER);
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101AS, "板橋", "@v05080060「いや、ちょっと…だからみんなぁ…@n今よりもさらに収益が上がる究極のアイデアが…」");
+	SetMessage(UNIT_FEMALE, HIKARI_0101NO, "ひかり", "@v05090010「あ、店長、すいません、今日はお客様が多くて…@nですから、隅でじっとしておいて頂けますか？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101SN, "板橋", "@v05080061「………はい」");
+	DelWindow();
+
+	DelStand(CENTER, MOVE_LEFT, NORMAL);
+	SEFadeOut(0);
+	SEFadeOut(1);
+	FilterFadeOut(NORMAL, FADEFILTER_RYUUSEN | FADEFILTER_MIRROR);
+
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+	SEFadePlay(1, "L_Dish03", NORMAL, 20);
+	SEFadePlay(2, "L_Factory01", NORMAL, 50);
+	SetStand(EMA_0101NR);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101NR, "恵麻", "@v05051078「何バカなこと言ってんのよ。@n仁くんとあのボンクラ店長を@n一緒にされてたまりますか！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、あの…」");
+	SetMessage(UNIT_ETC, -1, "", "一緒にされたくないのはやまやまだが、@nそこまで言ってやらんでも…");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05051079「仁くんは、お料理もできるし、@nみんなの相談にも乗ってあげるし、@nそれに、誰よりも頑張ってる」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「姉さん…」");
+	SetMessage(UNIT_ETC, -1, "", "またはじまった…@n恵麻姉さんの、『俺びいき』。");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05051080「このお店をここまで伸ばしたのは仁くんの力だし、@n何だかんだ言って、誰もやめずに残ってるのは、@n仁くんに人望があるからだし」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、それ別に俺だけの力じゃないし…」");
+	SetMessage(UNIT_ETC, -1, "", "この店を伸ばしたのは、姉さんと、里伽子。@nそれにかすりさんや明日香ちゃんや由飛の力だし。");
+	SetMessage(UNIT_ETC, -1, "", "それに、キュリオだってまだ誰もやめてないし。");
+	SetMessage(UNIT_ETC, -1, "", "根拠もなく俺を誉め倒すのは、@n姉さんの、結構ある欠点のうちの一つ…");
+	SetMessage(UNIT_EMA, EMA_0101SM, "恵麻", "@v05051081「それに…姉ちゃんの、力になってくれてる。@nかけがえのない、力に」");
+
+	BGMFadeOut( SLOWEST );
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…姉、さん」");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05051082「…誰もいないね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…かすりさんがあと１分くらいで戻ってくる」");
+
+	SEPlay("L_Walk02S");
+	DelStand();
+	SetStand(EMA_A101BS);
+
+	SetMessage(UNIT_EMA, EMA_A101BS, "恵麻", "@v05051083「じゃ、１分も二人きりだね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "姉さんが、いつの間にか、俺を見上げてる。");
+	SetMessage(UNIT_ETC, -1, "", "気がつけば、カウンターから見えない位置に移動してる。");
+	SetMessage(UNIT_ETC, -1, "", "いつの間に…こんな後ろめたい体勢に？");
+
+	ShakeScreen(4);
+	SEPlay("L_Nuno04", 50);
+
+	SetMessage(UNIT_EMA, EMA_A101BS2, "恵麻", "@v05051084「仁くん…」");
+	SetMessage(UNIT_ETC, -1, "", "姉さんが、ますます体を預けてくる。");
+	SetMessage(UNIT_ETC, -1, "", "胸を合わせ、潤んだ瞳で見上げてくる。");
+	SetMessage(UNIT_ETC, -1, "", "そして、両手は………");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「その両手、なんとかならんの？」");
+	SetMessage(UNIT_ETC, -1, "", "右手にはホイップ、左手にはシュー。@p@n…明らかにただの仕事中。");
+	SetMessage(UNIT_EMA, EMA_A101BS2, "恵麻", "@v05051085「だから、姉ちゃんからじゃこれ以上何もできない」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…しかもつまみ食いしただろ、姉ちゃん」");
+	SetMessage(UNIT_ETC, -1, "", "鼻の頭にもホイップが。");
+	SetMessage(UNIT_ETC, -1, "", "どういう食い方したらこうなるんだ？");
+	SetMessage(UNIT_EMA, EMA_A101BS2, "恵麻", "@v05051086「だから次は…メインディッシュ」");
+	SetMessage(UNIT_ETC, -1, "", "俺が何を言っても、やめるつもりはないらしい。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ったく、悪い姉だ」");
+	SetMessage(UNIT_EMA, EMA_A101BS2, "恵麻", "@v05051087「うん、そうね。@n酷い姉ちゃんだね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「弟はもっと…酷いけどな」");
+	DelWindow();
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	BGMFadePlay(BGM_H1, SLOWER);
+	DelStand();
+	FadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051088「あ…ん…」");
+	SetMessage(UNIT_ETC, -1, "", "あと…３０秒、くらいか…？");
+	SetMessage(UNIT_ETC, -1, "", "だったら、１０秒くらいなら、安全圏…");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051089「あ、む…ん、ちゅぷ…ふ、ぅぅんっ…」");
+	DelWindow();
+
+	BGMFadeOut();
+	SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+	SEFadePlay(1, "L_Dish03", NORMAL, 20);
+	SEFadePlay(2, "L_Factory01", NORMAL, 50);
+	FadeIn(FAST);
+
+	SetWindow();
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v05030055「てんちょてんちょ～！」");	// ★★声のみ
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051090「っ！？」");
+
+	ShakeScreen( 8 );
+	SEPlay("L_Kamu01");
+
+	SetMessage(UNIT_ETC, -1, "", "@s0004がりっ");
+
+	ShakeScreen( 16 );
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「～～～っ！？」");
+	DelWindow();
+
+	// ＜ＳＥ：がたがたっ＞
+	BGMFadePlay( BGM_COMICAL, SLOWER );
+	ShakeScreen( 8 );
+	SEPlay("L_Inpact04");
+	Wait(20);
+	SEPlay("L_Inpact05");
+	Wait(20);
+	SEPlay("L_Inpact06");
+	Wait(20);
+	ShakeScreen( 16 );
+	SEPlay("L_Inpact12");
+
+	SetStand(ASUKA_0101NO, CENTER, MOVE_LEFT);
+
+	SetWindow();
+	SetMessage(UNIT_ASUKA, ASUKA_0101NO, "明日香", "@v05030056「今、フロアに@t0108@h0102NO………って、何やってんの？」");
+	SetMessage(UNIT_ETC, -1, "", "と、口を押さえて悶えている俺に、@n明日香ちゃんが呆然と問いかける。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「い、いや、その………えっと…舌噛んだ」");
+	SetMessage(UNIT_ETC, -1, "", "正確には、噛まれた。");
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v05051091「つまみ食いなんかするから～…あはは～」");
+	SetMessage(UNIT_ETC, -1, "", "正確には、つまんできたのはどっちだよ…");
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v05051092「あ、あは、あは、あはは…」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102NO, "明日香", "@v05030057「？」");
+
+	SetMessage(UNIT_ETC, -1, "", "涙目で睨む俺の視線を思いっきり受け流して、@n両手だけ合わせて謝っている。");
+	SetMessage(UNIT_ETC, -1, "", "しかし、これ以上追及しても、@n明日香ちゃんを怪しませるだけだしなぁ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、そ、それで…フロアに、なに？」");
+	BGMFadeOut( SLOWER );
+	SetMessage(UNIT_ASUKA, ASUKA_0101MJ, "明日香", "@v05030058「来てるよ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_EMA, EMA_0102SP, "恵麻", "@v05051093「………」");
+	SetMessage(UNIT_ETC, -1, "", "もう、業者さん？　などというボケはかまさない。");
+	SetMessage(UNIT_ETC, -1, "", "里伽子だ…");
+	SetMessage(UNIT_ASUKA, ASUKA_0101BS, "明日香", "@v05030059「とりあえず、ダージリンひとつ。@nてんちょ、もってってあげなよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、ああ…」");
+	DelStand();
+	
+	SetStand(EMA_0101NR);
+	SetMessage(UNIT_EMA, EMA_0101NR, "恵麻", "@v05051094「ダメよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102NO, "明日香", "@v05030060「恵麻さん？」");
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v05051095「そ、その…こっちだって人手が」");
+
+	DelWindow();
+
+	// ＜ＳＥ：更衣室のドア開く＞
+	SEPlay( "L_Door09A" );
+	Wait( 50 );
+	SetStand(KASURI_0202BS, RIGHT, MOVE_RIGHT, FAST, 1);
+	MoveStand(CENTER, LEFT);
+
+	SetWindow();
+
+	SetMessage(UNIT_KASURI, KASURI_0202BS, "かすり", "@v05040065「そのためにわたしがいるんでしょ？@nい～よ仁くん、行っておいで」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「かすりさん…」");
+	SetMessage(UNIT_ETC, -1, "", "タイミング良く、というか、ちょうど３分というか…");
+	SetMessage(UNIT_ETC, -1, "", "かすりさんが、パティシエ服に着替えて、@nキッチンに戻ってきた。");
+	SetMessage(UNIT_KASURI, KASURI_0202NO, "かすり", "@v05040066「お茶ならわたしが淹れたげるから、@nささ、すぐにでも行っといで」");
+	SetMessage(UNIT_EMA, EMA_0101NR, "恵麻", "@v05051096「ちょっ、ちょっとみんな…@nそういう公私混同は…」");
+	SetMessage(UNIT_ETC, -1, "", "さっきまで、その公私混同をしまくってた姉さんが、@nいけしゃあしゃあと規律を主張する。");
+	SetMessage(UNIT_ASUKA, ASUKA_0102NO, "明日香", "@v05030061「だって里伽子さんだったら、@n身内みたいなもんじゃないですか」");
+
+	//伊藤：切る
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v05051097「だ、だから身内には余計にそういう…@t0387@h0101ASあ、ちょっと」@k");
+	ShakeScreen(8);
+	SEPlay("L_Fall01");
+	DelStand(LEFT, MOVE_STOP, FAST, 1);
+	MoveStand(RIGHT,CENTER);
+	MessageWait();
+
+	SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v05040067「いい加減弟離れしないと、恵麻さ～ん。@n@t0400@h0202BSさ、仁くん行っといで」");
+//	SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v05040067「いい加減弟離れしないと、恵麻さ～ん。@n@t0400@hASUKA_0201NO0102BSさ、仁くん行っといで」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "正直、里伽子とは話したいことがいっぱいある。");
+	SetMessage(UNIT_ETC, -1, "", "あの、イブの夜に会えなかった時から、@nなんだか、お互いわだかまりを残したままだ。");
+	SetMessage(UNIT_ETC, -1, "", "あれから色々、お互いの境遇は変わったかもしれないけど、@nそれでも、話さなければいけない気がする。");
+	SetMessage(UNIT_EMA, EMA_0102SP, "恵麻", "@v05051098「仁くん…リカちゃんとは、もう…」");
+
+	SetStand(ASUKA_0101BS, LEFT, MOVE_LEFT, FAST, 1);
+	MoveStand(CENTER, RIGHT);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0101BS, "明日香", "@v05030062「今ならそんなにお客様いないから、@nちょっとの間だったら大丈夫だよ」");
+	SetMessage(UNIT_EMA, EMA_0101NR, "恵麻", "@v05051099「明日香ちゃん！？」");
+	SetMessage(UNIT_KASURI, KASURI_0201MJ, "かすり", "@v05040068「あからさまに会いに来てるんだから、@nちょっとは顔見せるのが礼儀だよ…仁くん」");
+
+	ShakeScreen(8);
+	SEPlay("L_Fall02");
+
+	SetMessage(UNIT_EMA, EMA_0101NR, "恵麻", "@v05051100「か、かすりちゃん…離してってば、ちょっと…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「姉さん…」");
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v05051101「じ、仁くん…その…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ごめん、ちょっとだけ休憩入る。@nみんなもごめん」");
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v05051102「仁くぅん」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101BS, "明日香", "@v05030063「は～い、お疲れさま～」");
+	SetMessage(UNIT_KASURI, KASURI_0202EG, "かすり", "@v05040069「恵麻さんのことは任せて～」");
+	SetMessage(UNIT_EMA, EMA_0101NK, "恵麻", "@v05051103「あああああああ～！」@k");
+
+	// ＜画面暗転＞
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	SEFadePlay(0, "L_Zattou04", SLOWER);
+	SEFadePlay(1, "L_Dish03", SLOWER, 30);
+	CurtainFadeOut();
+	DelStand(LEFT);
+	DelStand(RIGHT);
+	MessageWait();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "奥から、姉さんの呪詛の声が聞こえてきたけど…");
+	SetMessage(UNIT_ETC, -1, "", "でも今は、里伽子と話さなければならないような気がする。");
+	SetMessage(UNIT_ETC, -1, "", "俺は、後ろ髪を引かれる思いで、フロアに…");
+
+	SetMessage(UNIT_EMA, -1, "恵麻", "@o050@v05051104「な、ならわたしも行く～！@nリカちゃんに注意してくるの～！」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@o050@v05030064「恵麻さん…二人っきりにしてあげようよぉ」");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@o050@v05040070「そ～そ～、今はちょっと微妙な雰囲気だけどさぁ、@n元々付き合ってたんだから、あの二人は」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@o050@v05051105「違うのに～！　今は違うのに～！@nわたしが～！　わたしがぁ～！」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@o050@v05030065「わたしが、なに？」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@o050@v05051106「い…言えないけど～！　@t0242@k");
+	ShakeScreen(8);
+	SEPlay("L_Fall01", 50);
+	AddMessage("言えないけどぉ～！@t0506@k");
+	ShakeScreen(8);
+	SEPlay("L_Fall02", 50);
+	AddMessage("@nでもわたしがぁぁぁ～！」");
+
+	//衛生兵、衛生ー兵、えーせーへー！
+	// (´-`)駄目だ！
+	SetMessage(UNIT_KASURI, -1, "かすり", "@o050@v05040071「明日香ちゃん、そっち押さえて！@n恵麻さん何かヤバい妄想入ったみたい」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@o050@v05030066「恵麻さん！　しっかりして！@n大丈夫だから、てんちょは無事だから！」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@o050@v05051107「う～…ううううう～っ！」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "………やっぱりキッチンに戻ろう。");
+	SetMessage(UNIT_ETC, -1, "", "だって…後が怖い。@n怖すぎる。");
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+
+	// ＜ＢＧ：フロア＞
+	Wait( 200 );
+
+	SetVisual( BG_FAMILLEF_01A );
+	SEFadePlay(0, "L_Zattou04", SLOW);
+	SEFadePlay(1, "L_Dish03", SLOW, 30);
+	CurtainFadeIn();
+
+	SEPlay("L_Dish02");
+
+	SetWindow();
+	SetMessage(UNIT_ASUKA, ASUKA_0101BS, "明日香", "@v05030067「お待たせ、里伽子さん」");
+
+	SetStand(RIKAKO_A102NO);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102NO, "里伽子", "@v05060091「あ、うん、ありがと…」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101BS, "明日香", "@v05030068「それじゃ、ゆっくりしてってね。@n後でかすりさんも顔見せるって」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101KM, "里伽子", "@v05060092「あ、あのさ、明日香ちゃん…その」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102KS, "明日香", "@v05030069「ごめん、てんちょ、今ダメだって。@nなんか急な仕事が入ったとかで」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MU2, "里伽子", "@v05060093「………別に仁のこと聞いてない」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102NO, "明日香", "@v05030070「そうなの？@nじゃあ、なに？」");
+
+	SetStand(RIKAKO_A102OD);
+	Wait(30);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102TR, "里伽子", "@v05060094「…モ、モンブラン、追加お願い」");
+	HideMenu();
+	DelWindow();
+
+	Wait(50);
+	BGMFadeOut( SLOWER );
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	FadeOut( SLOW );
+	DelStand();
+	DelVisual();
+	Wait( 400 );
+
+	LoadEvent(EVENT_EMA_20);
+end();
+

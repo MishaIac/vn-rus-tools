@@ -1,0 +1,507 @@
+// ●由飛25：再発
+// 種類：重要イベント
+// 条件：由飛ＴＲＵＥルートで、由飛24の直後に発生
+// 概要：また、ピアノが弾けなくなる由飛。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+		DayEffect();
+		ShowMenu();
+
+	//----------------------------------------------------------------------------
+	// ＜回想シーン（コンクール風景。夢。暗転でも可能）＞
+	//----------------------------------------------------------------------------
+
+		// ＜ＳＥ：ピアノの演奏（終わり部分）＞
+		SELoopPlay(0, "L_Piano04");
+		Wait(800);
+		SEFadeOut(0, SLOWER);
+
+		// ＜ＳＥ：拍手＞
+		SEFadePlay(0, "L_Clap02");
+		Wait(200);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "………");
+		DelWindow();
+
+		SEFadeOut(0, SLOWER);
+		SetVisual( BG_CONCERT_01C, FILTER_SEPIA );
+		FadeIn(SLOWER);
+
+		SetWindow();
+		SetMessage(UNIT_FEMALE, -1, "アナウンス", "@v01160087「続いて１９番………@n曲は、同じくショパン、エチュード、作品２５、@n第１番、変イ長調『エオリアン・ハープ』」");
+		// ＜『………』の部分で『花鳥玲愛』と言っていますが、ここでは聞こえないように＞
+
+		SetMessage(UNIT_FEMALE, -1, "？？？", "「………」");
+		DelWindow();
+
+		// ＜ＢＧＭ：ピアノ曲＞
+		// ＜しばらく続ける＞
+
+//		SetWindow();
+//		SetMessage(UNIT_REA, -1, "？？？", "@v01020164「………」");
+//		DelWindow();
+
+		// ＜ＳＥ：ピアノ曲、トチる＞
+		SELoopPlay(1, "L_Piano05");
+		Wait(800);
+		SEFadeOut(1, SLOWER);
+
+		SetWindow();
+		SetMessage(UNIT_FEMALE, -1, "？？？", "「っ！？」");
+		DelWindow();
+
+		// ＜演奏やむ＞
+
+		// ＜ＳＥ：ホール内、ざわめき＞
+		SEFadePlay(0, "L_Zattou01", SLOW, 50);
+		SEFadePlay(1, "L_Zattou13", SLOW, 50);
+		Wait(100);
+
+		SetWindow();
+		SetMessage(UNIT_FEMALE, -1, "？？？", "「あ…あ…」");
+		DelWindow();
+
+		// ＜ざわめき、段々大きくなる＞
+		SEFade(0, SLOW, 100);
+		SEFade(1, SLOW, 100);
+
+		// ＜ＳＥ：ホール中に響く、椅子の倒れる音＞
+		SEPlay("L_Chair02");
+		SetVisual( BG_CONCERT_01D, FILTER_SEPIA );
+		CrossFade();
+
+		// ＜ＳＥ：ホール中に響く、駆け出す音＞
+		SEPlay("L_Dash15");
+		Wait(200);
+
+		// ＜画面暗転＞
+		// ＜回想終わり＞
+		SEFadeOut(0, SLOWER);
+		SEFadeOut(1, SLOWER);
+		MosaicFadeOut(SLOWER);
+
+		Wait(200);
+
+		//----------------------------------------------------------------------------
+
+		// ＜ＢＧＭ：ピアノ曲。数秒弾いて、すぐトチって止まる＞
+		SELoopPlay(1, "L_Piano07");
+		Wait(900);
+		SEFadeOut(1, SLOWER);
+
+		SetWindow();
+		SetMessage(UNIT_YUI, -1, "？？？", "@v01011208「…あれ」");
+		SetMessage(UNIT_ETC, -1, "", "………");
+		DelWindow();
+
+		// ＜ＢＧＭ：ピアノ曲。数秒弾いて、すぐトチって止まる＞
+		SELoopPlay(1, "L_Piano08");
+		Wait(800);
+		SEFadeOut(1, SLOWER);
+
+		SetWindow();
+		SetMessage(UNIT_YUI, -1, "？？？", "@v01011209「あ……あ、れぇ…？」");
+		SetMessage(UNIT_ETC, -1, "", "………");
+		DelWindow();
+
+		Wait(200);
+
+		//----------------------------------------------------------------------------
+		// ＜ＳＥ：チャイム＞
+
+		// ＜ＳＥ：ドア開く（チャイムと同時）＞
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：仁のマンション廊下＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_HITOSHIR_03A );
+		SEPlay("L_Door08A");
+		SEPlay("L_Bell08");
+		SetStand(REA_A301OD);
+		FadeIn();
+		JumpStand();
+
+		SetWindow();
+		SetMessage(UNIT_REA, REA_A301OD, "玲愛", "@v01020167@s0004「きゃっ！？」");
+		DelWindow();
+
+		ShakeScreen(16);
+		SEPlay("L_Fall01");
+		SEPlay("L_Nuno04");
+		DelStand();
+		FadeOut(FAST);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「うわっ！？」");
+
+		// ＜ＳＥ：どんっ＞
+		SetMessage(UNIT_ETC, -1, "", "玄関から飛び出そうとした俺の目の前で、@n金色のしっぽが揺れた。");
+
+		BGMPlay(BGM_REA);
+		FadeIn();
+
+		SetMessage(UNIT_REA, REA_0301OD, "玲愛", "@v01020168「び、びっくりしたぁ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「気をつけろよそそっかしいなぁ。@n俺の用心深さに感謝しろよ」");
+		SetMessage(UNIT_REA, REA_0301IK, "玲愛", "@v01020169「いきなり全力でドアを開ける奴に@n言われたくないわよ！」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「事故じゃないか不幸な事故」");
+		SetMessage(UNIT_REA, REA_0302IK2, "玲愛", "@v01020170「ダンプカーと歩行者がぶつかったら、@nどっちが不注意でも運転手が悪いのよ！」");
+		SetMessage(UNIT_ETC, -1, "", "まぁ、確かに…@nこっちは、傷一つ負わないだろうし。@p@nそれに…");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そろそろ離れないか？」");
+		SetMessage(UNIT_REA, REA_0302TR, "玲愛", "@v01020171「…そっちが離れなさいよ」");
+		SetMessage(UNIT_ETC, -1, "", "まぁ、役得もそれなりにあったし。");
+		DelWindow();
+
+		// ＜画面暗転＞
+		FilterFadeOut(SLOW, FADEFILTER_UZU);
+
+		Wait(50);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：マンション廊下＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_HITOSHIR_03A );
+		SetStand(REA_0302NO);
+		FilterFadeIn(SLOW, FADEFILTER_UZU);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「で、何の用だ？@n俺、今から出かけないと…」");
+		SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v01020172「明日の休み、由飛に会いに行くわよね？」");
+
+		//伊藤：切る
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、今から…っ！？」@k");
+		SetStand(REA_0302IK);
+		MessageWait();
+
+		SetMessage(UNIT_REA, REA_0302IK, "玲愛", "@v01020173「………」");
+		SetMessage(UNIT_ETC, -1, "", "現在、火曜日の２５時…要するに水曜日の午前１時。@n丑三つ時まであと半時。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「と、泊まらないよ？@nちょっと渡すもの渡したら帰って、寝て、@nで、また明日様子見に行くだけだって」");
+		SetMessage(UNIT_REA, REA_0302IK, "玲愛", "@v01020174「別にそんなこと聞いてないわよ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「う、嘘じゃないぞ？@nほらほら、由飛の試験課題のＣＤ見つけたんだ。@nこれ届けに行くんだよ！」");
+		SetMessage(UNIT_ETC, -1, "", "ちょうど手に持っていたＣＤ屋の袋を玲愛に手渡す。@nこれでカモフラージュは万全…@nいやいやお届け物が目的だってば！");
+		SetMessage(UNIT_REA, REA_0302TN, "玲愛", "@v01020175「別にそんなこと気にしてないったら！」");
+		SetMessage(UNIT_ETC, -1, "", "ならどうしてそんなに刺々しくなる？");
+		SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v01020176「ちょっと由飛に渡すものがあったから、@nことづけてもらおうかと思って」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、そんなことのために、こんな深夜に？」");
+		SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v01020177「でも、正解だったでしょ？@nあんた、今日はもう帰らないだろうし」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「泊まらないって言ってんだろ！？」");
+		SetMessage(UNIT_REA, REA_0301NO, "玲愛", "@v01020178「実家からお野菜送ってきたのよ。@n半分は由飛に届けてやれって」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…お前の家は本当に欧風音楽一家なのか？」");
+		SetMessage(UNIT_ETC, -1, "", "よく見たら、廊下に宅配の段ボール箱が置いてある。@p@n中から泥つきの大根が覗いている光景は、何と言うか…");
+		SetMessage(UNIT_REA, REA_0302HT, "玲愛", "@v01020179「ちょっと重いけど大丈夫よね？@n今から由飛のマンション行くってことは、@nタクシーなんだろうし」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…そいやもう下に来てるんだった」");
+		SetMessage(UNIT_ETC, -1, "", "タクシー会社から電話が来たから急いでたんだった。@p@nやばいなぁ、運ちゃん待たせたままだぞ。");
+		SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v01020180「あ、なら下まで運ぼうか？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「その裏方までをナチュラルにやる癖はなんとかしろ。@n力仕事くらい男に任せろよ」");
+
+		SetMessage(UNIT_ETC, -1, "", "指導者として優秀なのに後進が育ちにくい。");
+		SetMessage(UNIT_ETC, -1, "", "キュリオの弱点は、チーフが何から何まで@n全部やってしまうことにある。");
+		SetMessage(UNIT_ETC, -1, "", "玲愛の話によれば、本店からの伝統らしいが…");
+
+		SetMessage(UNIT_REA, REA_0301NO, "玲愛", "@v01020181「そう？　@t0120@h0302BSなら、よろしくね。@n試験が終わったら結果報告に実家に戻れって、@nそう、伝えておいて」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ああ、わかった」");
+		DelWindow();
+
+		SEPlay("L_Elevator02");
+		Wait(200);
+		SEPlay("L_Inpact08");
+		ShakeScreen(4);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "俺は、ちょっと重めの段ボールを抱えると、@nマンションのエレベータに乗り込む。");
+		SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v01020182「避妊くらいはしなさいよ？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「え～、できればつけたくないなぁ」");
+		SetMessage(UNIT_REA, REA_0302IK, "玲愛", "@v01020183「………」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「すまん、リアクション間違えた」");
+		DelWindow();
+
+		// ＜ＳＥ：エレベーター扉閉じる＞
+
+		// ＜画面暗転＞
+		BGMFadeOut(SLOWER);
+		SEPlay("L_Door07");
+		FilterFadeOut(SLOW, FADEFILTER_SIDE);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "………");
+		DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：仁のマンションの廊下＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_HITOSHIR_03A );
+		SetStand(REA_0301OD);
+		FadeIn();
+
+		SetWindow();
+		SetMessage(UNIT_REA, REA_0301OD, "玲愛", "@v01020184「あ…ちょっとＣＤ！@n@t0295@h0302KMあ～あ…行っちゃった」");
+		SetMessage(UNIT_REA, REA_0301AK , "玲愛", "@v01020185「これ、大事なものじゃなかったの？@nもう、世話焼かせるなぁ」");
+		SetMessage(UNIT_ETC, -1, "", "………");
+		SetMessage(UNIT_REA, REA_0301IN, "玲愛", "@v01020186「………。@n@t0200@h0301KN『エオリアン・ハープ』なんだ」");
+
+		// ＜画面暗転＞
+		DelWindow();
+		FadeOut(SLOWER);
+		DelStand();
+
+		Wait(200);
+
+		//----------------------------------------------------------------------------
+
+		// ＜ＳＥ：チャイム＞
+		SEPlay("L_Bell08", 30);
+		Wait(100);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "………");
+		DelWindow();
+
+		// ＜ＳＥ：チャイム＞
+		SEPlay("L_Bell08", 30);
+		Wait(100);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "………");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…寝てるかな？」");
+		SetMessage(UNIT_ETC, -1, "", "今日、なるべく早く行くって電話したのに。");
+		SetMessage(UNIT_ETC, -1, "", "…まぁ、『朝早く』来るのかと思ってるのかもな。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「入るぞ」");
+		SetMessage(UNIT_ETC, -1, "", "キーホルダーに、二週間前から、鍵が一つ増えてる。@nなんか昇格した気分。");
+		DelWindow();
+
+		// ＜ＳＥ：鍵開ける＞
+		SEPlay("L_Lock01", 100, 1);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "とりあえず、寝込みを襲…ったりはしないが。");
+		DelWindow();
+
+		// ＜ＳＥ：ドア開ける＞
+		SEPlay("L_Door08A");
+
+		// ＜ＢＧＭ：ピアノ曲。数秒弾いて、すぐトチって止まる＞
+		// ＜玄関から聞いてるのでちょっと小さめ＞
+		SEFadePlay(0, "L_Piano09", SLOW, 50);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「なんだよ…起きてんじゃん」");
+		SetMessage(UNIT_ETC, -1, "", "それどころか、まだ練習してるみたいだ。");
+		SetMessage(UNIT_ETC, -1, "", "けど、本当に廊下からじゃ聞こえないくらいに、@n完璧な防音してるんだな。");
+		SetMessage(UNIT_ETC, -1, "", "まぁ、そうでなけりゃ、こんな夜中にピアノなんて、@n近所迷惑以外の何者でもないけど。");
+		DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：由飛のマンションのリビング＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_YUI_03A );
+		SEFade(0, SLOW, 100);
+		CurtainFadeIn();
+
+		// ＜ＢＧＭ：ピアノ曲。数秒弾いて、すぐトチって止まる＞
+		// ＜以下、延々と繰り返し＞
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「お～い、由飛」");
+
+		// ＜以下、由飛はピアノを弾きながらの会話＞
+
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011210「あ、仁、来てたんだ～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「チャイム鳴らしたんだけど」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011211「ごめん、聞こえなかった」");
+		SetMessage(UNIT_ETC, -1, "", "まぁ、練習に夢中になってたってのは、@n喜ぶべきことだ。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「蒸しケーキ持ってきたぞ。ちょっとお茶にしようぜ」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011212「ん～、ひと段落ついたらね」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あんま根詰めるなよ」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011213「わかってるって…これが弾けるまで」");
+		SetMessage(UNIT_ETC, -1, "", "死ぬ気で頑張れと尻を叩いておきながら、@nちょっと相手してもらえないと休め休めと。");
+		SetMessage(UNIT_ETC, -1, "", "俺って、かなり大人げないかもしれない。");
+
+		ShakeScreen(4);
+		SEPlay("L_Inpact08");
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、そうだ、こっち来る前に玲愛に会ってさ。@n実家から野菜送ってきたって、ほらこれ」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011214「あ～、うん、ありがと。@n冷蔵庫にでも入れといて」");
+		SetMessage(UNIT_ETC, -1, "", "…とは言え、産地直送っぽい、@n泥つきの野菜なんだけどな。");
+		DelWindow();
+
+		FadeOut();
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "まぁ、いいや。@nとりあえず水洗いしとこう。");
+
+		SEFade(0, SLOWER, 50);
+
+		SetMessage(UNIT_ETC, -1, "", "………");
+		SetMessage(UNIT_ETC, -1, "", "……");
+		SetMessage(UNIT_ETC, -1, "", "…");
+		DelWindow();
+
+		// ＜ＢＧＭ：ピアノ曲。数秒弾いて、すぐトチって止まる＞
+		// ＜以下、延々と繰り返し＞
+		// ＜台所からなので、少しボリュームを下げてください＞
+		// ＜ＳＥ：水道の流れる音＞
+		SEFadePlay(1, "L_Water04", SLOWER);
+		SEPlay("L_Hineru01", 100, 1);
+		Wait(50);
+		SEPlay("L_Hineru01", 100, 1);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "大根、じゃがいも、長ねぎ、にんじん。");
+		SetMessage(UNIT_ETC, -1, "", "段ボールの中から出てくるわ出てくるわ…");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、そうそう、それでさ由飛」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011215「………」");
+		SetMessage(UNIT_ETC, -1, "", "これって、由飛が料理するわけないよなぁ。@n玲愛の奴、どうして持ってけなんて言うんだ？");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…由飛？」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011216「………」");
+		SetMessage(UNIT_ETC, -1, "", "やっぱり…俺に料理しろってことなのか？@n少なく見積もっても、一週間分くらいはあるぞ。");
+		SetMessage(UNIT_ETC, -1, "", "てことは結局、今週も俺、由飛の食事当番？");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛ってばよ～！」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011217「えっ？　あ、な、なに～？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「試験が終わったら一度実家に戻れってさ」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011218「嫌」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そうは言ってもさぁ、結果ぐらい報告に…」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011219「試験が終われば、仁とゆっくり過ごせるんだもん。@n帰ってる場合じゃないよ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「こ、この…」");
+		SetMessage(UNIT_ETC, -1, "", "臆面もなく、『仁とゆっくり過ごせる』などと…");
+		SetMessage(UNIT_ETC, -1, "", "大手を振って異を唱えられんではないか。");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011220「離ればなれは嫌だもん…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ほんの２、３日だろ」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011221「絶対に…嫌だもん」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛…」");
+		SetMessage(UNIT_ETC, -1, "", "また、俺のツボを突きやがって。");
+		SetMessage(UNIT_ETC, -1, "", "試験が終われば、３月はずっと休みなんだから、@nいつだって会えるってのに。");
+		SetMessage(UNIT_ETC, -1, "", "………");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「なあ、由飛」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011222「………」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「試験、終わったらさ、旅行でも行かないか？@n俺もなんとか１日だけでも休み取るから」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011223「………」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「スキー…とかは駄目そうだよな、お前。@n温泉とか行って、一緒にぐうたらしないか？」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011224「………」");
+		DelWindow();
+
+		SEFadeOut(1, SLOWER);
+		SEPlay("L_Hineru01", 100, 1);
+		Wait(50);
+		SEPlay("L_Hineru01", 100, 1);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…由飛？」");
+		SetMessage(UNIT_ETC, -1, "", "なんか…変だな。");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011225「………」");
+		SetMessage(UNIT_ETC, -1, "", "さっきから、不協和音。");
+		SetMessage(UNIT_YUI, -1, "由飛", "@o070@v01011226「………」");
+		SetMessage(UNIT_ETC, -1, "", "単調な、リズム。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「おい、由飛？」");
+		SetMessage(UNIT_ETC, -1, "", "出だしだけ集中して練習してる…のか？");
+		SetMessage(UNIT_ETC, -1, "", "それで…しつこいまでに、繰り返してるのか？");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛！？」");
+		DelWindow();
+
+		SetVisual( BG_YUI_03A );
+		SEFade(0, NORMAL, 100);
+		FadeIn();
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "由飛は、ピアノの前で、微動だにしない。");
+		SetMessage(UNIT_ETC, -1, "", "いや、指だけは、きっちり動いてる。@p@nさっきから、休まず弾き続けている。");
+		SetMessage(UNIT_ETC, -1, "", "こんな、たった１０秒程度のフレーズを…？");
+
+		// ＜ここからの由飛の台詞、取り憑かれたように、小声でブツブツと＞
+
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011227「あれぇ…おっかしいなぁ…」");
+		// ＜ＢＧＭ：ピアノ曲。数秒弾いて、すぐトチって止まる＞
+
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011228「得意…なんだけどなぁ、これ…」");
+		// ＜ＢＧＭ：ピアノ曲。数秒弾いて、すぐトチって止まる＞
+
+		SetStand(YUI_A301GR2);
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛…？　お、おい…っ！？」");
+		SetMessage(UNIT_ETC, -1, "", "実は、今日、はじめて由飛の顔を見た。@nさっきからずっと、背中を向けたまま会話してたから。");
+		SetMessage(UNIT_ETC, -1, "", "もし、目を見て会話していれば、@nこんな異常事態、すぐに気づいたはずなのに。");
+		SetMessage(UNIT_YUI, YUI_A301GR, "由飛", "@v01011229「また…間違えちゃった。@nやだなぁ、何やってんだろ、わたし」");
+
+		DelStand();
+
+		// ＜ＢＧＭ：ピアノ曲。数秒弾いて、すぐトチって止まる＞
+
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011230「あれ…あれぇ…？」");
+
+		// ＜ＢＧＭ：ピアノ曲。数秒弾いて、すぐトチって止まる＞
+
+		SetMessage(UNIT_ETC, -1, "", "滝のような汗が、顔どころか体じゅうを伝って、@n革張りの椅子まで、ぐっしょりと濡らしている。");
+		SetMessage(UNIT_ETC, -1, "", "顔色は、こっちが青ざめてしまうくらいに青く、@nしかも、全身には大粒の鳥肌が立っている。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「な…」");
+		SetMessage(UNIT_ETC, -1, "", "恐る恐る、頬に触れてみると…");
+		SetMessage(UNIT_ETC, -1, "", "そこは、考えられないくらいに、冷たい。");
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011231「ちょっと待ってよ…@nこんなはず、ないんだってばぁ…」");
+
+		// ＜ＢＧＭ：ピアノ曲。数秒弾いて、すぐトチって止まる＞
+		ShakeScreen(8);
+		SEPlay("L_Fall02");
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛！　おい、由飛ってば！？」");
+
+		SEFadeOut(0);
+		SetStand(YUI_A301GR);
+
+		SetMessage(UNIT_YUI, YUI_A301GR, "由飛", "@v01011232「あ、ごめん仁。@nちょっとだけ待ってて。@n…すぐ、おわるから」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「お前…いつから弾いてる？」");
+		SetMessage(UNIT_YUI, YUI_A301GR, "由飛", "@v01011233「え～、なんで～？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「いいから答えろ」");
+		SetMessage(UNIT_YUI, YUI_A301GR2, "由飛", "@v01011234「えっと…朝、起きて…@nで、朝ご飯前に一通り流そうかって…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「朝…？」");
+		SetMessage(UNIT_ETC, -1, "", "それって………２０時間くらい前…？");
+		SetMessage(UNIT_YUI, YUI_A301GR, "由飛", "@v01011235「とりあえず一回通しとかないと…@n大丈夫、この曲は得意なんだよ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「やめろ…」");
+		SetMessage(UNIT_ETC, -1, "", "明らかに、異質だ…@nいや、異常だ。");
+
+		// (;´∀`).oO( 10分もありませんから！
+		// (´-`)残念！
+		//SetMessage(UNIT_YUI, YUI_A301GR, "由飛", "@v01011236「１０分ちょっとの曲だから…すぐだってば」");
+		SetMessage(UNIT_YUI, YUI_A301GR, "由飛", "@v01011236「…すぐだってば」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ピアノから…離れろ」");
+		SetMessage(UNIT_YUI, YUI_A301GR2, "由飛", "@v01011237「でも、きちんとマスターしておかないと。@nこれが、課題曲、なんだから…」");
+
+		ShakeScreen(4);
+		SEPlay("L_Fall01");
+		DelStand();
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「今はいいから…お願いだ、休め」");
+		SetMessage(UNIT_ETC, -1, "", "由飛を立たせようと、背中から抱きしめる。");
+		SetMessage(UNIT_ETC, -1, "", "途端に、冷たい汗が、俺の服に貼り付き、@nびっしょりと濡らす。");
+		SetMessage(UNIT_ETC, -1, "", "こいつ…体温も、汗も…何も調節できてない。");
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011238「駄目だよ…時間ないよ。@nそれに、もう後がないんだよ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「まだ一週間ある…」");
+		SetMessage(UNIT_ETC, -1, "", "まるで赤子のように、鍵盤に腕を伸ばす。@nけど、俺の手を跳ね除ける力もない。");
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011239「これ落としたら、退学だよ？@n留学、させられちゃうよ？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「大丈夫、大丈夫だから。@n絶対に受かるから…」");
+
+		ShakeScreen(4);
+		SEPlay("L_Fall01", 50);
+		SEPlay("L_Nuno04");
+		FadeOut(FAST);
+
+		SetMessage(UNIT_ETC, -1, "", "由飛を抱き上げる…");
+		SetMessage(UNIT_ETC, -1, "", "軽い。@p@nこの前抱いたときよりも、明らかに、軽い。");
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011240「離ればなれは嫌だもん…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「わかってる…わかってるから」");
+		SetMessage(UNIT_ETC, -1, "", "がたがた震えてる…@nこんな由飛、絶対におかしい。");
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011241「絶対に…嫌だ…もんっ…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛ぃ…っ」");
+		SetMessage(UNIT_ETC, -1, "", "@m00そして、とうとう…由飛は、気を失った。");
+		HideMenu();
+		DelWindow();
+		DelVisual();
+
+		Wait(300);
+
+		LoadEvent(EVENT_YUI_26);
+end();

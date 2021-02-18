@@ -1,0 +1,1292 @@
+// ●玲愛13：ベランダ越しの愛
+// 種類：重要イベント（玲愛ルート１）
+// 条件：第４クォーター終了後
+//		 玲愛12が発生していること。
+//		 または、玲愛ＴＲＵＥフラグが立っていること。
+// 概要：玲愛と初エッチ
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	SetFlg(FLG_ROOT, UNIT_REA);
+	ShowMenu();
+
+	// ＜画面暗転＞
+	// ＜ＳＥ：窓開く＞
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ベランダ＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_HITOSHIV_03A );
+	SEFadePlay(0, "L_Wind01", SLOW);
+	SEFadePlay(1, "L_Town01", SLOW, 50);
+	SEPlay("L_Door14A");
+	FilterFadeIn(SLOW, FADEFILTER_LEFTRIGHT);
+
+	// ＜ＳＥ：風の音＞
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ふぃ～」");
+	SetMessage(UNIT_ETC, -1, "", "風呂上がりの屋外。@p@nしかも季節は１２月下旬。");
+	SetMessage(UNIT_ETC, -1, "", "それでもこの風が気持ちよく感じるのは、@n大きな仕事をやり遂げた充実感によるものだろう。");
+	DelWindow();
+
+	// ＜ＳＥ：風の音＞
+	SEPlay("L_Wind02", 100, 1);
+
+	SetWindow();
+	ShakeScreen(2, SLOW);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「～っ」");
+	SetMessage(UNIT_ETC, -1, "", "とはいえ寒いけどな。");
+	DelWindow();
+
+	// ＜ＳＥ：ジッポーで火を付ける＞
+	SEPlay("L_Fire04", 100, 1);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うめ～」");
+	SetMessage(UNIT_ETC, -1, "", "実際には、うまさがわかるほど吸ってる訳じゃない。@p@nあるきっかけで始めた習慣が、やめられてないだけ。");
+	SetMessage(UNIT_ETC, -1, "", "しかも１日１本だから、多分決心すれば、@n簡単にやめられるんだろうけど…");
+	SetMessage(UNIT_ETC, -1, "", "と…");
+	DelWindow();
+
+	// ＜ＳＥ：隣の部屋がガタガタ言ってます＞
+	SEPlay("L_Gasagoso02", 50, 1);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…来る、な」");
+	SetMessage(UNIT_ETC, -1, "", "なんとなく、わかってしまった。");
+	SetMessage(UNIT_ETC, -1, "", "最近、ここでよく顔…いや、声を合わせることになる@n玲愛は、どうやら俺が外に出た気配を察知してから、@n防寒装備を調え、『偶然を装い』ベランダに出る。");
+	SetMessage(UNIT_ETC, -1, "", "だって、ここ一週間は毎日…");
+	DelWindow();
+
+	// ＜ＳＥ：隣の部屋の窓開く＞
+	SEPlay("L_Door14A", 70);
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@o050@v02020488「偶然ね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いるなんてまだ一言も言ってねえだろうが…」");
+	SetMessage(UNIT_ETC, -1, "", "こうして、夜の会話を楽しんでいるから。");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：ベランダの衝立越しに会話する２人。玲愛のどてら差分＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( VISUAL_REA_01E );
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	BGMFadePlay(BGM_YASURAGI, SLOWER);
+	CrossFade(SLOW);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちゃんとどてら着てっか～？@n今日はマジで寒いぞ～」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020489「雪、降らなくてよかったわね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ロマンが足りないなおい」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020490「そんなこと言ったって、@n雪なんか降ったら、それこそ客足が鈍るじゃない」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まぁ、そうなんだけど」");
+	SetMessage(UNIT_ETC, -1, "", "俺たち飲食店で働く者にとっては、@nお客様に来店していただくことこそが重要なのであり。");
+	SetMessage(UNIT_ETC, -1, "", "天候不順の最たるものである降雪なんか、@n呑気に喜んでいる場合ではないのだが…");
+	SetMessage(UNIT_ETC, -1, "", "でも若い女の子なら、少しくらい『綺麗…』とか言って、@n喜ぶってのもアリだと思うんだが。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020491「今週、ずっと天気が良かったおかげで、@nなんとか売り上げ目標も達成できたし」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それはウチだって」");
+
+	SetVisual(VISUAL_REA_01F);
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020492「めでたしめでたし…ね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ああ…」");
+	SetMessage(UNIT_ETC, -1, "", "あれだけの低価格で、とうとう大幅な黒字を達成した。");
+	SetMessage(UNIT_ETC, -1, "", "リピーターも一見さんも、この時期増え続け、@nみんなのスキル向上もあって、かなりのお客様を@n呼び込むことができた。");
+	SetMessage(UNIT_ETC, -1, "", "ここまで達成感で一杯なのは、最近じゃないことだった。");
+
+	SetVisual(VISUAL_REA_01E);
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020493「ねぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020494「乾杯しない？@n実はお店のシャンペン、１本くすねてきたんだ。@n…ノンアルコールだけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それはシャンペンとは言わん…でも乾杯は賛成だ。@nウチ来るか？　こっちはケーキくすねてあるぞ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020495「ここで乾杯しようよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…相手の顔も見ずにかよ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020496「だって私たち…@nここで一緒にいることが、一番多いじゃない？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「酔狂な…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020497「それに、クリスマスイブに仁の部屋に二人きりなんて、@n瑞奈に見つかったらどう説明するのよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…それもそうか」");
+	SetMessage(UNIT_ETC, -1, "", "たとえ、ケーキ食って、ジュース飲んではいさよならでも、@n周りがそう解釈するかどうかはまた別の話だ。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020498「じゃ、こっちはシャンペンとグラス。@nそっちはケーキを皿に盛って。@n１分で戻ってくること！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「待て！　せめて３分よこせ！」");
+
+	// ＜画面暗転＞
+	DelWindow();
+	FadeOut();
+
+	// ＜ＳＥ：窓開閉＞
+	SEPlay("L_Door14B", 100, 1);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	// ＜ＳＥ：窓開閉＞
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ベランダ＞
+	//----------------------------------------------------------------------------
+	Wait(100);
+	SetVisual( BG_HITOSHIV_03A );
+	SEPlay("L_Door14A");
+	FilterFadeIn(SLOW, FADEFILTER_LEFTRIGHT);
+	Wait(100);
+	SEPlay("L_Dish01");
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ほれ、受け取れ。@n落とすなよ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020499「ちょっと待って………って、@n仁、なんでこんな大きくカットするのよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ただの四等分じゃないか。@n姉さんだったら平気で食うぞ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020500「太っちゃうよ…」");
+	SetMessage(UNIT_ETC, -1, "", "別にもう少し太っても罰は当たらんと思うけど、@nそんなのは俺の主観なので敢えて言わない。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020501「じゃ、グラス。@nはい受け取って」");
+	SetMessage(UNIT_ETC, -1, "", "お互いの顔も見えないベランダ。");
+	SetMessage(UNIT_ETC, -1, "", "ついたての向こうから手だけを介して、@n俺たちはパーティの準備を進める。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020502「そう、そのまま動かさないでよ」");
+	DelWindow();
+
+	// ＜ＳＥ：シャンペンをグラスに注ぐ＞
+	SEPlay("L_Drink02");
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…いいグラス使ってやがんな」");
+	SetMessage(UNIT_ETC, -1, "", "…本物のシャンペングラスだ。@p@nこんなまがいもの注ぐのもったいないぞ。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020503「親戚の結婚式の引き出物よ。@nとはいえ、式はフランスだったけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「やっぱ金持ちじゃねえかよ…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020504「言っておくけど、私は行ってないわよ。@n何しろパスポート持ってないし、@n飛行機乗ったことないし」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…相変わらず地味な奴だなぁ」");
+	SetMessage(UNIT_ETC, -1, "", "家族構成と血と容姿はこんなに派手なのに。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020505「はい、こぼさないでね。おしまい」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「次はこっちにビンよこせよ。@nお前の分、注ぐから」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020506「いいわよ別に。@nこっちでやるから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「クリスマスパーティで手酌は寂しいだろ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020507「…それもそうか。@nはい、よろしく」");
+	SetMessage(UNIT_ETC, -1, "", "差し出されるビンを受け取り、@n玲愛の、グラスを持った手が差し出されるのを待つ。");
+	DelWindow();
+
+	// ＜ＳＥ：シャンペンをグラスに注ぐ＞
+	SEPlay("L_Drink02");
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「こんなとこか」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020508「そっち準備できた～？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「よし、問題ない」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020509「じゃ、乾杯」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おう」");
+
+	// ＜ＳＥ：グラスをぶつけて乾杯＞
+	SEPlay("L_Glass01");
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020510「メリークリスマス」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だからイブだと」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020511「残念、０時超えました～。@n今は２５日」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え？　嘘！？」");
+	SetMessage(UNIT_ETC, -1, "", "部屋の置き時計に目を転じると…０時１０分。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020512「家族と過ごす日になっちゃったね。@n…私と一緒はＮＧ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…いや、いいだろ。@nそもそも一緒にいないし」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020513「あは…そうね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「とりあえず、偽シャンペン飲んでケーキ食って、@n風邪ひかないうちにお開きにしようぜ？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020514「…最後が身も蓋もないんだけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そう思うんならこっち来いよ。@nなんなら俺がそっち行ってもいいけど」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020515「えっと、ごめん…@nちょっと片づけるのに時間かかる。@n待っててくれる？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…冗談だ」");
+
+	SetMessage(UNIT_ETC, -1, "", "ほんの少し前なら、怒鳴られて終わりだった冗談が…");
+	SetMessage(UNIT_ETC, -1, "", "なんか、どんどんシャレで済まなくなってる。");
+	DelWindow();
+
+	// ＜ＳＥ：風の音＞
+	SetVisual(BG_SORA_03A);
+	CrossFade(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "それからも俺たちは、とめどなく、@nだらだらと時間を過ごす。");
+	SetMessage(UNIT_ETC, -1, "", "ファミーユのこと、キュリオのこと。@p@nお互いの店の悪口、自分の店の自慢。");
+	SetMessage(UNIT_ETC, -1, "", "そこに集う、仲間たちの自慢。");
+	SetMessage(UNIT_ETC, -1, "", "そして…お互いの家族の話。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	SetVisual(BG_HITOSHIV_03A);
+	CrossFade(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020516「…くしゅん！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はいお開き」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020517「あ…しまった」");
+	SetMessage(UNIT_ETC, -1, "", "まるで、どこかの大魔王のようなタイミングで、@n俺は、宴の終わりを告げる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「んじゃ、あったかくして寝ろよ。@nまた風邪ひいたらシャレにならん」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020518「うう…」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛は残念そうだけど、俺はほっとしてた。");
+	SetMessage(UNIT_ETC, -1, "", "だって…このままじゃ居心地が良すぎて、@nいつまでも話していたいって欲求に、@n勝てそうになかったから。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ケーキの皿は明日返してくれればいいから。@nあ、洗わなくてもいいぞ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020519「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おい、玲愛？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020520「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だからぁ！@n明日も仕事があるんだから、仕方ないだろ！」");
+
+	SetMessage(UNIT_ETC, -1, "", "何が仕方ないんだろう？");
+	SetMessage(UNIT_ETC, -1, "", "面と向かって聞かれると、俺たちには答えられない問い。");
+	SetMessage(UNIT_ETC, -1, "", "けど、今は二人とも、その原因を、はっきりと自覚してる。");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「グラスどうする？@n明日返すでいいか？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020521「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛ぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "だから玲愛は拗ねるし、俺は苛つく。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020522「…返して」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お、おう」");
+	SetMessage(UNIT_ETC, -1, "", "それでも玲愛は、なんとか機嫌を少しだけ直して、@nついたてから手を伸ばしてくる。");
+	SetMessage(UNIT_ETC, -1, "", "俺は、その手にシャンペングラスを渡した。");
+	SetMessage(UNIT_ETC, -1, "", "あとは、この窓を開いて、閉じたときが俺たちの…");
+	DelWindow();
+
+	// ＜ＳＥ：ガラスの割れる音＞
+	BGMFadeOut(SLOWER);
+	SEPlay("L_Break01");
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020523「あっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛！？」");
+	SetMessage(UNIT_ETC, -1, "", "と、突然、隣のベランダから、ガラスの砕ける音。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020524「あちゃ…やっちゃった」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お、おい、大丈夫か？」");
+	SetMessage(UNIT_ETC, -1, "", "明らかに、グラスを落としてしまった音。");
+	SetMessage(UNIT_ETC, -1, "", "玲愛にしては、かなり珍しい失敗。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020525「あ、大丈夫大丈夫。@nちゃんと片づけるから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「夜はやめとけって。明日になってから…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020526「あ痛っ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「って言っただろうが！」");
+	SetMessage(UNIT_ETC, -1, "", "今は暗いから、どんなに注意深くしたって、@nガラスの破片を見落とすなんて当たり前。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛、ちょっと見せてみろ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020527「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おい、玲愛ってばよ！」");
+
+	FadeOut();
+
+	SetMessage(UNIT_ETC, -1, "", "俺はしびれを切らして、@nバルコニーに乗り出し、ついたて越しに、@n玲愛の部屋のバルコニーを覗き込み…");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：ついたて越しのキス＞
+	//----------------------------------------------------------------------------
+
+	FlashOut();
+	BGMPlay(BGM_KANDOU2);
+	SetVisual( VISUAL_REA_03A );
+	FlashIn(SLOW);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「～～～っ！？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020528「ん…」");
+	SetMessage(UNIT_ETC, -1, "", "そして、硬直した。");
+
+	//伊藤：レアの片手がホールドしてますよ？
+	//SetMessage(UNIT_ETC, -1, "", "二人の両手は、しっかりと手すりを掴んでいる。");
+	SetMessage(UNIT_ETC, -1, "", "二人の手は、しっかりと手すりを掴んでいる。");
+	SetMessage(UNIT_ETC, -1, "", "だから、くっついている場所も、@nどちらかが少し離れるだけで、@n外れてしまう、はず。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020529「ん…んん…」");
+	SetMessage(UNIT_ETC, -1, "", "でも、外れない。");
+	SetMessage(UNIT_ETC, -1, "", "手すりにつかまっている玲愛の手には、@nガラスで切ったような傷はない。");
+	SetMessage(UNIT_ETC, -1, "", "こいつ、怪我したふりをしてただけだったんだ。@n良かった。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020530「ん…ふぅっ…」");
+	SetMessage(UNIT_ETC, -1, "", "良くねえっ！？");
+	SetMessage(UNIT_ETC, -1, "", "全部、このための伏線…だったのか！？");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	Wait(100);
+	FadeOut(SLOWER);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：バルコニー＞
+	//----------------------------------------------------------------------------
+
+	Wait(50);
+	SetVisual( BG_HITOSHIV_03A );
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020531「ふぅ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、ああ…」");
+	SetMessage(UNIT_ETC, -1, "", "結局、二人の接合部分が離れたのは…");
+	SetMessage(UNIT_ETC, -1, "", "くっついてから、優に３０秒は経ってから、だった。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020532「生クリームと、シャンペンと…ちょっと、タバコの味」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…あ…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020533「タバコ…やめて欲しいな。やっぱり」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「何で…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020534「おやすみ」");
+	DelWindow();
+
+	// ＜ＳＥ：隣の部屋の窓開閉＞
+	BGMFade(SLOWEST, 50);
+	SEFadePlay(0, "L_Wind01", SLOW);
+	SEFadePlay(1, "L_Town01", SLOW, 50);
+	SEPlay("L_Door14B", 70, 1);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…っ！？」");
+	SetMessage(UNIT_ETC, -1, "", "やられた。");
+	SetMessage(UNIT_ETC, -1, "", "完全に、してやられた。");
+	SetMessage(UNIT_ETC, -1, "", "全く警戒してなかった。@nふいうちにも程がある。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「れ、玲愛…」");
+	DelWindow();
+
+	// ＜ＳＥ：風の吹く音＞
+	SEPlay("L_Wind02", 100, 1);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "風が…熱い。");
+	SetMessage(UNIT_ETC, -1, "", "肌を突き刺すほどの寒さが、@nまったく意味をなしてない。");
+	SetMessage(UNIT_ETC, -1, "", "俺の体に、口移しで火種を灯して、@nいきなり消えやがった奴がいるから。");
+	SetMessage(UNIT_ETC, -1, "", "あの………馬鹿っ！@nこうなること、計算の上でかよ！？");
+	DelWindow();
+
+	// ＜画面暗転＞
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	CurtainFadeOut(NORMAL);
+
+	// ＜ＳＥ：窓開閉＞
+	SEPlay("L_Door14A");
+	Wait(100);
+
+	// ＜ＳＥ：部屋を駆け抜ける（どたどたどた）＞
+	SEPlay("L_Dash14");
+	Wait(150);
+
+	// ＜ＳＥ：玄関ドア激しく開閉＞
+	SEPlay("L_Door02A");
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：マンション廊下＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_HITOSHIR_03A );
+	ShakeScreen(8);
+	SEPlay("L_Door02B");
+	FadeIn(FAST);
+
+	SELoopPlay(1, "L_Dash02");
+	Wait(100);
+	SEFadeOut(1, NORMAL, 1);
+
+	// ＜ＳＥ：チャイム連打＞
+	SEPlay("L_Bell09", 30);
+	Wait(150);
+
+	SetWindow();
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「玲愛っ！　この馬鹿っ！　開けろっ！」");
+	DelWindow();
+
+	// ＜ＳＥ：激しくノック＞
+	ShakeScreen(8);
+	SEPlay("L_Knock01");
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "俺が、いろいろな感情の限界を超えること…@n冷静に計算して、誘ってきやがったのか？");
+	SetMessage(UNIT_ETC, -1, "", "それとも…ただの思いつきなのか？");
+	SetMessage(UNIT_ETC, -1, "", "どっちにしろ、確かめないことには、@n眠れる訳、ないじゃないか。");
+	DelWindow();
+
+	// ＜ＳＥ：チャイム連打＞
+	SEPlay("L_Bell09", 30);
+	Wait(150);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前っ！@nあんなことしといてシカトかよ！@nふざけんなっ」");
+	DelWindow();
+
+	// ＜ＳＥ：激しくノック＞
+	ShakeScreen(8);
+	SEPlay("L_Knock01");
+	Wait(100);
+
+	// ＜ＳＥ：隣の部屋がガタガタ言ってます＞
+	SEPlay("L_Gasagoso02", 50, 1);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…？」");
+	SetMessage(UNIT_ETC, -1, "", "俺の近所迷惑な音と声以外に、@n玲愛の部屋の中で、音がする。");
+	SetMessage(UNIT_ETC, -1, "", "それは、いつも俺がベランダに出たあと、@n隣から聞こえる音に似て…");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "てことは…？");
+	DelWindow();
+
+	// ＜ＳＥ：ドアチェーン、ドアロック外す＞
+	SEPlay("L_Gasagoso02", 50);
+	SEPlay("L_Gasagoso03", 100, 1);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "あっちも、ものすごく焦ってる…");
+	SetMessage(UNIT_ETC, -1, "", "普段なら、すぐ外れるはずのチェーンが、@n何度もガチャガチャと、もどかしい音を立て…");
+	SetMessage(UNIT_ETC, -1, "", "ドアの向こうの慌てっぷりが、手に取るように感じられて。");
+	DelWindow();
+
+	SEPlay("L_Gasagoso02", 50);
+	SEPlay("L_Gasagoso03", 100, 1);
+
+	SetWindow();
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「…早く開けろよっ！」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020535「やってるわよっ！」");	// ★★ドア越し
+	SetMessage(UNIT_ETC, -1, "", "けど、だからって、こっちが落ち着くなんて道理は@nないわけで。");
+	SetMessage(UNIT_ETC, -1, "", "その、１０時間にも感じられる、実は１０秒にも満たない@nもどかしい時間が過ぎて…");
+	DelWindow();
+
+	// ＜ＳＥ：玄関ドア激しく開く＞
+	ShakeScreen(8);
+	SEPlay("L_Door02A");
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@m16「れ…っ！？」@e");
+	DelWindow();
+
+	SEPlay("L_Fall01");
+	SEPlay("L_Fall02");
+	SEPlay("L_Nuno04");
+	ShakeScreen(8);
+	FadeOut();
+
+	SetWindow();
+	//		SetMessage(UNIT_ETC, -1, "", "どんっ");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020536「っ！」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛が、思い切り、跳んだ。");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：激しくキス（玲愛、普通の私服に着替えてます）＞
+	//----------------------------------------------------------------------------
+	SetVisual( VISUAL_REA_04A );
+	BGMFade(SLOWER, 100);
+	FadeIn(SLOWER);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "そして今度こそ、@n俺は、十分な予測にしたがい、迎撃した。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020537「ん…んっ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…ぁぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "“キスのときの作法”にのっとって、@n思い切り背伸びして、つま先立ちして…");
+	// ( ´∀`).oO( 巻きつけてないがな…。
+	//SetMessage(UNIT_ETC, -1, "", "さらに、離れないよう、@n首に、力いっぱい両手を巻き付けて。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020538「んんんん…あ、あむ…っ」");
+	SetMessage(UNIT_ETC, -1, "", "だから俺も、玲愛の努力を無駄にしない。");
+	SetMessage(UNIT_ETC, -1, "", "かがんだり、首を下げたりせずに、@n一生懸命伸び上がってくる玲愛を、@n一番高いところで受け止め…");
+	SetMessage(UNIT_ETC, -1, "", "でも、彼女がバランスを崩してしまわないよう、@n背中をぎゅっと抱きしめる。");
+	SetMessage(UNIT_ETC, -1, "", "いや、違う…@n抱きしめたのは、ただ、そうしたかっただけ。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020539「ん、ん…ん～…」");
+	SetMessage(UNIT_ETC, -1, "", "少し、息苦しそうだけど、@nそれでも、俺の唇を吸うのをやめない。");
+	SetMessage(UNIT_ETC, -1, "", "さっき、タバコくさいって貶したくせに、@nちっとも離れようとしない。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020540「あ、あふ…っ…あ、む…んっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…んむ…っ」");
+	DelWindow();
+
+	//伊藤：差分が無いようなら背景にもどしたほうがいいかな？
+
+	// ＜ＳＥ：更に隣のドア開く＞
+	SetVisual( BG_HITOSHIR_03A );
+	CrossFade();
+
+	BGMFade(NORMAL, 50);
+	SEPlay("L_Door08A");
+
+	SetStand(MIZUNA_0201MJ, CENTER, MOVE_LEFT);
+
+//	SetVisual( VISUAL_REA_04B );
+//	CrossFade();
+
+	SetWindow( WINDOW_SIMPLE );
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201MJ, "瑞奈", "@v02070045「ちょっと玲愛どうしたの？@nなんか凄い音が@t0325@h0201AS………」");
+//	SetMessage(UNIT_MIZUNA, -1, "瑞奈", "@v02070045「ちょっと玲愛どうしたの？@nなんか凄い音が@t0325@h0201AS………」");
+	DelWindow();
+
+	SetVisual( VISUAL_REA_04B );
+	DelStand();
+	CrossFade();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020541「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	SetVisual( VISUAL_REA_04C );
+	CrossFade();
+
+//	SetMessage(UNIT_MIZUNA, MIZUNA_0201AS, "瑞奈", "@v02070046「あ、え、え～と………」");
+	SetMessage(UNIT_MIZUNA, -1, "瑞奈", "@v02070046「あ、え、え～と………」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020542「ん…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "こんなとんでもない状況で…");
+	SetMessage(UNIT_ETC, -1, "", "玲愛は、ちょっと、@n唇を重ねたまま、何か考えてたけど…");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020543「んん…あ、はぁ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…ああ…」");
+	SetMessage(UNIT_ETC, -1, "", "結局、そのままキスを続けてしまった。");
+//	SetMessage(UNIT_MIZUNA, MIZUNA_0201KS, "瑞奈", "@v02070047「あの、わたし…何も見てませんから。@nええ、そりゃもう………@t0660@h0201NYおやすみなさい」");
+	SetMessage(UNIT_MIZUNA, -1, "瑞奈", "@v02070047「あの、わたし…何も見てませんから。@nええ、そりゃもう………おやすみなさい」");
+	DelWindow();
+
+	SetVisual( VISUAL_REA_04A );
+	// ＜ＳＥ：更に隣のドア閉じる＞
+	CrossFade( FAST );
+	SEPlay("L_Door08B");
+//	DelStand(CENTER, MOVE_LEFT);
+	Wait(50);
+
+	BGMFade(NORMAL, 100);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020544「ん…んん…んふぅっ…あ、あむ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「れ、玲愛…っん、んく」");
+	SetMessage(UNIT_ETC, -1, "", "こいつ…完全に開き直りやがった。");
+	SetMessage(UNIT_ETC, -1, "", "まぁ、確かにあそこで挨拶なんかできる訳ないけど。");
+
+	// ＜画面暗転＞
+	DelWindow();
+	SEPlay("L_Door08A");
+	FadeOut();
+	Wait(100);
+	SEPlay("L_Door08B");
+
+	// ＜ＳＥ：玄関ドア開閉＞
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020545「ふぅ、んっ…ん、むぅ…あ、あむ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、ん…っ」");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＳＥ：仁のマンションのリビング＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_HITOSHI_03C );
+	CurtainFadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020546「ん～っ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっ、ちょっと…玲愛」");
+	SetMessage(UNIT_ETC, -1, "", "玄関を開けて、玲愛を俺の部屋に連れ込んで、@n玄関を閉めて、リビングまで連れてくる。");
+	SetMessage(UNIT_ETC, -1, "", "その、一連の動作も、全部、キスしたまま、だった。");
+
+	SetMessage(UNIT_REA, REA_0301KM_, "玲愛", "@v02020547「はぁ…あ…」");
+	SetMessage(UNIT_ETC, -1, "", "ぎゅっ");
+	SetMessage(UNIT_ETC, -1, "", "俺とのキスを解かれても、@n玲愛はまだ、夢見心地の表情で、@n俺を、しっかりと抱きしめてくる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前…なんで…」");
+	SetMessage(UNIT_REA, REA_0301KM_, "玲愛", "@v02020548「わかんないわよぉ…理由なんてぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「けどさっきの…あれ、わざとだろ？」");
+	SetMessage(UNIT_ETC, -1, "", "ベランダに、シャンペングラスを落として、@n俺が顔を出すように仕向けて…");
+	SetMessage(UNIT_REA, REA_0301SN_, "玲愛", "@v02020549「そりゃ、わざとだけど…@nでも、勝手に手が動いたのよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前が感性で動くなよ…」");
+	SetMessage(UNIT_ETC, -1, "", "姉とは対照的な性格のはずだろうが。");
+	SetMessage(UNIT_REA, REA_0301KM_, "玲愛", "@v02020550「私もそう思うけど…@nでも、止まらないのよ」");
+	SetMessage(UNIT_ETC, -1, "", "言いつつも、俺を抱きしめる手を、@nどんどん強くする。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺のこと散々怒ってたくせに」");
+	SetMessage(UNIT_REA, REA_0302KM_, "玲愛", "@v02020551「仁だって…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う…」");
+	SetMessage(UNIT_REA, REA_0302TN_, "玲愛", "@v02020552「それに…きっかけは私かもしれないけど、@n続きを求めたのは仁だからね！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「きっかけがでかすぎんだよ」");
+	SetMessage(UNIT_REA, REA_0301SN_, "玲愛", "@v02020553「ああ、ダメ…なんか変。@n気持ち、抑えきれない」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「言うなそれを…@n俺も抑えが利かなくなる」");
+	SetMessage(UNIT_REA, REA_0302TR, "玲愛", "@v02020554「まだ…抑えようとしてるんだ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「外そうとすんなっ！」");
+	SetMessage(UNIT_REA, REA_0302TR, "玲愛", "@v02020555「だって…仁だけ冷静なの、悔しいわよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「冷静じゃない」");
+	SetMessage(UNIT_REA, REA_0302TR, "玲愛", "@v02020556「なら………証明してよ！」");
+	DelWindow();
+
+	BGMFadeOut(SLOWER);
+
+	// ＜ＳＥ：ベッドに押し倒す＞
+	ShakeScreen(8);
+	SEPlay("L_Fall02");
+	SEPlay("L_Nuno04");
+	FadeOut(FAST);
+
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	//たぶんＣＧ
+	//----------------------------------------------------------------------------
+
+	SetVisual( VISUAL_REA_05B );
+	BGMPlay(BGM_H1);
+	FadeIn(SLOWER);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「んっ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020557「んんんっ！？　あ、あんっ、ん、んむ…」");
+	SetMessage(UNIT_ETC, -1, "", "こいつ…本当に冷静じゃないのか？");
+	SetMessage(UNIT_ETC, -1, "", "本当は俺を、計算通りに誘ってないか？");
+	SetMessage(UNIT_ETC, -1, "", "そんなふうに考えてしまうくらい、@n今日の玲愛は、いつもと違って『考えなし』だった。");
+	SetMessage(UNIT_ETC, -1, "", "ただ、一つのことを除いて。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020558「ん…んく…あ、あ、あぁぁぁぁ…」");
+
+	// (´-`)どてら脱いだだけだけどね
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛…お前、着替えてただろ？」");
+
+	SetVisual( VISUAL_REA_05A );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020559「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "ベランダでの防寒装備が、@n今ではすっかり普通の服に戻ってる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺が焦ってお前の部屋をノックしてたとき…@n自分は呑気に着替えてたんだよな？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020560「しょ、しょうがないじゃない」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「何がしょうがないんだよ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020561「男の胸に飛び込むにも、@n身だしなみってもんがあるのよっ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020562「ね？　しょうがないでしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「訳わかんねえよ」");
+	SetMessage(UNIT_ETC, -1, "", "冷静なのか、燃えさかってるのか…");
+	SetMessage(UNIT_ETC, -1, "", "それは、俺に関してもよくわからないけど。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020563「ところでさ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「何だよ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020564「仁…あんた今の状況わかってる？@n私を…ベッドに押し倒したのよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…っ！？」");
+	SetMessage(UNIT_ETC, -1, "", "そうだった。");
+	SetMessage(UNIT_ETC, -1, "", "キスしてる最中に、思わず…");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020565「あのさ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な、何だよぉ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020566「今日…どこまでにする？」");
+	SetMessage(UNIT_ETC, -1, "", "何てことを聞くんだこいつは…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「駄目な日、とか？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020567「ううん、むしろ大丈夫な日」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…そうやって俺の選択肢を広げるな」");
+	SetMessage(UNIT_ETC, -1, "", "お前が駄目って言えばここで終わってたんだぞ。@nこいつ、わかってんのかなぁ？");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020568「私的には、その、最後までが希望なんだけど」");
+
+	// ＜私的には＝わたしてきには＞
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うがぁ～！」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020569「でもさ…後で後悔したりしないかな？@n今はただ、熱に浮かされてるだけとか」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「もう遅い」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020570「え？　あ、え、ちょっと…っ！？」");
+	SetMessage(UNIT_ETC, -1, "", "もう一度、強く抱きしめると、首筋にキスをして、@nそして、胸に触れる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前、やっぱ誘ってるだろ？@n俺を罠にはめてるだろ？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020571「え？　え？　え…？@nそ、そうなっちゃってる…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「今更何言ってやがる。@nもう泣いてもわめいても許さないからな。@n今日、この場で…お前を抱くからな」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020572「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「聞いてんのか？@nもう、遅いって言って…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020573「わかった…@n泣いたり、わめいたりしないように努力する」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020574「どうしたの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「キス、しよう」");
+
+	SetVisual( VISUAL_REA_05B );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020575「…ん」");
+	SetMessage(UNIT_ETC, -1, "", "ふっと力を抜く玲愛。");
+	SetMessage(UNIT_ETC, -1, "", "残っている緊張を、無理やり抑え込んで、@n俺に抱かれるのを、受け入れてる。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020576「ん…あ、んむ…ん、ふぅ…んぷ…ちゅ…」");
+	SetMessage(UNIT_ETC, -1, "", "さっきまでのキスとは違う、穏やかで、@nゆっくりとしたキス。");
+	SetMessage(UNIT_ETC, -1, "", "けど、違いはそれだけじゃない。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020577「んっ？　んん…あ、んむ…っ、@nちょっ、あ、あ…し、した…あむぅっ！？」");
+	SetMessage(UNIT_ETC, -1, "", "ゆっくりと、ゆっくりと、絡めていく。@p@n俺の舌を、玲愛の、引っ込んでいこうとする舌に。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…んぷ…は、あぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "俺だって、それほど…だけど、@nそれにしても、玲愛も、あんまり、慣れてないような。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020578「ふぅっ、ん、ん、ん～っ！@nあ、あ、あ…はぁ、はぁ、はぁ…っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うろたえるな、これくらい普通だぞ」");
+
+	SetVisual( VISUAL_REA_05A );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020579「ほ、本当、に？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…多分」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020580「こういうこと、どのくらいやったことある？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「こ…こういうのって…？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020581「とりあえずは、今してること」");
+	SetMessage(UNIT_ETC, -1, "", "キス…か。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前が言うなら俺も言ってやってもいい」");
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020582「はじめて」");
+	// ΩΩΩ＜な、なんだってー！！
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「言うなっ！」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020583「…どのくらい、ある？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "こいつには、本当にいつもいつもハシゴを外される。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…いっかい」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020584「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんだよ？」");
+	SetMessage(UNIT_ETC, -1, "", "どうにも複雑な表情をしやがって。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020585「怒っていいのか、ほっとしていいのか、@n微妙な回数だからよ」");
+	SetMessage(UNIT_ETC, -1, "", "なんなんだ、それは。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「で、納得したか？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020586「とりあえず、仁の言うことの方が、@nちょっとだけ正しそうね…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なら、口開けて。舌、入れるから」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020587「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんだよ？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020588「初めてのときも、そんなにムードなかったの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「やかましい！」");
+
+	SetVisual( VISUAL_REA_05B );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020589「んっ！？」");
+	SetMessage(UNIT_ETC, -1, "", "放っておくと、最初のとき、俺が何をやったのか、@n逐一報告しなければならなくなりそうだ。");
+	SetMessage(UNIT_ETC, -1, "", "こういう場合は、そう、口を塞ぐのが得策。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020590「ふぅんっ、ん、ん、ん～っ…@nあ、んむ…は、あ、あぁっ、んん、んぷ…っ」");
+	SetMessage(UNIT_ETC, -1, "", "俺の絡める舌に、少しずつ、少しずつ、@nおかえしをはじめてくる。");
+	SetMessage(UNIT_ETC, -1, "", "最初は用心深くつついて、俺がやり返すと、@n段々、段々、大胆に、襲いかかってくる。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020591「は、むっ、ん…んちゅ…くぷ…ん、ふぅ…@nは、あっ、あ、んむ…ん、ん～っ」");
+	DelWindow();
+
+	SEPlay("L_Nuno03");
+	FadeOut();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "キスのほうが一人歩きしたから、@n今度は俺は、服の中に手を侵入させる。");
+	SetMessage(UNIT_ETC, -1, "", "瞬間、玲愛の肌が、びくんって揺れたみたいだけど、@nおかまいなしに侵入していく。");
+	SetMessage(UNIT_ETC, -1, "", "だって俺たちはもう、@n『セックスをしようと約束した間柄』なんだから。");
+//	DelWindow();
+
+	//----------------------------------------------------------------------------
+	//ＣＧだったりしたりして
+	//----------------------------------------------------------------------------
+
+
+//	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020592「は、ん、む…あ、ちゅぷ…ん、ぷ…はぅ…@nあ、あ、あ…っ、ふあぁ、あ、あ…仁ぃ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛…」");
+	SetMessage(UNIT_ETC, -1, "", "ブラ越しだけど、ようやく玲愛の胸に辿り着く。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020593「由飛…姉さんより、触り心地よくないけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「比較なんかできねえよ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020594「ホントに？　触ったことない？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっとは集中させろよ…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020595「わ、私の胸に触ることに集中するの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だって、直に触りたいし、@nもっと、色んないじり方したいし」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020596「うわ…えっち」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「決まってるだろ…なあ、ブラ、外していい？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020597「あ、待って…外す」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…悪い」");
+	SetMessage(UNIT_ETC, -1, "", "俺がたくし上げておいた服の隙間から手を入れて、@n玲愛の手が、背中のホックに伸びる。");
+
+	SEPlay("L_Nuno07");
+
+	SetMessage(UNIT_ETC, -1, "", "胸を締めつけていた布が、一瞬柔らかくなると、@nそのままブラがずれていき、俺の手にむしり取られる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	DelWindow();	
+
+	SetVisual( VISUAL_REA_06A );
+	FadeIn( SLOW );
+	
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020598「…どうぞ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ど、どうも」");
+	SetMessage(UNIT_ETC, -1, "", "なんとも情けない受け答えをして、@n待ちに待った、玲愛の胸を眺める。");
+	SetMessage(UNIT_ETC, -1, "", "もちろん眺めるだけじゃなくて、@nそのふくらみに、ゆっくりと手を這わせる。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020599「んくっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「い、痛い？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020600「ううん、くすぐったかった」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、そうか…」");
+	SetMessage(UNIT_ETC, -1, "", "柔らかい…");
+	SetMessage(UNIT_ETC, -1, "", "ちょっと小ぶりだから、固いのかとも思ってたけど、@nとんでもない。");
+	SetMessage(UNIT_ETC, -1, "", "しっかりと、女の子の柔らかさだ。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020601「あ、は、はぁぁ…あ、や、ん…」");
+	SetMessage(UNIT_ETC, -1, "", "となれば、男が吸いつくのは当然のこと。");
+	SetMessage(UNIT_ETC, -1, "", "右手で、つまんで、引き延ばして、@nマッサージするように、揉み込んでみる。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020602「ん、ん、ん～…ひ、仁…@nやっぱり、いやらしいよ、あんた…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だから最初から言ってんじゃん。@nなめるからな、ここ」");
+	SetMessage(UNIT_ETC, -1, "", "言いつつ、先端のピンク色の突起を、@nつん、つんと、指の先端でつつく。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020603「あ、あ～っ、や、そこ、そこがくすぐったいのにぃ、@nもう、そんなことするんだ…いやぁぁ」");
+	SetMessage(UNIT_ETC, -1, "", "その、ピンク色の突起…乳首を、@n指でつまんで、ころころと転がしてみる。");
+	SetMessage(UNIT_ETC, -1, "", "今は、ほんとうに小さな突起なんだけど、@nこれが大きくなるってのは本当だろうか。");
+	SetMessage(UNIT_ETC, -1, "", "それにしても…@n本当に、舐めたくなる色と、形をしてる。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020604「ん、あ～、あ、や…は、はぁ、はぁぁ…@nあ、こら、顔近づけて何するつもりよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「言ったじゃん、さっき」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020605「だ、だめっ、私いいって言ってない…っ、@t0456@k");
+	SetVisual( VISUAL_REA_06B );
+	CrossFade();
+	AddMessage("@nあ、こら、んっ、あ、や～っ、いや、ちょっ…」");
+
+	SetMessage(UNIT_ETC, -1, "", "必死に頭を押さえつけようとする玲愛を無視して、@n唇で乳首を含んで、ころころと転がす。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020606「うあっ、や、変なことするの、やめてよっ、@nな、んっ、いやぁ…しびれる、しびれるからっ」");
+	SetMessage(UNIT_ETC, -1, "", "これだけのことで、また全身を硬直させてしまった。");
+	SetMessage(UNIT_ETC, -1, "", "…本当に、今日中に最後まで行けるんだろうか？");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020607「あ、あ、あ～…は、はぁぁ…@n酷い…仁。こんな、びりびりすることしてぇ…」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛のため息混じりの声は逆効果だ。");
+	SetMessage(UNIT_ETC, -1, "", "なぜなら、もっと酷いことをしたいと思わせる力を@n秘めているから。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020608「あっ、や、吸うなっ…ちょっ、だめっ、@n何も出ないってばぁ！　あ、あ、や～っ」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛が胸への愛撫に悶えている隙に、@n左手は、内股をまさぐる。");
+	SetMessage(UNIT_ETC, -1, "", "気づかれないうちに、既成事実を作っておいて、@n後で色々抵抗されないようにというセコい手だ。");
+
+	SetVisual( VISUAL_REA_06A );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020609「あ、ああ…？　こ、こらっ、@n今、足さわったでしょ！？」");
+	SetMessage(UNIT_ETC, -1, "", "…意外に鋭いな。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020610「ああ、やっぱりぃ…ずるい仁ぃ…@nあ、もうっ、そんな色々さわってぇ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「い、色々触るに決まってるだろ？@n最後まで行くんだぞ、俺たち？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020611「それは…そうなんだけど…@nでも、なんか…さっきから引っかかってて…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「もう…お前、喋るな」");
+
+	SetVisual( VISUAL_REA_06B );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020612「んんっ！？」");
+	SetMessage(UNIT_ETC, -1, "", "太股から、だんだん上へとせり上がる指をごまかすように、@nもう一度、玲愛の唇に、舌を潜り込ませる。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020613「んっ、んっ、んんん～っ！@nん…あ、あむ……んぷ…んちゅ…ぅぅ…」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛の喉がこくこくと動き、@n俺の唾液を飲み込んでいく。");
+	SetMessage(UNIT_ETC, -1, "", "そして俺は、太股から、ようやく、布に覆われた、@n玲愛のなかへと繋がる場所に、辿り着く。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020614「んっ…」");
+	SetMessage(UNIT_ETC, -1, "", "なんか、許されないんじゃないかと思えるくらいに、@nあたたかくて、そして、柔らかくて。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020615「う…あ、ん…ふぅ…あむ…んん…」");
+	SetMessage(UNIT_ETC, -1, "", "絶対に、そこを意識しているはずなのに、@n玲愛は、気づかないふりを貫いてくれる。");
+	SetMessage(UNIT_ETC, -1, "", "だから俺は、布地と地肌の境目や、@n布に覆われた中心部を、丁寧に、丁寧に、@n指でなぞっていく。");
+
+	SetVisual( VISUAL_REA_06A );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020616「は、あ…ぁぁ…はぁ、ひ、仁…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛…ああ…」");
+	SetMessage(UNIT_ETC, -1, "", "首筋にキスを浴びせて、乳首をこりこりと摘んで、@nそして、何とか中に入り込む方法を窺っている。");
+	DelWindow();
+
+	SetVisual( VISUAL_REA_06C );
+	SEPlay("L_Nuno07");
+	CrossFade( SLOW );
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "まずは、ショーツをずらして…");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020617「う、あ…仁…そこ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だ、駄目？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020618「………仕方ないなぁ、もう」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛…ありがと」");
+	SetMessage(UNIT_ETC, -1, "", "お許しが出たので、勢い込んで指を侵入させていく。");
+	SetMessage(UNIT_ETC, -1, "", "玲愛のそこ…微妙に、濡れていた。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020619「い、あ、あ…や、やだけど…でも…許す。@n仁、だから」");
+	SetMessage(UNIT_ETC, -1, "", "健気なことを言ってくれるのはいいんだけど…");
+	SetMessage(UNIT_ETC, -1, "", "そういう態度を取れば取るほど、@n俺の情欲が増していくってこと、気づいてるのか？");
+
+	SetVisual( VISUAL_REA_06D );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020620「あ、くっ…い、っ、や、なんか…へんなかんじぃ…@nあ、あ、あ～っ、ひぅっ、い、たぁ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、痛い？」");
+
+	SetVisual( VISUAL_REA_06C );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020621「痛いけど…これが当たり前、なんでしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…多分」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020622「頼りないなぁ、もう…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ごめん…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020623「いいよ…@nこれで百戦錬磨だったら、@nもっと怒りがこみ上げてたから」");
+	SetMessage(UNIT_ETC, -1, "", "難儀な…");
+//	SetMessage(UNIT_REA, -1, "玲愛", "@v02020624「そこ、いじっててもいいけど…@nでも、ずっと、私のこと、見てて」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020624「そこ、いじってもいいけど…@nでも、ずっと、私のこと、見てて」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…」");
+	SetMessage(UNIT_ETC, -1, "", "返事と一緒に、まぶたへと軽いキス。");
+
+	SetVisual( VISUAL_REA_06D );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020625「ん…っ、あ、く…ぅぅ…ひ、く、ぅ…」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛は、痛そうだけど、@nでも、顔を背けたりはしなかった。");
+	SetMessage(UNIT_ETC, -1, "", "ただ、玲愛の顔を見つめている俺を、@nずっと、すがるような表情で、見つめていた。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020626「あ、あ、あ…う、ぅぅ…はぁ、はぁ、はぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "そうして、いよいよ…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「脱がすよ…下着」");
+
+	SetVisual( VISUAL_REA_06C );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020627「うん…」");
+	DelWindow();
+
+	SEPlay("L_Nuno02");
+	SEPlay("L_Nuno07");
+	FadeOut(SLOW);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "玲愛は、腰を浮かせて、@n俺の手を受け入れてくれる。");
+	SetMessage(UNIT_ETC, -1, "", "するりと、小さな布がまくれて、@n太股をすべって、足首まで下がっていく。");
+	SetMessage(UNIT_ETC, -1, "", "そして、以前に布に覆われていた部分が、@nとうとう、俺の目の前に晒される。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、ちょっと待って…」");
+
+	SEPlay("L_Nuno08");
+
+	SetMessage(UNIT_ETC, -1, "", "そこまで辿り着いたところで、@n俺は、自分が何も脱いでないことに気づいた。");
+	SetMessage(UNIT_ETC, -1, "", "慌ててズボンを下ろす。@n何だか、ちょっと、いや、かなり不格好。");
+	SetMessage(UNIT_ETC, -1, "", "でも、準備はできた。");
+
+	BGMFadeOut(SLOWER);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛…じゃ…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020628「ん…」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛が、俺を受け入れやすいように、@n足を開いてくれる。");
+	SetMessage(UNIT_ETC, -1, "", "俺は、その間に腰を侵入させると、@n玲愛の、その、中心部へと…");
+	DelWindow();
+
+	SetVisual( VISUAL_REA_07B );
+	BGMPlay(BGM_H2);
+	ShakeScreen(2, SLOW);
+	FadeIn();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020629「う、あ………うああああっ！」");
+	SetMessage(UNIT_ETC, -1, "", "ほんの少し埋没させただけで、@n激しく痛みを訴えてくる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛…ごめん。@nでも、やめられないから、俺…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020630「うん、うん…う、あ…あああああ～っ！」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛の痛みを和らげてあげたいけど、@n生憎と俺には、どうすればいいのかわからない。");
+	SetMessage(UNIT_ETC, -1, "", "だからそのまま、ただ、玲愛の中心めがけて、@n進んでいくだけで…");
+
+	ShakeScreen(3, SLOW);
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020631「あっ、あっ…あぁぁぁぁ…っ！@nう、くぅぅ…ひ、仁…ぃっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ごめん、ごめんな…」");
+	
+	SetVisual( VISUAL_REA_07A );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020632「謝らなくて…いいから」");
+	SetMessage(UNIT_ETC, -1, "", "とうとう、最後まで貫いた。");
+	SetMessage(UNIT_ETC, -1, "", "玲愛のなか、深くまで埋まってる俺自身を感じてる。");
+	SetMessage(UNIT_ETC, -1, "", "それだけで、ぞくぞくと駆け上がりそうになるのを抑えて、@n玲愛の額に、頬に、まぶたに、くちづけの雨を降らせる。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020633「あ、あは…仁。@nいいって…いいってば」");
+	SetMessage(UNIT_ETC, -1, "", "それだけで、玲愛は、@nなんとなく満たされた表情をしてくれる。");
+	SetMessage(UNIT_ETC, -1, "", "これから俺が、胎内を蹂躙していくって知ってるのに。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…動く、ぞ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020634「うん…おいでよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「っ」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛の、あっさりとして、@nそれでも愛情の感じられる言葉に導かれ。");
+	SetMessage(UNIT_ETC, -1, "", "俺は、少しずつ、少しずつ、玲愛への責めを、@n激しくしていく。");
+
+	SetVisual( VISUAL_REA_07B );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020635「はぁっ、は、あぁ…あっ…あっ、あっ…@nい、う、うあぁ…いぅっ、く、あぁぁ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ、はぁ、はぁ…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020636「あ、うっ…く、ぅぁぁ…@n仁ぃ…ねえ…私…いい、かなぁ？」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛の手が、爪が食い込むくらいに激しく、@n俺の腕を掴む。");
+	SetMessage(UNIT_ETC, -1, "", "目に涙を浮かべて、それでも流さないよう頑張って、@n一生懸命、気合いを入れて、力を抜こうとしてる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いい…玲愛のなか…いい…@n俺、ダメになるくらい、いい」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020637「あ、はぁっ、あ、あ、あ…そ、そう、なんだ…@nすごい仁…えっち、だねぇ」");
+	SetMessage(UNIT_ETC, -1, "", "そんな健気な玲愛を感じるたびに、@n俺の体と心が両方いっぺんに満たされて、@nそして、どんどん上り詰めていく。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020638「う、く、あぁぁっ…あ、はぁ、はぁぁぁっ…@n仁…うん、私たち…してるね…」");
+	SetMessage(UNIT_ETC, -1, "", "吐息混じりの玲愛の声が、めちゃくちゃ色っぽい。");
+	SetMessage(UNIT_ETC, -1, "", "口からこぼれる言葉も扇情的で、@nチリチリと俺の頭を焦がす。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ああ…お前と、やらしいこと、してる。@n気持ちよくて…ああ…」");
+
+	SetVisual( VISUAL_REA_07A );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020639「仁…仁っ…ん…あ、あ、んぷ…ちゅぅ…んんっ、@nあ、あ、ああ…あぁぁぁぁ…ひぅ、ぅぅっ」");
+	SetMessage(UNIT_ETC, -1, "", "必死で舌を突き出し、俺の唇を求める玲愛に応える。");
+	SetMessage(UNIT_ETC, -1, "", "こぼれる唾液も熱く、どろりとお互いの口を行き交い、@nそして、官能的なまでに、甘い。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん、んくっ…あ、あむ…んぁぁ…あ、はぁっ、@nれ…玲愛ぁ…ひっ、うぅ…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020640「こんな、こんな…ぁぁ…仁が、入ったり、出たりぃ…@nすご、すご…ぃぃ…じんじん…なか、しびれてるよぉ」");
+	SetMessage(UNIT_ETC, -1, "", "破瓜の傷みが、興奮に誤魔化されていく。");
+	SetMessage(UNIT_ETC, -1, "", "玲愛が、本当は感じていない快感に身をよじらせる。");
+	SetMessage(UNIT_ETC, -1, "", "嘘の快感でも…玲愛が、そう感じてくれたなら、@n嬉しくて、嬉しくて…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ…あぁ…れ、玲愛…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020641「うん、うん…仁…う、あ、あ…あぁぁぁ…@nや、や、やぁぁ…ひぅっ」");
+	SetMessage(UNIT_ETC, -1, "", "それでも、初めてなのに、@nあまり玲愛を傷つけたくない…");
+	SetMessage(UNIT_ETC, -1, "", "いや、そもそも…@nそろそろ俺が、ヤバかったり。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「れ、玲愛…あ、あの、俺…っ」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020642「…出そう？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…うん」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020643「そう、か…@n私のからだ…よかったぁ？@nあ、う、あぁぁ…っ、あ、あ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ああ…凄く、気持ちいい」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020644「また…したい？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「何度だって…うあ…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020645「うん…なら…出して、いい。@n仁…私で、いやらしい気持ちになって。@nそして…私で、出してぇ…」");
+	SetMessage(UNIT_ETC, -1, "", "その言葉を合図に、@n今まで、ほんの少しだけ、まだ玲愛を気遣っていたけど、@nそれすらも、もう、やめてしまった。");
+	SetMessage(UNIT_ETC, -1, "", "激しく、激しく…");
+	SetMessage(UNIT_ETC, -1, "", "玲愛の胎内を、えぐるように、突いて、突いて、@n奥まで、踏み込んで…");
+
+	SetVisual( VISUAL_REA_07B );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020646「ああっ！　ああっ！　うあああっ！@nい、や、あ、あ、あ…仁っ…は、はや、くっ」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛の声の中に、また、苦しそうなものが混じる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あっ、あっ、あっ…あ、あ、あああ…」");
+	SetMessage(UNIT_ETC, -1, "", "そして俺の声には、多分、快感が混じる。");
+	SetMessage(UNIT_ETC, -1, "", "最初から、ギリギリと締めつけられている玲愛の胎内。");
+	SetMessage(UNIT_ETC, -1, "", "そこに、次から次へと叩き込み、@n玲愛の喘ぎと、吐息と、汗と、水音と、ぬくもりを感じて。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020647@s0004@m00「あああ…あああああ…ああっ、う、うあぁぁっ、@nひ…ひとし…あ、あ、あ…」");
+	DelWindow();
+
+	Fade(SLOW, 120);
+
+	SetWindow(WINDOW_SIMPLE);
+	ShakeScreen(2, SLOW);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「れ…玲愛…ああっ！」");
+//	SetMessage(UNIT_ETC, -1, "", "どくんっ");
+	BGMFadeOut(SLOWEST);
+	Fade(NORMAL, 150);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020648@s0004@m00「あ～っ！　あ、ああ、あ…ああああああああっ！」@k");
+	SetVisual( VISUAL_REA_07D );
+	ShakeScreen(16);
+	Fade(0, 200);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 140);
+	ShakeScreen(12);
+	Fade(0, 190);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 130);
+	ShakeScreen(8);
+	Fade(0, 180);
+	Fade(NORMAL, 100);
+
+	Fade(NORMAL, 120);
+	ShakeScreen(8);
+	Fade(0, 170);
+	Fade(NORMAL, 100);
+
+	Fade(NORMAL, 110);
+	ShakeScreen(4);
+	Fade(0, 160);
+	Fade(SLOW, 100);
+	MessageWait();
+	
+	SetMessage(UNIT_ETC, -1, "", "全身が膨れ上がり、破裂するかと思うくらいの@n快感が襲い来る。");
+	DelWindow();
+
+	Fade(NORMAL, 140);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020649「あっ…あっ…あ、あ、ああ…@nあぁぁぁぁぁ…あ、ああ～…」@k");
+	ShakeScreen(16);
+	Fade(0, 190);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 130);
+	ShakeScreen(12);
+	Fade(0, 180);
+	Fade(SLOW, 100);
+
+	Fade(NORMAL, 120);
+	ShakeScreen(8);
+	Fade(0, 170);
+	Fade(FAST, 100);
+	MessageWait();
+
+	SetMessage(UNIT_ETC, -1, "", "びゅっ、びゅぅぅっ…");
+	SetMessage(UNIT_ETC, -1, "", "全身から抜けていく力と共に、@n俺の先端から、白い液が激しく飛び、@n玲愛の全身に降りかかる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…あぁぁっ…あ～～～…」");
+
+	SetVisual( VISUAL_REA_07C );
+	CrossFade();
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020650「あ…あつぅい…仁の…わっ、こっちまで…@nも、もう…こんなに、出るんだ…ね」");
+	SetMessage(UNIT_ETC, -1, "", "胸、おなか、太股まで。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ご…ごめ、んっ…」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛の全身を白く染め上げてしまうくらいに…@nいや、そこまで大げさじゃないけど。");
+	SetMessage(UNIT_ETC, -1, "", "でも…かなり汚してしまった。@p@n俺の腕の中で悶えてくれた、この綺麗な女の子を…");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020651「はぁ、はぁぁ…はぁっ…@nあ、まだ、垂れてる、よ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そこ見なくていいから」");
+	SetMessage(UNIT_ETC, -1, "", "俺の先端から、まだ垂れる雫を見つめて。");
+	SetMessage(UNIT_ETC, -1, "", "自分の体にこぼれている、@n白くてどろりとした液体を見つめて…");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020652「…しちゃったんだ」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛は、呆然と、呟いた。");
+	SetMessage(UNIT_ETC, -1, "", "けれどその表情は、後悔も、不安も、不満もなく。");
+	SetMessage(UNIT_ETC, -1, "", "ただ、悪戯が見つかった子供のように、@nバツが悪そうな笑顔を、俺に向けるだけだった。");
+	DelWindow();
+
+	// ＜画面暗転＞
+	Wait(100);
+	FadeOut(SLOWER);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	SetSceneFlg(SCENE_REA_01);
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：ピロートーク＞
+	// ＜リビングのＢＧでも可＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_HITOSHI_04D );
+	BGMFadePlay(BGM_YASURAGI, SLOWER);
+	FadeIn(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v02020653「…ねえ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん？」");
+	SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v02020654「吸わないの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、さっきくすぐったいって…」");
+	DelWindow();
+
+	// ＜ＳＥ：頭を殴る＞
+	SEPlay("L_Punch02");
+	ShakeScreen(8);
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0302TN_, "玲愛", "@v02020655「誰が私の乳首の話をしてるのよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「痛ぇ」");
+	SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v02020656「タバコよ。@n普通、こういうときの後って一服するもんじゃないの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「どこで得た知識だ…」");
+	SetMessage(UNIT_ETC, -1, "", "なんかそれって、もの凄く倦怠期っぽい、@n悪いイメージしかないんだけど。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「もともと１日１本しか吸わないんだよ。@nで、それはさっき吸っちゃったし」");
+	SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v02020657「１本で足りるの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…もともと、おまじないみたいなものだったし」");
+	SetMessage(UNIT_REA, REA_0302HT, "玲愛", "@v02020658「おまじないって…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	SetMessage(UNIT_REA, REA_0301KN, "玲愛", "@v02020659「あ、いいや。ごめん」");
+	SetMessage(UNIT_ETC, -1, "", "こういうところの引き際がさすがだな、こいつ…");
+	SetMessage(UNIT_ETC, -1, "", "人にも自分にも厳しく、@n実は、誰よりも人に気を使って生きてる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それに…その１本さえも、@nやめなくちゃいけない理由ができたし」");
+	SetMessage(UNIT_REA, REA_0302HT, "玲愛", "@v02020660「え？　なんで？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「さっき…やめて欲しいって言った奴がいたから」");
+	SetMessage(UNIT_REA, REA_0302KM_, "玲愛", "@v02020661「あ…っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっと、そいつの優先度が高くってな…@nもう無視できなくなってきた」");
+
+	SEPlay("L_Fall01");
+	SEPlay("L_Nuno02");
+	ShakeScreen(4);
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020662「仁…っ」");
+
+	SetMessage(UNIT_ETC, -1, "", "俺の胸に顔を埋めていた玲愛が、@nまた激しく、俺を抱きしめる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おい、玲愛…」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020663「仁…私、私さ…」");
+	SetMessage(UNIT_ETC, -1, "", "声に湿っぽいものを混ぜながら、玲愛は…");
+
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020664「………あれ？」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛…は？");
+
+	SEPlay("L_Fall02");
+	SEPlay("L_Nuno04");
+	ShakeScreen(8);
+
+	SetMessage(UNIT_REA, REA_0301OD, "玲愛", "@v02020665「ちょっと待って！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ぐぼぉっ！？」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛は、いきなり俺を、突き飛ばす。");
+	SetMessage(UNIT_REA, REA_0301OD, "玲愛", "@v02020666「あ、あ、あ～！　そうだぁ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な、何が…？」");
+	SetMessage(UNIT_REA, REA_0301OD, "玲愛", "@v02020667「わかったの！@nさっきから何か足りないって思ってて…@nずっとその正体が思い浮かばなかったんだけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な、なんのことだぁ？」");
+
+	SetMessage(UNIT_REA, REA_0302TR, "玲愛", "@v02020668「仁…あんた…@n私のこと、どう思ってるのよ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…は？」");
+	SetMessage(UNIT_REA, REA_0302KM_, "玲愛", "@v02020669「抱きたいって言葉は聞いたけど、@nなんで抱きたかったか聞いてない、聞いてないよ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お、お前…え？」");
+	SetMessage(UNIT_REA, REA_0302KM_, "玲愛", "@v02020670「今すぐ答えて。@n仁の、私に対する感情を。@n短くても長くてもいいから、正直なところを」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な、なにを…今更、なにをぅ？」");
+	SetMessage(UNIT_ETC, -1, "", "そういえば…");
+	SetMessage(UNIT_ETC, -1, "", "最初は、玲愛の不意打ちで。@p@n次は、俺の激情で。@p@nその次が、玲愛の激情で。");
+	SetMessage(UNIT_ETC, -1, "", "で、押し倒して。");
+	SetMessage(UNIT_REA, REA_0301SN_, "玲愛", "@v02020671「何てこと…@n私、自分のこと好きかどうかもわからない男に、@n初めてをあげちゃったんだぁ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ひ、人聞きの悪い…」");
+
+	BGMPlay(BGM_REA);
+	ShakeScreen(8);
+	SetMessage(UNIT_REA, REA_0301IK_, "玲愛", "@v02020672@s0004「鬼畜！　@t0109@k");
+	ShakeScreen(8);
+	AddMessage("変態！　@t0213@k");
+	ShakeScreen(8);
+	AddMessage("@nやっぱりあんたはパクリ店長よ！」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「待て待て待て！@nさっきから黙って聞いてりゃ好き勝手…」");
+	SetMessage(UNIT_REA, REA_0301IK_, "玲愛", "@v02020673「ちっとも黙ってないじゃない！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だいたい、お前も言ってねえなぁ、俺への気持ち！」");
+	SetMessage(UNIT_REA, REA_0301OD_, "玲愛", "@v02020674「なっ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「人のことどうこう言う前に、@n自分を省みてみやがれ！」");
+	SetMessage(UNIT_REA, REA_0301IK_, "玲愛", "@v02020675「あんた私の初めてをなんだと思ってるのよ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうは行くか！@n大体お前、なんでいきなり俺にキスしたんだよ！？」");
+
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_REA, REA_0302KM_, "玲愛", "@v02020676「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "これで形勢は逆転…とまでは行かなくても、@n効果的な足止めには使える。");
+
+	BGMFadePlay(BGM_YASURAGI, SLOWEST);
+
+	SetMessage(UNIT_REA, REA_0302KM_, "玲愛", "@v02020677「…好きだから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "本当にコイツは…@nいつもいつも、こっちの切り札を無効にしやがって…");
+	SetMessage(UNIT_REA, REA_0302TR, "玲愛", "@v02020678「私が、恥ずかしがって言えないんじゃないかって@n思ったんでしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「意地っ張りのはずだろ…お前」");
+	SetMessage(UNIT_REA, REA_0302KM_, "玲愛", "@v02020679「肉を切らせて、骨を断つのよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_REA, REA_0301KM, "玲愛", "@v02020680「私のこと、どう思ってる…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「抱いた後に言っても、説得力ないだろうが…」");
+	SetMessage(UNIT_REA, REA_0301KM, "玲愛", "@v02020681「仁の言うことなら、信じるから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛…」");
+	SetMessage(UNIT_REA, REA_0301KM, "玲愛", "@v02020682「私のこと、どう思ってる…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「次、する時に答える」");
+	DelWindow();
+
+	// ＜ＳＥ：ビンタ＞
+	SEPlay("L_Air02");
+	Wait(20);
+	ShakeScreen(8);
+	SEPlay("L_Punch05");
+	FlashIn(FAST);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「って～」");
+	SetMessage(UNIT_REA, REA_0302IK_, "玲愛", "@v02020683「…馬鹿っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、だからさぁ…こんな雰囲気で、@nそういった台詞なんて言えないって」");
+	SetMessage(UNIT_REA, REA_0302IK_, "玲愛", "@v02020684「私は言ったじゃないの！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、だからそこが男と女の虚脱感の違いっつ～か」");
+	SetMessage(UNIT_REA, REA_0302TN_, "玲愛", "@v02020685「つまり、その気になれば言うのね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま、まぁ…そういう…」");
+	SetMessage(UNIT_REA, REA_0302IK2_, "玲愛", "@v02020686「…するわよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…は？」");
+	SetMessage(UNIT_REA, REA_0301IK_, "玲愛", "@v02020687「二回目、するわよ！@nその時に言うんだったわよね！？」");
+
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「んなぁっ！？」");
+	DelWindow();
+
+	ShakeScreen(8);
+	SEPlay("L_Fall01");
+	SEPlay("L_Nuno04");
+	FadeOut(FAST);
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020688「仁…仁…っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「待てお前！@n痛いくせに無理すんなぁ！？」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020689「ん、んん…んんん～！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「んんんんん～！？」");
+	HideMenu();
+	DelWindow();
+
+	DelVisual();
+
+	Wait(100);
+	BGMFadeOut(SLOWER, 1);
+	Wait(300);
+
+	//▲フラグチェック
+	//AddSelectMenu(0, "玲愛ＴＲＵＥフラグが立っている場合");
+	//AddSelectMenu(1, "玲愛ＴＲＵＥフラグが立っていない場合");
+	//SelectMenu();
+	//if(GetFlg(FLG_RET) == 0)
+	if(GetEventFlg(EVENT_03_08_03) != 0 && GetEventFlg(EVENT_04_04_03) != 0 && GetEventFlg(EVENT_04_06_03) != 0)
+	{
+		LoadEvent(EVENT_YUI_REA_15);
+	}
+	else
+	{
+		LoadEvent(EVENT_REA_14);
+	}
+end();

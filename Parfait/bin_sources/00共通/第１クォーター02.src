@@ -1,0 +1,471 @@
+// ●第１クォーター02
+//種類：強制イベント
+//条件：第１クォーターの全選択終了後に発生
+//概要：第１クォーターエピローグ
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+	ShowDay();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：主人公のマンション＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_HITOSHI_03C );
+	BGMFadePlay(BGM_NICHIJOU1,SLOW);
+	FadeIn(SLOW);
+
+	// ＜ＳＥ：キーボードを打つ＞
+	//伊藤：SE new
+	SEPlay("L_Keyboard01", 100, 1);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ああ…」");
+	SetMessage(UNIT_ETC, -1, "", "ディスプレイ上に浮かび上がった数字を見て、@n情けないため息が漏らす。");
+	SetMessage(UNIT_ETC, -1, "", "半年振りに引っ張り出した家計簿ソフト。@p@nそこに踊る数字は、先月のファミーユの収支。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ギリギリ黒」");
+	SetMessage(UNIT_ETC, -1, "", "とは言っても、それは売上から、今月の@n材料費、人件費、光熱費、諸経費だけを@n削った数字に過ぎない。");
+	SetMessage(UNIT_ETC, -1, "", "ここから、ローンの月額を…@p@nいや、せめて更に週割りした額を…@p@nえっと…１０月の中旬からだから…");
+	DelWindow();
+
+	// ＜ＳＥ：キーボードを打つ＞
+	SEPlay("L_Keyboard01", 100, 1);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うわ、うわ、うわ！」");
+	SetMessage(UNIT_ETC, -1, "", "転落…最初の月から赤…");
+	SetMessage(UNIT_ETC, -1, "", "これは…マジでヤバい。");
+	SetMessage(UNIT_ETC, -1, "", "経済学部の学生にあるまじき経営手腕…");
+	SetMessage(UNIT_ETC, -1, "", "というか、@n『大学で学んだことは実社会では役立たない』@nというのは真実だということが身に染みた…");
+	DelWindow();
+
+	// ＜ＳＥ：すきま風＞
+	SEPlay("L_Wind02", 100, 1);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "どうする？@p@nどうしよう？");
+	SetMessage(UNIT_ETC, -1, "", "まずはこのマンションの部屋代が邪魔だ。@n四畳半一間、風呂、トイレなしで、敷金、礼金もない@nアパートを探して、そこに移り住む。");
+	SetMessage(UNIT_ETC, -1, "", "それで、月３万くらいは浮くだろう…@p仕送りだけど。");
+	SetMessage(UNIT_ETC, -1, "", "仕方ない…@n明日、早速アパート情報誌買ってこよう。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ついでに電話も止めるか」");
+	SetMessage(UNIT_ETC, -1, "", "連絡は全て携帯電話にして、@n固定電話を解約して加入権を売り払えば、@n一時的だけど足しになる…");
+	SetMessage(UNIT_ETC, -1, "", "うん、これはいける。@p@n…なんだか、泣けるくらいせせこましいけど。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ダメだ」");
+	SetMessage(UNIT_ETC, -1, "", "そんな俺の倹約で、この危機が乗り越えられる訳がない。");
+	SetMessage(UNIT_ETC, -1, "", "このままの状態が続けば、@nジリ貧だってのはわかりきってる。@n今は、抜本的な改革が必要なんだ。");
+	SetMessage(UNIT_ETC, -1, "", "人を増やし、品質を上げ、@nそしてお客様を惹きつける手を打つ。");
+	SetMessage(UNIT_ETC, -1, "", "そうして、今の下降カーブを上昇に転じないと、@nいずれ…三ヶ月もしないうちに破綻してしまう。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+
+	// ＜ＳＥ：電話の呼び出し音＞
+	SEFadePlay(0,"L_Tel07",NORMAL,100,100);
+
+	SetMessage(UNIT_ETC, -1, "", "その対策案は、本当は知ってる。@p@n半年前にやっていたことを、またやれればいいんだ。");
+	SetMessage(UNIT_ETC, -1, "", "…ただ、王と飛車が足りないから、できないだけ。");
+	SetMessage(UNIT_ETC, -1, "", "それはつまり、不可能って意味だけど。");
+	DelWindow();
+
+	// ＜ＳＥ：電話の呼び出し音＞
+	SEStop(0);
+	// ＜ＳＥ：受話器を取る＞
+	SEPlay("L_Tel04");
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はい高村！」");
+	SetMessage(UNIT_ETC, -1, "", "誰だよ、こんな時間に。@nもう、日付変わってるぞ。");
+	SetMessage(UNIT_MALE, -1, "守衛", "@v00160017「ああ、えっと…ブリックモールの守衛室ですが」");	// ★★電話の声
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え？　あ、お世話になっております」");
+	SetMessage(UNIT_MALE, -1, "守衛", "@v00160018「ファミーユの責任者は、高村さんでよろしいんですよねぇ？」");	// ★★電話の声
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうですけど…あの、何かウチの店にあったんですか？」");
+
+	BGMFadeOut(SLOWER);
+
+	SetMessage(UNIT_ETC, -1, "", "電気のつけっぱなし？@p@n施錠のし忘れ？@p@n元栓の閉め忘れ？");
+	SetMessage(UNIT_ETC, -1, "", "まさか…それがもとでガス漏れ、爆発、火災！？");
+	SetMessage(UNIT_ETC, -1, "", "…冗談で済まされない経験があるから、その想像は怖い。");
+	SetMessage(UNIT_MALE, -1, "守衛", "@v00160019「いや実はね、お宅の関係者と言い張る方がいまして…@nあ、ちょっと！」");	// ★★電話の声
+
+	BGMFadePlay(BGM_COMICAL);
+
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v00050071「仁く～ん！　あ～け～な～さ～い！」");	// ★★電話の声
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………は？」");
+	DelWindow();
+
+	FilterFadeOut(NORMAL,FADEFILTER_UZU);
+
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ブリックモール（消灯）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_ENTRANCE_04A );
+	CurtainFadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ごめんなさいごめんなさいごめんなさい！」");
+//	SetMessage(UNIT_MALE, -1, "守衛", "@v00160020「本当はね、事前申請が出てなかったら、@n深夜作業はできないことになってるんですよ」");
+	SetMessage(UNIT_MALE, -1, "守衛", "@v00160020「本当はね、事前申請が出てなかったら、@n深夜作業はできないことになっているんですよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「重ね重ねご容赦を～！」");
+	SetMessage(UNIT_MALE, -1, "守衛", "@v00160021「だからって不法侵入みたいなことされては@nもっと困るんですけど…@n危うく、警報装置が作動するところでしたよ」");
+
+	//SetStand(EMA_0302SP);
+
+	SetMessage(UNIT_EMA, EMA_0302SP, "恵麻", "@v00050072「本当に申し訳ありません…@n弟が迷惑をおかけしまして」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…おい」");
+	SetMessage(UNIT_EMA, EMA_0302SP, "恵麻", "@v00050073「深夜にどうしても作業が必要だから、@n手続きを取っておくように言ったんですが、@nどうやらすっかり忘れていたようで」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@m16「俺はそんなこと全然聞いてな」@e");
+	Wait(20);
+	SetMessage(UNIT_EMA, EMA_0301BS2, "恵麻", "@v00050074「本当にご迷惑おかけしました。@nそれに、ご無理をお聞きくださって、@nありがとうございます」");
+
+	// ＜仁→恵麻の台詞、ウェイトなしで＞
+
+	SetMessage(UNIT_MALE, -1, "守衛", "@v00160022「あ、いや…そういうことでしたら…」");
+	SetMessage(UNIT_ETC, -1, "", "…策士め。@nやりやがったな。");
+	SetMessage(UNIT_EMA, EMA_0302BS, "恵麻", "@v00050075「それでは、失礼いたします」");
+	SetMessage(UNIT_MALE, -1, "守衛", "@v00160023「じゃ、作業が終わりましたら、鍵はお返しください。@nフードコート以外はセキュリティが作動中ですので、@nくれぐれも他の場所へは行かないように」");
+	DelWindow();
+
+	// ＜ＳＥ：靴音＞
+	BGMFadeOut(SLOWER);
+	SELoopPlay(0,"L_Walk05R");
+	SEFadeOut(0,SLOWEST);
+	Wait(100);
+
+	SetWindow();
+
+	SetMessage(UNIT_EMA, EMA_0302BS, "恵麻", "@v00050076「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "散々お小言を垂れつつも、結局、恵麻姉さんに丸め込まれ、@n戻っていく守衛さん。");
+
+	//DelWindow();
+	// ＜ＳＥ：ドア閉まる＞
+	//伊藤：無くていい気がする
+	BGMFadePlay(BGM_EMA);
+	SetStand(EMA_0301SN);
+
+	SetMessage(UNIT_EMA, EMA_0301SN, "恵麻", "@v00050077「ホントにもう、この子はしょうがないわねぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「自分でついた嘘に騙されるな！」");
+	SetMessage(UNIT_EMA, EMA_0301KT, "恵麻", "@v00050078「それにしても、警戒の厳重な建物ねぇ。@n最新鋭のセキュリティじゃない。@n見た目はこんなに古そうなのに」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「古そうって…」");
+	SetMessage(UNIT_ETC, -1, "", "まだ完成して一月も経ってないってのに？");
+	SetMessage(UNIT_EMA, EMA_0301KT, "恵麻", "@v00050079「だってほら、この壁なんてレンガ造りよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "もしかして…この中世ヨーロッパ風の装飾のことか？");
+	SetMessage(UNIT_ETC, -1, "", "古そうってのは、１００年単位での話か！？");
+	SetMessage(UNIT_ETC, -1, "", "一体、どこから説明すればいいんだ？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、それよりも、ここに何の用？」");
+	SetMessage(UNIT_EMA, EMA_0302BS, "恵麻", "@v00050080「弟の仕事場を見に来た…ってのはダメ？」");
+
+	//----------------------------------------------------------------------------
+	// ＜恵麻01を発生させている場合のみ追加　ここから＞
+	// (´-`)かすり04もね
+	//----------------------------------------------------------------------------
+	//▲フラグチェック
+	//AddSelectMenu(0, "恵麻01またはかすり04を発生させている場合");
+	//AddSelectMenu(1, "恵麻01またはかすり04を発生させていない場合");
+	//SelectMenu();
+	//if(GetFlg(FLG_RET) == 0)
+	if(GetEventFlg(EVENT_01_03_02) != 0 || GetEventFlg(EVENT_01_06_02) != 0)
+	{
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「前に来てたじゃん」");
+		SetMessage(UNIT_EMA, EMA_0301KM, "恵麻", "@v00050081「ほら、あの時は色メガネで見てたから」");
+		SetMessage(UNIT_ETC, -1, "", "単にサングラスかけてただけだったような。");
+		SetMessage(UNIT_EMA, EMA_0301KS, "恵麻", "@v00050082「それに、営業時間中だったから、@nあまり長居もできなかったし」");
+		SetMessage(UNIT_ETC, -1, "", "てことは、今日は長居するつもりなのか？");
+		SetMessage(UNIT_EMA, EMA_0301KT, "恵麻", "@v00050083「こっちだっけ？@n暗くてよくわかんないな～」");
+	}
+
+	//----------------------------------------------------------------------------
+	// ＜恵麻01を発生させている場合のみ追加　ここまで＞
+	//----------------------------------------------------------------------------
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…こっち」");
+	SetMessage(UNIT_ETC, -1, "", "一体、何を考えてるのやら…");
+	DelWindow();
+
+	// ＜画面暗転＞
+
+	SEFadePlay(0, "L_Walk02R");
+	SEFadePlay(1, "L_Walk03R");
+	CurtainFadeOut();
+	DelStand();
+
+	Wait(200);
+
+	//----------------------------------------------------------------------------
+
+	// ＜ＳＥ：ドア開く＞
+	// ＜ＳＥ：ドアベル＞
+	SEFadeOut(0);
+	SEFadeOut(1);
+	SEPlay("L_Door05A");
+	SEPlay("L_Bell02");
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ファミーユ店内＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_04A );
+	CurtainFadeIn(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はい到着…って、姉さん？」");
+	DelWindow();
+
+	// ＜ＳＥ：ドア開閉＞
+	SEPlay("L_Door09A");
+	Wait(150);
+	SEPlay("L_Door09B");
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "店内に入った途端、@n恵麻姉さんは、いきなり店の奥に入っていく。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっと、そっちは更衣室だよ。@n一体何の用があるのさ？」");
+	HideDay();
+	DelWindow();
+
+	// ＜ＳＥ：ドア開閉＞
+	SEPlay("L_Door09A");
+	FadeOut();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：仁の目の前で堂々と着替える恵麻＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( VISUAL_EMA_03A );
+	SetWindow(WINDOW_SIMPLE);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「恵麻姉さ…@e");
+
+	FadeIn();
+
+	ShakeScreen(8);
+	AddMessage("って、うわぁっ！？」");
+
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v00050084「更衣室に用事って言ったら、着替えしかないでしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっ、ちょっ…@e");
+	ShakeScreen(8);
+	AddMessage("うわうわうわ！」");
+	SetMessage(UNIT_ETC, -1, "", "姉さんの後を追って更衣室に踏み込んだ俺は、@nいきなりその足を、メドゥーサに睨まれた。");
+
+	SEPlay("L_Nuno02");
+	SEPlay("L_Nuno03");
+
+	SetMessage(UNIT_ETC, -1, "", "俺の目の前で、いきなり上着が脱ぎ捨てられたかと思うと、@n今度はスカートに手がかかり、あっさりと床に落ちる。");
+	SetMessage(UNIT_ETC, -1, "", "てことは当然、恵麻姉さんの、@n下着に包まれただけの肢体が、@n惜しげもなく晒されているわけで…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な、な…何考えてんだよ姉ちゃん！？」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v00050085「ちょっと、かすりちゃんの借りるね」");
+
+	SEPlay("L_Nuno03");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「は？　かすりさん…？」");
+	SetMessage(UNIT_ETC, -1, "", "見ると、かすりさんのロッカーが開け放たれている。");
+	SetMessage(UNIT_ETC, -1, "", "そして、姉さんが手に取ったのは…@nそこにかけてあった、かすりさんの制服。");
+	SetMessage(UNIT_ETC, -1, "", "それも、フロア用のものではなく、キッチン用の…");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v00050086「懐かしいな…これ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「姉さん…？」");
+	SetMessage(UNIT_ETC, -1, "", "姉の着替えを覗く…というよりも、堂々と観賞している@nとんでもない弟は…");
+
+	SEPlay("L_Nuno05");
+
+	SetMessage(UNIT_ETC, -1, "", "新たに姉を包み込む、その服が、@nどういう意味を持つものなのか、わかってるのに…");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v00050087「仁くん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え…？」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v00050088「後ろ、とめて」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、うん…」");
+	DelWindow();
+
+	FadeOut();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "何も言うことができずに、@nただ、姉に導かれるまま、その手伝いをする。");
+
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v00050089「よし…仕上げ」");
+
+	SEPlay("L_Nuno05");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "最後に、髪を束ねると、@n後ろに上げて、一本に結わえていく。");
+	SetMessage(UNIT_ETC, -1, "", "それが、彼女の“そのとき”のスタイル。");
+	SetMessage(UNIT_ETC, -1, "", "とうとう、完成した。");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLES_01A );
+	FadeIn(SLOW);
+	SetStand( EMA_0101BS );
+
+	ShowDay();
+	SetWindow();
+
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v00050090「どうかな？　仁くん？」");
+
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v00050091「…仁くん？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「何を…」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v00050092「ん？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「何を…するつもり、なの？」");
+	HideDay();
+	DelWindow();
+
+	FadeOut();
+	SetVisual(BG_QFAMILLEF_01A, FILTER_SEPIA);
+	DelStand();
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "それは、半年前までの、彼女のスタイル。");
+	SetMessage(UNIT_ETC, -1, "", "彼女がこの服に身を包むと、@n今までの、のんびりした雰囲気はなりを潜める。");
+	SetMessage(UNIT_ETC, -1, "", "素早く、厳しく、豪快に…@nキッチンを駆け回り、粉と水とを火にかけて、@n美味しい美味しい塊に変えていく…");
+	DelWindow();
+
+	FadeOut();
+	SetVisual(BG_FAMILLES_01A);
+	SetStand( EMA_0101MJ );
+	FadeIn();
+
+	ShowDay();
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v00050093「店長」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え？」");
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v00050094「杉澤恵麻、ファミーユでのアルバイト希望です。@nお菓子作りなら、自信あります」");
+
+	BGMFadePlay(BGM_YASURAGI,SLOWER);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…っ」");
+	SetMessage(UNIT_ETC, -1, "", "帰って…きた。");
+
+	SetMessage(UNIT_ETC, -1, "", "ファミーユの、本当の主が、帰ってきた。");
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v00050095「今から試験を受けさせてはいただけないでしょうか？@nそして、わたしの作るお菓子が、@nこのお店にふさわしければ、どうか採用してください」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま～姉ちゃん…っ」");
+	SetMessage(UNIT_EMA, EMA_0101BS2, "恵麻", "@v00050096「どうしたのかな？　店長？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「保険会社の仕事は…？@n最近、やっと軌道に乗ってきたって…」");
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v00050097「あ～、やめてきた。@nかなり怒られちゃったけどね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「この、ばかっ…っ…」");
+
+	SetMessage(UNIT_ETC, -1, "", "ずっと、求めていたもの。@p@nそれは、目の前の女性の差し伸べる手。");
+	SetMessage(UNIT_ETC, -1, "", "それが、本当に与えられたのに、@nこうして憎まれ口しか叩くことができないのは…");
+	SetMessage(UNIT_ETC, -1, "", "やっぱり、俺たちが、家族だから、なんだろうか。");
+
+	SetMessage(UNIT_EMA, EMA_0102BS, "恵麻", "@v00050098「さあ…試験に立ち会って。店長。@n今日は寝かせないわよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「試験…」");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v00050099「当然、実技試験でしょう？@n合格するためには、大量に作らないと」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v00050100「ついでに手伝って頂戴、仁くん。@n…いつものように、ね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………了解っ！」");
+	DelWindow();
+
+	// ＜ＳＥ：ドア開く＞
+	SEPlay("L_Door09A");
+	CurtainFadeOut(SLOW);
+	DelStand();
+	Wait(80);
+	SEPlay("L_Door09B");
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン（消灯）＞
+	// ＜ＢＧ：キッチン（点灯）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEC_03A );
+	Fade(NORMAL,50);
+	Wait(100);
+	SEPlay("L_Switch01");
+	SetVisual( BG_FAMILLEC_01A );
+
+	// (((；ﾟДﾟ)))このざわめきは一体……………っ
+	//SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+	SEFadePlay(1, "L_Factory01", NORMAL, 50);
+	CrossFade();
+
+	Wait(30);
+
+	SetStand(EMA_0101BS);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v00050101「小麦粉、お砂糖、卵、バター、ベーキングパウダー…@nフルーツの在庫は！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「今すぐかき集める！」");
+
+	ShakeScreen(8);
+	SEPlay("L_Fall01");
+
+	SetMessage(UNIT_EMA, EMA_0102MS2, "恵麻", "@v00050102「ああ、愛しの愛しのオーブンちゃん…@n半年間、あなたと遊べなくて寂しかったわ～」");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	Wait(50);
+	//SEFadeOut(0);
+	SEFadeOut(1);
+	BGMFadeOut(SLOWEST);
+	FadeOut(SLOW);
+	DelStand();
+
+	Wait(150);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ブリックモール＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLE_04A );
+	FadeIn();
+	//Wait(30);
+	//SetVisual( BG_FOODCOURT_04A );
+	//CrossFade();
+	SetWindow();
+
+	SetMessage(UNIT_RIKAKO, -1, "？？？", "@v00060098「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0002「イチゴにパインに桃にチェリーにキウイに…@nその他こんだけ！」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@o030@v00050103@s0002「十分！」");	// ★★ドア越し
+
+	DelWindow();
+	FadeOut();
+
+	// ＜ＳＥ：足音＞
+	SEFadePlay(0,"L_Walk07R",NORMAL);
+	SEFadeOut(0,SLOWEST);
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	Wait(150);
+
+	//伊藤：これはどこのドア？
+	// (´-`)どーこーでーもー（略
+	// ＜ＳＥ：ドア開く＞
+	//SEPlay("L_Door10A");
+
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：駅前（夜）　あるいは星空＞
+	//----------------------------------------------------------------------------
+
+	// ＜ＳＥ：車の走る音＞
+	SEFadePlay(0, "L_Town01");
+	SetVisual( BG_SORA_03A );
+	FadeIn(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_RIKAKO, -1, "？？？", "@v00060099「やっと始まったね…仁」");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	Wait(100);
+	SEFadeOut(0, SLOWER);
+	FadeOut(SLOW);
+	DelVisual();
+	Wait(300);
+
+	LoadEvent(EVENT_02_01);
+end();

@@ -1,0 +1,240 @@
+// ●由飛02：憎みきれないろくでなし
+// 種類：通常イベント
+// 条件：第１クォーター、フロアを選択
+// 概要：ミス連発で周りを巻き込む由飛
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_FAMILLEF_01A );
+		BGMFadePlay(BGM_KISSATEN);
+		SEFadePlay(0, "L_Zattou04");
+		SEFadePlay(1, "L_Dish03", NORMAL, 30);
+		FadeIn();
+
+		SEPlay("L_Dish02");
+		SetStand(YUI_0101AW);
+		BowStand();
+
+		SetWindow();
+		SetMessage(UNIT_YUI, YUI_0101AW, "由飛", "@v01010019「お待たせしました。@nオレンジジュースと、レアチーズケーキです～」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160008「あの、俺、ブレンドとパンプキンケーキ@n頼んだはずだけど？」");
+		SetMessage(UNIT_YUI, YUI_0101UN, "由飛", "@v01010020「あら？」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160009「伝票、確認してもらえないかな？」");
+		SetMessage(UNIT_YUI, YUI_0101AS, "由飛", "@v01010021「あらぁ？」");
+
+		// ＜由飛、笑顔＞
+		SetStand(YUI_0101EG);
+		BowStand();
+
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010022「大変申し訳ございませんっ、@nこちらの手違いでした」");
+		// ＜由飛、笑顔＞
+
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160010「そうだよねぇ？@n俺、ちゃんとホットで頼んだはずだもん」");
+		SetMessage(UNIT_YUI, YUI_0101BS, "由飛", "@v01010023「でもせっかくですから、@nこちらのメニューも試してみませんか？」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160011「はい？」");
+		SetMessage(UNIT_YUI, YUI_0101BS, "由飛", "@v01010024「特にこちらのレアチーズケーキは、@n本日のお薦めとなっております。@nいかがですか？」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160012「いや、でも俺はパンプキンケーキが…」");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010025「もちろんそちらも用意させていただきます。@nでも本当に美味しいんですよ～、それ。@nわたし大好物なんです」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160013「そ、そうなの？」");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010026「レアチーズケーキのお代は頂きません。@nでも、今日召し上がって、気に入られたら、@nまた今度注文してくださいね？」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160014「そういうわけには…」");
+		SetMessage(UNIT_YUI, YUI_0101AW, "由飛", "@v01010027「………（にこにこ）」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160015「………」");
+		SetMessage(UNIT_YUI, YUI_0101AW, "由飛", "@v01010028「………（にっこり）」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160016「わかったよ…いただきます」");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010029「ありがとうございます～@nきっとお気に召すと信じてます。@nそれでは急いでパンプキンケーキの方も…」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160017「あ、そっちいいから」");
+		SetMessage(UNIT_YUI, YUI_0101NO, "由飛", "@v01010030「え？　でも…」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160018「…そんなに食べられないって」");
+
+		BGMFadeOut(SLOWEST);
+
+		SetMessage(UNIT_YUI, YUI_0101UN, "由飛", "@v01010031「………」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160019「………」");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010032「それも…そうですねぇ。ふふっ」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160020「あ、あはは…」");
+		SetMessage(UNIT_YUI, YUI_0101UN, "由飛", "@v01010033「どうしましょう、困ったな～…@n絶対にレアチーズケーキ美味しいのに」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160021「いや、だからもういいから。@nちゃんとお代も払うから」");
+
+		BGMFadePlay(BGM_YUI, SLOWEST);
+
+		SetMessage(UNIT_YUI, YUI_0101MU, "由飛", "@v01010034「でもっ！@nパンプキンケーキだって負けず劣らず美味しいんですよ？@nいいんですかそれで！？」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160022「あ、あの…」");
+		SetMessage(UNIT_YUI, YUI_0101UN, "由飛", "@v01010035「あ、でも…パンプキンをお出ししたら、@nこれ、どうなっちゃうんだろう…」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160023「いや、だからさ…@nパンプキンは今度ってことで」");
+		SetMessage(UNIT_YUI, YUI_0101AW, "由飛", "@v01010036「今度、来てくれます？@nパンプキンの方も、お試しいただけます？」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160024「ええ、きっと」");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010037「約束ですよっ！@n絶対、絶対来てくださいね！」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160025「うん、えっと…風美さん？」");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010038「由飛です。@nお客様は？」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160026「え？　俺？@nえっと…深沢だけど」");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010039「深沢様、次のご来店を楽しみにしててくださいね？」");
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160027「あ、ああ…楽しみにしてる。@nとりあえず今日は、このチーズケーキ、かな？」");
+
+		SetStand(YUI_0101AW);
+		BowStand();
+
+		SetMessage(UNIT_YUI, YUI_0101AW, "由飛", "@v01010040「はいっ@nありがとうございました～」");
+		DelWindow();
+		SEFadeOut(0);
+		SEFadeOut(1);
+		FadeOut();
+		DelStand();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_FAMILLEC_01A );
+		SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+		SEFadePlay(1, "L_Dish03", NORMAL, 20);
+		SEFadePlay(2, "L_Factory01", NORMAL, 50);
+		FadeIn();
+
+		SetWindow();
+		SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v01040002「………」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+		SetStand(YUI_0101BS, CENTER, MOVE_LEFT);
+
+		SetMessage(UNIT_YUI, YUI_0101BS, "由飛", "@v01010041「お願いします。@nダージリンティー２つと、フルーツロールケーキ、@nいちごのタルトです～」");
+		SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v01040003「それ違う」");
+		SetMessage(UNIT_YUI, YUI_0101NO, "由飛", "@v01010042「はい？」");
+		SetMessage(UNIT_ETC, -1, "", "何の疑惑も持たず、にこにこと仕事をこなす由飛くんと、@n今にも頭から何かが噴き出しそうなかすりさん…");
+		SetMessage(UNIT_ETC, -1, "", "そして俺はと言えば…");
+		SetMessage(UNIT_ETC, -1, "", "二人の間の緩衝材の役割を担いつつ、@nオーダーの飲み物を作る。");
+		SetMessage(UNIT_ETC, -1, "", "…今の場合は、@n正解は『アールグレイ２つ』な訳だが。");
+
+		SetMessage(UNIT_KASURI, KASURI_0201IK, "かすり", "@v01040004「今のお客様は納得してくれたからいいものの、@nもし２つとも持って来いって言われたら、@nどうするつもりよ？」");
+		SetMessage(UNIT_YUI, YUI_0101NO, "由飛", "@v01010043「もちろんお出しします。@nわたしのミスですから、@nわたしのお給料から引いて…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そういうこと認めないの、ウチは」");
+		SetMessage(UNIT_ETC, -1, "", "従業員の失敗をいちいち償わせてたら、@n信頼関係もなにもあったもんじゃないし…");
+		SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v01040005「うわ経営者かっこい～@n@t0305@h0201MJ『責任取るのが店長の仕事だ』@t0545@h0202NYって感じだね～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、そう？@nそんなにスカした感じに見える？」");
+		SetMessage(UNIT_YUI, YUI_0101KG, "由飛", "@v01010044「店長………わたしのために」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「い、いや、そんな…」");
+		SetMessage(UNIT_ETC, -1, "", "そうやって真剣な表情でうっとりされたら、@n緊張のあまり注意もできん…");
+		SetMessage(UNIT_ETC, -1, "", "そういえば、さっきのお客様も、@n由飛くんの勢いに飲まれてたような…");
+		SetMessage(UNIT_KASURI, KASURI_0201MJ, "かすり", "@v01040006「とりあえず、注文を取る時のコツ。@nお客様が頼んだメニューを一度唱和すること」");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010045「なるほど…それなら完璧ですね！」");
+		SetMessage(UNIT_ETC, -1, "", "完璧…になってくれるといいけど。");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010046「またひとつスキルが上がりました。@nかすりさん、ありがとうございますっ」");
+		SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v01040007「…お礼はいいから。@nはい、『フルーツタルト』に『いちごのババロア』」");
+
+		SEPlay("L_Dish02");
+
+		SetMessage(UNIT_ETC, -1, "", "…惜しかったね。@n『フルーツ』と『いちご』は合ってたのにね。");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010047「了解しましたっ@nそれでは、行って参ります～」");
+
+		SELoopPlay(3, "L_Walk03F");
+		SEFadeOut(3, SLOWEST);
+		DelStand(CENTER, MOVE_LEFT);
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+		SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v01040008「………」");
+		SetMessage(UNIT_ETC, -1, "", "由飛くんは、軽やかな足取りで、@nフロアへと駆け出していった。");
+		SetMessage(UNIT_ETC, -1, "", "…今日、あの駆け足のせいで、@n何度お茶をこぼしたか覚えていないらしい。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…さっ、仕事仕事」");
+
+		SetStand(KASURI_0201NO, CENTER, MOVE_LEFT);
+
+		SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v01040009「仁くん…@nちょっと相談があるんだけど、いいかな？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「勤務中に私語は好ましくないなぁ」");
+		SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v01040010「いえ、業務上の相談」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…我慢して。もう少しの間だけ。@n俺がなんとかしますから」");
+		SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v01040011「さすが仁くんの秘蔵っ子…と言ったところ？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「すいませんすいませんすいません…」");
+		SetMessage(UNIT_ETC, -1, "", "由飛くんがフロアで大奮闘しているのは、@n誰しも認めるところ。");
+		SetMessage(UNIT_ETC, -1, "", "けれど、ここ数日で、オーダーミス１２回、@n食べ物や飲み物を落とすこと８回、@nその他小さなミスを上げると…３桁？");
+		SetMessage(UNIT_ETC, -1, "", "彼女は、何というか、感覚でやってるところがあって、@n最終的なチェックが甘い。それもかなり…");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「で、でもほら！@n将来、必ず彼女が必要になるから！　それに今だって、@nお客様から“そんなに”苦情来てないし…」");
+		SetMessage(UNIT_ETC, -1, "", "明るく前向きで、くよくよしない性格のおかげで、@nさっきのように『何となく』ミスを帳消しにしてしまう。");
+		SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v01040012「天才の家系かもね…いい意味でも悪い意味でも」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「何て言うか、相手を和ませるって言うか、@nそういう雰囲気を持ってるんだ…と思う」");
+		SetMessage(UNIT_ETC, -1, "", "そうとしか説明がつかない。");
+		SetMessage(UNIT_ETC, -1, "", "端から見ると、適当ぶちかましているようにしか見えない@n由飛くんの接客だけど、お客様にそれほど不評じゃない。");
+		SetMessage(UNIT_ETC, -1, "", "まぁ、皆帰っていく時に、一様に苦笑を浮かべてるのが@n気になると言えばそうなんだけど…");
+		SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v01040013「このまま使い物にならなかったとしても、@n仁くんが責任取るのよね？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「責任って………どうやって？」");
+		SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v01040014「リカちゃんとはちゃんと話しなさい。@n場合によっては慰謝料も…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「責任ってどうやって！？」");
+		DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_FAMILLEF_01A );
+		DelStand();
+		SEFadeOut(2);
+		SEFade(0, NORMAL, 100);
+		SEFade(1, NORMAL, 30);
+		CrossFade();
+		SetStand(YUI_0101EG);
+
+		SetWindow();
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010048「ご注文繰り返させて頂きます！@nアイスティーとブレンド、それぞれ１つずつですね？」");
+		SetMessage(UNIT_MALE, -1, "お客様４", "@v01160028「いや、俺アップルティーだけど？」");
+		DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_FAMILLEC_01A );
+		DelStand();
+		SEFade(0, NORMAL, 50);
+		SEFade(1, NORMAL, 20);
+		SEFadePlay(2, "L_Factory01", NORMAL, 50);
+		CrossFade();
+
+		SetWindow();
+		SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v01040015「………」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「い、いやほら！@n早速効果が！」");
+		DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_FAMILLEF_01A );
+		SetStand(YUI_0101AW);
+		SEFadeOut(2);
+		SEFade(0, NORMAL, 100);
+		SEFade(1, NORMAL, 30);
+		CrossFade();
+
+		SetWindow();
+		SetMessage(UNIT_YUI, YUI_0101AW, "由飛", "@v01010049「でもせっかくですから、@nアイスティーも試してみませんか？」");
+
+		// ＜由飛、満面の笑顔＞
+		SetMessage(UNIT_MALE, -1, "お客様４", "@v01160029「へ？」");
+
+		ShakeScreen(8);
+
+		SetMessage(UNIT_ETC, -1, "", "今なら修正は利くんだよ～！");
+		HideMenu();
+		HideDay();
+		DelWindow();
+
+		Wait(50);
+		BGMFadeOut(SLOWER);
+		SEFadeOut(0, SLOWER);
+		SEFadeOut(1, SLOWER);
+		FilterFadeOut(SLOW, FADEFILTER_CIRCLE);
+		DelStand();
+		DelVisual();
+
+		Wait(300);
+
+		NextEvent();
+
+		LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

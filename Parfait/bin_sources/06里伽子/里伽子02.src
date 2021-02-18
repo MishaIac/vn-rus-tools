@@ -1,0 +1,176 @@
+// ●里伽子02：虫除け
+// 種類：通常イベント
+// 条件：第２クォーター、店外（大学）を選択
+// 概要：大学では公認のふりをする２人
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：大学の教室（昼）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_DAIGAKUK_01A );
+	SEFadePlay(0, "L_Zattou01");
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160001「いいじゃん３日くらい。@nちょっとした息抜きだって」");
+
+	// ＜里伽子、眼鏡つきの立ち絵＞
+
+	SetStand(RIKAKO_0102MG2);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MG2, "里伽子", "@v06060030「息抜きはともかく、なんで堀部君たちと？」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160002「そりゃ、夏海と一緒に行きたいからに@n決まってるだろ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MG2, "里伽子", "@v06060031「そっちの理由はそれとして、@nで、こっちが承諾する理由はどこにあるの？」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160003「そういうこと言わないでさぁ。@n同じゼミのよしみじゃん」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MG2, "里伽子", "@v06060032「共同研究してる訳じゃなし。理由としては弱いわね」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160004「そこを何とかさぁ。@n絶対楽しいって」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101MG2, "里伽子", "@v06060033「そこよ」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160005「な、何が？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101MG2, "里伽子", "@v06060034「あたしが君たちと旅行に行ったところで、@n何かが得られるとは到底思わないんだけど」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160006「う…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101MG2, "里伽子", "@v06060035「で、結局、旅行先でもそういう態度でいるから、@nお互い、気まずくなるのが見えてるんだけど…@nそれでも、あたしと行きたいわけ？」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160007「そ、そんなの、行ってみなけりゃわからないって」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101MG2, "里伽子", "@v06060036「つまり、さっき『絶対楽しい』と言ったことは撤回？」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160008「う…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101MG2, "里伽子", "@v06060037「となると、リスクが高いわね。@nそういうわけで、遠慮させてもらうわ。@nごめんなさい」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160009「ま、待てよ！@nなあ、今フリーなんだろ？@nだったらさぁ…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MG2, "里伽子", "@v06060038「そんなこと、誰が言ったのよ？」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160010「いや、だって…@n高村、大学やめちまったし」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MG2, "里伽子", "@v06060039「………」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160011「俺、前からさ、夏海のこと…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MG2, "里伽子", "@v06060040「誤解しないでくれる？」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160012「え？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MG2, "里伽子", "@v06060041「仁は大学やめてない。@n休学するだけよ」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160013「け、けど…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MG2, "里伽子", "@v06060042「それにあたしたち、@n別に切れちゃいないし」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160014「そう、なの？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MG2, "里伽子", "@v06060043「今日も仁の部屋から直接大学来たの。@nおわかり？」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160015「そ、そんな…嘘だろ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「里伽子、その…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MG, "里伽子", "@v06060044「あ…」");
+
+	DelStand(CENTER, MOVE_RIGHT);
+	SEPlay("L_Switch02");
+
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160016「げ…」");
+
+	// ＜里伽子、一瞬で眼鏡外す＞
+	SetStand(RIKAKO_0102MU2, CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「その…久しぶりだな、堀部。@nみんな元気か？」");
+	SetMessage(UNIT_MALE, -1, "男子学生", "@v06160017「え？　あ、ああ…なんとかな」");
+	SetMessage(UNIT_ETC, -1, "", "お互い、かなり気まずい空気が漂う。");
+	SetMessage(UNIT_ETC, -1, "", "昔からこいつは、@n何故だか俺を避けてるように見えたんだけど…");
+	SetMessage(UNIT_ETC, -1, "", "そういう訳だったのね。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101BS, "里伽子", "@v06060045「ちょうど良かった。@n今日はもう講義ないから一緒に帰ろうよ。@n晩ごはん作ってあげる」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、お前は…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101BS, "里伽子", "@v06060046「行くよ仁。@nじゃ、そういうことで、堀部君」");
+
+	SELoopPlay(1,"L_Walk04");
+	SEFadeOut(1,SLOWEST);
+	DelStand(CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、お、おい…」");
+	SetMessage(UNIT_ETC, -1, "", "『俺の部屋になんて、もう半年も来てないだろ』");
+	SetMessage(UNIT_ETC, -1, "", "などというツッコミは許さないタイミングで、@n里伽子はすたすたとこの場を離れていく。");
+	DelWindow();
+
+	Wait(50);
+	SEFadeOut(0, SLOWER);
+	CurtainFadeOut();
+	Wait(150);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：大学廊下（もしくは汎用街中でも可）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_DAIGAKU_01A );
+	BGMFadePlay(BGM_RIKAKO,SLOW);
+	CurtainFadeIn();
+
+	SetStand(RIKAKO_0102MU);
+
+	SetWindow();
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MU, "里伽子", "@v06060047「感謝しないわよ。@n仁が大学やめなきゃ、こんな面倒ごと、@n起こらなかったんだから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う～ん…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102AK, "里伽子", "@v06060048「どういう訳かわかんないけど、@n最近、あの手の誘いが多くって」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「てことは、俺ってよっぽど恨まれてたんだろうなぁ」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101IK, "里伽子", "@v06060049「ほんっと、恨むわよ、仁」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前にそれを言われる筋合いだけはねぇなぁ！」");
+
+	SetMessage(UNIT_ETC, -1, "", "俺が在学中のとき、@n里伽子と俺は、一応、公認ってことになっていた。");
+	SetMessage(UNIT_ETC, -1, "", "実態は…全然そうじゃなかったんだけど。");
+	SetMessage(UNIT_ETC, -1, "", "ところがこいつは、その噂を否定するどころか、@nむしろ積極的に広め、虫除けとして有効利用していた。");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺だって、あいつらと同じ扱いなのに」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101BS, "里伽子", "@v06060050「そんなことないよ。仁は特別。@n一番仲のいい友達だってば」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そりゃ、どうも」");
+	SetMessage(UNIT_ETC, -1, "", "まぁ、確かに里伽子の友達なんて、@n数えるほどもいない訳だが。");
+	SetMessage(UNIT_ETC, -1, "", "もともとが、地に足の着いたというか、地味というか、@n勤勉で無趣味な大学生のビジネスモデルを@n体現していたというか。");
+	SetMessage(UNIT_ETC, -1, "", "ホント、なんで友達になれたんだろうな、俺。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v06060051「で？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「で、とは？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v06060052「今日、営業中だよね？　サボり？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「休憩中」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102NO, "里伽子", "@v06060053「いいの？　店長がお店抜け出して、@nこんなとこまで来て」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前のおかげで、その程度の余裕はできた」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MJ, "里伽子", "@v06060054「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「姉さんに、色々と助言してくれたろ？@nサンキューな」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102NO, "里伽子", "@v06060055「…はて？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「覚えがないって言うつもりか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v06060056「ま、ね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうか…」");
+
+	SetMessage(UNIT_ETC, -1, "", "また、しらばっくれるつもりか。");
+	SetMessage(UNIT_ETC, -1, "", "俺の窮状を、どこからか調べてきて、@nついでに対応策まで考えて、@nそれから、姉さんをそそのかした。");
+	SetMessage(UNIT_ETC, -1, "", "絶対に、裏で糸を引いてる。@nで、それがあからさまなのに、@n絶対に自分が関わってることをバラさない。");
+	SetMessage(UNIT_ETC, -1, "", "ウェイトレスにして参謀。@p@n真の支配者にして、時給９５０円のアルバイト。");
+	SetMessage(UNIT_ETC, -1, "", "それが、夏海里伽子という、俺のもと同級生の、@n半年前までの姿だった。");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま、覚えがなくてもいいや。@nとにかく俺は…すごく感謝してる」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KT, "里伽子", "@v06060057「それを言いに、わざわざここに？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まぁ、そういうことになる」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v06060058「そっか…それで、会いに来て、くれたんだ。@n@t0446@h0101BSふうん…ふぅぅん…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "あまり嬉しそうにされても困る。");
+	SetMessage(UNIT_ETC, -1, "", "だって、また俺が誤解したら…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v06060059「でも無駄足だったわね。@n@t0203@h0102AK当方、そのような美談には、@n一切心当たりがございません」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そりゃ、ごめん」");
+	SetMessage(UNIT_ETC, -1, "", "なんて、似合わない茶化し方するくらいに、@n嬉しそうにされたら…困るんだってば。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101BS, "里伽子", "@v06060060「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	FadeOut(NORMAL,1);
+	DelStand();
+
+	SetMessage(UNIT_ETC, -1, "", "それから里伽子とは、@n別に何を喋るでもなく。");
+	DelWindow();
+
+	Wait(100);
+	SetVisual(BG_EKIMAE_01A);
+	FadeIn(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "休憩中に抜け出してきた俺を、駅まで見送って、@nそのまま、いつもの調子で改札口から踵を返した。");
+	SetMessage(UNIT_ETC, -1, "", "だって、あいつは電車通学じゃなくて、@n大学の正門前から出てるバス通学だから。");
+	SetMessage(UNIT_ETC, -1, "", "俺の無駄足を笑った里伽子の、@n往復３０分の無駄足。");
+	SetMessage(UNIT_ETC, -1, "", "それが、今日のあいつの機嫌を示していた。");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	Wait(50);
+	BGMFadeOut(SLOWER);
+	FadeOut(SLOWER);
+	DelVisual();
+
+	Wait(200);
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

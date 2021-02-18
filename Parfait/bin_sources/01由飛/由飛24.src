@@ -1,0 +1,170 @@
+// ●由飛24：あとひとつ
+// 種類：重要イベント
+// 条件：由飛ＴＲＵＥルートで、由飛23の直後に発生
+// 概要：学科試験終了。順風満帆。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+		DayEffect();
+		ShowMenu();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：大学のキャンパス＞
+	// ＜由飛の音大のキャンパスですが、仁と里伽子の大学の背景でも可＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_DAIGAKUY_01A );
+		SEFadePlay(0, "L_Zattou01", NORMAL, 50);
+		SEFadePlay(1, "L_Zattou02", NORMAL, 50);
+		FadeIn();
+
+		// ＜ＳＥ：ざわめき＞
+		SEPlay("L_Dash01");
+
+		SetWindow();
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011180「仁～！」");	// ★★遠くから
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「お～！」");
+		SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01011181「仁ぃぃぃ～！」");	// ★★だんだん近く
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「お、おお…って、止まれ！」");
+		DelWindow();
+		
+		// ＜ＳＥ：どんっ＞
+		BGMPlay(BGM_YUI);
+		SEPlay("L_Fall01");
+		SEPlay("L_Punch06");
+		SEPlay("L_Nuno04");
+		ShakeScreen(16);
+
+		SetWindow();
+		SetMessage(UNIT_YUI, YUI_A301EG, "由飛", "@v01011182「ど～ん！」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「擬音通りにぶつかるな～！」");
+		SetMessage(UNIT_ETC, -1, "", "大学のキャンパスのど真ん中…");
+		SetMessage(UNIT_ETC, -1, "", "衆人環視の中、由飛の奴、@n思いっきり抱きついてきやがった。");
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011183「う～ん、この胸板のために生きている～@nすりすりすり～」");
+		SetMessage(UNIT_ETC, -1, "", "ヤな生き甲斐だなおい…");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「離れろ由飛。@nここをどこだと思ってる？@n俺はともかく、お前これからも通うだろうが」");
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011184「大丈夫だよ～@nもうみんな、わたしのことなんて忘れてるって」");
+		SetMessage(UNIT_ETC, -1, "", "微妙に痛いことを言いつつ、@nそれでも由飛は、俺の胸から、やっと離れた。");
+
+		SetStand(YUI_0301NO);
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「で？」");
+		SetMessage(UNIT_YUI, YUI_0301UN, "由飛", "@v01011185「で、とは？」");
+		DelWindow();
+
+		// ＜ＳＥ：ハリセンの音（バシッ）＞
+		ShakeScreen(8);
+		SEPlay("L_Punch03");
+		SetStand(YUI_0301OD, CENTER, MOVE_STOP, 0, 0);
+		BowStand(CENTER, 1);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「面白くね～んだよ」");
+		SetMessage(UNIT_YUI, YUI_0301OD, "由飛", "@v01011186「いたぁっ！？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「試験は？@nあるはずのない昼休み使ってここ来てんだから、@nその辺ハッキリさせとけ！」");
+
+		FadeOut();
+
+		SetMessage(UNIT_ETC, -1, "", "ブリックモールから大和音大まで、電車を使って２５分。");
+		SetMessage(UNIT_ETC, -1, "", "だから、ここにいられる時間は、@n多く見積もっても１０分が限界。");
+		SetMessage(UNIT_ETC, -1, "", "…そうまでして、由飛の試験結果を聞きに来るなんて、@nなんて弱みを見せまくりなんだろう、俺って。");
+
+		SetStand(YUI_0301EG);
+		FadeIn();
+
+		SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01011187「だ～いじょうぶだいじょぶ！@n今回はバッチリ回答欄が埋まったよ～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「埋めるだけなら@n鉛筆のメカニズムを知ってるだけでいいんだよ」");
+		SetMessage(UNIT_YUI, YUI_0301BS, "由飛", "@v01011188「本気で大丈夫だってば～。@n仁が作ってくれた練習問題とおんなじのが出たよ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そうか…なら大丈夫かな」");
+		SetMessage(UNIT_ETC, -1, "", "真理子ちゃん…だっけ？@nＡ定食の見返りに教わった試験傾向は正確だったらしい。");
+		SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01011189「ん～…終わった～！」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「学科は…な。@nこれからが本番だ」");
+
+		SetStand(YUI_0302KN_);
+		BowStand();
+
+		SetMessage(UNIT_YUI, YUI_0302KN_, "由飛", "@v01011190「む～…」");
+		SetMessage(UNIT_ETC, -1, "", "全身が開放感に満ちあふれていた由飛が、@n一瞬にしてしぼんだ。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「まぁ、でも、今日くらいは羽を伸ばしてもいいぞ」");
+
+		SetStand(YUI_0301EG);
+		JumpStand();
+
+		SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01011191「話せる～♪」");
+		SetMessage(UNIT_ETC, -1, "", "一気に回復した。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「俺は付き合えんけど」");
+
+		SetStand(YUI_0301MU);
+		BowStand();
+
+		SetMessage(UNIT_YUI, YUI_0301MU, "由飛", "@v01011192「わかってない～！」");
+		SetMessage(UNIT_ETC, -1, "", "浮き沈みの激しい奴だな…");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「んなこと言ったって、俺は今日も仕事なの！」");
+		SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01011193「じゃ、じゃあ…わたしも今日はシフト入るよ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「働くくらいだったら寝ろ。@nここ一週間は寝ずに頑張ったんだから」");
+		SetMessage(UNIT_YUI, YUI_0301HA, "由飛", "@v01011194「それは仁も一緒じゃない…@nわたしより、仁の体が心配だよ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「俺は大丈夫、まだ若いんだから」");
+		SetMessage(UNIT_YUI, YUI_0302BS, "由飛", "@v01011195「わたしの方が一つ若いよ？@nだから、仁こそ休んで。@nで、わたしが代わりに働くよ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「じゃあ、２月分の帳簿付け頼めるか？」");
+		SetMessage(UNIT_YUI, YUI_0302OD2, "由飛", "@v01011196「え…？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ついでに言うと、各種振り込み手続きと、@n材料の発注量決めと、実際の発注手続き。@nあ、あと備品の買い出しもあったんだ」");
+		SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01011197「………」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、忘れてた。週末にはブリックモールの役員が@n視察に来るから、そっちの応対もあるんだよな。@nあ、大丈夫大丈夫、半分は姉さんがやってくれるから」");
+		SetMessage(UNIT_YUI, YUI_0301AS, "由飛", "@v01011198「………」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「さて、それらの仕事を、@n軽食を担当しつつ、適当にこなして欲しい訳だが…」");
+		SetMessage(UNIT_YUI, YUI_0301IK, "由飛", "@v01011199「仁っ…！@nわたし、わたしっ…あなたの役に立ちたいの！@n@t0613@h0301IK2これは嘘偽りのない本当の気持ちだよ！」");
+		SetMessage(UNIT_ETC, -1, "", "声が甲高い。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…で？」");
+		SetMessage(UNIT_YUI, YUI_0301HA, "由飛", "@v01011200「…でもね、人間にはわきまえるべき分ってものもあるの。@nこれも嘘偽りのない事実なのよね？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「だから軽はずみに俺の代わりとか言うんじゃないの。@n由飛は由飛らしく、食って寝て歌って弾いてろ」");
+		SetMessage(UNIT_ETC, -1, "", "などと言うと、ただのぐうたら学生に聞こえるが。");
+		SetMessage(UNIT_YUI, YUI_0301OT, "由飛", "@v01011201「…ごめんね」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「わかればよろしい。@nで、さ。そういうわけで、@n定休日までちょっと顔出せないかも」");
+		SetMessage(UNIT_ETC, -1, "", "何しろここ一週間…@nいつも部屋に持って帰ってこなしてた仕事、@n全然やってなかったからなぁ。");
+		SetMessage(UNIT_ETC, -1, "", "そろそろ片づけないと、マジでファミーユの危機だ。");
+		SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01011202「…仕方ないよ。仁は、ボランティアで@nわたしの面倒見てくれてたんだし」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「まぁ、確かに、@n特別養護老人ホームで働いてるみたいだったけどな。@nこの一週間は」");
+		SetMessage(UNIT_YUI, YUI_0301MU, "由飛", "@v01011203「そうゆう微妙な喩えはやめてよ～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「とにかく！@n俺がいないからって、ピアノさぼるなよ！@nここで頑張らないと、今までの努力も水の泡だからな！」");
+		SetMessage(UNIT_ETC, -1, "", "いくら学科が成績良くても、@n実技がダメなら容赦なく落ちるのが、@n音楽大学ってところだ。");
+		SetMessage(UNIT_YUI, YUI_0301BS, "由飛", "@v01011204「うん、わかってる。@n今度こそ、大丈夫だよ」");
+		SetMessage(UNIT_ETC, -1, "", "でも、由飛は、もうピアノが弾ける。");
+		SetMessage(UNIT_ETC, -1, "", "去年のスランプを脱した今となっては、@n主席入学だった才能を、すぐに取り戻すはずだ。");
+		SetMessage(UNIT_ETC, -1, "", "だから…心配はいらない。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…くそ、もう戻らないといけない時間だ。@nそれじゃ由飛、悪いけど…」");
+		SetMessage(UNIT_YUI, YUI_0301BS, "由飛", "@v01011205「悪いのはわたしの方だよ。@n来てくれて、本当にありがとう…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「夜、電話する。@nじゃあな！」");
+		SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01011206「うん、またね～！」");
+		DelWindow();
+
+		BGMFadeOut(SLOWEST);
+		SEFadeOut(0, SLOWEST);
+		SEFadeOut(1, SLOWEST);
+		SEPlay("L_Dash03");
+		CurtainFadeOut(NORMAL);
+		DelStand();
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "大きく手を振る由飛を構内に残して、@n俺は、駅まで…やべっ、全力疾走でないと間に合わん。");
+		SetMessage(UNIT_ETC, -1, "", "………");
+		DelWindow();
+
+		Wait(100);
+		FadeIn(SLOW);
+
+		SetWindow();
+		SetMessage(UNIT_YUI, -1, "由飛", "@v01011207@m00「大丈夫………だいじょぶ………っ」");
+		HideMenu();
+		DelWindow();
+
+		Wait(100);
+
+		FadeOut(SLOWER);
+		DelVisual();
+
+		Wait(200);
+
+		LoadEvent(EVENT_YUI_25);
+end();

@@ -1,0 +1,973 @@
+// ●明日香18：お泊まり
+// 種類：重要イベント
+// 条件：明日香ルート。
+//		 明日香17の直後に発生
+// 概要：仁のマンションに泊まりに来る明日香。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア（消灯）＞
+	//----------------------------------------------------------------------------
+	SetVisual( BG_FAMILLEF_04A );
+	BGMPlay(BGM_NICHIJOU1);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0401NO, "かすり", "@v03040052「行くよ、明日香ちゃん」");
+
+	// ＜ＳＥ：更衣室のドア開閉＞
+
+	SetMessage(UNIT_ASUKA, ASUKA_0402OD, "明日香", "@v03031148「あ、ちょっと待って～」");
+	SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v03010033「それじゃ仁、お疲れさま～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ああ、お疲れ～。@n気をつけてな～」");
+	SetMessage(UNIT_ETC, -1, "", "火曜日…");
+	SetMessage(UNIT_ETC, -1, "", "今日もファミーユの営業はつつがなく終了し、@nブリックモールは、もうすぐ静寂に包まれる。");
+	SetMessage(UNIT_ETC, -1, "", "俺は、従業員一同を見送った後、@n簡単に掃除をして、後は適当に帳簿を整理…");
+
+	BGMFadeOut(SLOWEST);
+	SetStand(EMA_0301BS, CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_EMA, EMA_0301BS, "恵麻", "@v03050053「ね、仁くん、ごはん食べに行かない？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…へ？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402OD, "明日香", "@v03031149「っ！？」");
+	SetMessage(UNIT_EMA, EMA_0301BS, "恵麻", "@v03050054「明日、お休みだし。@n最近、月例会開いてないしさぁ」");
+
+	SetStand(YUI_0302OD2, RIGHT, MOVE_RIGHT, FAST, 1);
+	MoveStand(CENTER, LEFT);
+
+	SetMessage(UNIT_YUI, YUI_0302OD2, "由飛", "@v03010034「月例会って？」");
+	SetMessage(UNIT_KASURI, KASURI_0402NY, "かすり", "@v03040053「ブラコンとシスコンの狂宴…」");
+	SetMessage(UNIT_YUI, YUI_0302SW, "由飛", "@v03010035「な、なんか触れてはいけないことっぽい！？」");
+	SetMessage(UNIT_EMA, EMA_0301KS, "恵麻", "@v03050055「何言ってんのよ～。@nわたしと仁くんは、健全なお付き合いなんだからね？」");
+	SetMessage(UNIT_KASURI, KASURI_0402AS, "かすり", "@v03040054「いや、お付き合いと言ってる時点で@n姉としてダメな気がするんですけど…」");
+	SetMessage(UNIT_YUI, YUI_0301KG, "由飛", "@v03010036「でも面白そ～。@t0290@h0302EG@nねえねえ恵麻さん。わたしも参加していい？@nちゃんと健全にしてますから～」");
+	SetMessage(UNIT_EMA, EMA_0301SN, "恵麻", "@v03050056「なんか色々引っかかる物言いだけど…@t0451@k");
+
+	BGMFadePlay(BGM_NICHIJOU3, SLOWEST);
+
+	AddMessage("@h0301EG@nそれじゃ、みんなでごはん食べに行かない？@nついでに、ちょっと飲もうか？」");
+
+	SetMessage(UNIT_ASUKA, ASUKA_0402NR, "明日香", "@v03031150「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お、おい…」");
+	SetMessage(UNIT_KASURI, KASURI_0402EG, "かすり", "@v03040055「いいですねぇ！　この後予定ないし…@t0365@h0401OT寂し～」");
+	SetMessage(UNIT_YUI, YUI_0301MU, "由飛", "@v03010037「喜ぶか落ち込むか、どっちかにしてよかすりさん」");
+	SetMessage(UNIT_EMA, EMA_0301EG, "恵麻", "@v03050057「じゃ、ここは奮発してわたしがおごっちゃおう！@t0470@h0301KS@n…最初の一杯だけ」");
+	SetMessage(UNIT_KASURI, KASURI_0402TY, "かすり", "@v03040056「わ～お大尽」");
+	// ＜かすり、えらく投げやりな言い方で＞
+	// ＜お大尽（おだいじん）＞
+
+	SetMessage(UNIT_YUI, YUI_0302BS, "由飛", "@v03010038「じゃ、みんなで手伝って、さっさと終わらせちゃおうよ！@n仁の残業」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402NR, "明日香", "@v03031151「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だ、だから、掃除だけじゃなくて、帳簿付けも…」");
+	SetMessage(UNIT_EMA, EMA_0301MJ, "恵麻", "@v03050058「そんなの持って帰って明日やればいいじゃない。@nなんなら、わたしがやっとこうか？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え…いいの？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0401IK, "明日香", "@v03031152「っ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、違った！@nだ、だから俺は…」");
+
+	DelStand(LEFT, MOVE_LEFT, FAST, 1);
+	DelStand(RIGHT, MOVE_RIGHT);
+	SetStand(ASUKA_0402UN2);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0402UN2, "明日香", "@v03031153「ごめん、わたし行けない…」");
+	SetMessage(UNIT_YUI, YUI_0302OD2, "由飛", "@v03010039「明日香ちゃん？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402UN2, "明日香", "@v03031154「お酒飲めないもん…」");
+
+	DelStand(CENTER, MOVE_RIGHT);
+	SetStand(EMA_0301KS, CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_EMA, EMA_0301KS, "恵麻", "@v03050059「あ…ごめんね。@nそれじゃ、お酒抜きにしようか？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402UN2, "明日香", "@v03031155「い～よ、みんなは楽しんでくれば。@nでもわたしは行かないの。@n明日も授業あるし」");
+
+	SetStand(YUI_0302KG, RIGHT, MOVE_RIGHT, FAST, 1);
+	MoveStand(CENTER, LEFT);
+
+	SetMessage(UNIT_YUI, YUI_0302KG, "由飛", "@v03010040「あれ？　先週から春休みって言ってなかったっけ？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402UN2, "明日香", "@v03031156@s0002「なんでそんなど～でもいいこと覚えてるかなぁ」");
+	// ＜明日香小声で＞
+
+	SetMessage(UNIT_KASURI, KASURI_0402EG2, "かすり", "@v03040057「休みだったらちょっと付き合わない？@nどうせならみんな揃った方が楽しいし…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、だから俺が揃うなどとは…」");
+	SetMessage(UNIT_EMA, EMA_0301EG, "恵麻", "@v03050060「そうだ、駅ビルの地下に新しくできた、@nオムレツ屋さんにしようか？@n仁くんの後学のためにも」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「オ…オムレツっ！？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0401IK, "明日香", "@v03031157「～～～っ！！！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_KASURI, KASURI_0402BS, "かすり", "@v03040058「ん～…ちょっと晩ごはんには軽そうだけど、@nま、いっか」");
+	SetMessage(UNIT_YUI, YUI_0301AW, "由飛", "@v03010041「仁の無駄に熱い講釈も聞けそうだしね～」");
+	SetMessage(UNIT_EMA, EMA_0301BS, "恵麻", "@v03050061「明日香ちゃん、やっぱりダメかな？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402IK2, "明日香", "@v03031158「…（わなわな）」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あ、あ…明日香ちゃ…」");
+
+	DelStand(LEFT, MOVE_LEFT, FAST, 1);
+	DelStand(RIGHT, MOVE_RIGHT);
+	SetStand(ASUKA_0402IK);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0402IK, "明日香", "@v03031159@s0004「お疲れさまっ！！！」");
+
+	DelStand();
+	SEPlay("L_Punch04");
+	ShakeScreen(24);
+
+	SetMessage(UNIT_ETC, -1, "", "@s0004ずんっ");
+
+	ShakeScreen(6, SLOW);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「～～～っっっ！！！」");
+	DelWindow();
+
+	// ＜ＳＥ：ドアベル＞
+	SetVisual( BG_FAMILLEE_04A );
+	CrossFade();
+	SEPlay("L_Door05A");
+	SEPlay("L_Bell02");
+	BGMFadeOut(SLOWER);
+
+	SetWindow();
+	SetMessage(UNIT_YUI, YUI_0302OD, "由飛", "@v03010042「あ、明日香ちゃん…？」");
+	SetMessage(UNIT_KASURI, KASURI_0402OD, "かすり", "@v03040059「どうしたんだろ、あのコ…？」");
+	SetMessage(UNIT_EMA, EMA_0301AS, "恵麻", "@v03050062「通知表でも悪かったのかしら…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あはは…」");
+	DelWindow();
+
+	// ＜画面暗転＞
+	FadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "俺としては、笑うしかなかった。");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんに踏まれた跡の残った靴をさすりながら。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(200);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：路地（夜）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_ROJI_03A );
+	SEFadePlay(0, "L_Town01", SLOWER, 70);
+	SEFadePlay(1, "L_Walk01", SLOWER);
+	SEFadePlay(2, "L_Walk02", SLOWER);
+	CurtainFadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃん」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402IK2, "明日香", "@v03031160「………」");
+	SetMessage(UNIT_ETC, -1, "", "すたすたすた");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お～い、明日香ちゃ～ん…」");
+
+	SEFadeOut(2, SLOWER);
+	SEFadePlay(2, "L_Walk02F", SLOWER);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0402IK2, "明日香", "@v03031161「………」");
+	SetMessage(UNIT_ETC, -1, "", "すたすたすたすたすたすた");
+
+	SEFadeOut(1);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そっか、帰るんだ。@nじゃ、おやすみ」");
+
+	SEFadeOut(2);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0402OD, "明日香", "@v03031162「っ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ほら、晩ごはん買ってきたぞ。@n一緒に食べよ…『俺の部屋で』」");
+
+	SetStand(ASUKA_0402UN2);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0402UN2, "明日香", "@v03031163「………てんちょのばかぁ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちゃんと断ってきたじゃん………最終的には」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402UN2, "明日香", "@v03031164「オムレツごときで揺れ動いたぁ…@n@t0317@h0401KN_わたしと両天秤にかけたぁ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…オムレツを馬鹿にすると許さんぞ？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402KM, "明日香", "@v03031165「しかも負けたぁぁぁ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…冗談だ。@n明日香ちゃんの方が美味しいよ」");
+	SetMessage(UNIT_ASUKA, ASUKA_0401KN, "明日香", "@v03031166「っ…ぅぅ…いじわるぅ。@n今日のこと、わたしがどれだけ楽しみにしてたか、@nわかってんのぉ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…だから断って来たじゃん。@n姉さんに泣かれて、由飛に怒られて、@nかすりさんに詮索されたのに、さ」");
+	SetMessage(UNIT_ASUKA, ASUKA_0401KN, "明日香", "@v03031167「っ…ぅ、ひっく…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だからさぁ、機嫌直せよ。@n最初から断るつもりだったって」");
+	DelWindow();
+
+	ShakeScreen(8);
+	BGMFadePlay(BGM_YASURAGI, SLOWER);
+	SEPlay("L_Fall01");
+	SEPlay("L_Nuno04");
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの肩に手を回して、@n強めに抱きしめる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ～明日香ちゃんはあったかいなぁ」");
+	SetMessage(UNIT_ASUKA, ASUKA_0401KN_, "明日香", "@v03031168「もうっ、またごまかすしぃ…」");
+	SetMessage(UNIT_ETC, -1, "", "冷たい空気の中でも、@nやっぱり、明日香ちゃんのほっぺはすべすべで、@nそして、温かい。");
+	SetMessage(UNIT_ETC, -1, "", "だからついつい、頬を合わせてすりすりしてしまう。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「行こうよ、明日香ちゃん」");
+	SetMessage(UNIT_ASUKA, ASUKA_0401ON, "明日香", "@v03031169「………ん」");
+
+	// (´-`)CGが左手だったため変更
+	//SetMessage(UNIT_ETC, -1, "", "手袋をはめていない方の、左手を差し出す。");
+	SetMessage(UNIT_ETC, -1, "", "手袋をはめていない方の、右手を差し出す。");
+	SetMessage(UNIT_ETC, -1, "", "相変わらず、もう片方はできてないけれど、@nでも、いつもこうして、代わりにあっためてくれるから、@n何の問題もない。");
+
+	SEFadePlay(1, "L_Walk01");
+	SEFadePlay(2, "L_Walk02");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ところで、今日はほんとに泊まっていけるの？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0401BS, "明日香", "@v03031170「大丈夫、ちゃんと美鈴には@nしっかり根回ししといたから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…てことは、結局学園のみんなには筒抜けかぁ」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402EG, "明日香", "@v03031171「春休み挟んでるから、みんな忘れてるよぉ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「忘れないと思うけど。@n俺が友達だったら絶対に切り札として使う」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402KS, "明日香", "@v03031172「そんなギスギスした友情はいやだなぁ」");
+	SetMessage(UNIT_ETC, -1, "", "拗ねても、怒っても、泣いても、@nそんなこんなで喧嘩になっても、@n１０分もたてば、手を繋いで二人並んで歩いてる。");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんとの、この関係が心地良い。@p@nずっと、ずうっと、続けていきたいって、心から思う。");
+	DelWindow();
+
+	// ＜画面暗転＞
+	BGMFadeOut(SLOWEST);
+	SEFadeOut(0, SLOWEST);
+	SEFadeOut(1, SLOWEST);
+	SEFadeOut(2, SLOWEST);
+	FadeOut(SLOWER, 1);
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "@m08けれど…");
+	SetMessage(UNIT_ETC, -1, "", "@m08楽しい時間は、永遠じゃないからこそ、@n価値があるって、知っている。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(200);
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：明日香と三度目Ｈその１＞
+	// ＜明日香、仁の上にまたがってシックスナイン。三枚目のスケスケぱんつは履いたままで＞
+	//----------------------------------------------------------------------------
+
+	// (´-`)仮
+	SetVisual(VISUAL_ASUKA_15A);
+	BGMFadePlay(BGM_H1);
+	FadeIn(SLOWER);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031173「は、んむ…ちゅぷ、ん、ん…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…明日香ちゃ…っ、く、ぅ」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031174「ふむぅ…ん、んぶ…ちゅ、れろ…ん、ん…@nね、ねえ、せんせ…いい？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、うん…すごく…っ」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031175「よかったぁ…@n練習した甲斐があったよぉ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「れ、練習て…こら…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031176「も、もっとしたげるね？@nん、んぅ…ちゅぷ…んく…んっ、んっ…」");
+
+	ShakeScreen(3, SLOW);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うあああっ」");
+	SetMessage(UNIT_ETC, -1, "", "俺の下半身を、鈍く駆け抜ける快感の嵐。");
+	SetMessage(UNIT_ETC, -1, "", "そりゃ、当たり前だ。@nだって、明日香ちゃんが俺のを…飲み込んでくれてる。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031177「んっ、んっ、んぅっ…んく、ちゅ…ぷぅっ、@nは、んむ…れろ、ん…ひぇ…ひぇんひぇぇ…はむ…」");
+	SetMessage(UNIT_ETC, -1, "", "口で挟んで、舌でべろべろに舐め上げてくる。");
+	SetMessage(UNIT_ETC, -1, "", "…一体、どんな練習したんだよ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、明日香…ちゃんっ」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031178「ふぅんっ…？@nあ、へんへ…はぁっ、あ、んっ…」");
+	SetMessage(UNIT_ETC, -1, "", "目の前で、明日香ちゃんのお尻が、ゆらゆらと揺れてる。");
+	SetMessage(UNIT_ETC, -1, "", "俺のプレゼントした、例の、かなりエッチっぽい下着。");
+	SetMessage(UNIT_ETC, -1, "", "今日のために、やっぱり、履いてきてくれた。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ、ん…あ、あ…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031179「ふぅ、ん、んぅ…じゅぷ、んぷぅ…あ、あむ…@nは、は、は…あんっ、あ…せんせぇ…そこ、ぉ」");
+	SetMessage(UNIT_ETC, -1, "", "だから俺は、目の前にある、@nセクシーな下着に包まれた下半身に、@n両手を伸ばし、いじくる。");
+	SetMessage(UNIT_ETC, -1, "", "両手の親指で、明日香ちゃんの中心をなぞり、@n割り開くように、左右に押し拡げてみる。");
+	SetMessage(UNIT_ETC, -1, "", "その拡がりのなかに、人差し指を突っ込んでみたり、@n手前の突起に、指の腹を押し当ててみたりする。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031180「うあぁ…あ、あ、んっ…ふむぅっ、んむ…@nあ、んぷ、ちゅぅぅ…は、ん、くぁぁっ」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんは、音を立てて、俺のモノを、@n舐め、しゃぶり、すすり上げ、刺激を与えてくる。");
+	SetMessage(UNIT_ETC, -1, "", "だから俺も負けないように、@n激しく指を動かし、明日香ちゃんの花びらを、@n下着越しに愛撫する。");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんは、いつもの例にならって、@nあっという間に、下着から染み出させる。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031181「ふ、んぅ、あ、ああっ、せ、せんせ…っ、@nや、ちょっと…また、もうっ…@nわたしが、きもちよくしたげるのにぃ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だって…明日香ちゃんのここが目の前にあるんだぞ…？@n本当は、誘ってただろ…？」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031182「そ、そんなことな…@t0261@k");
+
+	SetVisual(VISUAL_ASUKA_15D);
+	CrossFade(SLOW, 1);
+	AddMessage("やぁぁっ、あ、あ、あ～っ！@nゆ、ゆび…なか…にっ…」");
+
+	SetMessage(UNIT_ETC, -1, "", "下着を横にずらして、人差し指を直接、@n明日香ちゃんのなかに、潜り込ませる。");
+	SetMessage(UNIT_ETC, -1, "", "じゅくじゅくに濡れていたそこは、@n俺の指をたやすく受け入れて、奥へと誘う。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031183「うああ、あ、あ…これ、あ、あむ…ちゅぷ…@nふむぅんっ、ん、んむ…ら、らからぁ…らめぇ」");
+	SetMessage(UNIT_ETC, -1, "", "指を、すぐに二本に増やして、@n激しく往復させる。");
+	SetMessage(UNIT_ETC, -1, "", "指に垂れてくる液の量も相当なもので、@nぽたぽた、ぽたぽたとこぼれ、@n俺の顔にまでかかったりする。");
+	SetMessage(UNIT_ETC, -1, "", "これは…すくい取ってあげないと。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃん…お尻、落として。@nそう、そう…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031184「へ…？　あ、や、だめっ、@nそ、んなぁ…あ、んむ…ひぅっ」");
+	SetMessage(UNIT_ETC, -1, "", "立て膝になってる足を掴んで、@nゆっくりと、ずり下げていく。");
+	SetMessage(UNIT_ETC, -1, "", "すると、明日香ちゃんの腰が落ちて、@n俺の顔に、一番恥ずかしいところが、@n覆い被さってくる。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031185「らめ、らめぇ…@nせんせぇ、そこ…やっ…あああああっ！」");
+	SetMessage(UNIT_ETC, -1, "", "下着をもう一度、横にずらして、@n舌先を直接、明日香ちゃんの胎内に突っ込む。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「は、んむ…じゅぷ、んく…はむんっ、@nふ、あ、あ…明日香ちゃんの…すごく出てくる…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031186「や～、や～、やぁぁぁぁっ！@nな、なかまで入れないでぇっ、や、あ～っ！」");
+	SetMessage(UNIT_ETC, -1, "", "どうせ後で、『なかまで入れる』のに、@n何故だか最初は抵抗するんだよな。");
+	SetMessage(UNIT_ETC, -1, "", "まぁ、アレでするのと、舌でするのとでは、@nまた羞恥の度合が違うのかもしれないけど。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん、ん、ん…は、む…ちゅ…んく…じゅるる」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031187「いや、いやぁぁ…えっちな音ぉ…@nもう、せんせってばぁっ」");
+	SetMessage(UNIT_ETC, -1, "", "口をつけて、息を吸い込んで、@n明日香ちゃんの穴から、音を立ててすする。");
+	SetMessage(UNIT_ETC, -1, "", "次から次へとこぼれ出るしずくは、@n口の中に留まらず、俺の顔を濡らしていく。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031188「やぁ、やぁぁ…も、もうっ、@nん…ちゅぶぅ…ん、んむっ、じゅる…ふむぅんっ」");
+	SetMessage(UNIT_ETC, -1, "", "俺のえっちな音に対抗して、明日香ちゃんも、@n激しく音を立てて、俺のものに吸いついて、飲み込む。");
+	SetMessage(UNIT_ETC, -1, "", "二人の発する、吐息と、口唇と、性器と、唾液の奏でる音。");
+	SetMessage(UNIT_ETC, -1, "", "濃密な匂いと、ねばっこい空気が、部屋を包み込む。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「んっ、んぅ、ちゅぷ…はむ…んっ、んっ…んんんっ」");
+
+	SetVisual(VISUAL_ASUKA_15C);
+	CrossFade();
+
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031189「は、んむ…ちゅぷ…ん、く…は、むぅぅぅぅっ、@nあ、あ～っ、は、ん、くぅっ…せ、せんせぇ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「んん…ちゅぅぅ…んく…れろ…はむ…んちゅ…ぷぅ」");
+
+	ShakeScreen(4);
+	SetVisual(VISUAL_ASUKA_15D);
+	CrossFade(FAST);
+
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031190「あ、あ、あ～っ！@nちょっ、待ってせんせっ、わたし、ちょっと…あああっ」");
+	SetMessage(UNIT_ETC, -1, "", "やっぱり、明日香ちゃんは、色んなとこが敏感だ。");
+	SetMessage(UNIT_ETC, -1, "", "舌を入れて、激しくかき回しながらも、@n指で、先っぽの突起に触れて、くりくりとこすってあげると、@nその部分が小刻みに震えて、快感をアピールする。");
+	SetMessage(UNIT_ETC, -1, "", "それに気をよくして、思い切り拡げ、深くまで突っ込んで、@n激しく動かして、こすって、つまんで、引っ張った。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031191「うああああっ！？　や、やだ、@nちから、はいんないよぉ…@nも、もう、せんせのへんたい…っ」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの、俺を責める声も、@n誉め言葉と受け取って、いじくるのを続ける。");
+	SetMessage(UNIT_ETC, -1, "", "本当に、全身に力が入らないみたいで、@n俺の体の上で、くたぁ～って、うつぶせに横たわってる。");
+	SetMessage(UNIT_ETC, -1, "", "荒い吐息が、俺の股間にかかり、ちょっとくすぐったい。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031192「せ、せんせぇ…もう、勘弁してよぉ…@nわたしだけ、わたしだけおかしくなっちゃうよぉ。@nあ、あ、あ…ふあぁぁぁ…っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なら…明日香ちゃんも頑張って。@nん、んっ…んぅ…ちゅ、ぷ…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031193「そ、そんなこと、言うんだったら…@nそんなに、激しく、しないでよぉ…、@nや、やぁ、も、もう、だめだってばぁ～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「口がお留守になってるぞ…@nん…ちゅぷ…んぅ…あ、じゅぷ…んん」");
+
+	ShakeScreen(4);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031194「うああぁぁぁっ、だ、だって、だってぇ…@nせんせが…せんせがぁ…いやぁぁぁっ、あ、あ…」@k");
+	Wait(100);
+	ShakeScreen(4);
+	MessageWait();
+
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんは、もう、顔さえ上げられずに、@n全身をびくびくと震わせている。");
+	SetMessage(UNIT_ETC, -1, "", "これなら…一度、イかせてあげられるかも。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃん…お先にどうぞ」");
+	SetMessage(UNIT_ETC, -1, "", "舌先を、先っぽの突起に潜り込ませ、@nぐるぐると舐め回す。");
+	SetMessage(UNIT_ETC, -1, "", "穴の中には、指を二本入れて、@n中で拡げるように動かす。");
+
+	ShakeScreen(3);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031195「や、や、や、だ、だめ、だめっ、@nせんせ、いやだぁ、だめだってばぁ」@k");
+	Wait(200);
+	ShakeScreen(4);
+	Wait(100);
+	ShakeScreen(3);
+	MessageWait();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…んむ…いいから…@nイっていいから…ちゅぷ…れろ…」");
+
+	ShakeScreen(3);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031196「そんなこといったらぁ…@nいや、しびれるよぉ…っ、あ、だめ、だめ…@nも、もう、こんなのだめだよぉっ」@k");
+	Wait(500);
+	ShakeScreen(4);
+	Wait(200);
+	ShakeScreen(3);
+	Wait(100);
+	ShakeScreen(3);
+	MessageWait();
+
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの痙攣が、さらに激しくなる。");
+	SetMessage(UNIT_ETC, -1, "", "指を入れた穴の中からこぼれるしずくは、@nもう、次から次へと湧き出て、@n明日香ちゃんの絶頂が近いことを教えてくれる。");
+	SetMessage(UNIT_ETC, -1, "", "だから…もっと…いじめてあげる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…ちゅぷ…かぷ」");
+	SetMessage(UNIT_ETC, -1, "", "最後に、舌先で露出させた突起に、@n軽く歯を当てると…");
+
+
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031197@s0004@m00「う、あああああああっ！？@nあ～っ、あ～っ、あああああ～っ！」@k");
+	BGMFadeOut(SLOWEST);
+	ShakeScreen(8, SLOW);
+	FlashOut(SLOW);
+	FlashIn();
+	MessageWait();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「んんっ」");
+	SetMessage(UNIT_ETC, -1, "", "一瞬、激しいしぶきが、@n俺の顔にかかり…");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031198「ああああああ～っ、ああ、ああ…@nいあぁぁぁ…せんせ…せんせぇ…ひぅっ、あ、う…」");
+
+	SetMessage(UNIT_ETC, -1, "", "俺の、差し込んだ指と舌を、@n潰してしまうんじゃないかってくらいに収縮して…");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031199「うあっ、あ、あぁぁぁぁ…@nあんっ、あんっ、あ、あ、あ…あぁぁぁぁ～」");
+	DelWindow();
+
+	FadeOut();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "そのまま、くたって、更に脱力して。");
+	SetMessage(UNIT_ETC, -1, "", "俺の顔に、ぽたぽたしずくをこぼしながら…");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031200「ご、ごめんなさぁい…い、いっちゃったぁ…@nせんせより先に…いっちゃった…よぉ…」");
+	SetMessage(UNIT_ETC, -1, "", "そんな、いやら可愛らしいことを、呟いた。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「全然ＯＫ。@nやらしい明日香ちゃん、とてつもなく可愛いし」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031201「はぁ、はぁ…ほ、ほんとぉ…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…大好き、だよ。@n本気で…な」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031202「っ…ぅ…」");
+	SetMessage(UNIT_ETC, -1, "", "俺の体の上で、また、びく、びくって震える。");
+	SetMessage(UNIT_ETC, -1, "", "俺の顔に股間を押しつけて…って考えると、@nめちゃくちゃいやらしい格好だけど…");
+	SetMessage(UNIT_ETC, -1, "", "いや、実際いやらしいんだけど、@nでも、愛しくて愛しくて…");
+	DelWindow();
+
+	BGMFadePlay(BGM_H1, SLOWEST);
+	SetVisual(VISUAL_ASUKA_15C);
+	FadeIn(SLOWER);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031203「ん…ちゅぷ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、明日香ちゃん…？」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031204「が、がんばる、ね…@nせんせも…いかせてあげるから、ね？@nん…ちゅぷ…はむっ、ん…んぷ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「無理しなくても…@nたった今イったばかりだろ…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031205「ん…ん…でも、でもっ…@nわたしが先にしてたんだもんっ…@nせんせを気持ちよくさせてあげたいんだもんっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃん…ぁぁ…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031206「ん…んぷ…ちゅぷぅ…は、はむ…んぅ…@nん、く、あ、はぁぁ…ちゅぅぅ…んぅ…」");
+	SetMessage(UNIT_ETC, -1, "", "二人して、お互いのあそこを舐め合ってるにしては、@nなんだかこそばゆくて、微笑ましい会話になっちゃってる。");
+	SetMessage(UNIT_ETC, -1, "", "それこそが明日香ちゃんの、@nなんとなく癒されるキャラクターによるものだろうか。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031207「は、んむ…ちゅぷ…ひぇんひぇぇ…@nいって…わたしのおくちで…いってよぉ…んぷ…」");
+
+	ShakeScreen(4);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、あ…っ」");
+	SetMessage(UNIT_ETC, -1, "", "今の言葉は、かなりキた…");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの口の中で、@nびくんって跳ねるくらいに、感じてしまった。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031208「あ、んっ…おっきくなった…@nせんせの…またぁ…あ、あむ…んぶぅ…@nちゅぅぅ…はむ…んっ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、明日香…ちゃん…」");
+	SetMessage(UNIT_ETC, -1, "", "下半身に受ける刺激と、@n目の前で、ひくひく半開きで蠢く、@n明日香ちゃんの花びらのせいで…");
+	SetMessage(UNIT_ETC, -1, "", "俺も、すぐ、限界に近づいていく。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031209「は、んむ…んぷっ、あ、ちゅ、ぅぅ…@nは、んっ、んっ、んっ、んんんっ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あ、あ…す、すげ…っ、@nあっ、ちょっ、い、いいよ…これ…っ」");
+	SetMessage(UNIT_ETC, -1, "", "情けないくらいに激しい喘ぎが漏れ出してきた。");
+	SetMessage(UNIT_ETC, -1, "", "けど、それが、明日香ちゃんをも加速していく。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031210「ん、んんっ…へ、へんへぇ…だひて…@nは、んんっ、んむ…はむぅんっ、ちゅ…ぷっ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、くぁぁっ、は、あぁ、あ、あ…」");
+	SetMessage(UNIT_ETC, -1, "", "そして…@nあっという間に…");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031211「んんっ、んんんっ、んくっ、んんっ、ちゅぷぅ…@nは、あぁ、あぁぁ…んんんんんっ！」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんが、喉の奥まで飲み込むと同時に…");
+	DelWindow();
+
+	Fade(SLOW, 120);
+
+	SetWindow(WINDOW_SIMPLE);
+	ShakeScreen(2, SLOW);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004@m00「あ、あ、あ…あああああっ！」");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：明日香と三度目Ｈその１（顔射差分）＞
+	//----------------------------------------------------------------------------
+	BGMFadeOut(SLOWEST);
+	Fade(NORMAL, 150);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031212@s0004@m00「んんんんん～～～っ！！！」@k");
+	SetVisual(VISUAL_ASUKA_15E);
+	ShakeScreen(24);
+	Fade(0, 200);
+	Fade(FAST, 100);
+	MessageWait();
+
+	SetMessage(UNIT_ETC, -1, "", "びゅくぅっ");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ああああ～っ！」");
+	DelWindow();
+
+	Fade(NORMAL, 140);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031213「あむっ、ん、んぅぅぅ～っ、@nあっ、あっ、すご、せんせっ…ちゅぷ…@nけほっ、けほぉっ…」@k");
+
+	ShakeScreen(16);
+	Fade(0, 200);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 140);
+	ShakeScreen(12);
+	Fade(0, 190);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 130);
+	ShakeScreen(8);
+	Fade(0, 180);
+	Fade(NORMAL, 100);
+
+	Fade(NORMAL, 120);
+	ShakeScreen(8);
+	Fade(0, 170);
+	Fade(NORMAL, 100);
+	MessageWait();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あ、あ…明日香、ちゃぁん…っ」");
+	SetMessage(UNIT_ETC, -1, "", "喉の奥に放ってしまったせいで、@n明日香ちゃんがむせてしまっている。");
+	SetMessage(UNIT_ETC, -1, "", "済まなさと、そして、とてつもない快感と…");
+	DelWindow();
+
+	Fade(NORMAL, 130);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031214「ん…んくっ、あ、こほっ、あ、らめぇ…@nあ、んむ…ちゅぅぅ…ん～…ん、ん…」@k");
+	ShakeScreen(12);
+	Fade(0, 180);
+	Fade(NORMAL, 100);
+
+	Fade(SLOW, 120);
+	ShakeScreen(8);
+	Fade(0, 170);
+	Fade(SLOW, 100);
+
+	Fade(SLOW, 110);
+	ShakeScreen(4);
+	Fade(0, 160);
+	Fade(SLOW, 100);
+	MessageWait();
+
+	SetMessage(UNIT_ETC, -1, "", "一度口を離したのに、またわざわざ吸いついて、@n次から次へと出てくる精液をすすってくれる。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031215「ん～…ちゅぷ…ちゅぅぅ…あ、あむ…@nで、でたねぇ…せんせぇ…すっご…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あ…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031216「出してくれたんだねぇ…あ、あむ…@nうあ…どろどろだよぉ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ご、ごめん…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031217「やだなぁ…わたしが出させたんだもん…@nん…うあ…なんか…えっとぉ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「は、吐き出せ」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031218「あ…う～ん…べつに嫌じゃないよぉ。@nせんせの、だもぉん…ん、あむ…んっ」");
+	SetMessage(UNIT_ETC, -1, "", "俺からじゃ見えないけど…@nなんか、まだすすってる音がする。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031219「ん～…んぅ～…ん、んく…ふ、ふぅぅ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ほ、ほんとに大丈夫、か？」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031220「…なんか、微妙な味だねぇ…あはは」");
+	DelWindow();
+
+	FadeOut(SLOW);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "そんな感じで、明日香ちゃんは、@n脱力したまま、ちょっとだけ、笑った。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031221「はぁ、はぁ、はぁぁぁぁ～…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃん…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031222「…んぅ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お互い汚れちゃったし…@nお風呂わかすから、入りなよ」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031223「うん…いっしょに…はいろ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…狭いぞ？」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031224「だから…いいんじゃないよぉ」");
+
+	// ＜画面暗転＞
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(100);
+	BGMFadePlay(BGM_H1, SLOWER);
+	Wait(100);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031225「ん、ふ、あ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、く…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031226「うあ…すごい、せんせ…@nすぐにおっきくなるね…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、そりゃ…気持ちよすぎるから」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031227「ほんと？　きもちいい？@nわたしのおっぱい…気持ちいいかなぁ？」");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：泡まみれでパイズリ＞
+	//----------------------------------------------------------------------------
+
+	SetVisual(VISUAL_ASUKA_16A);
+	FadeIn(SLOW);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、そりゃ…柔らかいし、あったかいし、@n…ぬるぬるだし」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031228「えへへ…うれしいなっと。@nんしょ、んしょ…っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「け、けど………@nどこでこんなこと覚えたぁっ！？」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031229「ん、ん…それは、その………@n『明日香のおっぱいならできる』って、みんなが…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「友達づきあいを考え直せ…」");
+	SetMessage(UNIT_ETC, -1, "", "お風呂を沸かして入るまでの時間で、@nせっかく@s0002（？）@s0003大人しくなった俺のモノが、@n明日香ちゃんのせいで、むくむくと再起動していく。");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんと体の洗いっこって話になって…");
+	SetMessage(UNIT_ETC, -1, "", "お互い、汚れ物を“出した”ところを@n重点的に洗おうってところから、@nコンセプトがおかしくなった。");
+	SetMessage(UNIT_ETC, -1, "", "石鹸を手にとって、下半身をいじりあい、@n結局、二人して興奮して、抱きあって床に転がって…");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031230「ん、んっ、んんっ…ね、ねえ、どんな感じかなぁ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「どんな感じもなにも…@e");
+	Wait(20);
+	ShakeScreen(6);
+	AddMessage("うわぉぅっ」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031231「あ、ぴくぴくきた…@nせんせ、ほんっとにきもちいいんだぁ」");
+	SetMessage(UNIT_ETC, -1, "", "柔らかくて、なめらかで、包み込む圧力は、@nお口やあそこほどじゃないから、もどかしくて…");
+	SetMessage(UNIT_ETC, -1, "", "でも、明日香ちゃんのしてることそのものが、@n俺を極限まで興奮させることも確かなわけで。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031232「ん、ん…せんせの先っぽ、見えるよ」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの胸から、出たり、入ったり。@nもう、かなり限界近くまでカチカチになってる。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031233「なんか、さっきからずっとなめてたら、@n愛着わいてきちゃった@t0740@k");
+
+	SetVisual(VISUAL_ASUKA_16B);
+	CrossFade(NORMAL, 1);
+
+	AddMessage("…ちゅ…」");
+
+	ShakeScreen(6);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あうぅ」");
+	SetMessage(UNIT_ETC, -1, "", "しかも、その先端の尿道口に、@n明日香ちゃんの舌先が届き…");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031234「ん、ん…ちゅ…ぷ…@nあ、あんっ、ふぅっ、あ、む…」");
+	SetMessage(UNIT_ETC, -1, "", "とうとう、また、口と舌まで使って、@n明日香ちゃんの愛撫攻勢がはじまった。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、明日香ちゃん…あ、く…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031235「ふぅ…ん、ちゅく…はむっ…@nせ、せんせぇ…すりすり、気持ちいい？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「でなきゃこんな情けない声出してないって…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031236「そ、それも…そだねぇ…えへっ、@nん、ちゅぷ…ちゅぅぅ…ん、んっ…」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの舌先が、すぼめた唇が…");
+	SetMessage(UNIT_ETC, -1, "", "俺の、尿道の先にピンポイントで刺激を与えてくる。");
+	SetMessage(UNIT_ETC, -1, "", "そこしか届かないから仕方ないんだろうけど、@nなんてもどかしい拷問…");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031237「ふ、んむ…あっ、あっ、あぁっ…@nお、おっぱい…こすれて…っ、あ、あんっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@m08「ふ、あ、あ…明日香ちゃぁん…」");
+
+	SetVisual(VISUAL_ASUKA_16A);
+	CrossFade();
+
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031238「ひぅっ、やだ、せんせかわいい…@n今の、もっと言ってぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な、なめんなぁ…こらぁ」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031239「な、なめたら、もっと言う？@t0361@k");
+	SetVisual(VISUAL_ASUKA_16B);
+	CrossFade(NORMAL, 1);
+	AddMessage("@nはむ、んちゅ…ちゅぷぅ…は、んむ、んっ」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「意味違ぁう…っ、あ、ああ…あ…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031240「うあ、うあ、うあぁ…@nかわいい、かわいい…ん、ちゅ…ぷぅっ」");
+	SetMessage(UNIT_ETC, -1, "", "あかん…@n俺の喘ぎ声が、明日香ちゃんにヒットしてしまったらしい。");
+	SetMessage(UNIT_ETC, -1, "", "今までよりもさらに積極的に、@nおっきな胸で俺を挟み込み、唇で囲い込んで、@n舌先で、チロチロと舐め回す。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031241「へんへ、へんへぇ…あ、んむ…ちゅっ、@nう、あ、あ、あ、あ…や、ちょっと、動かさないでぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「む、無茶言うな…それ勝手にっ」");
+	SetMessage(UNIT_ETC, -1, "", "俺のが反り返って、挟まれてる胸から、@n勝手に逃げ出そうとしてる。");
+	SetMessage(UNIT_ETC, -1, "", "それを追いかけて、明日香ちゃんが、@nもっと胸を押しつけて、唇を寄せて、舌を掻き回す。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031242「れろ…あ、んむっ、ちゅぷ…あ、あんっ、@nあ、んむっ、はぅ、んっ、んぅっ…あぁぁ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁっ、はぁっ、あ、ああああ…@nだ、だめだ、もう…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031243「あぁぁっ、うん、いいよ、いいよせんせぇ…@n今度は、わたしのおっぱいで…イってよぉ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「こ、こら、こらぁっ」");
+	SetMessage(UNIT_ETC, -1, "", "わざとなのか、自然なのか…@n明日香ちゃんが、めちゃくちゃいやらしい言葉で、@n俺を挑発してくる。");
+	SetMessage(UNIT_ETC, -1, "", "可愛らしい、舌足らずな声が、@nお風呂場の中でエコーを伴って、@n俺の耳をさわさわと撫でる。");
+	SetMessage(UNIT_ETC, -1, "", "人知れず、腰が浮き、@n明日香ちゃんに突き出す形になってしまい…");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031244「はむ…くぷ…ん、んむ…あ、はは…@nんっ、んっ、んんっ…あ、あぁぁぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "余計に、快感が増幅されてしまう。");
+	DelWindow();
+
+	Fade(SLOW, 120);
+
+	SetWindow(WINDOW_SIMPLE);
+	ShakeScreen(2, SLOW);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うあ、うあ、うあああ…っ、@nあ、明日香ちゃん、お、俺っ」");
+	DelWindow();
+
+	BGMFadeOut(SLOWEST);
+	Fade(NORMAL, 150);
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：明日香パイズリ（射精差分）＞
+	//----------------------------------------------------------------------------
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031245「う、わ、あっ？」@k");
+	SetVisual( VISUAL_ASUKA_16C );
+	ShakeScreen(24);
+	Fade(0, 200);
+	Fade(FAST, 100);
+	MessageWait();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、あああああああああっ！」");
+	DelWindow();
+
+	Fade(NORMAL, 150);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031246「うあああっ！？@nあ、んっ、んむっ、はぁ、あぁぁぁぁ…っ」@k");
+	ShakeScreen(16);
+	Fade(0, 200);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 140);
+	ShakeScreen(12);
+	Fade(0, 190);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 130);
+	ShakeScreen(8);
+	Fade(0, 180);
+	Fade(NORMAL, 100);
+	MessageWait();
+
+	SetMessage(UNIT_ETC, -1, "", "本日、二度目の射精なのに…");
+	DelWindow();
+
+	Fade(NORMAL, 130);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031247「あ、んっ、わぁ、あふぅっ…@nま、まだ出る、まだ出てるよぉ、せんせ」@k");
+
+	ShakeScreen(16);
+	Fade(0, 190);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 130);
+	ShakeScreen(12);
+	Fade(0, 180);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 120);
+	ShakeScreen(8);
+	Fade(0, 170);
+	Fade(NORMAL, 100);
+
+	Fade(SLOW, 110);
+	ShakeScreen(8);
+	Fade(0, 160);
+	Fade(SLOW, 100);
+	MessageWait();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ああっ、あ、あ、あ…」");
+	SetMessage(UNIT_ETC, -1, "", "自分でも、呆れるくらい、沢山出て…");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの、胸と、お口と、顔を、@nまた、めちゃくちゃに汚してしまって。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031248「ん…ちゅぷ…あ、あは…@nこんなに…真っ白だぁ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、それは石鹸…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031249「これがぁ？@nほら、こぉんなにねばっこいよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う…」");
+	SetMessage(UNIT_ETC, -1, "", "指ですくって、目の前で広げてみせる明日香ちゃん。");
+	SetMessage(UNIT_ETC, -1, "", "それは…ちょっと反則的な仕草だろう。@p@n…あっと言う間に回復してしまうぞ？");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031250「これで、お口と、胸で、せんせをイかせたね？@nなんか、考えてみるとすごいねぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うぅぅ…」");
+	SetMessage(UNIT_ETC, -1, "", "それは…ちょっと反則的な言葉だろう。@p@n…やっぱり、あっと言う間に回復してしまうぞ？");
+	DelWindow();
+
+	FadeOut(SLOW);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031251「ん、ふぅ…せんせ、気持ちよかったよね？@nわたしも、せんせの声、気持ちよかったよぉ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031252「せんせ…？@n疲れちゃった？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…明日香ちゃん」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031253「んぅ…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…立って」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031254「ふぇ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ごめん…その、@n明日香ちゃんに、入れたい」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031255「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「すぐ入れたい。@n今入れたい。@n…ほんと変態でごめん」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031256「うあ…ほんとだ。@nまだかっちんかっちん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…申し訳ない」");
+	SetMessage(UNIT_ETC, -1, "", "年下の女の子に、拝み倒して、させてもらうなんて…@nなんつ～か、もの凄く駄目人間なような気もするけど。");
+	SetMessage(UNIT_ETC, -1, "", "けどまぁ、仕方がない。@n何しろ、したくてしょうがない。");
+	SetMessage(UNIT_ETC, -1, "", "…今さっきまで、@n２発抜いた人間の言うことじゃないかもしれないけど。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031257「元気だねぇ、せんせ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃんだから…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031258「ふぁぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "あ、ちょっと揺れてくれた。@p@nこういう反応、嬉しいな。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんか、すればするほど、@n明日香ちゃんが好きになってく…@nもう、止まりそうにない」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031259「…せんせって、明日香殺しだねぇ。@nその言葉、他のひとに言っちゃヤだよぉ？」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんが、石鹸で、胸や顔を洗い、@nゆっくりと、立ち上がる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「約束する。@n俺がしたいのは、明日香ちゃんだけだし」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031260「…それだけえっちなのに、@nわたしとしかできないなんて…大変だねぇ。@nえへ、えへへ…」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんは、ちょっと頬を染めて笑うと、@n俺の目の前で、無防備でいてくれる。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031261「じゃ…いいよ。@nわたしのなか…おいで、せんせ…」");
+	SetMessage(UNIT_ETC, -1, "", "俺の、なすがままに、なってくれる。");
+
+	// ＜画面暗転＞
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031262「あ…んんっ…」");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：明日香風呂場で立ちバック＞
+	//----------------------------------------------------------------------------
+
+	SetVisual(VISUAL_ASUKA_17A);
+	BGMPlay(BGM_H2);
+	ShakeScreen(3, SLOW);
+	FadeIn();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031263「うああああっ、あ、あ、あ～っ」");
+	SetMessage(UNIT_ETC, -1, "", "十分に濡れて、何度も舌と指で割り開いたそこは…");
+	SetMessage(UNIT_ETC, -1, "", "ぬるりと、俺のモノを迎え入れてくれる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うあぁ…あ、ああ…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031264「せ、せんせ…あ、ああ…@nなか、はいって…うああ、あぁ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、うん…明日香ちゃん…ありがと」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031265「ありがとって…なんかへんだよぉ。@nあ、あんっ、やんっ、せんせってばぁ…っ」");
+	SetMessage(UNIT_ETC, -1, "", "一番奥まで突っ込んで、ゆっくりと引き抜く。");
+	SetMessage(UNIT_ETC, -1, "", "締めつけてくる感覚も、焼けるような熱さも、@nどれもこれも、俺好みの、明日香ちゃんの胎内。");
+	SetMessage(UNIT_ETC, -1, "", "腰がぶつかるお尻も、ちょうどいい肉付きで、@n夢見心地になってしまう。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031266「ふあぁ、ああ…せ、せんせぇ…@n今日は、ゆっくりするのぉ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…そんなこと、俺にできるわけないだろ」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031267「あははっ…すぐ我慢きかなくなるもんねぇ。@nせんせの女やってるのも、大変だよぉ」");
+	SetMessage(UNIT_ETC, -1, "", "最初から、やさしくできなかったからなぁ。");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの身体に溺れて、すぐに激しく動いて、@n何度も、何度も、してしまうケダモノだから。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま、まずは頑張ってゆっくり動くから…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031268「ふぁぁっ、あっ…あっ…あぁぁ…@nせ、せんせ…ん、いい、かんじぃ」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの胸を、背後から鷲掴みにする。");
+	SetMessage(UNIT_ETC, -1, "", "今日は、この胸でもイったんだよなぁ。");
+	SetMessage(UNIT_ETC, -1, "", "そんな妙な感慨に耽りながらも、@nにぎにぎして、先っぽを指ではじく。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031269「うんっ、く、あぁぁ…@nせんせ、おっぱい好きだねぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃんのが…魅力的だから…っ」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031270「ふあぁっ、あ、あんっ…ん、そ、そう？@nえへへ…おっきくなった甲斐があったよぉ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…もうちょい、背も伸びるといいけどな」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031271「ひ、ひっどぉい…あ、やんっ、@nちょっ、こらぁ、そうやってごまかすぅ、@nあ、あんっ、や、両方からぁ…っ」");
+	SetMessage(UNIT_ETC, -1, "", "乳首を指でぎゅっとつまんで、こりこりと転がす。");
+	SetMessage(UNIT_ETC, -1, "", "腰も、ゆっくりとだけど、強く、奥に進み、@n大きなストロークで、明日香ちゃんを貫く。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ああ…明日香ちゃん…@n本当に、柔らかいなぁ、君はぁ」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031272「せんせがしつこくこねるからだよぉ…@nあっ、あんっ、や、そこ、ああん…もうっ」");
+	SetMessage(UNIT_ETC, -1, "", "ミルクを絞るみたいに、ぎゅっ、ぎゅって、胸をいじめる。");
+	SetMessage(UNIT_ETC, -1, "", "真ん中に寄せて、両方の胸同士をこすり合わせて、@n潰すように愛撫する。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031273「やっ、かたち、くずれちゃうよぉ…@nそんなに、いじめないでぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そんなことあるか…」");
+	SetMessage(UNIT_ETC, -1, "", "若いせいか、こんなにピチピチで、張りがあって、@nいつまでも揉んでいたくなるおっぱい。");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの身体は、どこも大好きだけど、@nなかでも、いつまでもいじっていたいと思わせてくれる。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031274「はぁっ、はぁっ、はぁぁぁぁ…@nせ、せんせ、微妙に、はげし～…@nあっ、ああっ、あああああっ」");
+	SetMessage(UNIT_ETC, -1, "", "ぐいぐいと胸をいじめながらも、@nストロークを段々と早くしていく。");
+	SetMessage(UNIT_ETC, -1, "", "いや、これは単に我慢が効かないだけ。@n明日香ちゃんのなかを往復してると、@nどんどん、その壁をこすりたくなってしまうから。");
+	SetMessage(UNIT_ETC, -1, "", "だって…反応可愛いから。@p@nいつもの高い声、いつまでも聞いていたいから。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031275「いあ、ああ、ん、あ、あ…@nはぁっ、はぁぁっ、あ、ぁぁぁ…っ」");
+	SetMessage(UNIT_ETC, -1, "", "激しく胸を揉みしだきながら、@n腰もそれに合わせ、スピードを上げていく。");
+	SetMessage(UNIT_ETC, -1, "", "全身に力を込めて、明日香ちゃんを襲う。@n太股もくっつけて、背中に乗っかって、@n首筋に、舌を這わせる。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031276「ふあっ、ふあぁぁっ、あ、あんっ、@nちょっ、せんせ、あ、あしが…@nあ、あ、あ～っ」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの太股がぶるぶると震えてる。");
+	SetMessage(UNIT_ETC, -1, "", "快感と、俺の重みとで身体を支えきれなくなってる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃん…大丈夫だから…@nん、んぅ…ちゅぷ…」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんを持ち上げるように胸を鷲掴みにして、@nでも、結局、ぐいぐいと中に侵入して。");
+	SetMessage(UNIT_ETC, -1, "", "楽にしてあげて、苦しめてあげて、@n外をなで回して、中を引っかき回して…");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031277「あ、ああっ、せ、せんせぇ…@nそうやって、やさしくいじめないでよぉ…@nあ、あんっ、あんっ、だ、だめ、だめぇ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…れろ…ちゅ…@n今日は、どこ吸ってもいいよね？@n泊まってくんだもんな？」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031278「あ、うやぁぁ…あ、あんっ、そ、そうだよ…@nせんせと、一緒に寝るんだよ…あ、あぁぁ…っ」");
+	SetMessage(UNIT_ETC, -1, "", "背中にキス。@p@n首筋にキス。@p@nうなじにキス。");
+	SetMessage(UNIT_ETC, -1, "", "そして、耳にキス。");
+	SetMessage(UNIT_ETC, -1, "", "どれも、思い切り吸って、@nときには歯を立てて…");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんに、俺の痕跡を刻む。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031279「んぅぅっ、あ、あっ、ああっ…@nせ、せんせぇ…たまんないよぉ…もう…@nなんでこんなに、気持ちいいんだろぉ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うん…俺も、明日香ちゃん」");
+	SetMessage(UNIT_ETC, -1, "", "両手で胸をいじめて、唇で首筋をいじめて、@nおなかで背中をいじめて、太股で太股をいじめて。");
+	SetMessage(UNIT_ETC, -1, "", "そして…なかを引っかき回す。");
+	SetMessage(UNIT_ETC, -1, "", "全身全霊で、明日香ちゃんを愛しまくって、@n全身全霊で、明日香ちゃんが応えまくってくれる。");
+	SetMessage(UNIT_ETC, -1, "", "嬉しくて、楽しくて…@nめちゃめちゃ、気持ちいい。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031280「ああ、ああ、あぁぁっ、@nげ、限界…せんせ、もう、限界ぃ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃん…今日、は？」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031281「う、うん…大丈夫。@nそうでないと、泊まりに来ないよぉ。@nせんせ、すぐに中に出したがるもん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おのれ…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031282「あ～っ、や、ごめんなさい、ごめんなさぁいっ、@nホントのこと言ったら怒るよねそりゃ…ああんっ」");
+	SetMessage(UNIT_ETC, -1, "", "最近は、余裕が出てきたのか、@n感じてる最中にまでからかうことを覚えたな…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おしおき…するからな」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031283「ふあああっ、あっ、あっ、あああっ！@nやぁ、すご、すごい、せんせぇ…こんなぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんが限界だというなら、@n最後の最後は、やっぱり激しく。");
+	SetMessage(UNIT_ETC, -1, "", "体力の全てを使い切って、@n明日香ちゃんを貫きまくる。");
+	SetMessage(UNIT_ETC, -1, "", "お風呂場に、二人の結合部から漏れる音が、@nエコーがかかり、淫靡に、響き渡る。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031284「うああっ、あっ、あっ、あああああっ！@nだめ、だめ、だめぇぇ…もう、おかしくなっちゃう…っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おかしくなってよ明日香ちゃん…俺のせいで」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031285「う、うん、うんっ、せ、せんせ…もう、いいよ。@n思いっきり、いかせて…ぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、く、あぁぁあああっ！@nく、う、あぁぁぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "最後の、最後の、最後のスパート。@nまるで持ち上げるように、明日香ちゃんを突き上げて…");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031286@s0004@m00「ふあぁぁっ、あ～、あ～、あああああ～っ！@nやぁぁぁぁ…あっ、ああああ…」");
+	SetMessage(UNIT_ETC, -1, "", "そして…限界を超える。");
+	DelWindow();
+
+	Fade(SLOW, 120);
+
+	SetWindow(WINDOW_SIMPLE);
+	ShakeScreen(2, SLOW);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004@m00「うくぁぁぁぁ…ああああああっ！」");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：明日香風呂場で立ちバック（射精差分）＞
+	//----------------------------------------------------------------------------
+	BGMFadeOut(SLOWEST);
+	Fade(NORMAL, 150);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031287@s0004@m00「うあぁぁぁぁぁぁぁぁぁぁぁぁ～っ！！！」@k");
+
+	SetVisual(VISUAL_ASUKA_17B);
+	ShakeScreen(24);
+	Fade(0, 200);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 140);
+	ShakeScreen(16);
+	Fade(0, 190);
+	Fade(FAST, 100);
+	MessageWait();
+
+	SetMessage(UNIT_ETC, -1, "", "びゅくんっ、びゅくんっ。");
+	SetMessage(UNIT_ETC, -1, "", "耳鳴りと、射精が、完全にシンクロする。");
+	DelWindow();
+
+	Fade(NORMAL, 140);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031288「あ、あぁぁぁぁ…ああっ、ああっ、あああっ！@nう、あ、あ…あつぅ…や、あ、あ…ひぅぅっ」@k");
+	ShakeScreen(16);
+	Fade(0, 190);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 130);
+	ShakeScreen(12);
+	Fade(0, 180);
+	Fade(FAST, 100);
+
+	Fade(SLOW, 120);
+	ShakeScreen(8);
+	Fade(0, 170);
+	Fade(SLOW, 100);
+
+	Fade(SLOW, 110);
+	ShakeScreen(8);
+	Fade(0, 160);
+	Fade(SLOW, 100);
+	MessageWait();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うく…あ、あぁぁぁ…あ、明日香ちゃん…@n明日香、ちゃぁん…」");
+	DelWindow();
+
+	Fade(NORMAL, 130);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031289「う、うあ…せんせ…まだ、まだ、なかぁ…@nふあ、あんっ………あああっ………あっ」@k");
+	ShakeScreen(12);
+	Fade(0, 180);
+	Fade(NORMAL, 100);
+
+	Fade(SLOW, 120);
+	ShakeScreen(8);
+	Fade(0, 170);
+	Fade(SLOW, 100);
+
+	Fade(SLOW, 110);
+	ShakeScreen(4);
+	Fade(0, 160);
+	Fade(SLOW, 100);
+	MessageWait();
+
+	SetMessage(UNIT_ETC, -1, "", "まだ、遅いストロークで、@n明日香ちゃんのなかを、往復する。");
+	SetMessage(UNIT_ETC, -1, "", "そのたびに、まだおさまらない射精の波が来て、@n明日香ちゃんのなかに、精子をまき散らす。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031290「も、もう…すごすぎだよぉ…@nせんせ、これで今日三回目なのにぃ、@nなにこの量はぁ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だから言ってるだろ…@n明日香ちゃんのなか、だからだって」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031291「う、あ、あ…やだ、なぁ…@nまだそうやって、いじめるんだもんっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いじめてなんかないって…@n明日香ちゃん、大好きだから」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031292「あ、ああ…もう、だめぇ…骨抜きぃ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、ちょっと、こら…」");
+	DelWindow();
+
+	// ＜画面暗転＞
+	FadeOut();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんの身体から、ぐたっと力が抜けて、@n床にへたり込んでしまった。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…大丈夫？」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031293「ちょっと…休ませて…はぁ、はぁ、はぁぁぁぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "へたり込んだ明日香ちゃんのお尻辺りから、@n太股を伝って、俺の精液が流れ出てくる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "…まだ立つことができるんだな、俺。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	HideMenu();
+	DelWindow();
+
+	Wait(300);
+
+	DelVisual();
+
+	SetSceneFlg(SCENE_ASUKA_03);
+
+	LoadEvent(EVENT_ASUKA_19);
+end();

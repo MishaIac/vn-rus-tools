@@ -1,0 +1,2105 @@
+#include "Script.h"
+#include "protdef.h"
+
+start(SYSTEMBANK_BOOT);
+	FadeOut(0);
+
+//	ShowCursor();
+//	ShowMenu();
+//	ChangeBank(100);
+//	LoadScript("明日香12.bin", 1);
+
+	// 初回起動チェック
+	if(GetSystemFlg(SYSTEMFLG_PROLOGUE) == 0)
+	{
+		ShowCursor();
+		ShowMenu();
+		LoadScript("プロローグ.bin", 1);
+	}
+
+	SetVisual(VISUAL_GIGA);
+	FadeIn();
+	PlaySystemVoice(SYSTEMVOICE_GIGA);
+	Wait(300);
+	FadeOut();
+
+	ShowCursor();
+	ShowMenu();
+
+	PlayMovie("Opening.mpg", 70);
+
+	ChangeBank(SYSTEMBANK_TITLE);
+end();
+
+// タイトル
+start(SYSTEMBANK_TITLE);
+	DelVisual();
+
+	ShowMenu();
+
+	Title();
+
+	HideMenu();
+
+	PlayMovie("Opening.mpg", 70);
+
+	ChangeBank(SYSTEMBANK_TITLE);
+end();
+
+// マップ選択
+start(SYSTEMBANK_SELECTMAP);
+	// ChangeBank(100);
+
+	// 体験版用
+/*
+	if(GetEventNo() == EVENT_01_04_01)
+	{
+		LoadScript("System.bin", 99);
+	}
+*/
+	// クリスマス
+	if(GetEventNo() == EVENT_PROLOGUE)
+	{
+		SetFlg(FLG_XMAS, 1);
+		SetFlg(FLG_XMASFLOOR, -1);
+		SetFlg(FLG_XMASKITCHEN, -1);
+		SetFlg(FLG_XMASFOODCOURT, -1);
+		SetFlg(FLG_XMASTOWN, -1);
+
+		// フラグチェック
+		if(GetEventFlg(EVENT_04_04_01) != 0)
+		{
+			SetFlg(FLG_XMASFLOOR, UNIT_ASUKA);
+		}
+
+		if( GetEventFlg(EVENT_04_01_01) != 0 && GetEventFlg(EVENT_04_05_04) != 0 && GetEventFlg(EVENT_04_04_04) != 0 )
+		{
+			SetFlg(FLG_XMASKITCHEN, UNIT_EMA + UNIT_RIKAKO);
+		}
+		else if(GetEventFlg(EVENT_04_05_04) != 0)
+		{
+			SetFlg(FLG_XMASKITCHEN, UNIT_EMA);
+		}
+		else if(GetEventFlg(EVENT_04_04_04) != 0)
+		{
+			SetFlg(FLG_XMASKITCHEN, UNIT_RIKAKO);
+		}
+		else if((GetEventFlg(EVENT_02_05_02) != 0 || GetEventFlg(EVENT_03_04_02) != 0) && GetEventFlg(EVENT_03_06_01) != 0 && GetEventFlg(EVENT_04_01_02) != 0)
+		{
+			SetFlg(FLG_XMASKITCHEN, UNIT_KASURI);
+		}
+		else
+		{
+			SetFlg(FLG_XMASKITCHEN, UNIT_HITOSHI);
+		}
+
+		if(GetEventFlg(EVENT_04_04_03) != 0 && GetNormalEvent(UNIT_YUI) >= 3)
+		{
+			SetFlg(FLG_XMASFOODCOURT, UNIT_YUI);
+		}
+		if(GetEventFlg(EVENT_04_06_03) != 0)
+		{
+			SetFlg(FLG_XMASTOWN, UNIT_REA);
+		}
+
+		BGMPlay(BGM_JINGLE);
+		SetDay(12, 24);
+		DayEffect();
+
+		SetVisual(VISUAL_SELECTMAP);
+		FadeIn();
+		ShowMenu();
+		ShowDay();
+		SelectMap();
+		BGMFadeOut();
+		FadeOut();
+
+		SetFlg(FLG_XMAS, 0);
+
+		if(GetFlg(FLG_RET) == UNIT_YUI)
+		{
+			LoadEvent(EVENT_YUI_12);
+		}
+		else if(GetFlg(FLG_RET) == UNIT_REA)
+		{
+			LoadEvent(EVENT_REA_12);
+		}
+		else if(GetFlg(FLG_RET) == UNIT_ASUKA)
+		{
+			LoadEvent(EVENT_ASUKA_12);
+		}
+		else if(GetFlg(FLG_RET) == UNIT_KASURI)
+		{
+			LoadEvent(EVENT_KASURI_10);
+		}
+		else
+		{
+			LoadEvent(EVENT_EMA_RIKAKO_12);
+		}
+	}
+	else
+	{
+		// 第1,第2クォータープロローグ終了時は日付を表示しない。
+		if(GetEventNo() != EVENT_01_01_01 && GetEventNo() != EVENT_02_01_01)
+		{
+			DayEffect();
+		}
+
+		SetVisual(VISUAL_SELECTMAP);
+		FadeIn();
+		BGMPlay(BGM_NICHIJOU3);
+
+		ShowMenu();
+		ShowDay();
+		SelectMap();
+		BGMFadeOut();
+		FadeOut();
+
+		Wait(100);
+
+		LoadEvent(GetEventNo());
+	}
+end();
+
+// スタッフロール
+start(SYSTEMBANK_STAFFROLL);
+	HideCursor();
+	SetFlg(FLG_STAFFROLL, 1);
+
+	if(GetFlg(FLG_ROOT) != UNIT_YUI || GetFlg(FLG_ENDING) != 1)
+	{
+		SetObject(100, OBJECT_BUFFER1, 6);
+		SetObject(101, OBJECT_BUFFER2, BG_FAMILLEF_01A);
+		SetObject(102, OBJECT_BUFFER3, YUI_0101BS);
+		SetObject(103, OBJECT_BUFFER3, YUI_0102EG);
+
+		SetObject(104, OBJECT_BUFFER1, 0);
+		SetObject(105, OBJECT_BUFFER1, 1);
+		SetObject(106, OBJECT_BUFFER1, 2);
+		SetObject(107, OBJECT_BUFFER1, 3);
+		SetObject(99, OBJECT_BUFFER1, 9);
+
+		BGMPlay(BGM_ENDING);
+
+		DelVisual();
+		FilterFlashOut(800, FADEFILTER_STAFFROLL);
+		BGMWait(8814);
+	}
+
+	SetObject(0, OBJECT_ENDING1, 0);
+	FadeOut(0);
+	BGMWait(5100);
+	DelObject(0);
+	SetObject(0, OBJECT_ENDING1, 1);
+	BGMWait(5100);
+	DelObject(0);
+	SetObject(0, OBJECT_ENDING1, 2);
+	BGMWait(5100);
+	DelObject(0);
+	SetObject(0, OBJECT_ENDING1, 3);
+	SetObject(1, OBJECT_STAFF3, 0, 400, 270, 0);
+	SetObject(2, OBJECT_STAFF3, 1, 400, 330, 0);
+	BGMWait(5100);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	DelObject(104);
+	DelObject(105);
+	DelObject(106);
+	DelObject(107);
+	BGMWait(2550);
+
+
+/*
+	BGMWait(8814);
+	BGMWait(5100);
+	BGMWait(5100);
+	BGMWait(5100);
+	BGMWait(5100);
+	BGMWait(2550);
+	BGMWait(5100 * 12);
+*/
+
+	// 風見由飛					高槻つばさ
+	SetVisual(BG_FAMILLEF_01A, FILTER_STAFFROLL);
+	SetStand(YUI_0101BS, RIGHT);
+	FilterFadeIn(SLOW, FADEFILTER_STAFFROLL2);
+	SetObject(0, OBJECT_ENDING2, 0, 400, 475);
+	SetObject(1, OBJECT_STAFF1, 0, 0, 400, 450);
+	SetObject(2, OBJECT_STAFF1, 1, 0, 400, 500);
+	BGMWait(2550);
+	SetStand(YUI_0102EG, RIGHT, MOVE_STOP, SLOW);
+	DelObject(101);
+	DelObject(102);
+	DelObject(103);
+	SetObject(101, OBJECT_BUFFER2, BG_CURIOF_01A);
+	SetObject(102, OBJECT_BUFFER3, REA_0101NO);
+	SetObject(103, OBJECT_BUFFER3, REA_0102TR);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	BGMWait(637);
+
+	// 花鳥玲愛					松永雪希
+	SetVisual(BG_CURIOF_01A, FILTER_STAFFROLL);
+	DelStand(RIGHT);
+	SetStand(REA_0101NO, LEFT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2 | FADEFILTER_MIRROR);
+	SetObject(0, OBJECT_ENDING2, 1, 400, 475);
+	SetObject(1, OBJECT_STAFF1, 2, 1, 400, 450);
+	SetObject(2, OBJECT_STAFF1, 3, 1, 400, 500);
+	BGMWait(2550);
+	SetStand(REA_0102TR, LEFT, MOVE_STOP, SLOW);
+	DelObject(101);
+	DelObject(102);
+	DelObject(103);
+	SetObject(101, OBJECT_BUFFER2, BG_FAMILLEE_01A);
+	SetObject(102, OBJECT_BUFFER3, ASUKA_0101BS);
+	SetObject(103, OBJECT_BUFFER3, ASUKA_0102YW);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	BGMWait(637);
+
+	// 雪乃明日香					MIENO
+	SetVisual(BG_FAMILLEE_01A, FILTER_STAFFROLL);
+	DelStand(LEFT);
+	SetStand(ASUKA_0101BS, RIGHT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2);
+	SetObject(0, OBJECT_ENDING2, 0, 400, 475);
+	SetObject(1, OBJECT_STAFF1, 4, 0, 400, 450);
+	SetObject(2, OBJECT_STAFF1, 5, 0, 400, 500, 1);
+	BGMWait(2550);
+	SetStand(ASUKA_0102YW, RIGHT, MOVE_STOP, SLOW);
+	DelObject(101);
+	DelObject(102);
+	DelObject(103);
+	SetObject(101, OBJECT_BUFFER2, BG_FAMILLEC_01A);
+	SetObject(102, OBJECT_BUFFER3, KASURI_0101NO);
+	SetObject(103, OBJECT_BUFFER3, KASURI_0102NY);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	BGMWait(637);
+
+	// 涼波かすり					神月あおい
+	SetVisual(BG_FAMILLEC_01A, FILTER_STAFFROLL);
+	DelStand(RIGHT);
+	SetStand(KASURI_0101NO, LEFT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2 | FADEFILTER_MIRROR);
+	SetObject(0, OBJECT_ENDING2, 1, 400, 475);
+	SetObject(1, OBJECT_STAFF1, 6, 1, 400, 450);
+	SetObject(2, OBJECT_STAFF1, 7, 1, 400, 500);
+	BGMWait(2550);
+	SetStand(KASURI_0102NY, LEFT, MOVE_STOP, SLOW);
+	DelObject(101);
+	DelObject(102);
+	DelObject(103);
+	SetObject(101, OBJECT_BUFFER2, BG_FAMILLES_01A);
+	SetObject(102, OBJECT_BUFFER3, EMA_0101BS);
+	SetObject(103, OBJECT_BUFFER3, EMA_0102MS);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	BGMWait(637);
+
+	// 杉澤恵麻					Yuki-Lin
+	SetVisual(BG_FAMILLES_01A, FILTER_STAFFROLL);
+	DelStand(LEFT);
+	SetStand(EMA_0101BS, RIGHT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2);
+	SetObject(0, OBJECT_ENDING2, 0, 400, 475);
+	SetObject(1, OBJECT_STAFF1, 8, 0, 400, 450);
+	SetObject(2, OBJECT_STAFF1, 9, 0, 400, 500, 1);
+	BGMWait(2550);
+	SetStand(EMA_0102MS, RIGHT, MOVE_STOP, SLOW);
+	DelObject(101);
+	DelObject(102);
+	DelObject(103);
+	SetObject(101, OBJECT_BUFFER2, BG_FOODCOURT_01A);
+	SetObject(102, OBJECT_BUFFER3, RIKAKO_0101NO);
+	SetObject(103, OBJECT_BUFFER3, RIKAKO_0102KS);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	BGMWait(637);
+
+	// 夏海里伽子					浅野麻理亜
+	SetVisual(BG_FOODCOURT_01A, FILTER_STAFFROLL);
+	DelStand(RIGHT);
+	SetStand(RIKAKO_0101NO, LEFT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2 | FADEFILTER_MIRROR);
+	SetObject(0, OBJECT_ENDING2, 1, 400, 475);
+	SetObject(1, OBJECT_STAFF1, 10, 1, 400, 450);
+	SetObject(2, OBJECT_STAFF1, 11, 1, 400, 500);
+	BGMWait(2550);
+	SetStand(RIKAKO_0102KS, LEFT, MOVE_STOP, SLOW);
+	DelObject(101);
+	DelObject(102);
+	DelObject(103);
+	SetObject(101, OBJECT_BUFFER2, BG_ENTRANCE_01A);
+	SetObject(102, OBJECT_BUFFER3, ITABASHI_0101SN);
+	SetObject(103, OBJECT_BUFFER3, MIZUNA_0101NY);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	BGMWait(637);
+
+	// 板橋孝明					リッキー・力
+	// 川端瑞奈					深井晴花
+	SetVisual(BG_ENTRANCE_01A, FILTER_STAFFROLL);
+	SetStand(ITABASHI_0101SN, LEFT);
+	SetStand(MIZUNA_0101NY, RIGHT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2);
+	SetObject(0, OBJECT_ENDING2, 0, 250, 475);
+	SetObject(1, OBJECT_STAFF1, 12, 0, 250, 450);
+	SetObject(2, OBJECT_STAFF1, 13, 0, 250, 500);
+	SetObject(3, OBJECT_ENDING2, 1, 550, 475);
+	SetObject(4, OBJECT_STAFF1, 14, 1, 550, 450);
+	SetObject(5, OBJECT_STAFF1, 15, 1, 550, 500);
+	BGMWait(2550);
+	DelObject(101);
+	DelObject(102);
+	DelObject(103);
+	SetObject(101, OBJECT_BUFFER2, BG_CURIO_01A);
+	SetObject(102, OBJECT_BUFFER3, YOSHIMI_0101NO);
+	SetObject(103, OBJECT_BUFFER3, HIKARI_0101BS);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	DelObject(3);
+	DelObject(4);
+	DelObject(5);
+	BGMWait(637);
+
+	// 成田芳美					鮎川奈知
+	// 長谷川ひかり				中家菜穂
+	SetVisual(BG_CURIO_01A, FILTER_STAFFROLL);
+	SetStand(YOSHIMI_0101NO, LEFT);
+	SetStand(HIKARI_0101BS, RIGHT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2 | FADEFILTER_MIRROR);
+	SetObject(0, OBJECT_ENDING2, 0, 250, 475);
+	SetObject(1, OBJECT_STAFF1, 16, 0, 250, 450);
+	SetObject(2, OBJECT_STAFF1, 17, 0, 250, 500);
+	SetObject(3, OBJECT_ENDING2, 1, 550, 475);
+	SetObject(4, OBJECT_STAFF1, 18, 1, 550, 450);
+	SetObject(5, OBJECT_STAFF1, 19, 1, 550, 500);
+	BGMWait(2550);
+	DelObject(101);
+	DelObject(102);
+	DelObject(103);
+	SetObject(101, OBJECT_BUFFER2, BG_KASURI_01A);
+	SetObject(102, OBJECT_BUFFER3, TSUMUGI_0101NO);
+	SetObject(103, OBJECT_BUFFER3, GENICHIROU_0101SK);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	DelObject(3);
+	DelObject(4);
+	DelObject(5);
+	BGMWait(637);
+
+	// 涼波紬						桜川未央
+	// 涼波源一郎					山口一樹
+	SetVisual(BG_KASURI_01A, FILTER_STAFFROLL);
+	SetStand(TSUMUGI_0101NO, LEFT);
+	SetStand(GENICHIROU_0101SK, RIGHT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2);
+	SetObject(0, OBJECT_ENDING2, 0, 250, 475);
+	SetObject(1, OBJECT_STAFF1, 20, 0, 250, 450);
+	SetObject(2, OBJECT_STAFF1, 21, 0, 250, 500);
+	SetObject(3, OBJECT_ENDING2, 1, 550, 475);
+	SetObject(4, OBJECT_STAFF1, 22, 1, 550, 450);
+	SetObject(5, OBJECT_STAFF1, 23, 1, 550, 500);
+	BGMWait(2550);
+	DelObject(101);
+	DelObject(102);
+	DelObject(103);
+	SetObject(101, OBJECT_BUFFER2, BG_TAKAMURA_03C);
+	SetObject(102, OBJECT_BUFFER3, MASASHI_0101NO);
+	SetObject(103, OBJECT_BUFFER3, MITSUE_0101EG);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	DelObject(3);
+	DelObject(4);
+	DelObject(5);
+	BGMWait(637);
+
+	// 高村征氏					前中礼二
+	// 高村みつえ					神月あおい
+	SetVisual(BG_TAKAMURA_03C, FILTER_STAFFROLL);
+	SetStand(MASASHI_0101NO, LEFT);
+	SetStand(MITSUE_0101EG, RIGHT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2 | FADEFILTER_MIRROR);
+	SetObject(0, OBJECT_ENDING2, 0, 250, 475);
+	SetObject(1, OBJECT_STAFF1, 24, 0, 250, 450);
+	SetObject(2, OBJECT_STAFF1, 25, 0, 250, 500);
+	SetObject(3, OBJECT_ENDING2, 1, 550, 475);
+	SetObject(4, OBJECT_STAFF1, 26, 1, 550, 450);
+	SetObject(5, OBJECT_STAFF1, 27, 1, 550, 500);
+	BGMWait(2550);
+	DelObject(101);
+	DelObject(102);
+	DelObject(103);
+	SetObject(101, OBJECT_BUFFER2, BG_GAKUENK_01A);
+	SetObject(102, OBJECT_BUFFER3, MISUZU_0101EG);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	DelObject(3);
+	DelObject(4);
+	DelObject(5);
+	BGMWait(637);
+
+	// 美鈴						桜川未央
+	SetVisual(BG_GAKUENK_01A, FILTER_STAFFROLL);
+	DelStand(LEFT);
+	DelStand(RIGHT);
+	SetStand(MISUZU_0101EG, LEFT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2);
+	SetObject(0, OBJECT_ENDING2, 1, 400, 475);
+	SetObject(1, OBJECT_STAFF1, 28, 1, 400, 450);
+	SetObject(2, OBJECT_STAFF1, 29, 1, 400, 500);
+	BGMWait(2550);
+	DelObject(101);
+	DelObject(102);
+	SetObject(101, OBJECT_BUFFER2, BG_CURIOH_01A);
+	SetObject(102, OBJECT_BUFFER3, MIDORI_0101BS);
+	SetObject(103, OBJECT_BUFFER3, BARA_0101MJ);
+	SetObject(104, OBJECT_BUFFER1, 4);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	BGMWait(637);
+
+	// キュリオのウェイトレス		松下雅
+	// キュリオの男性店員			一条和矢
+	SetVisual(BG_CURIOH_01A, FILTER_STAFFROLL);
+	DelStand(LEFT);
+	SetStand(MIDORI_0101BS, LEFT);
+	SetStand(BARA_0101MJ, RIGHT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2 | FADEFILTER_MIRROR);
+	SetObject(0, OBJECT_ENDING2, 0, 250, 475);
+	SetObject(1, OBJECT_STAFF1, 30, 0, 250, 450);
+	SetObject(2, OBJECT_STAFF1, 31, 0, 250, 500);
+	SetObject(3, OBJECT_ENDING2, 1, 550, 475);
+	SetObject(4, OBJECT_STAFF1, 32, 1, 550, 450);
+	SetObject(5, OBJECT_STAFF1, 33, 1, 550, 500);
+	BGMWait(2550);
+	DelObject(101);
+	DelObject(102);
+	DelObject(103);
+	SetObject(101, OBJECT_BUFFER2, BG_MALL_01A);
+	SetObject(105, OBJECT_BUFFER1, 5);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	DelObject(3);
+	DelObject(4);
+	DelObject(5);
+	BGMWait(637);
+
+
+	// 結城誠介					祭 大！
+	SetVisual(BG_MALL_01A, FILTER_STAFFROLL);
+	DelStand(LEFT);
+	DelStand(RIGHT);
+	FilterCrossFade(SLOW, FADEFILTER_STAFFROLL2);
+	SetObject(0, OBJECT_ENDING2, 0, 300, 475);
+	SetObject(1, OBJECT_STAFF1, 34, 0, 300, 450);
+	SetObject(2, OBJECT_STAFF1, 35, 0, 300, 500);
+	BGMWait(2550);
+	DelObject(101);
+	SetObject(106, OBJECT_BUFFER1, 7);
+	BGMWait(1913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	BGMWait(637);
+
+	// サブキャラクターサポート
+	//		神月あおい
+	//		恥女
+	//		中家菜穂
+	//		桜川未央
+	//		鮎川奈知
+	//		レイチェル
+	//		深井晴花
+	//		悠
+	SetObject(0, OBJECT_STAFF1, 36, 2, 400, 100);
+	SetObject(1, OBJECT_STAFF1, 7, 2, 400, 150);
+	SetObject(2, OBJECT_STAFF1, 37, 2, 400, 200);
+	SetObject(3, OBJECT_STAFF1, 19, 2, 400, 250);
+	SetObject(4, OBJECT_STAFF1, 29, 2, 400, 300);
+	SetObject(5, OBJECT_STAFF1, 17, 2, 400, 350);
+	SetObject(6, OBJECT_STAFF1, 38, 2, 400, 400);
+	SetObject(7, OBJECT_STAFF1, 15, 2, 400, 450);
+	SetObject(8, OBJECT_STAFF1, 39, 2, 400, 500);
+
+	BGMWait(1550);
+	DelObject(100);
+
+	// NORMAL
+	if(GetFlg(FLG_ENDING) == 0)
+	{
+		SetFlg(FLG_VISUAL1_1, VISUAL_YUI_01B);
+		SetFlg(FLG_VISUAL1_2, VISUAL_YUI_01C);
+		SetFlg(FLG_VISUAL2_1, VISUAL_REA_01A);
+		SetFlg(FLG_VISUAL2_2, VISUAL_REA_01B);
+		SetFlg(FLG_VISUAL3_1, VISUAL_ASUKA_02A);
+		SetFlg(FLG_VISUAL3_2, VISUAL_ASUKA_02B);
+		SetFlg(FLG_VISUAL4_1, VISUAL_KASURI_01B);
+		SetFlg(FLG_VISUAL4_2, VISUAL_KASURI_01A);
+		SetFlg(FLG_VISUAL5_1, VISUAL_EMA_04A);
+		SetFlg(FLG_VISUAL5_2, -1);
+		SetFlg(FLG_VISUAL6_1, VISUAL_RIKAKO_01A);
+		SetFlg(FLG_VISUAL6_2, -1);
+		SetFlg(FLG_VISUAL7_1, BG_FAMILLE_01A);
+		SetFlg(FLG_VISUAL7_2, -1);
+	}
+	else
+	{
+		// 由飛TRUE
+		if(GetFlg(FLG_ROOT) == UNIT_YUI)
+		{
+			SetFlg(FLG_VISUAL1_1, VISUAL_YUI_01B);
+			SetFlg(FLG_VISUAL1_2, VISUAL_YUI_01C);
+			SetFlg(FLG_VISUAL2_1, VISUAL_YUI_02A);
+			SetFlg(FLG_VISUAL2_2, -1);
+			SetFlg(FLG_VISUAL3_1, VISUAL_YUI_04A);
+			SetFlg(FLG_VISUAL3_2, VISUAL_YUI_04C);
+			SetFlg(FLG_VISUAL4_1, VISUAL_YUI_13B);
+			SetFlg(FLG_VISUAL4_2, VISUAL_YUI_13A);
+			SetFlg(FLG_VISUAL5_1, VISUAL_YUI_14A);
+			SetFlg(FLG_VISUAL5_2, -1);
+			SetFlg(FLG_VISUAL6_1, VISUAL_YUI_15A);
+			SetFlg(FLG_VISUAL6_2, -1);
+			SetFlg(FLG_VISUAL7_1, VISUAL_YUI_21A);
+			SetFlg(FLG_VISUAL7_2, -1);
+		}
+
+		// 玲愛TRUE
+		else if(GetFlg(FLG_ROOT) == UNIT_REA)
+		{
+			SetFlg(FLG_VISUAL1_1, VISUAL_REA_01A);
+			SetFlg(FLG_VISUAL1_2, VISUAL_REA_01B);
+			SetFlg(FLG_VISUAL2_1, VISUAL_REA_02B);
+			SetFlg(FLG_VISUAL2_2, VISUAL_REA_02D);
+			SetFlg(FLG_VISUAL3_1, VISUAL_REA_03A);
+			SetFlg(FLG_VISUAL3_2, -1);
+			SetFlg(FLG_VISUAL4_1, VISUAL_REA_04B);
+			SetFlg(FLG_VISUAL4_2, VISUAL_REA_04C);
+			SetFlg(FLG_VISUAL5_1, VISUAL_REA_08A);
+			SetFlg(FLG_VISUAL5_2, -1);
+			SetFlg(FLG_VISUAL6_1, VISUAL_REA_18B);
+			SetFlg(FLG_VISUAL6_2, VISUAL_REA_18A);
+			SetFlg(FLG_VISUAL7_1, VISUAL_REA_19A);
+			SetFlg(FLG_VISUAL7_2, -1);
+		}
+
+		// 明日香TRUE
+		else if(GetFlg(FLG_ROOT) == UNIT_ASUKA)
+		{
+			SetFlg(FLG_VISUAL1_1, VISUAL_ASUKA_01A);
+			SetFlg(FLG_VISUAL1_2, VISUAL_ASUKA_01B);
+			SetFlg(FLG_VISUAL2_1, VISUAL_ASUKA_02A);
+			SetFlg(FLG_VISUAL2_2, VISUAL_ASUKA_02B);
+			SetFlg(FLG_VISUAL3_1, VISUAL_ASUKA_03A);
+			SetFlg(FLG_VISUAL3_2, -1);
+			SetFlg(FLG_VISUAL4_1, VISUAL_ASUKA_05A);
+			SetFlg(FLG_VISUAL4_2, VISUAL_ASUKA_05C);
+			SetFlg(FLG_VISUAL5_1, VISUAL_ASUKA_07A);
+			SetFlg(FLG_VISUAL5_2, -1);
+			SetFlg(FLG_VISUAL6_1, VISUAL_ASUKA_09A);
+			SetFlg(FLG_VISUAL6_2, VISUAL_ASUKA_09B);
+			SetFlg(FLG_VISUAL7_1, VISUAL_ASUKA_18A);
+			SetFlg(FLG_VISUAL7_2, -1);
+		}
+
+		// かすりTRUE
+		else if(GetFlg(FLG_ROOT) == UNIT_KASURI)
+		{
+			SetFlg(FLG_VISUAL1_1, VISUAL_KASURI_01B);
+			SetFlg(FLG_VISUAL1_2, VISUAL_KASURI_01A);
+			SetFlg(FLG_VISUAL2_1, VISUAL_KASURI_02A);
+			SetFlg(FLG_VISUAL2_2, VISUAL_KASURI_02B);
+			SetFlg(FLG_VISUAL3_1, VISUAL_KASURI_05A);
+			SetFlg(FLG_VISUAL3_2, -1);
+			SetFlg(FLG_VISUAL4_1, VISUAL_KASURI_12A);
+			SetFlg(FLG_VISUAL4_2, -1);
+			SetFlg(FLG_VISUAL5_1, VISUAL_KASURI_13A);
+			SetFlg(FLG_VISUAL5_2, -1);
+			SetFlg(FLG_VISUAL6_1, VISUAL_KASURI_14A);
+			SetFlg(FLG_VISUAL6_2, -1);
+			SetFlg(FLG_VISUAL7_1, VISUAL_KASURI_18A);
+			SetFlg(FLG_VISUAL7_2, -1);
+		}
+
+		// 恵麻TRUE
+		else if(GetFlg(FLG_ROOT) == UNIT_EMA)
+		{
+			SetFlg(FLG_VISUAL1_1, VISUAL_EMA_02C);
+			SetFlg(FLG_VISUAL1_2, VISUAL_EMA_02D);
+			SetFlg(FLG_VISUAL2_1, VISUAL_EMA_03A);
+			SetFlg(FLG_VISUAL2_2, -1);
+			SetFlg(FLG_VISUAL3_1, VISUAL_EMA_04A);
+			SetFlg(FLG_VISUAL3_2, VISUAL_EMA_04B);
+			SetFlg(FLG_VISUAL4_1, VISUAL_EMA_07A);
+			SetFlg(FLG_VISUAL4_2, -1);
+			SetFlg(FLG_VISUAL5_1, VISUAL_EMA_11A);
+			SetFlg(FLG_VISUAL5_2, -1);
+			SetFlg(FLG_VISUAL6_1, VISUAL_EMA_12A);
+			SetFlg(FLG_VISUAL6_2, VISUAL_EMA_12C);
+			SetFlg(FLG_VISUAL7_1, VISUAL_EMA_16A);
+			SetFlg(FLG_VISUAL7_2, -1);
+		}
+
+		// 里伽子TRUE
+		else
+		{
+			SetFlg(FLG_VISUAL1_1, VISUAL_RIKAKO_02B);
+			SetFlg(FLG_VISUAL1_2, VISUAL_RIKAKO_02D);
+			SetFlg(FLG_VISUAL2_1, VISUAL_RIKAKO_01A);
+			SetFlg(FLG_VISUAL2_2, -1);
+			SetFlg(FLG_VISUAL3_1, VISUAL_RIKAKO_03B);
+			SetFlg(FLG_VISUAL3_2, -1);
+			SetFlg(FLG_VISUAL4_1, VISUAL_RIKAKO_06A);
+			SetFlg(FLG_VISUAL4_2, -1);
+			SetFlg(FLG_VISUAL5_1, VISUAL_RIKAKO_12B);
+			SetFlg(FLG_VISUAL5_2, VISUAL_RIKAKO_12A);
+			SetFlg(FLG_VISUAL6_1, VISUAL_RIKAKO_13A);
+			SetFlg(FLG_VISUAL6_2, -1);
+			SetFlg(FLG_VISUAL7_1, VISUAL_RIKAKO_20A);
+			SetFlg(FLG_VISUAL7_2, VISUAL_RIKAKO_20C);
+		}
+	}
+
+	// 既に見たCGかチェック
+	if(GetVisualFlg(GetFlg(FLG_VISUAL1_1)) == 0)
+	{
+		SetFlg(FLG_VISUAL1_1, VISUAL_BLACK);
+		SetFlg(FLG_VISUAL1_2, VISUAL_BLACK);
+	}
+	if(GetVisualFlg(GetFlg(FLG_VISUAL2_1)) == 0)
+	{
+		SetFlg(FLG_VISUAL2_1, VISUAL_BLACK);
+		SetFlg(FLG_VISUAL2_2, VISUAL_BLACK);
+	}
+	if(GetVisualFlg(GetFlg(FLG_VISUAL3_1)) == 0)
+	{
+		SetFlg(FLG_VISUAL3_1, VISUAL_BLACK);
+		SetFlg(FLG_VISUAL3_2, VISUAL_BLACK);
+	}
+	if(GetVisualFlg(GetFlg(FLG_VISUAL4_1)) == 0)
+	{
+		SetFlg(FLG_VISUAL4_1, VISUAL_BLACK);
+		SetFlg(FLG_VISUAL4_2, VISUAL_BLACK);
+	}
+	if(GetVisualFlg(GetFlg(FLG_VISUAL5_1)) == 0)
+	{
+		SetFlg(FLG_VISUAL5_1, VISUAL_BLACK);
+		SetFlg(FLG_VISUAL5_2, VISUAL_BLACK);
+	}
+	if(GetVisualFlg(GetFlg(FLG_VISUAL6_1)) == 0)
+	{
+		SetFlg(FLG_VISUAL6_1, VISUAL_BLACK);
+		SetFlg(FLG_VISUAL6_2, VISUAL_BLACK);
+	}
+	if(GetVisualFlg(GetFlg(FLG_VISUAL7_1)) == 0)
+	{
+		SetFlg(FLG_VISUAL7_1, VISUAL_BLACK);
+		SetFlg(FLG_VISUAL7_2, VISUAL_BLACK);
+	}
+
+	SetObject(107, OBJECT_BUFFER2, GetFlg(FLG_VISUAL1_1));
+	SetObject(108, OBJECT_BUFFER2, GetFlg(FLG_VISUAL1_2));
+	SetObject(109, OBJECT_BUFFER2, GetFlg(FLG_VISUAL2_1));
+	SetObject(110, OBJECT_BUFFER2, GetFlg(FLG_VISUAL2_2));
+	SetObject(111, OBJECT_BUFFER2, GetFlg(FLG_VISUAL3_1));
+	SetObject(112, OBJECT_BUFFER2, GetFlg(FLG_VISUAL3_2));
+	SetObject(113, OBJECT_BUFFER2, GetFlg(FLG_VISUAL4_1));
+	SetObject(114, OBJECT_BUFFER2, GetFlg(FLG_VISUAL4_2));
+	SetObject(115, OBJECT_BUFFER2, GetFlg(FLG_VISUAL5_1));
+	SetObject(116, OBJECT_BUFFER2, GetFlg(FLG_VISUAL5_2));
+	SetObject(117, OBJECT_BUFFER2, GetFlg(FLG_VISUAL6_1));
+	SetObject(118, OBJECT_BUFFER2, GetFlg(FLG_VISUAL6_2));
+	SetObject(119, OBJECT_BUFFER2, GetFlg(FLG_VISUAL7_1));
+	SetObject(120, OBJECT_BUFFER2, GetFlg(FLG_VISUAL7_2));
+
+	SetObject(121, OBJECT_BUFFER1, 8);
+	SetObject(122, OBJECT_BUFFER1, 10);
+
+
+	BGMWait(2913);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	DelObject(3);
+	DelObject(4);
+	DelObject(5);
+	DelObject(6);
+	DelObject(7);
+	DelObject(8);
+	FilterFlashOut(NORMAL, FADEFILTER_STAFFROLL);
+	BGMWait(637);
+
+	SetObject(0, OBJECT_ENDING1, 4);
+	FadeOut(0);
+	BGMWait(5100);
+	DelObject(0);
+	SetObject(0, OBJECT_ENDING1, 5);
+	SetObject(1, OBJECT_STAFF3, 0, 400, 270, 0);
+	SetObject(2, OBJECT_STAFF3, 2, 400, 330, 0);
+	BGMWait(5100);
+	DelObject(0);
+	DelObject(1);
+	DelObject(2);
+	DelObject(99);
+	DelObject(104);
+	DelObject(105);
+	BGMWait(2000);
+
+	SetFlg(FLG_RET, 650);
+
+	// 企画
+	// 戯画
+	SetObject(0, OBJECT_STAFF4, 0, 0);
+	SetObject(1, OBJECT_STAFF4, 1, 0);
+
+	// 脚本
+	// 丸戸 史明 With 企画屋
+	SetObject(2, OBJECT_STAFF4, 0, 1);
+	SetObject(3, OBJECT_STAFF4, 1, 1);
+
+	// キャラクターデザイン/原画
+	// ねこにゃん
+	SetObject(4, OBJECT_STAFF4, 0, 2);
+	SetObject(5, OBJECT_STAFF4, 1, 2);
+
+	// 背景
+	// 草薙（KUSANAGI）
+	SetObject(6, OBJECT_STAFF4, 0, 3);
+	SetObject(7, OBJECT_STAFF4, 1, 3);
+
+	// 背景加工
+	// 内有 一馬
+	SetObject(8, OBJECT_STAFF4, 0, 4);
+	SetObject(9, OBJECT_STAFF4, 1, 4);
+
+	// プログラム
+	// らす
+	SetObject(10, OBJECT_STAFF4, 0, 5);
+	SetObject(11, OBJECT_STAFF4, 1, 5);
+
+	// スクリプト
+	// らす
+	// 桜乃
+	// 七瀬
+	SetObject(12, OBJECT_STAFF4, 0, 6);
+	SetObject(13, OBJECT_STAFF4, 1, 5);
+	SetObject(14, OBJECT_STAFF4, 1, 6);
+	SetObject(15, OBJECT_STAFF4, 1, 7);
+
+	// システムグラフィック
+	// ももちん
+	SetObject(16, OBJECT_STAFF4, 0, 7);
+	SetObject(17, OBJECT_STAFF4, 1, 8);
+
+	// CG統括
+	// kousui
+	SetObject(18, OBJECT_STAFF4, 0, 8);
+	SetObject(19, OBJECT_STAFF4, 1, 9);
+
+	// CG
+	// 紅雲(小田)
+	// 孵化(北出)
+	// ひら　なみお(外注)
+	// Ogata(外注)
+	// せんや(外注)
+	// 有丸(外注)
+	// Miewo(外注)
+	// 猫瀬＊ハク(外注)
+	// Team-sortilege (外注)
+	// 有限会社フルール
+	SetObject(20, OBJECT_STAFF4, 0, 9);
+	SetObject(21, OBJECT_STAFF4, 1, 37);
+	SetObject(22, OBJECT_STAFF4, 1, 38);
+	SetObject(23, OBJECT_STAFF4, 1, 39);
+	SetObject(24, OBJECT_STAFF4, 1, 40);
+	SetObject(25, OBJECT_STAFF4, 1, 41);
+	SetObject(26, OBJECT_STAFF4, 1, 42);
+	SetObject(27, OBJECT_STAFF4, 1, 43);
+	SetObject(28, OBJECT_STAFF4, 1, 44);
+	SetObject(29, OBJECT_STAFF4, 1, 45);
+	SetObject(30, OBJECT_STAFF4, 1, 15);
+
+	// CG背景
+	// Y.M
+	// 内有 一馬
+	SetObject(31, OBJECT_STAFF4, 0, 10);
+	SetObject(32, OBJECT_STAFF4, 1, 16);
+	SetObject(33, OBJECT_STAFF4, 1, 4);
+
+	// グラフィックデータ作成
+	// ミヤムー
+	// MUSASHI
+	SetObject(34, OBJECT_STAFF4, 0, 11);
+	SetObject(35, OBJECT_STAFF4, 1, 17);
+	SetObject(36, OBJECT_STAFF4, 1, 18);
+
+	// サウンド/SE
+	// Hirasan
+	// 桜乃
+	SetObject(37, OBJECT_STAFF4, 0, 12);
+	SetObject(38, OBJECT_STAFF4, 1, 19);
+	SetObject(39, OBJECT_STAFF4, 1, 6);
+
+	// 主題歌
+	// Leaf　ticket
+	// Lyrics & Vocal : KOTOKO
+	// Music & Arranged : C.G Mix
+	//Produce : I've sound
+	//		<<I'veロゴ>>
+	SetObject(40, OBJECT_STAFF4, 0, 13);
+	SetObject(41, OBJECT_STAFF4, 1, 20);
+	SetObject(42, OBJECT_STAFF4, 1, 21);
+
+	// エンディングテーマ
+	// つまんない恋
+	// Lyrics : 丸戸史明 / NEKO-EMON
+	// Music : 杉本バッハ
+	// Arranged : Z-shimi / 杉本バッハ
+	// Vocal : 高槻つばさ
+	// Chorus : Misa Saito
+	// Drum : すがちん
+	// Work : Faith
+	SetObject(43, OBJECT_STAFF4, 0, 14);
+	SetObject(44, OBJECT_STAFF4, 1, 22);
+	SetObject(45, OBJECT_STAFF4, 1, 23);
+
+	// オープニングムービー制作
+	// 神月　社
+	// はなじろ
+	SetObject(46, OBJECT_STAFF4, 0, 15);
+	SetObject(47, OBJECT_STAFF4, 1, 24);
+	SetObject(48, OBJECT_STAFF4, 1, 25);
+
+	// レコーディングエンジニア
+	// 太田友基（音響ハウス）
+	// 藤田ルリ子（音響ハウス）
+	SetObject(49, OBJECT_STAFF4, 0, 16);
+	SetObject(50, OBJECT_STAFF4, 1, 26);
+	SetObject(51, OBJECT_STAFF4, 1, 27);
+
+	// ボイスレコーディングスタジオ
+	// 音響ハウス
+	SetObject(52, OBJECT_STAFF4, 0, 17);
+	SetObject(53, OBJECT_STAFF4, 1, 28);
+
+	// ボイスディレクション
+	// 木下由佳　Faith,Inc.
+	// 清水敏夫　Faith,Inc.
+	SetObject(54, OBJECT_STAFF4, 0, 18);
+	SetObject(55, OBJECT_STAFF4, 1, 29);
+	SetObject(56, OBJECT_STAFF4, 1, 30);
+
+	// 音響・CVコーディネート
+	// （株）フェイス
+	SetObject(57, OBJECT_STAFF4, 0, 19);
+	SetObject(58, OBJECT_STAFF4, 1, 31);
+
+	// デバッグ
+	// ゴトーさん
+	// ミヤムー
+	// ののたん
+	// 真夜中のきりん
+	// 新乃々描ノ助
+	SetObject(59, OBJECT_STAFF4, 0, 20);
+	SetObject(60, OBJECT_STAFF4, 1, 32);
+	SetObject(61, OBJECT_STAFF4, 1, 17);
+	SetObject(62, OBJECT_STAFF4, 1, 33);
+	SetObject(63, OBJECT_STAFF4, 1, 34);
+	SetObject(64, OBJECT_STAFF4, 1, 35);
+
+	// 制作進行
+	// MUSASHI
+	SetObject(65, OBJECT_STAFF4, 0, 21);
+	SetObject(66, OBJECT_STAFF4, 1, 18);
+
+	// Produced by 戯画 2005
+	SetObject(67, OBJECT_STAFF4, 2, 36);
+
+	BGMWait(550);
+
+	SetVisual(GetFlg(FLG_VISUAL1_1), FILTER_STAFFROLL);
+	FilterFadeIn(NORMAL, FADEFILTER_STAFFROLL);
+	BGMWait(2550);
+	if(GetFlg(FLG_VISUAL1_2) > 0)
+	{
+		SetVisual(GetFlg(FLG_VISUAL1_2), FILTER_STAFFROLL);
+		CrossFade(SLOW);
+	}
+	BGMWait(5100);
+	WaveFadeOut(SLOWER);
+	BGMWait(2550);
+
+	SetVisual(GetFlg(FLG_VISUAL2_1), FILTER_STAFFROLL);
+	FilterFadeIn(NORMAL, FADEFILTER_STAFFROLL | FADEFILTER_NEGATIVE);
+	BGMWait(2550);
+	if(GetFlg(FLG_VISUAL2_2) > 0)
+	{
+		SetVisual(GetFlg(FLG_VISUAL2_2), FILTER_STAFFROLL);
+		CrossFade(SLOW);
+	}
+	BGMWait(5100);
+	WaveFadeOut(SLOWER);
+	BGMWait(2550);
+
+	SetVisual(GetFlg(FLG_VISUAL3_1), FILTER_STAFFROLL);
+	FilterFadeIn(NORMAL, FADEFILTER_STAFFROLL);
+	BGMWait(2550);
+	if(GetFlg(FLG_VISUAL3_2) > 0)
+	{
+		SetVisual(GetFlg(FLG_VISUAL3_2), FILTER_STAFFROLL);
+		CrossFade(SLOW);
+	}
+	BGMWait(5100);
+	WaveFadeOut(SLOWER);
+	BGMWait(2550);
+
+	SetVisual(GetFlg(FLG_VISUAL4_1), FILTER_STAFFROLL);
+	FilterFadeIn(NORMAL, FADEFILTER_STAFFROLL | FADEFILTER_NEGATIVE);
+	BGMWait(2550);
+	if(GetFlg(FLG_VISUAL4_2) > 0)
+	{
+		SetVisual(GetFlg(FLG_VISUAL4_2), FILTER_STAFFROLL);
+		CrossFade(SLOW);
+	}
+	BGMWait(5100);
+	WaveFadeOut(SLOWER);
+	BGMWait(2550);
+
+	SetVisual(GetFlg(FLG_VISUAL5_1), FILTER_STAFFROLL);
+	FilterFadeIn(NORMAL, FADEFILTER_STAFFROLL);
+	BGMWait(2550);
+	if(GetFlg(FLG_VISUAL5_2) > 0)
+	{
+		SetVisual(GetFlg(FLG_VISUAL5_2), FILTER_STAFFROLL);
+		CrossFade(SLOW);
+	}
+	BGMWait(5100);
+	WaveFadeOut(SLOWER);
+	BGMWait(2550);
+
+	SetVisual(GetFlg(FLG_VISUAL6_1), FILTER_STAFFROLL);
+	FilterFadeIn(NORMAL, FADEFILTER_STAFFROLL | FADEFILTER_NEGATIVE);
+	BGMWait(2550);
+	if(GetFlg(FLG_VISUAL6_2) > 0)
+	{
+		SetVisual(GetFlg(FLG_VISUAL6_2), FILTER_STAFFROLL);
+		CrossFade(SLOW);
+	}
+	BGMWait(5100);
+	WaveFadeOut(SLOWER);
+	BGMWait(2550);
+
+	SetVisual(GetFlg(FLG_VISUAL7_1), FILTER_STAFFROLL);
+	FilterFadeIn(NORMAL, FADEFILTER_STAFFROLL);
+	BGMWait(2550);
+	if(GetFlg(FLG_VISUAL7_2) > 0)
+	{
+		SetVisual(GetFlg(FLG_VISUAL7_2), FILTER_STAFFROLL);
+		CrossFade(SLOW);
+	}
+	BGMWait(5100);
+	WaveFadeOut(SLOWER);
+	BGMWait(2550);
+
+	SetObject(99, OBJECT_ENDING3, 0);
+	BGMWait(10200);
+	DelObject(99);
+	SetObject(99, OBJECT_ENDING3, 1);
+	BGMWait(10200);
+	DelObject(99);
+	SetObject(99, OBJECT_ENDING3, 2);
+	BGMWait(10200);
+	DelObject(99);
+	SetObject(99, OBJECT_ENDING3, 3);
+	SetObject(98, OBJECT_ENDING4);
+	BGMWait(10200);
+	DelObject(99);
+	SetObject(99, OBJECT_ENDING3, 4);
+	BGMWait(10200);
+	DelObject(99);
+	SetObject(97, OBJECT_STAFF3, 0, 400, 270, 1);
+	SetObject(96, OBJECT_STAFF3, 1, 400, 370, 1);
+
+	Wait(800, 2);
+
+	DelObject(-1);
+
+	ChangeBank(SYSTEMBANK_STAFFROLLEND);
+end();
+
+// スタッフロール終了処理
+start(SYSTEMBANK_STAFFROLLEND);
+	SetFlg(FLG_STAFFROLL, 0);
+	SetSystemFlg(SYSTEMFLG_CLEARYUI + GetFlg(FLG_ROOT) - UNIT_YUI, 1);
+	Wait(200, 2);
+
+	ShowCursor();
+
+	if(GetFlg(FLG_ROOT) == UNIT_EMA && GetFlg(FLG_ENDING) != 0)
+	{
+		Wait(200);
+		LoadEvent(EVENT_EMA_25);
+	}
+	ChangeBank(SYSTEMBANK_TITLE);
+end();
+
+// 体験版用
+start(99);
+	BGMPlay(BGM_OPENINGP);
+
+	SetVisual(VISUAL_YUI_05B);
+	FilterFadeIn(SLOW, FADEFILTER_UZU);
+	Wait(500);
+	SetVisual(VISUAL_REA_10A);
+	FilterCrossFade(SLOW, FADEFILTER_UZU);
+	Wait(500);
+	SetVisual(VISUAL_ASUKA_13A);
+	FilterCrossFade(SLOW, FADEFILTER_UZU);
+	Wait(500);
+	SetVisual(VISUAL_KASURI_02A);
+	FilterCrossFade(SLOW, FADEFILTER_UZU);
+	Wait(500);
+	SetVisual(VISUAL_EMA_03A);
+	FilterCrossFade(SLOW, FADEFILTER_UZU);
+	Wait(500);
+	SetVisual(VISUAL_RIKAKO_12A);
+	FilterCrossFade(SLOW, FADEFILTER_UZU);
+	Wait(500);
+	BGMFadeOut(SLOWER);
+	FadeOut(SLOW);
+	Wait(100);
+	SetVisual(VISUAL_NOTICE);
+	WaveFadeIn(SLOWER);
+	Wait(800);
+	WaveFadeOut(SLOWER);
+	Wait(200);
+
+	ChangeBank(SYSTEMBANK_TITLE);
+end();
+
+// スクリプト選択用
+start(100);
+	SetEventNo(0);
+
+	AddSelectMenu(0, "共通シナリオ");
+	AddSelectMenu(1, "由飛シナリオ");
+	AddSelectMenu(2, "玲愛シナリオ");
+	AddSelectMenu(3, "明日香シナリオ");
+	AddSelectMenu(4, "かすりシナリオ");
+	AddSelectMenu(5, "恵麻シナリオ");
+	AddSelectMenu(6, "里伽子シナリオ");
+	SelectMenu();
+
+	if(GetFlg(FLG_RET) == 0)
+	{
+		AddSelectMenu(0, "プロローグ");
+		AddSelectMenu(1, "第１クォーター01");
+		AddSelectMenu(2, "第１クォーター02");
+		AddSelectMenu(3, "第２クォーター01");
+		AddSelectMenu(4, "第２クォーター02");
+		AddSelectMenu(5, "第３クォーター01");
+		AddSelectMenu(6, "第３クォーター02");
+		AddSelectMenu(7, "第４クォーター01");
+		AddSelectMenu(8, "第４クォーター02");
+		AddSelectMenu(9, "追加01");
+		AddSelectMenu(10, "追加02");
+		SelectMenu();
+
+		if(GetFlg(FLG_RET) == 0)
+		{
+			LoadScript("プロローグ.bin", 0);
+		}
+		else if(GetFlg(FLG_RET) == 1)
+		{
+			LoadScript("第１クォーター01.bin", 0);
+		}
+		else if(GetFlg(FLG_RET) == 2)
+		{
+			LoadScript("第１クォーター02.bin", 0);
+		}
+		else if(GetFlg(FLG_RET) == 3)
+		{
+			LoadScript("第２クォーター01.bin", 0);
+		}
+		else if(GetFlg(FLG_RET) == 4)
+		{
+			LoadScript("第２クォーター02.bin", 0);
+		}
+		else if(GetFlg(FLG_RET) == 5)
+		{
+			LoadScript("第３クォーター01.bin", 0);
+		}
+		else if(GetFlg(FLG_RET) == 6)
+		{
+			LoadScript("第３クォーター02.bin", 0);
+		}
+		else if(GetFlg(FLG_RET) == 7)
+		{
+			LoadScript("第４クォーター01.bin", 0);
+		}
+		else if(GetFlg(FLG_RET) == 8)
+		{
+			LoadScript("第４クォーター02.bin", 0);
+		}
+		else if(GetFlg(FLG_RET) == 9)
+		{
+			LoadScript("追加01.bin", 0);
+		}
+		else if(GetFlg(FLG_RET) == 10)
+		{
+			LoadScript("追加02.bin", 0);
+		}
+	}
+	else if(GetFlg(FLG_RET) == 1)
+	{
+		AddSelectMenu(0, "由飛01～由飛10");
+		AddSelectMenu(1, "由飛11～由飛20");
+		AddSelectMenu(2, "由飛21～由飛29");
+		SelectMenu();
+
+		if(GetFlg(FLG_RET) == 0)
+		{
+			AddSelectMenu(0, "由飛01");
+			AddSelectMenu(1, "由飛02");
+			AddSelectMenu(2, "由飛03");
+			AddSelectMenu(3, "由飛04");
+			AddSelectMenu(4, "由飛05");
+			AddSelectMenu(5, "由飛06");
+			AddSelectMenu(6, "由飛07");
+			AddSelectMenu(7, "由飛08");
+			AddSelectMenu(8, "由飛09");
+			AddSelectMenu(9, "由飛10");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("由飛01.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("由飛02.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("由飛03.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("由飛04.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("由飛05.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("由飛06.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("由飛07.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("由飛08.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("由飛09.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("由飛10.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 1)
+		{
+			AddSelectMenu(0, "由飛11");
+			AddSelectMenu(1, "由飛12");
+			AddSelectMenu(2, "由飛13");
+			AddSelectMenu(3, "由飛14");
+			AddSelectMenu(4, "由飛15・玲愛15");
+			AddSelectMenu(5, "由飛16");
+			AddSelectMenu(6, "由飛17");
+			AddSelectMenu(7, "由飛18・玲愛18");
+			AddSelectMenu(8, "由飛19・玲愛19");
+			AddSelectMenu(9, "由飛20");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("由飛11.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("由飛12.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("由飛13.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("由飛14.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("由飛15・玲愛15.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("由飛16.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("由飛17.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("由飛18・玲愛18.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("由飛19・玲愛19.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("由飛20.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 2)
+		{
+			AddSelectMenu(0, "由飛21");
+			AddSelectMenu(1, "由飛22");
+			AddSelectMenu(2, "由飛23");
+			AddSelectMenu(3, "由飛24");
+			AddSelectMenu(4, "由飛25");
+			AddSelectMenu(5, "由飛26");
+			AddSelectMenu(6, "由飛27");
+			AddSelectMenu(7, "由飛28");
+			AddSelectMenu(8, "由飛29");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("由飛21.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("由飛22.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("由飛23.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("由飛24.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("由飛25.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("由飛26.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("由飛27.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("由飛28.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("由飛29.bin", 0);
+			}
+		}
+	}
+	else if(GetFlg(FLG_RET) == 2)
+	{
+		AddSelectMenu(0, "玲愛01～玲愛10");
+		AddSelectMenu(1, "玲愛11～玲愛20");
+		AddSelectMenu(2, "玲愛21～玲愛29");
+		SelectMenu();
+
+		if(GetFlg(FLG_RET) == 0)
+		{
+			AddSelectMenu(0, "玲愛01");
+			AddSelectMenu(1, "玲愛02");
+			AddSelectMenu(2, "玲愛03");
+			AddSelectMenu(3, "玲愛04");
+			AddSelectMenu(4, "玲愛05");
+			AddSelectMenu(5, "玲愛06");
+			AddSelectMenu(6, "玲愛07");
+			AddSelectMenu(7, "玲愛08");
+			AddSelectMenu(8, "玲愛09");
+			AddSelectMenu(9, "玲愛10");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("玲愛01.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("玲愛02.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("玲愛03.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("玲愛04.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("玲愛05.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("玲愛06.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("玲愛07.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("玲愛08.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("玲愛09.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("玲愛10.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 1)
+		{
+			AddSelectMenu(0, "玲愛11");
+			AddSelectMenu(1, "玲愛12");
+			AddSelectMenu(2, "玲愛13");
+			AddSelectMenu(3, "玲愛14");
+			AddSelectMenu(4, "由飛15・玲愛15");
+			AddSelectMenu(5, "玲愛16");
+			AddSelectMenu(6, "玲愛17");
+			AddSelectMenu(7, "由飛18・玲愛18");
+			AddSelectMenu(8, "由飛19・玲愛19");
+			AddSelectMenu(9, "玲愛20");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("玲愛11.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("玲愛12.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("玲愛13.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("玲愛14.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("由飛15・玲愛15.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("玲愛16.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("玲愛17.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("由飛18・玲愛18.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("由飛19・玲愛19.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("玲愛20.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 2)
+		{
+			AddSelectMenu(0, "玲愛21");
+			AddSelectMenu(1, "玲愛22");
+			AddSelectMenu(2, "玲愛23");
+			AddSelectMenu(3, "玲愛24");
+			AddSelectMenu(4, "玲愛25");
+			AddSelectMenu(5, "玲愛26");
+			AddSelectMenu(6, "玲愛27");
+			AddSelectMenu(7, "玲愛28");
+			AddSelectMenu(8, "玲愛29");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("玲愛21.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("玲愛22.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("玲愛23.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("玲愛24.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("玲愛25.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("玲愛26.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("玲愛27.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("玲愛28.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("玲愛29.bin", 0);
+			}
+		}
+	}
+	else if(GetFlg(FLG_RET) == 3)
+	{
+		AddSelectMenu(0, "明日香01～明日香10");
+		AddSelectMenu(1, "明日香11～明日香20");
+		AddSelectMenu(2, "明日香21～明日香21");
+		SelectMenu();
+
+		if(GetFlg(FLG_RET) == 0)
+		{
+			AddSelectMenu(0, "明日香01");
+			AddSelectMenu(1, "明日香02");
+			AddSelectMenu(2, "明日香03");
+			AddSelectMenu(3, "明日香04");
+			AddSelectMenu(4, "明日香05");
+			AddSelectMenu(5, "明日香06");
+			AddSelectMenu(6, "明日香07");
+			AddSelectMenu(7, "明日香08");
+			AddSelectMenu(8, "明日香09");
+			AddSelectMenu(9, "明日香10");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("明日香01.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("明日香02.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("明日香03.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("明日香04.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("明日香05.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("明日香06.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("明日香07.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("明日香08.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("明日香09.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("明日香10.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 1)
+		{
+			AddSelectMenu(0, "明日香11");
+			AddSelectMenu(1, "明日香12");
+			AddSelectMenu(2, "明日香13");
+			AddSelectMenu(3, "明日香14");
+			AddSelectMenu(4, "明日香15");
+			AddSelectMenu(5, "明日香16");
+			AddSelectMenu(6, "明日香17");
+			AddSelectMenu(7, "明日香18");
+			AddSelectMenu(8, "明日香19");
+			AddSelectMenu(9, "明日香20");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("明日香11.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("明日香12.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("明日香13.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("明日香14.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("明日香15.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("明日香16.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("明日香17.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("明日香18.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("明日香19.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("明日香20.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 2)
+		{
+			AddSelectMenu(0, "明日香21");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("明日香21.bin", 0);
+			}
+		}
+	}
+	else if(GetFlg(FLG_RET) == 4)
+	{
+		AddSelectMenu(0, "かすり01～かすり10");
+		AddSelectMenu(1, "かすり11～かすり20");
+		AddSelectMenu(2, "かすり21～かすり23");
+		SelectMenu();
+
+		if(GetFlg(FLG_RET) == 0)
+		{
+			AddSelectMenu(0, "かすり01");
+			AddSelectMenu(1, "かすり02");
+			AddSelectMenu(2, "かすり03");
+			AddSelectMenu(3, "かすり04");
+			AddSelectMenu(4, "かすり05");
+			AddSelectMenu(5, "かすり06");
+			AddSelectMenu(6, "かすり07");
+			AddSelectMenu(7, "かすり08");
+			AddSelectMenu(8, "かすり09");
+			AddSelectMenu(9, "かすり10");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("かすり01.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("かすり02.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("かすり03.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("かすり04.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("かすり05.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("かすり06.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("かすり07.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("かすり08.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("かすり09.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("かすり10.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 1)
+		{
+			AddSelectMenu(0, "かすり11");
+			AddSelectMenu(1, "かすり12");
+			AddSelectMenu(2, "かすり13");
+			AddSelectMenu(3, "かすり14");
+			AddSelectMenu(4, "かすり15");
+			AddSelectMenu(5, "かすり16");
+			AddSelectMenu(6, "かすり17");
+			AddSelectMenu(7, "かすり18");
+			AddSelectMenu(8, "かすり19");
+			AddSelectMenu(9, "かすり20");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("かすり11.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("かすり12.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("かすり13.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("かすり14.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("かすり15.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("かすり16.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("かすり17.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("かすり18.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("かすり19.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("かすり20.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 2)
+		{
+			AddSelectMenu(0, "かすり21");
+			AddSelectMenu(1, "かすり22");
+			AddSelectMenu(2, "かすり23");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("かすり21.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("かすり22.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("かすり23.bin", 0);
+			}
+		}
+	}
+	else if(GetFlg(FLG_RET) == 5)
+	{
+		AddSelectMenu(0, "恵麻01～恵麻10");
+		AddSelectMenu(1, "恵麻11～恵麻20");
+		AddSelectMenu(2, "恵麻21～恵麻25");
+		SelectMenu();
+
+		if(GetFlg(FLG_RET) == 0)
+		{
+			AddSelectMenu(0, "恵麻01");
+			AddSelectMenu(1, "恵麻02");
+			AddSelectMenu(2, "恵麻03");
+			AddSelectMenu(3, "恵麻04");
+			AddSelectMenu(4, "恵麻05");
+			AddSelectMenu(5, "恵麻06");
+			AddSelectMenu(6, "恵麻07");
+			AddSelectMenu(7, "恵麻08");
+			AddSelectMenu(8, "恵麻09・里伽子09");
+			AddSelectMenu(9, "恵麻10");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("恵麻01.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("恵麻02.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("恵麻03.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("恵麻04.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("恵麻05.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("恵麻06.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("恵麻07.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("恵麻08.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("恵麻09・里伽子09.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("恵麻10.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 1)
+		{
+			AddSelectMenu(0, "恵麻11");
+			AddSelectMenu(1, "恵麻12・里伽子12");
+			AddSelectMenu(2, "恵麻13");
+			AddSelectMenu(3, "恵麻14");
+			AddSelectMenu(4, "恵麻15");
+			AddSelectMenu(5, "恵麻16");
+			AddSelectMenu(6, "恵麻17");
+			AddSelectMenu(7, "恵麻18");
+			AddSelectMenu(8, "恵麻19");
+			AddSelectMenu(9, "恵麻20");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("恵麻11.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("恵麻12・里伽子12.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("恵麻13.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("恵麻14.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("恵麻15.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("恵麻16.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("恵麻17.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("恵麻18.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("恵麻19.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("恵麻20.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 2)
+		{
+			AddSelectMenu(0, "恵麻21");
+			AddSelectMenu(1, "恵麻22");
+			AddSelectMenu(2, "恵麻23");
+			AddSelectMenu(3, "恵麻24");
+			AddSelectMenu(4, "恵麻25");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("恵麻21.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("恵麻22.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("恵麻23.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("恵麻24.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("恵麻25.bin", 0);
+			}
+		}
+	}
+	else if(GetFlg(FLG_RET) == 6)
+	{
+		AddSelectMenu(0, "里伽子01～里伽子10");
+		AddSelectMenu(1, "里伽子11～里伽子20");
+		AddSelectMenu(2, "里伽子21～里伽子26");
+		SelectMenu();
+
+		if(GetFlg(FLG_RET) == 0)
+		{
+			AddSelectMenu(0, "里伽子01");
+			AddSelectMenu(1, "里伽子02");
+			AddSelectMenu(2, "里伽子03");
+			AddSelectMenu(3, "里伽子04");
+			AddSelectMenu(4, "里伽子05");
+			AddSelectMenu(5, "里伽子06");
+			AddSelectMenu(6, "里伽子07");
+			AddSelectMenu(7, "里伽子08");
+			AddSelectMenu(8, "恵麻09・里伽子09");
+			AddSelectMenu(9, "里伽子10");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("里伽子01.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("里伽子02.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("里伽子03.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("里伽子04.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("里伽子05.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("里伽子06.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("里伽子07.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("里伽子08.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("恵麻09・里伽子09.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("里伽子10.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 1)
+		{
+			AddSelectMenu(0, "里伽子11");
+			AddSelectMenu(1, "恵麻12・里伽子12");
+			AddSelectMenu(2, "里伽子13");
+			AddSelectMenu(3, "里伽子14");
+			AddSelectMenu(4, "里伽子15");
+			AddSelectMenu(5, "里伽子16");
+			AddSelectMenu(6, "里伽子17");
+			AddSelectMenu(7, "里伽子18");
+			AddSelectMenu(8, "里伽子19");
+			AddSelectMenu(9, "里伽子20");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("里伽子11.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("恵麻12・里伽子12.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("里伽子13.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("里伽子14.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("里伽子15.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("里伽子16.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 6)
+			{
+				LoadScript("里伽子17.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 7)
+			{
+				LoadScript("里伽子18.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 8)
+			{
+				LoadScript("里伽子19.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 9)
+			{
+				LoadScript("里伽子20.bin", 0);
+			}
+		}
+		else if(GetFlg(FLG_RET) == 2)
+		{
+			AddSelectMenu(0, "里伽子21");
+			AddSelectMenu(1, "里伽子22");
+			AddSelectMenu(2, "里伽子23");
+			AddSelectMenu(3, "里伽子24");
+			AddSelectMenu(4, "里伽子25");
+			AddSelectMenu(5, "里伽子26");
+			SelectMenu();
+
+			if(GetFlg(FLG_RET) == 0)
+			{
+				LoadScript("里伽子21.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 1)
+			{
+				LoadScript("里伽子22.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 2)
+			{
+				LoadScript("里伽子23.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 3)
+			{
+				LoadScript("里伽子24.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 4)
+			{
+				LoadScript("里伽子25.bin", 0);
+			}
+			else if(GetFlg(FLG_RET) == 5)
+			{
+				LoadScript("里伽子26.bin", 0);
+			}
+		}
+	}
+end();
+
+int i;
+
+// 立ち背景チェック用
+start(101);
+	i = BG_MALL_01A;
+	SetStand(REA_0101NO, LEFT);
+	SetStand(RIKAKO_0101NO, RIGHT);
+	SetVisual( i );
+	FadeIn();
+	ChangeBank( 102 );
+end();
+
+start(102);
+//	SetFlg(FLG_RET, BG_MALL_01A);
+	Wait(-1);
+	i = i + 1;
+	SetVisual( i );
+	CrossFade( FAST );
+	ChangeBank(102);
+end();
+

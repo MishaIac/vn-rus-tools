@@ -1,0 +1,423 @@
+// ●由飛06：給料日
+// 種類：重要イベント（由飛チェーン１：由飛攻略に必須）
+// 条件：第２クォーター、ブリックモールを選択
+// 概要：閉店間際のブリックモールでお買い物
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	//----------------------------------------------------------------------------
+	// ＜画面暗転＞
+	//----------------------------------------------------------------------------
+
+	// ＜ＳＥ：ドアベル＞
+	SEPlay("L_Door05A");
+	SEPlay("L_Bell02");
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フードコート＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLE_03A );
+	BGMPlay(BGM_NICHIJOU3);
+	SEFadePlay(0, "L_Zattou04", NORMAL);
+	SEFadePlay(1, "L_Zattou06", NORMAL, 50);
+	FadeIn();
+	SetStand(YUI_0301MU);
+
+	SetWindow();
+	SetMessage(UNIT_YUI, YUI_0301MU, "由飛", "@v01010139「店長てんちょ～！@n早く早く～！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま、待て…」");
+	SetMessage(UNIT_YUI, YUI_0301MU, "由飛", "@v01010140「そんなこと言ってたら、@nみんな閉まっちゃいますよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうは言っても…@nいくら当番でないとはいえ、@n皆を置いて先に帰るのは…」");
+	SetMessage(UNIT_YUI, YUI_0301BS, "由飛", "@v01010141「お買い物が終わったら、@n後で戻って来ればいいんじゃないですか？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それはそうかもしれんけど…俺店長だし」");
+	SetMessage(UNIT_YUI, YUI_0301BS, "由飛", "@v01010142「でも約束しましたよね？@nお給料入ったらお買い物つきあってくれるって」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「休みの日かと思ってたんだよ…」");
+	SetMessage(UNIT_YUI, YUI_0301MU, "由飛", "@v01010143「待てませんそんなに！@nわたし、したいことや欲しいものがあると、@nもう全然我慢が効かないの」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうなの？」");
+	SetMessage(UNIT_YUI, YUI_0301MU, "由飛", "@v01010144「これで今日大人しく帰ったら、@nお買い物がしたくてしたくて、@n眠れなくなっちゃいます」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「難儀な性格だねぇ…」");
+	SetMessage(UNIT_YUI, YUI_0301MU, "由飛", "@v01010145「だから早く！@nあと４０分しかありません～！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「し、しかし…」");
+	SetMessage(UNIT_YUI, YUI_0301IK2, "由飛", "@v01010146「え～い！　こうなったら！」");
+	DelWindow();
+
+	// ＜ＳＥ：骨の砕ける音＞
+	SEPlay("L_Touch01");
+	ShakeScreen(8);
+	DelStand();
+	SEPlay("L_Kishimi01");
+	Wait(10);
+	ShakeScreen(16);
+	FlashIn(FAST);
+	SEPlay("L_Hone01");
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いててててっ！@nこ、こらっ、手首を思いっきり掴むな～！」");
+
+	SetStand(YUI_A301MJ);
+
+	SetMessage(UNIT_YUI, YUI_A301MJ, "由飛", "@v01010147「さあ急ぎますよ～！@nあと３９分４０秒！@n蛍の光まであと…３４分３０秒です！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「折れる折れる折れる～！」");
+	DelWindow();
+
+	// ＜画面暗転＞
+	DelStand();
+	SEFadePlay(2, "L_Walk02");
+	SEFadePlay(3, "L_Walk03");
+	CurtainFadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "今日は、待ちに待った給料日。");
+	SetMessage(UNIT_ETC, -1, "", "…いや、経営側からすれば、@n延ばしに延ばしたかった給料日。");
+	SetMessage(UNIT_ETC, -1, "", "『お給料出たらお買い物につき合ってくださいね』");
+	SetMessage(UNIT_ETC, -1, "", "つい先日、由飛くんから出た魅力的な提案に、@n俺はもちろん、一も二もなく賛成した。");
+	SetMessage(UNIT_ETC, -1, "", "いや、そのことを知った明日香ちゃんの目が@n冷たかったけど…");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ブリックモール＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_ENTRANCE_03A );
+	SEFadeOut(0, SLOW);
+	SEFadePlay(0, "L_Zattou01", SLOW);
+	SEFade(1, SLOW, 100);
+	SEFadeOut(2, SLOW);
+	SEFadeOut(3, SLOW);
+	CurtainFadeIn();
+	SetStand(YUI_0302OD2);
+
+	SetWindow();
+	SetMessage(UNIT_YUI, YUI_0302OD2, "由飛", "@v01010148「へ～…こんな感じなんだぁ。@nわたし、フードコート以外に行くの、@n実は初めてです！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺も…」");
+	SetMessage(UNIT_YUI, YUI_0302BS, "由飛", "@v01010149「お互い、ここで働いてるのに、疎いですね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「しょうがないじゃん。@n営業時間内は俺たちも働いてるんだし」");
+	DelWindow();
+
+	// ＜画面暗転＞
+	FadeOut();
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "まぁ、そんな約束のせいで、@nこうして、『ファミーユ閉店直後』のブリックモールを、@n二人で駆けずり回ることになった。");
+	SetMessage(UNIT_ETC, -1, "", "ファミーユの閉店時間が１９時。@p@nブリックモール全体の閉店時間が２０時。");
+	SetMessage(UNIT_ETC, -1, "", "そのタイムラグの一時間分が、@n今回の俺たちのタイムリミット。");
+	SetMessage(UNIT_ETC, -1, "", "いつもは、閉店後の掃除や仕込みで費やされる@nこの一時間を、今日は皆の好意で免除してもらった。");
+	SetMessage(UNIT_ETC, -1, "", "…やっぱり明日香ちゃんの視線は冷たかったけど。");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ブリックモール＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_ENTRANCE_03A );
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010150「えっと…２階か」");
+	SetMessage(UNIT_ETC, -1, "", "案内図を見ていた由飛くんが、@nようやく目当ての店を見つけたらしく、@nもう一度、エスカレーターへと向かう。");
+
+	SetStand(YUI_0301BS);
+
+	SetMessage(UNIT_YUI, YUI_0301BS, "由飛", "@v01010151「さ、店長、早く早く！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はいはい…」");
+	DelWindow();
+
+	DelStand();
+	SEFadePlay(2, "L_Walk02");
+	SEFadePlay(3, "L_Walk03");
+	CurtainFadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "などとやる気のない言動を見せつつも、@n俺だって実は、この時間を楽しんでる。");
+	SetMessage(UNIT_ETC, -1, "", "何しろ、女の子と買い物なんて久々だし、@n以前、こういう買い物につきあってくれてた女の子は、@nとことん実用的な買い物しかしなかったし。");
+	SetMessage(UNIT_ETC, -1, "", "…まぁ、要するに里伽子だけど。");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	//
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_YOUHINTEN_01A );
+	SEFadeOut(2, SLOW);
+	SEFadeOut(3, SLOW);
+	CurtainFadeIn();
+	SetStand(YUI_0301EG);
+
+	SetWindow();
+	SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01010152「さ、着いた」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え…？」");
+	SetMessage(UNIT_ETC, -1, "", "由飛くんが、まず連れてきた場所は…");
+	SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01010153「さて、選ぶぞ～@n店長、サイズはいくつ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま、待て待て待て！」");
+	SetMessage(UNIT_ETC, -1, "", "ヤングカジュアル…はともかく、男性用？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ゆ、由飛くん？@n君、欲しいものがあって急いでたんじゃないの？」");
+	SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01010154「ええ、そうだけど？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それが何で男物を？」");
+	SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01010155「だからぁ、店長へのプレゼントが欲しかったんですよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ？」");
+	SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01010156「ほらほら、初めての給料って、@n『お世話になったあの人に』使うのが@n普通じゃないですか～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あのなぁ…」");
+	SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01010157「で、いつもお世話になってる店長さんに、@n何かプレゼントをと思ったら、いてもたっても…」");
+	SetMessage(UNIT_ETC, -1, "", "もしかして…自分の稼いだお金を使いたかっただけ？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんか違うだろ、それ…」");
+	SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01010158「…そうかなぁ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「『お世話になったあの人』ってのはさ、@n今まで育ててくれた両親とか、兄弟とか…@nそういった『家族』のことなんじゃないの？」");
+	SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01010159「か…家族？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺なんかじゃなくて、@nご両親とかにプレゼントしたら？@nそれなら、選ぶの手伝ってあげるからさ」");
+
+	BGMFade(SLOWER, 0);
+
+	SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01010160「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛くん？」");
+	SetMessage(UNIT_YUI, YUI_0301OT, "由飛", "@v01010161「両親は…マズいです」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんで？」");
+	SetMessage(UNIT_YUI, YUI_0301OT, "由飛", "@v01010162@s0002「だって、バイトしてることが知れたら@t0360@h0302SW…@t0400@h0301OTあ、いえ」");
+	SetMessage(UNIT_ETC, -1, "", "最後の方の台詞は、由飛くんにしては声量が小さく、@n聞き取ることができなかった。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だったら、兄弟とか…いないの？」");
+	SetMessage(UNIT_YUI, YUI_0302KS, "由飛", "@v01010163「妹が一人、いるにはいますが…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だったらその子にあげればいいじゃん」");
+	SetMessage(UNIT_YUI, YUI_0302KS, "由飛", "@v01010164「それは、さらにマズいです…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんで？」");
+	SetMessage(UNIT_YUI, YUI_0302KN_, "由飛", "@v01010165「………」");
+	SetMessage(UNIT_ETC, -1, "", "とうとう、黙り込んでしまった。");
+	SetMessage(UNIT_ETC, -1, "", "一体、由飛くんの家族にはどんな秘密が？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あのさ…由飛くん？」");
+	SetMessage(UNIT_YUI, YUI_0302KN_, "由飛", "@v01010166「どうして…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「は？」");
+
+	BGMFadePlay(BGM_COMICAL);
+	SetStand(YUI_0301MU);
+
+	SetMessage(UNIT_YUI, YUI_0301MU, "由飛", "@v01010167「どうして、貢がせてくれないんですか店長！？」");
+
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「人聞き悪っ！？」");
+	SetMessage(UNIT_YUI, YUI_0301MU, "由飛", "@v01010168「別にいいじゃないですか！@nわたしが自分のお金をどんな風に使おうが！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「け、けど…無駄遣いは…@nせっかく一生懸命働いて得たお金なのに」");
+
+	JumpStand();
+
+	SetMessage(UNIT_YUI, YUI_0301MU, "由飛", "@v01010169「ああもうっ！　お金にうるさい上に@n真面目なんだから～！」");
+	SetMessage(UNIT_ETC, -1, "", "今は経営者ですから…@nお金の重みが嫌と言うほどわかってしまうのだよ…");
+	SetMessage(UNIT_YUI, YUI_0301MJ, "由飛", "@v01010170「店員さん、採寸！」");
+
+	DelStand();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え？」");
+	SetMessage(UNIT_FEMALE, -1, "店員", "@v01160033「はい、こちらの方でよろしかったですか？」");
+	SetMessage(UNIT_YUI, YUI_0301BS, "由飛", "@v01010171「そう！　で、オーダーメイド！@n予算こんだけ！　全部使って！」");
+
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「うわぁっ！？」");
+	SetMessage(UNIT_ETC, -1, "", "手取りで渡した給料袋を、@nそのまま差し出しやがった！？");
+	SetMessage(UNIT_FEMALE, -1, "店員", "@v01160034「かしこまりました。@nではサイズの方測らせていただきます」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「待て！　待ってくれぇ～！」");
+
+	SetStand(YUI_0301EG);
+
+	SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01010172「往生際が悪いですよ店長！@nさっさと体の力を抜いて、楽になりなさい～！」");
+
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そんな無駄遣いするんなら貯金しろ～！」");
+	DelWindow();
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	FadeOut(SLOW);
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "こうして…");
+	SetMessage(UNIT_ETC, -1, "", "由飛くんの初めてのバイト料は…@n全額、俺のシャツ１枚とネクタイに変わってしまった。");
+	SetMessage(UNIT_ETC, -1, "", "何のために働いてるんだ、この娘は…？");
+	DelWindow();
+
+	// ＜画面暗転＞
+	BGMFadeOut(SLOWER, 1);
+	Wait(200);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ブリックモール＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_ENTRANCE_03A );
+	SEFadePlay(0, "L_Zattou04", NORMAL, 100);
+	SEFadePlay(1, "L_Zattou06", NORMAL, 50);
+	FadeIn();
+
+	SetStand(YUI_0301EG);
+	SetWindow();
+
+	SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01010173「あ～、楽しかった。@n出来上がったら着て見せてくださいね～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「本当にいいのかよ…@nあれ、俺の持ってる服の中で一番高いぞ？」");
+	SetMessage(UNIT_ETC, -1, "", "何しろ普段はユ○クロだし。");
+	SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01010174「大丈夫大丈夫！@n一応、仕送りで生活できてますし」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「仕送り…？@n由飛くん、学生だっけ？」");
+	SetMessage(UNIT_YUI, YUI_0302OD2, "由飛", "@v01010175「あっ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「確か、履歴書の欄には…」");
+	SetMessage(UNIT_ETC, -1, "", "学生なんて記述は…");
+	SetMessage(UNIT_YUI, YUI_0302OD2, "由飛", "@v01010176「えっと、その…@t0280@h0302KSあ、そうそう！@n定職にも就かずにブラブラしてるっていうやつですかっ！@n確か…パラサイト？」");
+	SetMessage(UNIT_ETC, -1, "", "いや、その言い方は痛いって…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だったら余計無駄遣いなんかすんなよ。@n少しでもご両親に返して…」");
+	SetMessage(UNIT_YUI, YUI_0302KS, "由飛", "@v01010177「だ、大丈夫大丈夫！@nウチって両親も二代目のごくつぶしですから！@nだから全然問題ないです」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「三代目のごくつぶしが偉そうに言うな」");
+	SetMessage(UNIT_YUI, YUI_0301HA, "由飛", "@v01010178「さっきの服…返品なんて言いませんよね？@nもう駄目ですよ？　仕立てに入っちゃいましたから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_YUI, YUI_0301BS, "由飛", "@v01010179「ね？　お願い…@n初めて自分で働いて稼いだお金なんだから、@n一度だけ、好きに使わせてください」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…しょうがないなぁ」");
+	SetMessage(UNIT_ETC, -1, "", "その『好きに使う』というのが、@n俺の服に化けるのは釈然としなかったけど…");
+	SetMessage(UNIT_YUI, YUI_0301KG, "由飛", "@v01010180「よかったぁ…ありがと店長。大感謝ですっ」");
+	DelWindow();
+
+	// ＜ＳＥ：骨の砕ける音＞
+	SEPlay("L_Touch01");
+	ShakeScreen(8);
+	DelStand();
+	SEPlay("L_Kishimi01");
+	Wait(10);
+	ShakeScreen(16);
+	FlashIn(FAST);
+	SEPlay("L_Hone01");
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いててててっ！？」");
+	SetMessage(UNIT_ETC, -1, "", "それでも、俺の幸運の女神のワガママだ。@p@n聞き入れることに、価値がある。");
+
+	SetStand(YUI_0301EG);
+
+	SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01010181「さてと、じゃ次はどこ行きましょうか？@nアクセサリーなんか見たいな」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「もう、時間だよ」");
+	SetMessage(UNIT_YUI, YUI_0302OD2, "由飛", "@v01010182「え…？」");
+	DelWindow();
+	DelStand();
+
+	// ＜ＢＧＭ：店内放送の蛍の光＞
+	SEFade(0, SLOWER, 80);
+	SEFade(1, SLOWER, 40);
+	BGMPlay2(BGM_HOTARUP, 0);
+	BGMPlay(BGM_HOTARUH);
+	BGMRestart2();
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ほら、蛍の光」");
+	SetMessage(UNIT_YUI, YUI_0302OD2, "由飛", "@v01010183「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "ブリックモールの閉店５分前を知らせるＢＧＭも、@n他のデパートとかの例に漏れず、蛍の光だったりする。");
+	SetMessage(UNIT_ETC, -1, "", "まぁ、もともとスコットランド民謡なんだから、@nこの、中世ヨーロッパの街並みを模した場所には、@n相応しい音楽なんだけど。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「帰るよ、由飛くん」");
+	SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01010184「………」");
+	SetMessage(UNIT_ETC, -1, "", "見ると、どのお店も閉店準備を始めてる。");
+	SetMessage(UNIT_ETC, -1, "", "そろそろ、ここに俺たちお客様の居場所はなくなる。");
+	SetMessage(UNIT_ETC, -1, "", "…なのに。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛くん…？」");
+	SetMessage(UNIT_YUI, YUI_0301KG, "由飛", "@v01010185「…かわいい」");
+	SetMessage(UNIT_ETC, -1, "", "彼女の足は、いきなり石化した。");
+	SetMessage(UNIT_ETC, -1, "", "目の前の、アンティーク家具のお店の前で。");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	//
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_ANTIQUE_01A );
+	SEFade(0, SLOWER, 60);
+	SEFade(1, SLOWER, 30);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_YUI, YUI_0301KG, "由飛", "@v01010186「店長…ほらっ、可愛いよこれ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ピアノ…？」");
+	SetMessage(UNIT_ETC, -1, "", "彼女が見つめていたのは、@n店先に展示されていた、アンティークピアノ。");
+	SetMessage(UNIT_ETC, -1, "", "ピアノ教室とかでよく見る黒塗りのものじゃなくて、@n木目まで見える、小さめの…いや、もちろん、@n『ピアノとしては』という但し書きがつくけど。");
+	SetMessage(UNIT_ETC, -1, "", "そういう、おもちゃのようでいて、@nものすごく名器のようにも感じられる、一台のピアノ。");
+
+	SetStand(YUI_0301NO);
+
+	SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01010187「調律してあるかなぁ…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ただの飾りでしょ」");
+	SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01010188「う～ん、そうかぁ…弾きたかったのになぁ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛くん、君ってピアノ…」");
+	SetMessage(UNIT_MALE, -1, "主人", "@v01160035「弾けますよ、ちゃんと。@nどうぞお試しください」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え…？」");
+	SetMessage(UNIT_ETC, -1, "", "見ると、さっきまで片づけをしていたご主人が、@nいつの間にか、俺たちの後ろに立っていた。");
+	SetMessage(UNIT_MALE, -1, "主人", "@v01160036「でなきゃ、そんな値段はつけません」");
+
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…うげ！？」");
+	SetMessage(UNIT_ETC, -1, "", "値札を見て、その７桁目の数字にたまげた。");
+	SetMessage(UNIT_ETC, -1, "", "いや、もしかしたら、８桁目がないだけマシなのかも。");
+	SetMessage(UNIT_YUI, YUI_0301NO, "由飛", "@v01010189「いいんですか？　弾いて…」");
+	SetMessage(UNIT_MALE, -1, "主人", "@v01160037「ええ、どうぞ。@n弾いてみなければ価値はわかりませんからね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そういうもんなの？」");
+	SetMessage(UNIT_ETC, -1, "", "この店に飾ってある以上、@n楽器としての価値よりも、骨董としての価値が@n重要なんじゃないかって思うんだけど…");
+	SetMessage(UNIT_YUI, YUI_0301EG, "由飛", "@v01010190「じゃ、お言葉に甘えて♪」");
+
+	DelStand();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お、おい…」");
+	SetMessage(UNIT_ETC, -1, "", "由飛くんは、俺の物怖じなんか何処吹く風。");
+	SetMessage(UNIT_ETC, -1, "", "スカートを翻し、姿勢正しく椅子に座り。");
+	DelWindow();
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	FadeOut(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "そして…");
+	HideDay();
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧＭ：蛍の光に、ピアノ伴奏が重なる＞
+	// ＜この辺、イベントＣＧにしてもいいかも＞
+	// ＜案１：ピアノを憧れの表情で見つめる由飛＞
+	// ＜案２：気持ちよさそうにピアノを弾く由飛＞
+	//----------------------------------------------------------------------------
+
+	SetVisual(VISUAL_YUI_02A);
+	BGMFadeOut(SLOWEST);
+	BGMFade2(SLOWEST, 100);
+	FadeIn(SLOWER);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_MALE, -1, "主人", "@v01160038「ほう…」");
+	SetMessage(UNIT_ETC, -1, "", "店内放送と、競演を始めた。");
+	SetMessage(UNIT_ETC, -1, "", "つまり、蛍の光…");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "あまり、ノスタルジーを感じさせない、@nなんだか楽しげな蛍の光。");
+	SetMessage(UNIT_ETC, -1, "", "もとがそんな難しい曲じゃないせいだろうか。");
+	SetMessage(UNIT_ETC, -1, "", "由飛くんは、ミスひとつせず、@n目を閉じて、気持ちよさそうに、@n適当に、ほんとにいい加減に、弾く。");
+	SetMessage(UNIT_MALE, -1, "主人", "@v01160039「彼女…プロ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「んな馬鹿な…@nたかが蛍の光じゃないですかぁ」");
+	SetMessage(UNIT_MALE, -1, "主人", "@v01160040「けど…あのピアノ、かなり癖があってね。@n初めてであそこまで普通に弾けるって、@nあり得ないんだけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…え？」");
+	SetMessage(UNIT_MALE, -1, "主人", "@v01160041「ちょっと…並じゃないよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、う～ん…」");
+	SetMessage(UNIT_ETC, -1, "", "などと言われても、聞こえてくる音は普通なので、@n俺にはどこがどのように凄いのか、@nわかるはずもなく。");
+	SetMessage(UNIT_ETC, -1, "", "@m00ただ、閉店まで、@n主人と一緒に、由飛くんのピアノに、@n聞き惚れているしかなかった。@k");
+
+	BGMFadeOut2(SLOWEST);
+	FadeOut(SLOWER);
+	DelVisual();
+	MessageWait();
+	HideMenu();
+	DelWindow();
+
+	BGMWait();
+	Wait(300);
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

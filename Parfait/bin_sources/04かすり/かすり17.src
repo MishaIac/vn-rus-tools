@@ -1,0 +1,415 @@
+// ●かすり17　すれ違い
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	// ＜ＢＧ：フロア（夜）＞
+	SetVisual( BG_FAMILLEF_03A );
+	BGMFadePlay( BGM_RIKAKO );
+	SetStand(RIKAKO_A101NO);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…んで話ってのはなんだ？」");
+
+	SEPlay("L_Dish01");
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v04060017「…この前言ってたじゃない、@nかすりさんの新作」");
+	SetMessage(UNIT_ETC, -1, "", "コーヒーを飲みながら、つまらなそうに@n里伽子が言う。");
+	SetMessage(UNIT_ETC, -1, "", "閉店間際にふらっと現れた里伽子は、@nそのまま清掃が終わるまでいすわり@nそして、今俺の目の前でコーヒーなどすすっている。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…何か良いアイディアが！？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v04060018「ん、まぁ逆転の発想ね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「伺いましょう。@nそうだ、かすりさんも呼んだほうがいいかな」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v04060019「………お好きに。@nでも、彼女的にどうだろ」");
+
+	SetMessage(UNIT_ETC, -1, "", "ちょっと含むような態度。@p@n里伽子の無愛想は今に始まったことじゃないが。");
+	SetMessage(UNIT_ETC, -1, "", "結構きついこと言うヤツだからな～。@nここんところ、へこむことの多いかすりさんに@nさらに追い打ちをかけるようなことになったら…");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…いいや、後で俺から伝えれば。@nんで、一体どんなアイディアなんだ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v04060020「かすりさんのアドバンテージと言うより@n恵麻さんの弱点をつく」");
+	SetMessage(UNIT_ETC, -1, "", "…うわ。里伽子だ。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v04060021「恵麻さんのケーキは、美味しいけど@n洗練されてない味わいよね。@nそれがファミーユの味でもあるんだけど」");
+	SetMessage(UNIT_ETC, -1, "", "そいや、姉さんの作るお菓子のあまりの素朴さのせいで、@n店名に『カンパーニュ（田舎）』@nってのを提案したのは…俺だったっけ。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102NO, "里伽子", "@v04060022「バレンタインケーキに関しては、@n普段よりもお洒落な…夢のあるケーキの方が@n有効よね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なるほど…姉さんよりも、かすりさんの方が@n造形センスはいいもんな」");
+	SetMessage(UNIT_ETC, -1, "", "こいつの頼りになるところは、この勘の良さと、@n絶対に負け戦をしない計算高さと、@nどんな手を使っても勝利を手繰り寄せる腹黒さだ。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MU2, "里伽子", "@v04060023「…でも諸刃の剣だけどね。@nファミーユの味って言うのは、要するに恵麻さんの@n味なんだし」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KN, "里伽子", "@v04060024「かすりさんがいくら頑張っても、@nそれがファミーユの味かって言うと…」");
+
+	SEPlay("L_Dish01");
+
+	SetMessage(UNIT_ETC, -1, "", "そして、一息つくようにコーヒーに手を伸ばす。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…かすりさんのオリジナルだと@nファミーユのケーキじゃない…ってことか」");
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v04060025「かすりさん、結構がさつに見えて繊細だし」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そんなことわかるのか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KS, "里伽子", "@v04060026「創ってるモノ見ればね。わかるわよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「でも難しいなぁ。@nかすりさんは姉さんの味に憧れてここにいる訳だけど」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101KM2, "里伽子", "@v04060027「コピーはオリジナルには勝てない。@nかといって、かすりさんのオリジナルじゃ@nここの味にはならない」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "それって要するに、パティシエールとしてのかすりさんは@nファミーユにはいらない、って結論にならないか？");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KN, "里伽子", "@v04060028「仁も同じこと考えたみたいね」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KN, "里伽子", "@v04060029「恵麻さんに憧れて、一生懸命助手して、@nそれで満足してれば幸せだと思うけど…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「今のかすりさんは…違うもんな…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MU, "里伽子", "@v04060030「…きっとあんたのせいだよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんでだよ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v04060031「わかんない？@nあんたに認めてもらいたいんでしょ？」");
+	SetMessage(UNIT_ETC, -1, "", "…そんな…。@p@nそれじゃかすりさんが苦しんでるのは@n俺のせいだってのか？");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v04060032「とりあえず、言うべきことは言ったし@nそろそろ帰るわ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ん」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102NO, "里伽子", "@v04060033「それじゃお勘定、おいとくね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…いいのに」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v04060034「公私混同はしない」");
+	DelWindow();
+	DelStand();
+
+	SEPlay( "L_Chair01" );
+	Wait(100);
+
+	SetStand(RIKAKO_0102MJ);
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "里伽子はキッチリコーヒー代を置くと、@n椅子から立ち上がった。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「んじゃ駅まで送ってくよ」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102SA, "里伽子", "@v04060035「別にいいのに…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まぁそれくらいはさせろよ。@p@nかすりさんっ！」");
+	SetMessage(UNIT_ETC, -1, "", "フロアの掃除をしているかすりさんに@n声をかける。");
+
+	DelStand();
+	SetStand(KASURI_0201KT, CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v04040724「なに、仁くん？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっと出てくる。@n閉店処理、お願いしていい？」");
+	SetMessage(UNIT_KASURI, KASURI_0201MJ2, "かすり", "@v04040725「ん、わかった、いってらっしゃい」");
+
+	// ＜画面暗転＞
+	DelWindow();
+	BGMFadeOut( SLOWER );
+	DelStand();
+	CurtainFadeOut( SLOW );
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	Wait(200);
+
+	// ＜ＢＧ：駅前（夜）＞
+	SetVisual( BG_EKIMAE_03A );
+	SEFadePlay(0, "L_Town01", SLOWER);
+	SEFadePlay(1, "L_Town02", SLOWER);
+	SEFadePlay(2, "L_Town03", SLOWER);
+	CurtainFadeIn();
+
+	// ＜ＳＥ：車の走り過ぎる音＞
+	// 環境？単一…？
+	// (´-`)タクシーだと思われ
+	// (´-`)…と思ってけどモールから駅前までタクシーで来るわけないね
+	// (´-`)由飛18・玲愛18と合わせる
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「悪かったな、わざわざ。@nそろそろ期末試験なのに」");
+
+	SetStand(RIKAKO_0102SA);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102SA, "里伽子", "@v04060036「…本当に仁は受けないの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま、な。@nそんな時間ないって」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KN, "里伽子", "@v04060037「………」");
+	SetMessage(UNIT_ETC, -1, "", "もともと、ブリックモールにファミーユを立ち上げるって@n決めたときに、覚悟してたことだ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんとか、今後の学費は自分で稼ぐ目処も立ったし、@n何年経っても卒業してみせるって」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KN, "里伽子", "@v04060038「もう…一緒には卒業できないんだ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前が留年すれば…いや、何でもない」");
+
+	SetMessage(UNIT_ETC, -1, "", "こいつは多分、もう、卒論以外の必要単位数は@n満たしてるんだろうなぁ。");
+	SetMessage(UNIT_ETC, -1, "", "…ま、いいか。@nたとえ学年が違っても『友人』であることに@n変わりはないんだから、な。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MJ, "里伽子", "@v04060039「ねぇ、仁」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんだ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KN, "里伽子", "@v04060040「かすりさんとつきあってる…の？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そんなような、そうじゃないような…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102AK, "里伽子", "@v04060041「…はっきりしないわね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ん」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v04060042「あんまり迷ってちゃダメよ？」");
+	SetMessage(UNIT_ETC, -1, "", "こいつがそれを言うか。@n誰のせいで、俺が告白に臆病になったと思ってんだよ。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v04060043「仁って肝心なところで抜けてるから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ほっといてくれ」");
+	SetMessage(UNIT_ETC, -1, "", "相変わらず、里伽子に口答えなんかできない。");
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101BS, "里伽子", "@v04060044「で、さ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101BS, "里伽子", "@v04060045「かすりさんと正式につきあうことになったら、@nちゃんと報告してね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんでそんなこと…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v04060046「あんたと好きな子がうまく行くように、@n微力を尽くさせていただく所存でございます」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…なんだかなぁ」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102NO, "里伽子", "@v04060047「言っておくけど本気だよ。@nあたし、あんたにはうまく行って欲しいから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「別にそんなサポートなんか望んでないぞ」");
+	SetMessage(UNIT_ETC, -1, "", "まだ、友達でいてくれるってだけでも、@nありがたくて、嬉しくて、申し訳なくて…");
+	SetMessage(UNIT_ETC, -1, "", "そして…残酷だってのに。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102NO, "里伽子", "@v04060048「それじゃ、電車だから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うん…」");
+
+	SELoopPlay(3, "L_Walk02");
+	SEFadeOut(3, SLOWEST);
+	DelStand();
+
+	SetMessage(UNIT_ETC, -1, "", "里伽子が背を向ける。");
+	SetMessage(UNIT_ETC, -1, "", "人通りの少なくなった駅の改札に向かい、@nいつものように、躍動感のない歩みで進む。");
+	SetMessage(UNIT_ETC, -1, "", "ポケットから直接プリペイドカードを出して、@n改札をくぐって…");
+	SetMessage(UNIT_ETC, -1, "", "俺は、そんな背中が見えなくなるまで、ずっと…");
+
+	SetStand(RIKAKO_0101BS);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v04060049「仁！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101BS, "里伽子", "@v04060050「今度こそ、絶対に幸せになりなよ！@n@t0382@h0102KS…あたしが言うのもなんだけどさ」");
+	DelWindow();
+
+	Wait(50);
+	SEFadeOut(0, SLOWEST);
+	SEFadeOut(1, SLOWEST);
+	SEFadeOut(2, SLOWEST);
+	FadeOut(SLOWER, 1);
+	DelStand();
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "@m00…本当に、なんだなぁ。");
+	DelWindow();
+
+	Wait( 200 );
+
+	// ＜ＢＧ：ブリックモール＞
+	SetVisual( BG_FOODCOURT_03B );
+	CurtainFadeIn();
+	SetStand(KASURI_0401MJ);
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0401MJ, "かすり", "@v04040726「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あれ？　まだいたんだ」");
+	SetMessage(UNIT_KASURI, KASURI_0401MJ2, "かすり", "@v04040727「ん…ねぇ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なに？」");
+	SetMessage(UNIT_KASURI, KASURI_0401MJ2, "かすり", "@v04040728「リカちゃんと何話してたの？」");
+	SetMessage(UNIT_ETC, -1, "", "聞かれて、とっさに言葉がでてこない。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それは…」");
+	SetMessage(UNIT_ETC, -1, "", "かすりさんのケーキのことなんだけど…@nそれを言うと、さっきの…@n余り考えたくない結論にまでいってしまう。");
+	SetMessage(UNIT_KASURI, KASURI_0401KN, "かすり", "@v04040729「ん…言えないようなこと、話してたんだね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そんこと…ないっ」");
+	SetMessage(UNIT_KASURI, KASURI_0401MJ2, "かすり", "@v04040730「いいんだ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「かすりさん？」");
+	SetMessage(UNIT_KASURI, KASURI_0401KN, "かすり", "@v04040731「もういいんだ」");
+	SetMessage(UNIT_KASURI, KASURI_0401MJ2, "かすり", "@v04040732「どうせわたしたち、つきあってる訳じゃないし」");
+	SetMessage(UNIT_KASURI, KASURI_0401NO, "かすり", "@v04040733「ただ気があって、@n時々身体重ねてるってだけだもんね」");
+
+
+	BGMFadePlay( BGM_HUAN, SLOWER );
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そんな…俺は…だって…」");
+
+	SetMessage(UNIT_KASURI, KASURI_0401NO, "かすり", "@v04040734「仁くんがリカちゃんとより戻したって@nわたしには何も言う権利ないんだし…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「違うよっ！　そんな話してたわけじゃなくて…@n俺たちはただ…」");
+
+	SetMessage(UNIT_KASURI, KASURI_0401NO, "かすり", "@v04040735「相談に乗ってもらってたんだよね。@n昔からそうだった」");
+	SetMessage(UNIT_KASURI, KASURI_0401NO, "かすり", "@v04040736「仁くんってリカちゃんにべったりで…@nいつも甘えてて…」");
+	SetMessage(UNIT_KASURI, KASURI_0401NO, "かすり", "@v04040737「あの子も、困った顔しながら嬉しそうで…」");
+	SetMessage(UNIT_KASURI, KASURI_0401OT, "かすり", "@v04040738「そんな二人を見てるの…@nわたし好きだったんだけどな…」");
+	SetMessage(UNIT_KASURI, KASURI_0401OT, "かすり", "@v04040739「どうしてこんな風に@n思うようになっちゃったんだろ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「かすりさん…」");
+
+	SetMessage(UNIT_KASURI, KASURI_0401OT, "かすり", "@v04040740「このままじゃ…ちょっと辛いかな」");
+	SetMessage(UNIT_KASURI, KASURI_0401OT, "かすり", "@v04040741「…仁くんには、他に好きな人がいるんだもんね」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そんな…ことないよ…だって俺は…」");
+	SetMessage(UNIT_KASURI, KASURI_0401SK, "かすり", "@v04040742「だって仁くんっ！@n好きだって言ってくれないしっ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…かすりさん」");
+	SetMessage(UNIT_ETC, -1, "", "何とか言葉を口に出そうと…@n誤解を解こうとする俺。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「里伽子とはっ！@n里伽子とは何でもないんだよッ」");
+	SetMessage(UNIT_KASURI, KASURI_0401KN2, "かすり", "@v04040743「…ん、リカちゃんは呼び捨てにするんだね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "言えない…。@p@n里伽子と、何を話していたかなんて。");
+	SetMessage(UNIT_ETC, -1, "", "恵麻姉さんを崇拝して、力になるのが嬉しくて…@nそんなかすりさんが、自分の味を追うことに目覚めて。");
+	SetMessage(UNIT_ETC, -1, "", "それ自体は素晴らしいことだけど、@nそれが今のファミーユに必要なことかどうか。");
+	SetMessage(UNIT_ETC, -1, "", "里伽子の分析は、完璧だ。@nかすりさんに、あんなこと、言えないよ。");
+
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040744「…帰るね」");
+
+	DelStand(CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…送って…」");
+
+	SetStand(KASURI_0401SK, CENTER, MOVE_RIGHT);
+
+	//伊藤：new
+	SetMessage(UNIT_KASURI, KASURI_0401SK, "かすり", "@v04040745「いいの、放っておいてっ！」");
+	SetMessage(UNIT_ETC, -1, "", "少し歩き出したかすりさんは、振り返ってこういった");
+	SetMessage(UNIT_KASURI, KASURI_0401KN, "かすり", "@v04040746「仁くん…わたし、ファミーユ…には@n…もう…いられないかも…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「かすりさんっ！」");
+	SetMessage(UNIT_KASURI, KASURI_0401SK, "かすり", "@v04040747「だってそうじゃない？@n仁くんはわたしのこと、必要って言ってくれたけど…」");
+	SetMessage(UNIT_KASURI, KASURI_0401OT, "かすり", "@v04040748「今のファミーユには恵麻さんがいる。@nリカちゃんも由飛ちゃんも明日香ちゃんも」");
+	SetMessage(UNIT_KASURI, KASURI_0401KN, "かすり", "@v04040749「やっぱり、わたしの居場所なんか…ないのかもね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「違うよっ！　そんなことない」");
+	SetMessage(UNIT_ETC, -1, "", "でも、そう言う俺自身さえ、@nかすりさんの言葉を否定することは出来なかった。");
+	SetMessage(UNIT_ETC, -1, "", "恵麻姉さんの助手としてのかすりさんは必要だ。@p@nでも、パティシエールとしてのかすりさんは…");
+
+	//伊藤：new
+	SetMessage(UNIT_KASURI, KASURI_0401KN2, "かすり", "@v04040750「ねぇ、仁くん…私のこと…好き？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「かすりさん…俺はね…」");
+	BGMFadeOut();
+	DelWindow();
+
+	// ＜ＳＥ：携帯着信音＞
+	SELoopPlay( 0, "L_Tel15" );
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "言いかけた俺の言葉は、無粋な電子音に遮られた。");
+	SetMessage(UNIT_ETC, -1, "", "携帯だ。@p@n…また…前の男から…なんだろうか？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「でなくて…いいの？」");
+	SetMessage(UNIT_KASURI, KASURI_0401MJ, "かすり", "@v04040751「………」");
+	SEFadeOut( 0, FASTER );
+	SEPlay( "L_Tel02" );
+	SetMessage(UNIT_ETC, -1, "", "かすりさんは黙って、携帯の電源を落とした。");
+	SetMessage(UNIT_KASURI, KASURI_0401MJ, "かすり", "@v04040752「帰るね…」");
+
+	SELoopPlay(0, "L_Walk02R");
+	SEFadeOut(0, SLOWEST);
+	DelStand(CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_ETC, -1, "", "そう言ってかすりさんは、一人で歩き出した。@p@n俺は何も言えず、ただその後ろ姿を見送ってしまった。");
+	DelWindow();
+
+	// ＜暗転＞
+	Wait(50);
+	FadeOut(SLOWER);
+	Wait(200);
+
+	// ＜ＢＧ：仁の部屋＞
+	SEPlay("L_Lock01", 100, 1);
+	Wait(50);
+	SEPlay("L_Door08A");
+	Wait(200);
+	SEPlay("L_Door08B");
+	SELoopPlay(0, "L_Walk06");
+	Wait(150);
+	SetVisual( BG_HITOSHI_04B );
+	SEFadeOut(0, SLOW);
+	SEFadePlay(0, "L_Town01", SLOW, 70);
+	CurtainFadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "部屋に戻る。@p@nいつもはそんな風にも思わないけれど、@nなんだか妙に広く感じる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…かすりさん」");
+	SetMessage(UNIT_ETC, -1, "", "つい口をついて出る独り言。@p@nあの時…好きだって言えば良かったんだろうか。");
+	SetMessage(UNIT_ETC, -1, "", "俺は…きっとかすりさんのことが好き…なんだ。@nさんざん体を重ねておいて、今更言うのも変だけど。@nもっとちゃんと言えば良かった。");
+	SetMessage(UNIT_ETC, -1, "", "そうだ。@n明日言おう。@n仕事が終わったら、きちんとかすりさんに。");
+	SetMessage(UNIT_ETC, -1, "", "かすりさんの携帯にかかってきた電話は気になるけど@nでも、俺の他につきあってる男なんていないだろうし。");
+	SetMessage(UNIT_ETC, -1, "", "うん、きっと話せば、なんてことなく@nまた前みたいになれるさ。");
+	DelWindow();
+
+	SetVisual( BG_HITOSHI_04A );
+	SEPlay("L_Curtain01");
+	CrossFade();
+	Wait(50);
+	SEPlay("L_Nuno03");
+	SEPlay("L_Nuno04");
+	FadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "考えながら布団に潜り込む。@nと。");
+	DelWindow();
+
+	// ＜ＳＥ：携帯着信＞
+	SELoopPlay( 1, "L_Tel01" );
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "…こんな時間に…誰だ？@p@nいいや…もう…今日は寝ちゃおう。");
+
+	SEFadeOut( 1, FASTER );
+
+	SetMessage(UNIT_ETC, -1, "", "留守録が働き、メッセージが流れ出す。");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040753「…かすりです」");
+	DelWindow();
+
+	SEPlay("L_Nuno01");
+	SEPlay("L_Nuno04");
+	ShakeScreen(16);
+	FadeIn(FAST);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "かすりさんっ！@n俺は慌てて布団から飛び起き…");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040754「今から言うこと、全部本当じゃないからね」");
+	SetMessage(UNIT_ETC, -1, "", "テーブルの上に置いたはずの携帯を探す。");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040755「私は、仁くんのこと、好きじゃないから」");
+	SetMessage(UNIT_ETC, -1, "", "…えっ？");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040756「抱かれたい、なんて思ってないから」");
+	SetMessage(UNIT_ETC, -1, "", "これはかすりさんからの…告白？");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040757「だっておかしいよね？@nもともと嘘の恋人だったんだし」");
+	SetMessage(UNIT_ETC, -1, "", "涙混じりの声が、部屋のどこかから聞こえてくる。");
+	SetMessage(UNIT_ETC, -1, "", "くそっ、携帯…どこに置いたんだっけ…@n焦れば焦るほど、動きは空回りして…");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040758「それじゃ…ね@nわたし、ファミーユ辞めるから…@nみんなにはよろしく伝えてね…」");
+
+	SEPlay( "L_Tel05" );
+	SetMessage(UNIT_ETC, -1, "", "プツ。@n電話の音か切れた。");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「かすりさんっ！」");
+	SetMessage(UNIT_ETC, -1, "", "俺はようやく探し当てた携帯を手に取り@n焦ってリダイアルを押す。");
+	DelWindow();
+
+	SEPlay( "L_Tel02" );
+	Wait(50);
+	SEPlay( "L_Tel02" );
+	Wait(100);
+	SELoopPlay( 1, "L_Tel09" );
+	Wait(200);
+	SEFadeOut(1, SLOWER);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "電話は話し中だった。@p@nしばらくして、また電話をかける。");
+	DelWindow();
+
+	Wait( 50 );
+
+	SEPlay( "L_Tel02" );
+	Wait(50);
+	SEPlay( "L_Tel02" );
+	Wait(100);
+	SELoopPlay( 1, "L_Tel16" );
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "呼び出し音が響き…");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	SEStop(1);
+	SEPlay( "L_Tel05" );
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "つながったっ！");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「もしもし、かすりさんっ？」");
+	//伊藤：？このボイスはどうなるのやら？
+	SetMessage(UNIT_FEMALE, -1, "留守電の声", "@v04160017「おかけになりました電話番号は、@n現在、電波の届かないところにあるか、@n電源が切れています」");	// ★★03明日香と同じセリフなので収録無し
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「くっ！」");
+	DelWindow();
+
+	Wait(50);
+	SEFadeOut(0, SLOWEST);
+	FadeOut( SLOWER, 1 );
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "@m00…結局その夜、俺はかすりさんに連絡をとることは@nできなかった。");
+	HideMenu();
+	DelWindow();
+
+	FadeWait();
+	DelVisual();
+
+	Wait(300);
+
+	LoadEvent(EVENT_KASURI_18);
+end();

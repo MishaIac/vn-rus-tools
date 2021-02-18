@@ -1,0 +1,249 @@
+// ●恵麻04：ケーキは売れる。料理は残る。
+// 種類：通常イベント
+// 条件：第２クォーター、キッチンを選択
+// 概要：ケーキの売れ行きは絶好調だが…
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	BGMFadePlay( BGM_KISSATEN );
+	SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+	SEFadePlay(1, "L_Dish03", NORMAL, 20);
+	SEFadePlay(2, "L_Factory01", NORMAL, 50);
+	FadeIn();
+
+	// ＜ＳＥ：オーブンのタイマー（チーン）＞
+	SEPlay( "L_Cook10" );
+	Wait(300);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ベイクドチーズケーキＯＫ～」");
+
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05050088「ゼリーも固まった～。@nかすりちゃん、こっち店頭に出して～」");
+
+	SetStand(KASURI_0102EG2, CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_KASURI, KASURI_0102EG2, "かすり", "@v05040002「はいは～い、待ってました～」");
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v05050089「ショーケース、どんな感じ？」");
+	SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v05040003「どんな感じも何も…一目見ればすぐにわかりますって」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v05050090「は？　どういうこと？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「姉さんは何も気にせず一心不乱に作れってこと」");
+	SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v05040004「これだって１０分もたないんだからね。@nホント頼んますよ～」");
+
+	SELoopPlay(3, "L_Walk03");
+	SEFadeOut(3, SLOWER);
+	DelStand(CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_EMA, EMA_0101OD, "恵麻", "@v05050091「え？　ええ～？」");
+	SetMessage(UNIT_ETC, -1, "", "無駄話の好きなかすりさんが、@nここまでビジネスライクな口調に徹するほど、@nショーケースの方は修羅場ってるんだろうなぁ。");
+	SetMessage(UNIT_ETC, -1, "", "まぁ、１個２００円だし。");
+	SetMessage(UNIT_ETC, -1, "", "それに…そろそろ、口コミ効果が出始めた頃だ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「次、何焼く？」");
+
+	SetStand(EMA_0101MU);
+	
+	//伊藤：教えて→答えて
+	SetMessage(UNIT_EMA, EMA_0101MU, "恵麻", "@v05050092「だから、売り切れたものから作ろうって思ったのに、@nかすりちゃん、聞いても答えてくれないんだもん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「じゃあ、いちごのショートケーキ」");
+	SetMessage(UNIT_EMA, EMA_0101NO, "恵麻", "@v05050093「で、いいの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「またはブルーベリータルト。他にはカスタードシュー、@nモンブラン、ガトーショコラ、ミルフィーユ、シフォン。@nエトセトラ、エトセトラ、エトセトラ…」");
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v05050094「…からかってんの？」");
+
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「全部ないんだよ、もう」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v05050095「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	DelWindow();
+
+	// ＜ＳＥ：オーブンのタイマー（チーン）＞
+	SEPlay( "L_Cook10" );
+	Wait(300);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101OD, "恵麻", "@v05050096「嘘ぉ？@nだってみんな、２回ずつは焼いたわよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「わかった。@nそこまで言うなら一度見てきていいよ」");
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v05050097「う、うん…」");
+	DelWindow();
+
+	DelStand(CENTER,MOVE_LEFT);
+	FadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "と、姉さんは、しばしキッチンを離れ…");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	BGMFadePlay(BGM_EMA);
+	FadeIn();
+	SetStand(EMA_0101OD,CENTER,MOVE_LEFT);
+	JumpStand();
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101OD, "恵麻", "@v05050098「ちょっと！　大変だよ仁くん！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「さっきからゆってんじゃん！」");
+	SetMessage(UNIT_ETC, -1, "", "プチパニックになって戻ってきた。");
+	SetMessage(UNIT_EMA, EMA_0101TO, "恵麻", "@v05050099「どうしよ、どうしよ？@nあんなに売れてるなんて想像してなかったよ？@n@t0605@h0101EGちょっと、更衣室で笑ってきていい？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…今焼き上がったスポンジの飾り付けが終わったらな」");
+	SetMessage(UNIT_EMA, EMA_0101TO, "恵麻", "@v05050100「う、うん…がんばろう」");
+
+	SEPlay("L_Door04A");
+	DelStand();
+
+	SetMessage(UNIT_ETC, -1, "", "冷蔵庫からホイップクリーム、各種フルーツ。");
+	SetMessage(UNIT_ETC, -1, "", "スポンジを、型から取り外し、スタンバイＯＫ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…冷ましてからにしてよ」");
+
+	SetStand(EMA_0101KS);
+
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v05050101「あ」");
+	SetMessage(UNIT_ETC, -1, "", "目の前には、焼きたてで、熱々のスポンジ。");
+	SetMessage(UNIT_ETC, -1, "", "きっと、ホイップクリームを乗せたら、@n気持ちよく溶けてくれるだろう。");
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v05050102「あ、あのさ…仁くん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「３分だけね。@n仕事は山ほどあるから」");
+	SetMessage(UNIT_EMA, EMA_0101EG, "恵麻", "@v05050103「ごめん！　ちょっと休憩入りま～す♪」");
+	DelWindow();
+
+	// ＜画面暗転＞
+	DelStand(CENTER, MOVE_RIGHT);
+	SEPlay( "L_Door13A" );
+	SEFadeOut(0);
+	SEFadeOut(1);
+	SEFadeOut(2);
+	FadeOut();
+	Wait(100);
+
+	// ＜ＳＥ：ドア開閉＞
+
+	// ＜ＢＧ：更衣室＞
+	SetVisual( BG_FAMILLES_01A );
+	SEPlay( "L_Door13B" );
+	FadeIn();
+
+	SetStand(EMA_0102MS3, CENTER, MOVE_RIGHT);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0102MS3, "恵麻", "@v05050104「………」");
+	SetMessage(UNIT_EMA, EMA_0102MS3, "恵麻", "@v05050105「ふふ…ふふふっ…」");
+	SetMessage(UNIT_EMA, EMA_0102KG, "恵麻", "@v05050106「凄い…凄い。@n売れてる…わたしのケーキ、@nめちゃくちゃ売れてるじゃない！」");
+	DelWindow();
+
+	// ＜画面暗転＞
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	DelStand();
+	SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+	SEFadePlay(1, "L_Dish03", NORMAL, 20);
+	SEFadePlay(2, "L_Factory01", NORMAL, 50);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05050107「ふふふ…あはははは…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "耳を澄ませば、ま～姉ちゃんの勝ち鬨。");
+	SetMessage(UNIT_ETC, -1, "", "とはいえ、これだけ売れても赤字なんだけどな。");
+	SetMessage(UNIT_ETC, -1, "", "何しろ原価と売値がほぼトントンなんだから。@nこの調子が続けば、多めに仕入れられるから、@n原価も段々下がっていくけど。");
+	SetMessage(UNIT_ETC, -1, "", "ま…それでも、売れない赤字よりも、@n売れて赤字のほうが、持てる希望の桁が違う。");
+	SetMessage(UNIT_ETC, -1, "", "だから、姉さんが喜ぶのは正しい。@p@n間違ってるのは、素直に喜びきれない俺の方。");
+
+	BGMFadeOut(SLOWEST);
+	SetStand(YUI_0101NO, CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_YUI, YUI_0101NO, "由飛", "@v05010021「店長～@nいちごショートとレアチーズケーキ…@n在庫あります？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…またケーキ？」");
+	SetMessage(UNIT_YUI, YUI_0101AS, "由飛", "@v05010022「またケーキ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ショートケーキは、@nあと１０分ほど時間かかるって説明して。@nレアチーズはまだ大丈夫」");
+	SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v05010023「は～い♪」");
+
+	// ＜由飛消える＞
+	SELoopPlay(3, "L_Walk03");
+	SEFadeOut(3, SLOWER);
+	DelStand(CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "ちょっとだけブルーの原因は、これ。");
+	SetMessage(UNIT_ETC, -1, "", "ケーキを作るのは姉さん。@p@n料理を作るのは、俺。");
+	SetMessage(UNIT_ETC, -1, "", "週末辺りから、この比率が劇的に変わってきている。");
+	SetMessage(UNIT_ETC, -1, "", "まぁ、もとからケーキメインの喫茶店なんだから、@n軽食メニューが振るわないのは仕方ないんだけど…");
+	SetMessage(UNIT_ETC, -1, "", "それにしても…@nこうまであからさまに差が出なくたって。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "ため息をついていても仕方ない。@n俺には俺のできることを…");
+	SetMessage(UNIT_ETC, -1, "", "とりあえず今は、猿のように卵を泡立てよう。");
+
+	// ＜ＳＥ：泡立て器でシェイク＞
+	SEFadePlay(3, "L_Cook08");
+	FadeOut();
+
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(100);
+	SEFadeOut(3);
+	FadeIn();
+
+	SetWindow();
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ぷはぁ～！　はぁ、はぁ、はぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "さ…さすがに無呼吸メレンゲ作りは困難を極めるな。");
+
+	SetStand(KASURI_0102NO, CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_KASURI, KASURI_0102NO, "かすり", "@v05040005「仁く～ん、ナポリタン」");
+
+	BGMPlay(BGM_NICHIJOU3);
+	ShakeScreen(8);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「待ってました！」");
+	SetMessage(UNIT_ETC, -1, "", "ようやく俺の出番が！");
+	SetMessage(UNIT_KASURI, KASURI_0102EG2, "かすり", "@v05040006「と、エビピラフ。半分ずつ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はい？」");
+	SetMessage(UNIT_KASURI, KASURI_0102NO, "かすり", "@v05040007「ついでに薄焼き卵で包んで。@nあ、上にケチャップかけるのも忘れずにね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ずいぶんと注文の多いお客様だね？」");
+	SetMessage(UNIT_ETC, -1, "", "というか、その、店の冷蔵庫の中身を、@n全て把握しているかのようなメニューは一体…？");
+
+	BGMFadeOut(SLOWER);
+
+	SetMessage(UNIT_KASURI, KASURI_0101KT, "かすり", "@v05040008「いや、わたしのお昼ご飯だし」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_KASURI, KASURI_0102AS2, "かすり", "@v05040009「ケーキが売れすぎてさぁ、@n今までお昼も食べられなかったのよね～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	BGMFadePlay(BGM_COMICAL, SLOWER);
+
+	SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v05040010「と、いうわけで…@nよろしくね？　まかないのおばちゃん」");
+
+	SELoopPlay(3, "L_Walk03");
+	SEFadeOut(3, SLOWER);
+	DelStand(CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	DelWindow();
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	FadeOut( SLOW, 1 );
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "@m08ナポリタンの赤い色は、@w0030@m00@f20タバスコの色～");
+	HideMenu();
+	HideDay();
+	DelWindow();
+	DelVisual();
+
+	BGMFadeOut(SLOWER, 1);
+	Wait(200);
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

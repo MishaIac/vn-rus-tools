@@ -1,0 +1,390 @@
+// ●明日香01：クローザー明日香
+// 種類：通常イベント
+// 条件：第１クォーター、ショーケース（ブリックモール）を選択
+// 概要：午後にやっと登場する明日香。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ショーケース＞
+	//----------------------------------------------------------------------------
+		SetVisual(BG_FAMILLEE_01A);
+		BGMFadePlay(BGM_NICHIJOU3);
+		SEFadePlay(0, "L_Zattou04");
+		SEFadePlay(1, "L_Dish03", NORMAL, 30);
+		FadeIn();
+
+		SEPlay("L_Bell04", 100, 1);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「３００円のお返しになります。@nありがとうございました」");
+		SetMessage(UNIT_KASURI, -1, "かすり", "@v03040001「仁くん！　そっちのオーダー入ったよ～！」");	// ★★声のみ
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「は～い！@n申し訳ございません。@n只今代わりの者が参りますので」");
+		SetMessage(UNIT_ETC, -1, "", "これで本日、８度目のシフトチェンジ…");
+
+		DelWindow();
+		CurtainFadeOut(NORMAL);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：厨房＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_FAMILLEC_01A );
+		CurtainFadeIn(NORMAL);
+
+		SetStand( KASURI_0101MJ, CENTER, MOVE_LEFT );
+
+		SetWindow();
+		SetMessage(UNIT_KASURI, KASURI_0101MJ, "かすり", "@v03040002「はいこれ！」");
+		SetMessage(UNIT_ETC, -1, "", "ナポリタン２つにクラブハウスサンド１つ。@nブレンドとダージリン、ホットチョコレート…");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そっちは何抱えてる？」");
+		SetMessage(UNIT_KASURI, KASURI_0102TY, "かすり", "@v03040003「色々ありすぎてよくわかんない。@n１０分で代わってよ！」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「１０分？　ご無体な！」");
+		SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v03040004「遅いのだって嫌われるんだからね、男は」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「何の話！？」");
+		SetMessage(UNIT_KASURI, KASURI_0102EG2, "かすり", "@v03040005「頑張れ男の子！@nあと少しの辛抱だ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「３時…まだ３時…」");
+
+		//DelStand();
+		//伊藤：途中で切る?
+		//SetMessage(UNIT_KASURI, -1, "かすり", "@v03040006「わたしたちは信じて待つしかないの！@nあ、お待たせしました～、ご注文をどうぞ」");	// ★★声のみ
+		SetMessage(UNIT_KASURI, KASURI_0101NO, "かすり", "@v03040006「わたしたちは信じて待つしかないの！@t0270@k");
+
+		DelStand(CENTER, MOVE_LEFT);
+
+		AddMessage("@h0102NO@nあ、お待たせしました～、ご注文をどうぞ」");	// ★★声のみ
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「くっそ～！」");
+		DelWindow();
+
+		// ＜ＳＥ：油で炒める音＞
+		SEPlay("L_Cook04");
+		SEFadePlay(2, "L_Cook05", SLOWER);
+		Wait(100);
+		SEFadePlay(3, "L_Cook01");
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "平日…");
+		SetMessage(UNIT_ETC, -1, "", "お客様の来店数が減ることよりも、@nもっと恐ろしい事態が待ち受けていた。");
+		SetMessage(UNIT_ETC, -1, "", "それは…");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃ～ん。@n早く来てくれ～」");
+		SetMessage(UNIT_ETC, -1, "", "学生である明日香ちゃんは、@n今日は朝からは出勤できない。");
+		SetMessage(UNIT_ETC, -1, "", "学園が終わるのがほぼ３時…@nそこから全力ダッシュしても２０分。");
+		SetMessage(UNIT_ETC, -1, "", "つまり、朝から３時半までの時間帯は、@n由飛くんとかすりさん、俺の３人で凌がねばならない。");
+		SetMessage(UNIT_ETC, -1, "", "由飛くんは休憩する間もなく、フロアを駆け巡り、@nかすりさんと俺は、キッチンとショーケース、@n果てはオープンスペースを行ったり来たり…");
+		SetMessage(UNIT_ETC, -1, "", "段々と頭がぼうっとしてくる忙しさだ。");
+		SetMessage(UNIT_ETC, -1, "", "更に深刻な問題は…");
+		SetMessage(UNIT_ETC, -1, "", "それほどのお客様がいるわけでもないのに、@n結構な待ちが発生してしまっている。");
+		DelWindow();
+
+		// ＜ＳＥ：油で炒める音＞
+		SEPlay("L_Cook04");
+		SEFadePlay(4, "L_Cook05", SLOWER);
+		Wait(100);
+		SEFadePlay(5, "L_Cook03");
+
+		SetWindow();
+		ShakeScreen(8);
+		SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「うおおおおっ！」");
+		SetMessage(UNIT_ETC, -1, "", "片方のフライパンで鶏肉を炒め、@nもう片方でパスタを炒める。");
+		SetMessage(UNIT_ETC, -1, "", "ほんの少しの余裕を見つけ、@nベーコン、レタス、トマト、たまねぎ、@nソーセージを切り刻み、冷蔵庫からケチャップを…");
+		SetMessage(UNIT_ETC, -1, "", "と…");
+		DelWindow();
+
+		SetVisual( BG_FAMILLEC_01A, FILTER_FLASH, 50 );
+		SEPlay("L_Cook06");
+		SEFadeOut(2);
+		SEFadeOut(3, SLOWER);
+		SEFadeOut(4);
+		SEFadeOut(5, SLOWER);
+		FilterCrossFade(SLOW, FADEFILTER_SMOKE);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「焦げた～！？」");
+		SetMessage(UNIT_ETC, -1, "", "などという『急がば回れ』を体感できる展開に陥る。");
+
+		// ＜画面暗転＞
+		FadeOut(SLOW, 1);
+
+		SetMessage(UNIT_ETC, -1, "", "@m08駄目だ…もう駄目だ…");
+		DelWindow();
+
+		// ＜ＳＥ：教会の鐘の音＞
+		FilterFlashOut(SLOW, FADEFILTER_LIGHT | FADEFILTER_NEGATIVE);
+		BGMFade(SLOWEST, 0);
+		SEFade(0, SLOWEST, 0);
+		SEFade(1, SLOWEST, 0);
+		SEFadePlay(2, "L_Bell05", SLOWEST);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃん…僕…もう疲れたよ…」");
+		SetMessage(UNIT_ETC, -1, "", "絶望と、疲れと、飢えと、寒さが、@n僕の体と心を蝕んでいく。");
+		SetMessage(UNIT_ETC, -1, "", "そう、一人称さえ変えてしまうくらいに…");
+		SetMessage(UNIT_ASUKA, -1, "？？？", "@v03030001「てんちょ？」");
+		SetMessage(UNIT_ETC, -1, "", "おかしいな…@nマッチはまだすってないぞ。");
+		SetMessage(UNIT_ASUKA, -1, "？？？", "@v03030002「てんちょってば」");
+
+		DelWindow();
+
+		// ＜ＢＧ：厨房＞
+
+		SetVisual( BG_FAMILLEC_01A );
+		BGMFade(NORMAL, 100);
+		SEFade(0, NORMAL, 50);
+		SEFade(1, NORMAL, 10);
+		SEFadeOut(2);
+		SetStand(ASUKA_0202NO);
+		FlashIn(FAST);
+
+		// ＜鐘の音消える＞
+
+		SetWindow();
+		ShakeScreen(8);
+		SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「待ちかねたよ明日香ちゃん！」");
+
+		SetStand(ASUKA_0202OD);
+		JumpStand();
+
+		SetMessage(UNIT_ASUKA, ASUKA_0202OD, "明日香", "@v03030003「きゃっ？」");
+		SetMessage(UNIT_ETC, -1, "", "いくらなんでも、キッチンで料理中に@n気を失うわけがないだろう。");
+
+		MoveStand(CENTER,RIGHT,NORMAL,1);
+		SetStand(KASURI_0102EG2,LEFT,MOVE_LEFT);
+
+		SetMessage(UNIT_KASURI, KASURI_0102EG2, "かすり", "@v03040007「明日香ちゃ～ん！@n来てくれると信じてたわ～！」");
+
+		DelWindow();
+
+
+		SEPlay("L_Dash17");
+		MoveStand(LEFT,CENTERRIGHT,FAST);
+
+		SEPlay("L_Fall01");
+		ShakeScreen(8);
+
+		DelStand(CENTERRIGHT,MOVE_RIGHT,FAST,1);
+		DelStand(RIGHT,MOVE_RIGHT);
+
+
+		SetWindow();
+
+		SetMessage(UNIT_ASUKA, -1, "明日香", "@v03030004「もふっ！？」");
+		SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v03040008「あ～、この、こっちの胸をぐいぐい押し返す、@nおっきな二つの弾力がたまんないわ～」@k");
+
+		SEPlay("L_Momu01");
+		ShakeScreen(8);
+		Wait(80);
+		SEPlay("L_Momu02");
+		ShakeScreen(8);
+		MessageWait();
+
+		SetMessage(UNIT_ASUKA, -1, "明日香", "@v03030005「うぐぐぐ…か、かすりさ～ん…離して」");
+		SetMessage(UNIT_ETC, -1, "", "…うらやましい。");
+
+		ShakeScreen(8);
+		SEPlay("L_Fall02");
+		SetStand( KASURI_0102EG, LEFT, MOVE_RIGHT, FAST, 1 );
+		SetStand( ASUKA_0201AS, RIGHT, MOVE_LEFT );
+
+		SetMessage(UNIT_KASURI, KASURI_0102EG, "かすり", "@v03040009「ほい、スキンシップ完了！」");
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "@m16「よし交代だかすりさ」@e");
+		Wait(20);
+		SetMessage(UNIT_KASURI, KASURI_0102EG, "かすり", "@v03040010「３分で着替えといで～！」");
+
+		// ＜仁→かすりの台詞はウェイトなしで一気に表示＞
+
+		SetMessage(UNIT_ASUKA, ASUKA_0201AS, "明日香", "@v03030006「無理だよ～！」");
+		DelWindow();
+
+		SELoopPlay(2, "L_Walk02");
+		DelStand(RIGHT, MOVE_RIGHT);
+		SEFadeOut(2, SLOW, 1);
+		SEPlay("L_Door09A");
+		Wait(150);
+		SEPlay("L_Door09B");
+
+		// ＜ＳＥ：更衣室のドア閉じる＞
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ちっ」");
+
+		SetStand(KASURI_0101AK, LEFT);
+		MoveStand(LEFT, CENTER);
+
+		SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v03040011「…セクハラ店長？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ごめんなさい、精神が極限状態で」");
+		SetMessage(UNIT_KASURI,  KASURI_0102NY , "かすり", "@v03040012「ま、わかるよ。@nでもこれで、あと３分の辛抱。@n先に休憩入らせてもらうからね」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「うわ汚え」");
+		SetMessage(UNIT_KASURI, KASURI_0101IK, "かすり", "@v03040013「愚痴こぼしてる暇があったら、@nさっさとナポリタンとクラブハウスサンド！」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「しくしくしく…」");
+		DelWindow();
+
+		// ＜ＳＥ：油で炒める音＞
+		SEPlay("L_Cook04");
+		SEFadePlay(2, "L_Cook05", SLOWER);
+		FadeOut();
+		DelStand();
+		Wait(50);
+		SEFadePlay(3, "L_Cook01");
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "鶏肉をスライスして、レタス、トマト、タマネギと一緒に、@nパンに挟み込む。");
+		SetMessage(UNIT_ETC, -1, "", "ケチャップを絡ませたパスタは、香ばしい香りを漂わせ、@nついつい、昼飯すら食べていないことを思い出させる。");
+		SetMessage(UNIT_ETC, -1, "", "そして…");
+
+		SEPlay("L_Cook06");
+		SEFadeOut(2);
+		SEFadeOut(3, SLOWER);
+		FadeIn();
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「完成～！」");
+		SetMessage(UNIT_ETC, -1, "", "ナポリタン２つにクラブハウスサンド１つ。@nブレンドとダージリン、ホットチョコレート…");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「時間は！？」");
+
+		SetStand(KASURI_0102OD, CENTER, MOVE_LEFT);
+
+		SetMessage(UNIT_KASURI, KASURI_0102OD, "かすり", "@v03040014「９分３０秒…@t0195@h0102EG2すごいよ仁くん！」");
+		DelWindow();
+
+		// ＜ＳＥ：ハイタッチ＞
+		SEPlay("L_Touch01");
+		ShakeScreen(8);
+		Wait(50);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "二人の手が、高らかに掲げられ、高らかな音を響かせる。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「俺は課せられた使命は必ず果たす男…高村仁！」");
+		SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v03040015「負けたわ…@nわたしの休憩の権利をあげる。@nゆっくり休んでおいで」");
+
+		CurtainFadeOut(NORMAL, 1);
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ありがとうかすりさ…@p@k");
+
+		CurtainFadeIn(NORMAL, 1);
+		ShakeScreen(8);
+
+		AddMessage("ってちょっと待て！@n休憩室は明日香ちゃんが着替え中じゃないか！」");
+		SetMessage(UNIT_ETC, -1, "", "いかんいかん。@nこの人の作戦にまんまとハマるところだった。");
+
+		SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v03040016「仁くん…あんた真面目ねぇ。@nわたしのせいにして、さっさと開けちゃえばよかったのに」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「俺はセクハラ店長じゃないので～」");
+		SetMessage(UNIT_ETC, -1, "", "そうだ、俺は明日香ちゃんの店長であり、先生なんだ。@n大切なスタッフと、大事な教え子の信頼を@n裏切るわけにはいかない。");
+		SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v03040017「脱いだら凄いのに、あの娘」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「う、うるしゃい」");
+		SetMessage(UNIT_ETC, -1, "", "勉強を教えてるときにも、かがみこんだときの胸元に、@n何度目を奪われ…たことなんかないやい！");
+		SetMessage(UNIT_KASURI, KASURI_0102EG2, "かすり", "@v03040018「仕方ない…じゃ、わたしが一肌脱ぐことにしよう」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…脱ぐの？」");
+		SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v03040019「結婚してくれるならね」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「さっ、仕事仕事」");
+
+		SetMessage(UNIT_KASURI, KASURI_0102NO, "かすり", "@v03040020「明日香ちゃ～ん！@n３分経ったよ～」");
+		SetMessage(UNIT_ASUKA, -1, "明日香", "@v03030007「え～！　もう？」");	// ★★ドアの外からの声
+		SetMessage(UNIT_KASURI, KASURI_0102NO, "かすり", "@v03040021「急いで出てきなさ～い！」");
+
+		ShakeScreen(8);
+		SEPlay("L_Inpact16", 50);
+
+		SetMessage(UNIT_ASUKA, -1, "明日香", "@v03030008「ちょっ、ちょっと待っ…いやだぁもう！」");	// ★★ドアの外からの声
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「か、かすりさん…何もそんなに急かさなくても」");
+		SetMessage(UNIT_KASURI, KASURI_0102EG, "かすり", "@v03040022@s0004「店長命令よ～！@n出て来～い！」");
+		SetMessage(UNIT_ASUKA, -1, "明日香", "@v03030009「て、てんちょぉぉ～！」");	// ★★ドアの外からの声
+
+		ShakeScreen(8);
+		SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「命令してねぇぇ～！」");
+		SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v03040023「５つ数えるうちに出てきなさい！@t0239@n５@t0314・４@t0371・３@t0424・２@t0471・１…」");
+
+		ShakeScreen(8);
+		SEPlay("L_Inpact12", 50);
+
+		SetMessage(UNIT_ASUKA, -1, "明日香", "@v03030010「は…はいぃぃぃ～！」");	// ★★ドアの外からの声
+		HideDay();
+		DelWindow();
+
+		// ＜ＳＥ：ドア開く＞
+		BGMFadeOut(SLOWER);
+		SEFadeOut(0, SLOWER);
+		SEFadeOut(1, SLOWER);
+		SEPlay("L_Door09A");
+		FadeOut();
+		DelStand();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：二種類の制服乱れ半脱ぎの明日香＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( VISUAL_ASUKA_01A );
+		FadeIn();
+
+		SetWindow(WINDOW_SIMPLE);
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…え？」");
+
+		BGMPlay(BGM_ASUKA);
+
+		SetMessage(UNIT_ASUKA, -1, "明日香", "@v03030011「て、てんちょ…ひどいよぉ。@nわたし、まだこんなんなのにぃ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+		SetMessage(UNIT_KASURI, KASURI_0102NO, "かすり", "@v03040024「というわけで、休憩、先に入らせてもらうわよ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「かすりさん…なんてことを」");
+		DelWindow();
+
+		SetVisual( BG_FAMILLEC_01A );
+		SetStand(KASURI_0102NY);
+		CrossFade();
+
+		SetWindow(WINDOW_SIMPLE);
+		SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v03040025「心のグリコーゲン、でしょ？」");
+		SetMessage(UNIT_ETC, -1, "", "かすりさんは、@nなにやら訳のわからないことを言ったかと思うと…");
+		DelWindow();
+
+		// ＜ＳＥ：ドア閉じる＞
+		SEPlay("L_Door09B");
+		DelStand(CENTER, MOVE_RIGHT);
+		FadeOut();
+
+		SetWindow(WINDOW_SIMPLE);
+		SetMessage(UNIT_ETC, -1, "", "そのまま、休憩室の中へと消えていった。");
+		DelWindow();
+
+		SetVisual( VISUAL_ASUKA_01C );
+		FadeIn();
+
+		SetWindow(WINDOW_SIMPLE);
+		SetMessage(UNIT_ASUKA, -1, "明日香", "@v03030012「え？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「え？」");
+		SetMessage(UNIT_ETC, -1, "", "…明日香ちゃんを残して。");
+
+		ShakeScreen(8);
+		SEPlay("L_Knock01");
+
+		SetMessage(UNIT_ASUKA, -1, "明日香", "@v03030013「あ～！　ちょっとかすりさん！@n開けて、開けてってばぁ！」");
+
+		// ＜ＳＥ：激しいノック＞
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「はは…」");
+		DelWindow();
+
+		SetVisual( VISUAL_ASUKA_01D );
+		CrossFade();
+
+		SetWindow(WINDOW_SIMPLE);
+		SetMessage(UNIT_ASUKA, -1, "明日香", "@v03030014「あ～！　てんちょ、見ちゃやだ！@nやだってばぁ！」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ははは…あはははは…」");
+		SetMessage(UNIT_ETC, -1, "", "セクハラてんちょ、誕生。");
+		HideMenu();
+		HideDay();
+		DelWindow();
+
+		Wait(50);
+
+		BGMFadeOut(SLOWEST);
+		FadeOut(SLOWER);
+		DelVisual();
+
+		Wait(300);
+
+		NextEvent();
+		LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

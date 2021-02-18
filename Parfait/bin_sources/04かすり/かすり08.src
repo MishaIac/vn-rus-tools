@@ -1,0 +1,222 @@
+// ●かすり08：怪しい電話２
+// 種類：重要イベント（かすり攻略にかすり05、08のどちらかが必須）
+// 条件：第３クォーター、キッチンを選択
+// 概要：かすりの携帯に謎の電話がかかってくる。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+	SEFadePlay(1, "L_Dish03", NORMAL, 20);
+	SEFadePlay(2, "L_Factory01", NORMAL, 50);
+	BGMPlay( BGM_NICHIJOU3 );
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_ASUKA, ASUKA_0101MJ, "明日香", "@v04030038「てんちょ。@nカルボナーラ２つ！」");	// ★★声のみ
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はいはいっ…！」");
+	SetMessage(UNIT_ETC, -1, "", "店内にある２０席がぎっしりと埋まっている。");
+	//SetMessage(UNIT_ETC, -1, "", "お昼時。@n店内にある２０席がぎっしりと埋まる。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@o050@v04030039「はい、少々お待ちくださいっ@nただいますぐ、ご注文に伺います！」");	// ★★声のみ
+	SetMessage(UNIT_YUI, -1, "由飛", "@o050@v04010057「うひ～、目が、目がぐるぐるだよ～。@nちょっと待って～～っ！」");	// ★★声のみ
+
+	SetMessage(UNIT_ETC, -1, "", "これも、軽食メニュー目当てのお客さんが増えたおかげだ。");
+	SetMessage(UNIT_ETC, -1, "", "２００円ケーキの時に比べれば@nささやかだけど、確実に成果は上がってる。");
+	SetMessage(UNIT_ETC, -1, "", "里伽子の助言はいつも正しい。@p@nまったく、頭が上がらないな。");
+
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v04050070「かすりちゃん、オーブン、温度大丈夫？」");
+	SetMessage(UNIT_KASURI, KASURI_0202NO, "かすり", "@v04040186「はいはーい！　いつでもオッケイですよ～。@nクレームアマンドも準備完了！」");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v04050071「はい、んじゃ、次いくわよ！」");
+	SetMessage(UNIT_KASURI, KASURI_0201OT, "かすり", "@v04040187「うひ～、息つく間もない～」");
+	SetMessage(UNIT_ETC, -1, "", "ケーキの方でも、今や修羅場の真っ最中。");
+	SetMessage(UNIT_ETC, -1, "", "邪魔にならないように隅っこで、@nフライパンを握りしめる");
+	DelWindow();
+
+	// ＜画面暗転＞
+
+	// ちょっとした時間経過を表現
+	SEPlay("L_Cook04");
+	SEFadePlay(3, "L_Cook05", SLOWER);
+	Wait(100);
+	SEFadePlay(4, "L_Cook01");
+	Wait(200);
+	SEFadeOut(3, SLOWER);
+	SEFadeOut(4, SLOWER);
+	FilterFadeOut(SLOW, FADEFILTER_UZU);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(200);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEC_01A );
+	BGMFadeOut( SLOWEST );
+	FilterFadeIn(SLOW, FADEFILTER_UZU);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ふうっ…」");
+
+	SetStand( KASURI_0202BS );
+
+	SetMessage(UNIT_KASURI, KASURI_0202BS, "かすり", "@v04040188「…やっと、一息ついたみたいね～」");
+	SetMessage(UNIT_ETC, -1, "", "なんとか修羅場を乗り切って@n額の汗をぬぐう若人二人。");
+	SetMessage(UNIT_ETC, -1, "", "…だけど、@n若さ故の元気とか超越してる人もいるわけで。");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v04050072「かすりちゃん、手が空いたなら@nメレンゲよろしくね？」");
+	SetMessage(UNIT_KASURI, KASURI_0201MJ, "かすり", "@v04040189「あっ、はいっ…！」");
+	DelWindow();
+
+	// ＜ＳＥ：携帯の呼び出し音＞
+	SELoopPlay(3, "L_Tel15");
+
+	Wait( 50 );
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v04040190「あ…！」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v04050073「………」");
+	SetMessage(UNIT_KASURI, KASURI_0201KS, "かすり", "@v04040191「ごめん。携帯切り忘れてて…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「手早く用件だけ聞いておけば？」");
+	SetMessage(UNIT_KASURI, KASURI_0201KS, "かすり", "@v04040192「うん、ごめん」");
+	DelWindow();
+
+	// ＜ＳＥ：携帯の着信ボタン＞
+	SEStop(3);
+	SEPlay("L_Tel02");
+	DelStand( CENTER, MOVE_RIGHT );
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0201MJ, "かすり", "@v04040193「もしもし…？」");
+	SetMessage(UNIT_KASURI, KASURI_0201MJ, "かすり", "@v04040194「もう、仕事中はかけてこないでって言ってるでしょ？」");
+	// ＜怒ってる感じじゃなく、親しみを込めた感じで＞
+
+	SetMessage(UNIT_ETC, -1, "", "携帯を握りしめ、かすりさんはキッチンの奥へと走ってゆき");
+
+	// ＜かすり、立ち消去＞
+
+	// ＜ここからしばらく、かすりの声が遠くから聞こえる感じで＞
+	SetMessage(UNIT_KASURI, -1, "かすり", "@o050@v04040195@s0002「……うん……うん、わかってる」");	// ★★声のみ
+	// ＜楽しげ＞
+
+	SetMessage(UNIT_ETC, -1, "", "結構、親しげに会話してるな。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…友達かな？」");
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v04050074「…にしては、親密な感じよね。@n@t0415@h0101ASって別に聞き耳たててる訳じゃないのよ？」");
+	SetMessage(UNIT_ETC, -1, "", "…姉さん、語るに落ちてます。");
+	SetMessage(UNIT_ETC, -1, "", "それにしても@nかすりさんの表情はいつにもなく楽しげで。");
+	SetMessage(UNIT_ETC, -1, "", "…なんとなく、@n耳をそばたててしまう、俺たち２人。");
+
+	//▲フラグチェック
+	// ＜かすり05を発生させている場合、以下のテキストを追加＞
+	//AddSelectMenu(0, "かすり05を発生させている場合");
+	//AddSelectMenu(1, "かすり05を発生させていない場合");
+	//SelectMenu();
+	//if(GetFlg(FLG_RET) == 0)
+	if(GetEventFlg(EVENT_02_05_02) != 0)
+	{
+		SetMessage(UNIT_KASURI, -1, "かすり", "@o050@v04040196@s0002「あはは…やだ、何言ってるのよ」");	// ★★声のみ
+		SetMessage(UNIT_ETC, -1, "", "そういえばこの前も…");
+		SetMessage(UNIT_ETC, -1, "", "確か、あの時は『男から』って堂々と言ってたような…");
+		SetMessage(UNIT_ETC, -1, "", "かすりさん…やっぱ、いるのかなぁ…？");
+	}
+	// ＜かすり05を発生させている場合の追加ここまで＞
+
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v04050075「気になる？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…え？」");
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v04050076「かすりちゃんの交友関係が気になる？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うん、そりゃ…あ」");
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v04050077「………」");	// ＜拗ね＞
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、だから、それは@n単なる好奇心と言うか@nそれを言うなら姉さんだって…あ」");
+
+	// ＜かすり立ち＞
+	SetStand(KASURI_0201KT, CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v04040197「…恵麻さんがどうかしたの？」");
+
+	BGMFadePlay( BGM_COMICAL );
+	ShakeScreen( 8 );
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「うわあっ！？」");
+
+	SetMessage(UNIT_ETC, -1, "", "姉さんの方を向いて会話してたせいで、@nかすりさんが戻ってきてるのに気づかなかった！");
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v04040198「大体、ここで何してるの？@n…カルボナーラ大丈夫？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う…いや、それは…姉さ…あれ？」");
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v04050078「あ、かすりちゃん、よかった、戻ってきてくれたのね。@nデコレーションお願い～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「汚っ！？」");
+	SetMessage(UNIT_ETC, -1, "", "さっきまで一緒に様子を伺っていたはずの姉さんは、@n何食わぬ顔をして、持ち場に戻っている。");
+	SetMessage(UNIT_KASURI, KASURI_0202NO, "かすり", "@v04040199「あ、は～い、すいませんでした～」");
+
+	DelStand(CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_ETC, -1, "", "と、しかし、俺の不審な挙動も気にする様子はなく、@nかすりさんは、持ち場へと戻っていく。");
+	SetMessage(UNIT_ETC, -1, "", "なんとなく、@n表情がリフレッシュしてるのは@n気のせいだろうか？");
+	DelWindow();
+
+	SetVisual(BG_FAMILLEC_01A, FILTER_FLASH, 30);
+	BGMFadeOut(SLOWER);
+	FilterCrossFade(SLOW, FADEFILTER_SMOKE);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "と、そのかすりさんの表情が、@n俺にはなんとなくぼやけて見える。");
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	BGMPlay(BGM_SHITTORI);
+
+	SetMessage(UNIT_ETC, -1, "", "@m08どうしちまったんだろう、俺。@nなんか、かすりさんがまともに見れない。");
+	SetMessage(UNIT_ETC, -1, "", "@m00この感情は、もしかしたら…");
+	DelWindow();
+
+	SetVisual(BG_FAMILLEC_01A, FILTER_FLASH, 60);
+	BGMFadeOut(SLOWER);
+	SEFadePlay(0, "L_Cook01", SLOWER);
+	FilterCrossFade(SLOW, FADEFILTER_SMOKE);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…あれ？」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030040「てんちょ、カルボナーラ上がった？」");	// ★★声のみ
+	DelWindow();
+
+	SetVisual(BG_FAMILLEC_01A, FILTER_FLASH, 90);
+	BGMFadePlay( BGM_COMICAL, SLOWER );
+	FilterCrossFade(SLOW, FADEFILTER_SMOKE);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030041「…てんちょ？」");	// ★★声のみ
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「明日香ちゃん…」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030042「ん？」");	// ★★声のみ
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ごめん…お客様に謝っといて。@nあと１５分かかりますって」");
+
+	ShakeScreen( 8 );
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@s0004@v04030043「ええ～！？」");	// ★★声のみ
+	SetMessage(UNIT_ETC, -1, "", "俺の目の前には、カルボナーラというよりは、@nスクランブルエッグあえパスタが、@nもうもうと白い煙を上げていた。");
+	SetMessage(UNIT_ETC, -1, "", "かすりさんどころか、何も見えない。");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	Wait(50);
+	SEFadeOut(0, SLOWER);
+	BGMFadeOut( SLOWER );
+	FadeOut( SLOW );
+	DelVisual();
+
+	Wait( 200 );
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

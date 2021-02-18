@@ -1,0 +1,238 @@
+// ●追加02：休憩
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	//種類：通常イベント");
+	//条件：第４クォーター、厨房を選択");
+	//概要：休憩する仁と板橋");
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：厨房＞
+	//----------------------------------------------------------------------------
+		Wait(50);
+
+		SetWindow();
+		SetMessage(UNIT_EMA, EMA_0101AS, "恵麻", "@v00050177「仁く～ん、ちょっとお願～い」");
+		DelWindow();
+
+		SetVisual( BG_FAMILLEC_01A );
+		SetStand( EMA_0101AS );
+		SEFadePlay(0, "L_Zattou04", SLOW, 50);
+		SEFadePlay(1, "L_Dish03", SLOW, 20);
+		SEFadePlay(2, "L_Factory01", SLOW, 50);
+		CurtainFadeIn();
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「なに、姉さん？」");
+		SetMessage(UNIT_EMA, EMA_0101AS, "恵麻", "@v00050178「バターが切れそうなのよ。@n下の食料品売り場で買ってきて欲しいんだけど」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「え～、もう在庫無いの？@n仕入れの数、足りなかったかぁ」");
+		SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v00050179「ここしばらくお客さん、すごく多いからね。@nすぐ入れてもらえるようにはするとして、@nとりあえず今日の分だけでも用意しないと」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「しょうがないな…@nちょっと高くついちゃうけど行ってくるか」");
+		SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v00050180「お願いね～」");
+		DelWindow();
+
+		// ＜画面暗転＞
+		SEFadeOut(0, SLOWER);
+		SEFadeOut(1, SLOWER);
+		SEFadeOut(2, SLOWER);
+		CurtainFadeOut();
+		DelStand();
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "………");
+		SetMessage(UNIT_ETC, -1, "", "……");
+		SetMessage(UNIT_ETC, -1, "", "…");
+		DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：エントランス＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_ENTRANCE_01B );
+		BGMFadePlay(BGM_NICHIJOU1,SLOW);
+		SEFadePlay(0, "L_Zattou01");
+		SEFadePlay(1, "L_Zattou06");
+		SEFadePlay(2, "L_Zattou04", NORMAL);
+		CurtainFadeIn(SLOW);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…とりあえずこんなもんで足りるだろう」");
+		SetMessage(UNIT_ETC, -1, "", "手早く地下の食料品売り場で買い物を済ませてきたが、@n上がってきたところでふと足を止めてしまった。");
+		SetMessage(UNIT_ETC, -1, "", "普段あまり営業中は外に出ないので、@nこうやってモール内をゆっくり見ることもなかったな。");
+		SetMessage(UNIT_ETC, -1, "", "モール内はいつの間にかクリスマス装飾に彩られ、@nそれに引かれるように大勢の人が集まってきている。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「これは、ウチも忙しくなるはずだよな」");
+		SetMessage(UNIT_ETC, -1, "", "いつもなら平日にはお昼時を過ぎるとしばらくは@nわりと暇な時間が出来るのだが、ここのところは@n人が絶える時間がほとんどない。");
+		SetMessage(UNIT_ETC, -1, "", "それでもまだ幸い今日は@n俺がちょっと抜けられるくらいの余裕はあったわけだが。");
+		SetMessage(UNIT_ETC, -1, "", "そんなに大急ぎで戻らなければいけない状態では@nなさそうだったし、朝から休憩も取ってなかったし、@nついでに少しだけ休んでいくか…");
+
+		// ＜ＳＥ：自動販売機で缶コーヒーを買う音（ジー、ガタン）＞
+		//伊藤：SE new
+		//('A`)ないぽ
+		ShakeScreen(4);
+		SEPlay("L_Fall01");
+
+		SetMessage(UNIT_ETC, -1, "", "俺は手近にあった自動販売機で@n缶コーヒーを買うと、空いていたベンチに腰掛けた。");
+		SetMessage(UNIT_ETC, -1, "", "店で淹れればいいんだろうけど、@nたまにはこういう安っぽい味も飲みたくなることがある。");
+		SetMessage(UNIT_ETC, -1, "", "と、缶を空けようとした途端、@n背後で聞き覚えのある声がした。");
+		DelWindow();
+
+		SetStand(ITABASHI_0101NO);
+
+		SetWindow();
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080073「ん～、すっかりクリスマス一色だねぇ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「うわ、板橋さん。@n何してんですか、こんなところで」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080074「いや～、こういう忙しい時にこそ@nしっかり休憩を取らないとね～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…常に休憩を取っている人のセリフは@n説得力がありますね」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v00080075「仁くんこそこんなところでサボりかい？@nファミーユ店長ともあろうものが」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「買い出しですよ、買い出し。@n…のついでのちょっとした休憩。@nサボりはあんたでしょうが、キュリオ店長」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080076「まあまあ、たまにはライバル店の店長同士、@n語らいながら酌み交わすのもいいじゃないの」");
+
+		DelWindow();
+
+		DelStand();
+		ShakeScreen(4);
+		SEPlay("L_Fall01");
+		Wait(60);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "そう言いながらポケットから缶コーヒーを取り出すと、@n俺の隣に腰掛けてきた。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「酌み交わす…って、酒じゃあるまいし」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v00080077「ん～？　ボクはお酒でもいいんだけど。@n買ってこようか？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「頼むからやめてくれ…」");
+		SetMessage(UNIT_ETC, -1, "", "…おそらく頷いたらホントに買いに行くに違いない。@nこの人は…");
+		DelWindow();
+
+		// ＜ＳＥ：缶のふたを空ける（プシュ！）＞
+		SEPlay("L_Drink09");
+		Wait(50);
+
+		SetWindow();
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080078「んじゃま、お疲れ様ということで」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…」");
+
+		// ＜ＳＥ：缶をぶつける＞
+		//伊藤SE new
+		//('A`)ないぽ
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…しかし、仮にも喫茶店の店長が二人して@n並んで缶コーヒー飲んでるってのは、@n世間的にどうなんですかね？」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080079「大丈夫、大丈夫。@n黙ってればわかりゃしないよ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「明らかに買い物客じゃない格好だけど、二人とも…」");
+
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080080「それにしても、こう人が多いと店も忙しいよね～。@n平日でも、いつもより三割増しくらいの人が来てるらしいよ。@nこれじゃあボクら休んでる暇なんかないよね～」");
+
+		SetMessage(UNIT_ETC, -1, "", "今している事はなんなんだ…？");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080081「この調子だと、イブもすごい人が来るんだろうね～」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080082「あ、ほらほら、なんかカップルも多いよ～？@nあっちも、こっちも…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「指差して数えるのは止めい！」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080083「いや～若いってのはいいね～、@n人前でいちゃいちゃ出来て」");
+
+		BGMFade(SLOW,0);
+
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v00080084「…ところで、仁くんのイブのお相手は？」");
+
+		ShakeScreen(16);
+		SEPlay("L_Buu01");
+		SetMessage(UNIT_ETC, -1, "", "ぶっ！？");
+
+		BGMFade(SLOW,100);
+
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v00080085「…君は幸せそうなカップルに向かって@nコーヒーを吹きかけるのが趣味なのかい？」");
+
+		ShakeVisual(8);
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…ぐ…ごほっ、あ、あんたな…」");
+
+
+
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080086「でも仁くんの周りには女の子がいっぱいいるからねぇ。@n僻まなくても、選り取りみどりでしょ」");
+		// ＜僻む（ひがむ）＞
+
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080087「ボクも、もっと若かったら君みたいにあっちこっちの@n女の子に、手を出してみたりするんだけどね～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ひ、人聞きの悪い…@n誰があっちこっちに手を出してると！？」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080088「ふ～ん…じゃあお相手は、一人に決まってるんだ？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、それは…」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080089「………」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v00080090「…いないの？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080091「そうか～、可哀想にねぇ…@nこのことは皆にはないしょにしておいてあげるから…@n@t0895@h0101KTいや…待てよ？　言いふらした方がいいのか」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「な、な…なにを…」");
+
+		SetStand(ITABASHI_0101NO);
+
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080092「仁くんは今フリーですよ～、@n捕まえるなら今のうちですよ～、@nって今日にでも触れ回れば…」");
+
+		ShakeScreen(8);
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「待て～！！」");
+		SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v00080093「あれ？　ダメ？@n絶対誰か食いついてくると思ったんだけど…？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「うるさい！　とっととキュリオに帰れ！！」");
+		SetMessage(UNIT_ETC, -1, "", "こ、この中年親父は…勘弁してくれ…");
+		DelWindow();
+
+		// ＜画面暗転＞
+		SEFadeOut(0, SLOWER);
+		SEFadeOut(1, SLOWER);
+		SEFadeOut(2, SLOWER);
+		BGMFadeOut(SLOWER);
+		FadeOut(SLOW);
+		DelStand();
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "………");
+		SetMessage(UNIT_ETC, -1, "", "……");
+		SetMessage(UNIT_ETC, -1, "", "…");
+		DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：厨房＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_FAMILLEC_01A );
+		SEFadePlay(0, "L_Zattou04", SLOW, 50);
+		SEFadePlay(1, "L_Dish03", SLOW, 20);
+		SEFadePlay(2, "L_Factory01", SLOW, 50);
+		CurtainFadeIn();
+
+		SetWindow();
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「お待たせ～…」");
+
+		SetStand( EMA_A101NK );
+		JumpStand();
+
+		ShakeScreen(8);
+		SetMessage(UNIT_EMA, EMA_A101NK, "恵麻", "@v00050181@s0004「仁くん！」");
+
+		// ＜悲痛な叫び＞
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「な、何！どうしたの！？」");
+
+		BGMFadePlay(BGM_COMICAL, SLOW);
+
+		SetMessage(UNIT_EMA, EMA_A101NK, "恵麻", "@v00050182「クリスマスに一緒に過ごす相手がいないからって、@n板橋さんと逢引してたってホントなの～！？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「な！？」");
+		SetMessage(UNIT_EMA, EMA_A101NK, "恵麻", "@v00050183「なんで姉ちゃんに一言相談してくれなかったのよ～！」");
+		SetMessage(UNIT_ETC, -1, "", "……");
+
+		FadeOut(SLOW,1);
+
+		SetMessage(UNIT_ETC, -1, "", "…勘弁してくれ…");
+		HideMenu();
+		HideDay();
+		DelWindow();
+
+		SEFadeOut(0, SLOWER);
+		SEFadeOut(1, SLOWER);
+		SEFadeOut(2, SLOWER);
+		BGMFadeOut(SLOWER, 1);
+		DelStand();
+		DelVisual();
+
+		Wait(200);
+
+		NextEvent();
+		LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

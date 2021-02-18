@@ -1,0 +1,296 @@
+// ●里伽子24：あばかれた陰謀
+// 種類：重要イベント
+// 条件：里伽子ＴＲＵＥルートで、里伽子23の直後に発生
+// 概要：いつの間にか、周辺を固められている里伽子
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フードコート＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FOODCOURT_01A );
+	SEFadePlay(0, "L_Zattou01");
+	SEFadePlay(1, "L_Zattou04");
+	SEFadePlay(2, "L_Dish03", NORMAL, 50);
+
+	//BGMFadePlay(BGM_SHITTORI,SLOW);
+
+	FadeIn(SLOW);
+
+	SetStand(KASURI_0201NO);
+	SetWindow();
+
+	SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v06040047「こんなとこに呼び出すくらいなら、@nお店に来ればいいのに」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201KM2, "里伽子", "@v06061074「…ごめん」");
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v06040048「で、何か用？@n仁くんなら、午前中は用事あるとかでいないよ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KN, "里伽子", "@v06061075「うん…だから、来たの」");
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v06040049「はぁ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202MJ, "里伽子", "@v06061076「あのさ、かすりさん…@nこれ、返しておいて」");
+
+	SEPlay("L_Bag01");
+	Wait(50);
+
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v06040050「これって………？@t0230@h0202EG2@nあはっ、懐かしい。@nこれ、リカちゃんのよね～」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KN, "里伽子", "@v06061077「もう…いらないから」");
+	SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v06040051「そっか～、もうサイズ合わないんだ～。@n見た感じだとわかんないけど、太ったんだね～」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202AS, "里伽子", "@v06061078「ち、違…」");
+	SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v06040052「わかった、預かっとく」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201SC, "里伽子", "@v06061079「だ、だから別に体型は…」");
+//	SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v06040053「用はそんだけ？@nそれじゃ忙しいからまたね」");
+	SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v06040053「用はそんだけ？@nそれじゃ、忙しいからまたね」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202AS, "里伽子", "@v06061080「え？　あ、@t0081@h0201KMちょっと…待って」");
+
+	SetMessage(UNIT_KASURI, KASURI_0201MJ2, "かすり", "@v06040054「なぁにぃ？@nさっきも言ったけど、今仁くんいないから、@n修羅場なんだけど～」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201KM, "里伽子", "@v06061081「その…仁は…@nどうしてる？」");
+	SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v06040055「元気いっぱいだよ」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201OD, "里伽子", "@v06061082「………え？」");
+	SetMessage(UNIT_KASURI, KASURI_0202BS, "かすり", "@v06040056「なんか仕事が楽しくてしょうがないって感じ。@n今が一番燃えてるんじゃないかなぁ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201OD, "里伽子", "@v06061083「な、なんで…？」");
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v06040057「なんでって………@n@t0200@h0202BS公私ともに充実してるとか、そんな感じがするけど」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201SC, "里伽子", "@v06061084「そんな…え…嘘？」");
+	SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v06040058「ん～？@n何が『嘘』なワケ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102AS, "里伽子", "@v06061085「え…？」");
+	SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v06040059「仁くんが楽しそうに日々生きてたら嫌なの？@nリカちゃん、何か困ることでもあるの？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201KM, "里伽子", "@v06061086「そ、それは…その…@nそういうわけじゃ…」");
+	SetMessage(UNIT_KASURI, KASURI_0202TY, "かすり", "@v06040060「わたし、本当に忙しいからもう行くけどさ、@nなんかそういう態度、好きじゃないな」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201SC, "里伽子", "@v06061087「違う…違うの、かすりさん…」");
+	SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v06040061「あ、それじゃあね。@nまた時間がある時にお店の方にも来なよ～」");
+
+	// ＜かすり消える＞
+	SELoopPlay(3, "L_Walk02");
+	SEFadeOut(3, SLOWEST);
+	DelStand(CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202AS, "里伽子", "@v06061088「え？　@t0346@h0201KMあ、その、あたし…もうここには…」");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v06040062「じゃ～ね～♪」");
+	DelWindow();
+
+	SEPlay("L_Door05A", 50);
+	SEPlay("L_Bell02", 50);
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201SC, "里伽子", "@v06061089「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KN, "里伽子", "@v06061090「………どうし、て？@n仁は…平気、なの？」");
+	DelWindow();
+
+	Wait(50);
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	FadeOut(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_01A );
+	SEFadePlay(0, "L_Zattou01");
+	SEFadePlay(1, "L_Zattou04");
+	SEFadePlay(2, "L_Dish03", NORMAL, 50);
+	FilterFadeIn(NORMAL,FADEFILTER_RYUUSEN);
+
+	SetStand(KASURI_0202NY);
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v06040063「リカリンめ…動揺しろ動揺しろ。@n心、千々@s0002（ちぢ）@s0003に乱れるが良いわ～@n@t0723@h0202EG2ふっふっふっふっふ～」");
+
+	SetStand(YUI_0101IK,RIGHT,MOVE_RIGHT,FAST,1);
+	//MoveStand(CENTER,LEFT);
+
+	//伊藤：すんません　遊んでます　消してください
+	//(´-`)駄目だ
+
+	//SetMessage(UNIT_YUI, YUI_0101IK, "由飛", "@v06010058「…かすりさんは仕事しろ仕事しろ」");
+
+	//----------------------------------------------------------------------------
+	//----------------------------------------------------------------------------
+	SetMessage(UNIT_YUI, YUI_0101IK, "由飛", "@v06010058「…かすりさんは@k");
+
+	Wait(87,1);
+
+	ShakeScreen(8);
+	MoveStand(RIGHT,CENTERRIGHT,FAST,1);
+	SetStand(KASURI_0202AS, CENTER, FAST, 1);
+	MoveStand(CENTER,CENTERLEFT,NORMAL,1);
+	SEPlay("L_Fall01");
+	AddMessage("仕事しろ@k");
+	Wait(80,1);
+
+	ShakeScreen(8);
+	MoveStand(CENTERRIGHT,CENTER,FAST,1);
+	SetStand(KASURI_0202AS2, CENTERLEFT, FAST, 1);
+	MoveStand(CENTERLEFT,LEFT,NORMAL,1);
+	SEPlay("L_Fall01");
+	AddMessage("仕事しろ」");
+	MessageWait();
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	//----------------------------------------------------------------------------
+
+	// ＜画面暗転＞
+	Wait(50);
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	FadeOut(SLOW);
+	DelStand(LEFT);
+	//DelStand(RIGHT);
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	Wait(200);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：大学＞
+	//----------------------------------------------------------------------------
+
+
+	SEFadePlay(0, "L_Zattou01", SLOW, 50);
+	SEFadePlay(1, "L_Zattou02", SLOW);
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_MALE, -1, "事務員", "@v06160045「…退学届ですか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201NO, "里伽子", "@v06061091「ええ…お願いします」");
+	SetMessage(UNIT_MALE, -1, "事務員", "@v06160046「そうですか…ご家庭の事情とか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KN, "里伽子", "@v06061092「まぁ…そんなところ、です」");
+	SetMessage(UNIT_MALE, -1, "事務員", "@v06160047「では、拝見します」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202NO, "里伽子", "@v06061093「どうぞ」");
+
+	SEPlay("L_Paper01");
+
+	SetMessage(UNIT_MALE, -1, "事務員", "@v06160048「え～と…」");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KN, "里伽子", "@o070@v06061094「…さよなら」");
+
+	// ＜里伽子、泣きそうな声で＞
+
+	SetMessage(UNIT_MALE, -1, "事務員", "@v06160049「学籍番号２４６３９２…夏海里伽子？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201NO, "里伽子", "@v06061095「はい…経済学部の３年です」");
+	SetMessage(UNIT_MALE, -1, "事務員", "@v06160050「ちょっ、ちょっと、お待ち下さいね？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KT, "里伽子", "@v06061096「は…はい」");
+
+	DelWindow();
+
+	// ＜ＳＥ：電話かける＞
+	SEPlay("L_Tel20");
+
+	Wait(100);
+
+	SetWindow();
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KT, "里伽子", "@v06061097「？」");
+
+	SEStop();
+
+	SetMessage(UNIT_MALE, -1, "事務員", "@v06160051「あ、あの…中村研究室ですか？@nあ、事務室ですけど、中村教授を」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KT, "里伽子", "@v06061098「…え？」");
+	SetMessage(UNIT_MALE, -1, "事務員", "@v06160052「あ、先生？@n来ました来ました夏海さん。@nどうします？　捕まえとけばいいんですか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102AS, "里伽子", "@v06061099「…は？」");
+//	SetMessage(UNIT_MALE, -1, "事務員", "@v06160053「ええ、とにかく退学届は没収しました。@nはい、はい…じゃ、待ってもらいますね」");
+	SetMessage(UNIT_MALE, -1, "事務員", "@v06160053「ええ、とにかく退学届は没収しました。@nはい、はい…じゃあ、待ってもらいますね」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201SC, "里伽子", "@v06061100「…はい？」");
+	SetMessage(UNIT_MALE, -1, "事務員", "@v06160054「あ、あの、しばらく中でお待ち下さい。@n今、担当教授が参りますので」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201SC, "里伽子", "@v06061101「何で？」");
+
+	DelWindow();
+	//FadeOut();
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER, 1);
+
+	Wait(200);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：駅前＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_EKIMAE_01A );
+	SEFadePlay(0, "L_Water02", SLOWER, 50);
+	SEFadePlay(1, "L_Zattou06", SLOWER, 50);
+	SEFadePlay(2, "L_Town02", SLOWER);
+	SEFadePlay(3, "L_Town03", SLOWER);
+	CurtainFadeIn();
+
+	// ＜ＳＥ：喧騒＞
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+
+	SetStand(RIKAKO_0201SC);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201SC, "里伽子", "@v06061102「なに？　なんなの…これ…」");
+	DelWindow();
+
+	// ＜ＳＥ：携帯鳴る＞
+	SEFadePlay(4, "L_Tel12",NORMAL,100,100);
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KT, "里伽子", "@v06061103「あ…」");
+	DelWindow();
+	DelStand();
+
+	// ＜ＳＥ：着信ボタン＞
+	SEPlay("L_Tel02");
+	SEStop(4);
+	Wait(30);
+
+	SetWindow();
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202NO, "里伽子", "@v06061104「もしもし…」");
+	SetMessage(UNIT_FEMALE, -1, "里伽子の母", "@v06160055「あ、里伽子？」");	// ★★電話越し＞
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KN, "里伽子", "@v06061105「母さん…？」");
+	SetMessage(UNIT_FEMALE, -1, "里伽子の母", "@v06160056「お母さん？　じゃないわよ。@nゆうべの話の続き！」");	// ★★電話越し＞
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202SA, "里伽子", "@v06061106「あ、ああ、そのこと…」");
+	SetMessage(UNIT_FEMALE, -1, "里伽子の母", "@v06160057「いきなり『大学やめてそっち帰る』ガチャン、じゃ、@n何が何だかわからないでしょう？」");	// ★★電話越し＞
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201KM, "里伽子", "@v06061107「あ、ああ…ごめんなさい。@nちょっと、その…」");
+	SetMessage(UNIT_FEMALE, -1, "里伽子の母", "@v06160058「あんたの一生の問題でしょう？@nそんな一人で簡単に決めていいと思ってるの？」");	// ★★電話越し＞
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KN, "里伽子", "@v06061108「そのことなら…帰ったら話すから。@n今は、そっとしといてよ…」");
+	SetMessage(UNIT_FEMALE, -1, "里伽子の母", "@v06160059「帰っちゃったら、もう大学に戻れないじゃない」");	// ★★電話越し＞
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202NK, "里伽子", "@v06061109「とにかく…今は、そっとしといてよぉ…」");
+	SetMessage(UNIT_FEMALE, -1, "里伽子の母", "@v06160060「………」");	// ★★電話越し＞
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202NK, "里伽子", "@v06061110「お願い…母さん」");
+	SetMessage(UNIT_FEMALE, -1, "里伽子の母", "@v06160061「…ふふふ」");	// ★★電話越し＞
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KN, "里伽子", "@v06061111「…母さん？」");
+	SetMessage(UNIT_FEMALE, -1, "里伽子の母", "@v06160062「残念ながら、もうバレてるのよ」");	// ★★電話越し＞
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202AS, "里伽子", "@v06061112「は、はあ？」");
+	SetMessage(UNIT_FEMALE, -1, "里伽子の母", "@v06160063「そうやって、こっちを心配させといて、@nで、いきなり男連れて帰ってきて、@nびっくりさせようって魂胆だったのね？」");	// ★★電話越し＞
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202AS, "里伽子", "@v06061113「………え？」");
+	SetMessage(UNIT_FEMALE, -1, "里伽子の母", "@v06160064「隠さなくてもいいのよぉ。@n明るくて誠実そうでいい感じの子じゃない」");	// ★★電話越し＞
+	SetMessage(UNIT_RIKAKO, RIKAKO_0202KT, "里伽子", "@v06061114「…何の話？」");
+	SetMessage(UNIT_FEMALE, -1, "里伽子の母", "@v06160065「今朝、訪ねてきたわよ。わざわざ」");	// ★★電話越し＞
+	SetMessage(UNIT_RIKAKO, RIKAKO_0201SC, "里伽子", "@v06061115「………誰が！？」");
+	HideMenu();
+	DelWindow();
+
+	// ＜画面暗転＞
+
+	Wait(50);
+
+	SEFadeOut(0, SLOWEST);
+	SEFadeOut(1, SLOWEST);
+	SEFadeOut(2, SLOWEST);
+	SEFadeOut(3, SLOWEST);
+	FadeOut(SLOWER);
+	DelVisual();
+
+	Wait(500);
+
+	LoadEvent(EVENT_RIKAKO_25);
+end();

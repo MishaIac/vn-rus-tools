@@ -1,0 +1,166 @@
+// ●玲愛27：玲愛ＴＲＵＥエンディング
+// 種類：エンディング
+// 条件：玲愛ルートに入って、玲愛ＴＲＵＥの条件達成。@n　　　玲愛26の直後に発生
+// 概要：ファミーユ本店、完成
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ファミーユ本店前＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_HONTEN_01A );
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いいか？　軽～くぶつけるんだぞ？@n傷つけるなよ？」");
+	SetMessage(UNIT_REA, REA_0302KM, "玲愛", "@v02021356「どうやって加減するのよ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それもそうか…んじゃ、ぶつけるな。@n空に向かって飛ばせ」");
+	SetMessage(UNIT_REA, REA_0302BS, "玲愛", "@v02021357「ん、わかった」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「じゃ、いっせ～ので…」");
+	SetMessage(UNIT_REA, REA_0302EG3, "玲愛", "@v02021358「せっ！」");
+	DelWindow();
+
+	// ＜ＳＥ：シャンペンの栓を飛ばす×２＞
+	SetVisual(BG_SORA_01A);
+	SEPlay("L_Drink04");
+	SEPlay("L_Drink06");
+	ShakeScreen(8);
+	FlashIn(FASTER);
+	SEPlay("L_Drink05");
+	ShakeScreen(8);
+	FlashIn(FASTER);
+	BGMPlay(BGM_NICHIJOU2);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "乾いた音が二連発。@nそして、シャンペンの栓が宙を舞う。");
+	SetMessage(UNIT_REA, REA_0301OD, "玲愛", "@v02021359「うわ、こぼれちゃう！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「飲め！」");
+	SetMessage(UNIT_REA, REA_0301OD, "玲愛", "@v02021360「グラスがないわよ～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ラッパ飲みに決まってるだろうが！」");
+	SetMessage(UNIT_ETC, -1, "", "噴き出る泡をこぼさないよう、俺たちは、二人して…");
+	SetMessage(UNIT_ETC, -1, "", "“お互いの口”に、ビンを突っ込んだ。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021361「っ…ぷはっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…おい、これ、またノンアルコールかよ」");
+	DelWindow();
+
+	SetVisual( BG_HONTEN_01A );
+	SetStand(REA_0301AK);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0301AK, "玲愛", "@v02021362「今、一月の生活費をいくらに抑えてると思ってるの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「けど…せっかくの記念日なのに…」");
+	SetMessage(UNIT_REA, REA_0302NY, "玲愛", "@v02021363「そういうことやってたら、@nこうやって今日の日を迎えるのは@nいつになったかしらね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…けち」");
+	SetMessage(UNIT_REA, REA_0302EG2, "玲愛", "@v02021364「ありがとう、とっても嬉しいわ、その誉め言葉」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ったく…」");
+	SetMessage(UNIT_REA, REA_0302EG2, "玲愛", "@v02021365「ふふ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あはは…」");
+	DelWindow();
+
+	SetVisual(BG_SORA_01A);
+	DelStand();
+	CrossFade();
+
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20ちょっとした小競り合いも、すぐに笑顔に変わってしまう。");
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20だって今日は、俺たちの、夢の第一歩がかなった日。");
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20ファミーユ本店が、完成した日。");
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20みんなで頑張って、ブリックモール店を盛り立てて、@nその利益を惜しげもなく注ぎ込んで…");
+
+	Wait(50);
+	SetVisual( BG_HONTEN_01A );
+	CrossFade(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「長かった？」");
+	SetMessage(UNIT_REA, REA_0302BS, "玲愛", "@v02021366「あっという間だった」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「奇遇だな、俺もだ」");
+	DelWindow();
+
+	Fade(NORMAL, 70);
+
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20こうして形になるのに、ほぼ２年の歳月が経過した。");
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20けど、辛いとか、キツいとか思うことはなかった。");
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20兄貴の夢、姉さんの夢、みんなの夢…");
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20そして、俺と、玲愛の新しい夢のためだから。");
+
+	Fade(NORMAL, 100);
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0302EG, "玲愛", "@v02021367「ねえねえ、看板はここよね？@nで、入り口のこの辺りにボード置いて」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それよりもまず内装だろ。@nどんなコンセプトで行くか…」");
+
+	SetStand(REA_0302BS);
+
+	SetMessage(UNIT_REA, REA_0302BS, "玲愛", "@v02021368「ね、ね？@nキュリオみたいに、本物のアンティーク家具揃える？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前は今、二つばかし言ってはいけないことを言った」");
+	SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v02021369「え？　なんだっけ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「キュリオみたいって…ウチはパクリじゃない」");
+	SetMessage(UNIT_REA, REA_0301AK, "玲愛", "@v02021370「…まだ根に持ってたんだ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「もう一つ…本物のアンティーク家具って…@n一月の生活費をいくらに抑えてると思ってんだよ！？」");
+	SetMessage(UNIT_REA, REA_0302NY, "玲愛", "@v02021371「お店にかけるお金は別じゃない？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前は～」");
+
+	DelStand();
+
+	SetMessage(UNIT_ETC, -1, "", "まだ、中は、がらんどうだけど。@nここに、色々詰めていこう。");
+	SetMessage(UNIT_ETC, -1, "", "オーブンに、冷蔵庫に、テーブル、椅子。@n時計くらいはアンティークにしてもいいかもしれない。");
+	SetMessage(UNIT_ETC, -1, "", "あとは…そうだ。@p@n夢、希望、仲間、たいせつなひと。");
+	SetMessage(UNIT_ETC, -1, "", "ブリックモールにも負けない素敵な空間に、@nここを、もう一度、育てていこう。");
+
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@m08「よし、そんじゃ、中、入るぞ…っ」");
+	SetMessage(UNIT_REA, REA_0302NY, "玲愛", "@v02021372「震えてるよ…仁」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、うるしゃい…」");
+	SetMessage(UNIT_ETC, -1, "", "入りたくて入りたくてしょうがないのに、@n足が震えて、一歩を踏み出せない。");
+	SetMessage(UNIT_ETC, -1, "", "思い入れが深すぎて、@nこんなことで、滅茶苦茶緊張してしまう。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「やっぱ、お前、先行って」");
+	SetMessage(UNIT_REA, REA_0302BS, "玲愛", "@v02021373「はいはい…@t0155@h0302EGじゃ、お先に～」");
+	DelWindow();
+
+	// ＜ＳＥ：ドア開閉＞
+	SEPlay("L_Door21");
+	FlashOut();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あっさり入っていきやがった！？」");
+	SetMessage(UNIT_ETC, -1, "", "俺が一番乗りしたかったのに…");
+	SetMessage(UNIT_ETC, -1, "", "なんて言っても始まらないんだけど。");
+	DelWindow();
+
+	SetVisual( VISUAL_REA_19A );
+	BGMPlay(BGM_KANDOU1);
+	FlashIn(SLOWER);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021374「さ、仁、おいで…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "@m08ドアの向こうから、玲愛が手招きしてくれてる。");
+	SetMessage(UNIT_ETC, -1, "", "@m04いつも、俺の手を引いて、@n俺と一緒に歩いてくれた、最愛のひとが。");
+	SetMessage(UNIT_ETC, -1, "", "@m00俺たちの、夢の場所で。");
+	SetMessage(UNIT_ETC, -1, "", "@m00俺の帰りを…あたたかく迎えてくれる。");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021375@m00@f20「おかえりなさいませ…@t0172旦那さま」");
+	HideMenu();
+	DelWindow();
+
+	// ＜結婚指輪がわかる構図でイベントＣＧを＞
+	Wait(200);
+	FlashOut(SLOWEST);
+	Wait(100);
+	BGMFadeOut(800);
+	FadeOut(800);
+
+	Wait(300);
+
+	DelVisual();
+
+	SetFlg(FLG_ENDING, 1);
+	LoadScript("System.bin", SYSTEMBANK_STAFFROLL);
+end();

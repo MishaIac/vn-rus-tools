@@ -1,0 +1,312 @@
+// ●玲愛06：二人は仲良し？
+// 種類：通常イベント
+// 条件：第２クォーター、自宅を選択（休日イベント）
+// 概要：瑞奈と会話。キュリオでは仁と玲愛の仲に話題沸騰
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：仁のマンションのリビング＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_HITOSHI_02A );
+	FadeIn();
+
+	// ＜ＳＥ：チャイム＞
+	SEPlay("L_Bell08");
+	Wait(150);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「は～い？」");
+	SetMessage(UNIT_ETC, -1, "", "誰だろ？@n今日は明日香ちゃんの家庭教師も休みだったはずだけど…");
+	DelWindow();
+
+	// ＜ＳＥ：玄関ドア開く＞
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：マンション玄関＞
+	//----------------------------------------------------------------------------
+
+	//伊藤：玄関ドアの開いてる(昼)ができればほしい場面です
+	// (´-`)作ってもらう方向で
+	SELoopPlay(0, "L_Walk06");
+	CurtainFadeOut();
+	Wait(50);
+	SEFadeOut(0);
+	Wait(50);
+	SEPlay("L_Lock02");
+	Wait(100);
+	SetVisual( BG_HITOSHIG_02A );
+	SEPlay("L_Door08A");
+
+	BGMFadePlay(BGM_NICHIJOU1);
+	FadeIn();
+
+	SetStand(MIZUNA_0201EG3, CENTER, MOVE_LEFT);
+
+	SetWindow();
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG3, "瑞奈", "@v02070015「あ、どうもこんにちは～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あれ？　あなたは確か…キュリオの？」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201NO, "瑞奈", "@v02070016「川端瑞奈です」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ああそうそう、二軒隣の…川端さん！」");
+	SetMessage(UNIT_ETC, -1, "", "確か、花鳥玲愛と一緒にここに引っ越してきた娘だ。@nお店でも何度か見かけて挨拶くらいは交わしてる。");
+
+	BowStand();
+
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201NO, "瑞奈", "@v02070017「いつも玲愛がお世話になってます～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「してない、全くしてない」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG2, "瑞奈", "@v02070018「ぷっ…くくく…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そこで笑われるいわれもない。@nほっといて頂戴」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG, "瑞奈", "@v02070019「あ、あはは…@n@t0172@h0201NOいえ、今日はからかいに来たんじゃなくて～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お引き取りください」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG, "瑞奈", "@v02070020「あっはははははは～！@n玲愛と全くおんなじ反応～」");
+	DelWindow();
+
+	// ＜ＳＥ：ドア閉じる＞
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：マンションリビング＞
+	//----------------------------------------------------------------------------
+
+	DelStand();
+
+	SEPlay("L_Door08B");
+	SetVisual( BG_HITOSHIG_01A );
+	BGMFade(NORMAL, 0);
+	CrossFade(FAST);
+
+	Wait(50);
+
+	// ＜ＳＥ：ドアノック＞
+	ShakeScreen(8);
+	SEPlay("L_Knock01", 100, 1);
+
+	// ＜ＳＥ：チャイム＞
+	SEPlay("L_Bell08", 100);
+	Wait(50);
+	SEPlay("L_Bell08", 100);
+
+	SetWindow();
+	SetMessage(UNIT_MIZUNA, -1, "瑞奈", "@v02070021「あ～！@nごめんなさいごめんなさい！@nもう一度開けてください～！」");	// ★★ドア越し
+	DelWindow();
+
+	// ＜ＳＥ：玄関ドア開く＞
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：マンション玄関＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_HITOSHIG_02A );
+	SEPlay("L_Door08A");
+	BGMFade(NORMAL, 100);
+	CrossFade(FAST);
+
+	SetStand(MIZUNA_0201KS, CENTER, MOVE_LEFT);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「人には触れられたくない話題ってものがあるんだよ。@nそれは理解して欲しいな」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201KS, "瑞奈", "@v02070022「はい、気をつけます～@t0274@k");
+
+	SEPlay("L_Paper05");
+
+	AddMessage("@n@h0201NOそれでこれ、おすそわけです」");
+
+	SetMessage(UNIT_ETC, -1, "", "よく見たら、手に小さな段ボールを抱えている。");
+
+	SEPlay("L_Fall05");
+	ShakeScreen(4);
+
+	SetMessage(UNIT_ETC, -1, "", "受け取ると、結構ずっしりと重い。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え？　これ…」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201NO, "瑞奈", "@v02070023「実家からリンゴ送ってきたんですよ。@nとても食べきれないから、どうぞ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え？　えっ…悪いなぁ」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG3, "瑞奈", "@v02070024「いいえ、お引っ越しの時も挨拶は玲愛に任せちゃったし。@t0548@h0201NY@n…その時もやり合ったみたいですね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ぐ…」");
+	SetMessage(UNIT_ETC, -1, "", "物を与えておいてから『触れられたくない話題』を@n持ち出し、こちらが逃げにくい状況を作り出す…");
+	SetMessage(UNIT_ETC, -1, "", "さすがキュリオのスタッフ…@w0030やる！");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201NO, "瑞奈", "@v02070025「ちょっと酸っぱめの品種なんで、焼きリンゴとか、@nアップルパイとか、工夫した方が美味しいかも」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「へ～…てことは、お菓子の材料として最適ってことだね。@nいい品種じゃない」");
+	DelWindow();
+
+	// ＜ＳＥ：リンゴをかじる＞
+	SEPlay("L_Dish04", 100, 1);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "一口かじると、確かに、ちょっと強めの酸味が@n口の中に広がる。");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG, "瑞奈", "@v02070026「わ～、喫茶店の店長みたいな発言～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「一応喫茶店の店長なの～。@n君らにとっては吹けば飛ぶよな店かもしんないけど」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201NO, "瑞奈", "@v02070027「そんなことないですよ～、@nファミーユさん、頑張ってるじゃないですか」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「君んとこのチーフには滅茶苦茶言われてるけどね…」");
+	SetMessage(UNIT_ETC, -1, "", "あ、しまった…");
+	SetMessage(UNIT_ETC, -1, "", "ひたすら避けていた、キュリオのチーフの話題を、@nこっちから出してしまうなんて…@w0030不覚！");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG3, "瑞奈", "@v02070028「あれでね～、ウチのミーティングとかだと、@nすっごく誉めてたりするんですよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…は？」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201NO, "瑞奈", "@v02070029「ケーキの値下げや、次々と新製品出したり、@n色んなサービスを提案したり、@nものすごく努力してるって」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…なんと？」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201NO, "瑞奈", "@v02070030「このままじゃ、すぐに追い抜かれるって。@nだから盗めるところは盗めって」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "え～と、つまりあれだ…");
+	SetMessage(UNIT_ETC, -1, "", "ウチの商品や材料を開店前に盗み出して、@n売るものをなくしてしまおうという嫌がらせを。");
+	SetMessage(UNIT_ETC, -1, "", "…な訳ないだろ。");
+
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG2, "瑞奈", "@v02070031「認めてるんですよ、ああ見えても。@nただあの子、真面目で融通利かないから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…利かないねぇ」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201NO, "瑞奈", "@v02070032「ライバル店の店長と、@n必要以上に仲良くなっちゃいけないって、@nそれで、ああ言う態度取ってるんですよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だからって、@n必要以上に仲悪くなることもないと思うんだけど…」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201NO, "瑞奈", "@v02070033「そこが、極端から極端なんですよ～。@nホントは高村さんのこと、気に入ってるんですから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そんな馬鹿な…」");
+	SetMessage(UNIT_ETC, -1, "", "にわかには、信じようのない話だ…");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG2, "瑞奈", "@v02070034「ホントホント！　玲愛が男の人と、@nあれだけ必要以上に無駄話することなんて、@n今までなかったですもん」");
+
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG, "瑞奈", "@v02070035「二号店の結城店長のファンって言ってたけど、@n本命はもう変わっちゃってるんじゃないかなぁ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お、おい…川端さん」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG3, "瑞奈", "@v02070036「やだ、そうなると禁断の恋？@t0381@h0201NY@nジュリエット花鳥…@t0564@h0201EGあっはははははは～！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「君…ヤバいぞ？」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG, "瑞奈", "@v02070037「え～、@t0085@h0201NOあ、ごめんなさい～@n『触れられたくない話題』でしたね～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや…俺はこの際いいんだが…」");
+
+	BGMPlay(BGM_REA);
+	ShakeScreen(16);
+	SEPlay("L_Fall01");
+	SetStand(REA_0302IK3, LEFT, MOVE_RIGHT, FAST, 1);
+	SetStand(MIZUNA_0201AS, CENTER, MOVE_STOP, 0, 0);
+	MoveStand(CENTER, RIGHT);
+
+	SetMessage(UNIT_REA, REA_0302IK3, "玲愛", "@v02020170「ハムレット川端…@nあなたに生か死か、選ばせてあげるわ…」");
+
+	//伊藤：保留顔
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201KS, "瑞奈", "@v02070038「………なんでいるって教えてくれなかったんですか？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だって、脅されてたし」");
+	SetMessage(UNIT_ETC, -1, "", "ものすごい形相で、人差し指を唇に当てられてては、@nさすがの俺も『川端～、後ろ後ろ～』とか@n言える訳がなかった…");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201NY, "瑞奈", "@v02070039「アイコンタクトで脅迫？@nやっぱり、通じ合っちゃってるんですね～」");
+	SetMessage(UNIT_REA, REA_0302IK3, "玲愛", "@v02020171「そう、選んだのね？@nもう変更は効かないわよ？」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0201EG2, "瑞奈", "@v02070040「あ、それ、皮をアップルティーにしても@n美味しいですよ！@nそれじゃおやすみなさ～い！」");
+	DelWindow();
+
+	// ＜ＳＥ：二軒先のドア開閉（激しく）＞
+	SEPlay("L_Dash16");
+	DelStand(RIGHT, MOVE_LEFT);
+	Wait(200);
+	SEPlay("L_Door02A", 30);
+	Wait(50);
+	SEPlay("L_Door02B", 30);
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	SetStand(REA_0302IK, LEFT);
+	MoveStand(LEFT, CENTER);
+
+	SetMessage(UNIT_REA, REA_0302IK, "玲愛", "@v02020172「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お、おかえりなさい」");
+	SetMessage(UNIT_REA, REA_0302IK2, "玲愛", "@v02020173「あの娘が何を言ったか知らないけれど…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ずっと盗み聞きしてたくせに」");
+	SetMessage(UNIT_REA, REA_0301IK, "玲愛", "@v02020174「ほとんどが面白おかしく創作してるだけだからね！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まぁ、尾ひれはついてるだろうなぁ」");
+	SetMessage(UNIT_REA, REA_0301IK, "玲愛", "@v02020175「尾ひれどころか、ウツボとマンボウぐらい違うわ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「どのくらい違うのかようわからん…」");
+	SetMessage(UNIT_ETC, -1, "", "なんてわかりにくい喩えを持ち出す奴だ…");
+	SetMessage(UNIT_REA, REA_0302TN, "玲愛", "@v02020176「とにかく！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	DelWindow();
+
+	DelStand();
+
+	// ＜ＳＥ：リンゴをかじる＞
+	SEPlay("L_Dish04", 100, 1);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "俺のリンゴ…");
+
+	SetStand(REA_0301IK);
+
+	SetMessage(UNIT_REA, REA_0301IK, "玲愛", "@v02020177「わらひがあんらやはみ～ゅをみろめらことらんて、@nほれっぽっひもらいんらからねっ！」");
+	// ＜玲愛、リンゴを食べながら話してます＞
+	// ＜原文は『私があんたやファミーユを認めたことなんて、これっぽっちもないんだからねっ！」です＞
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「何言ってんだかようわからん…」");
+	SetMessage(UNIT_REA, REA_0301IK, "玲愛", "@v02020178「何よこれ！　酸っぱいわね！」");
+
+	// ＜台詞の前に、リンゴを飲み込む息づかいを入れてください＞
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そういう品種なんだよ…」");
+	SetMessage(UNIT_REA, REA_0302TN, "玲愛", "@v02020179「とりあえず、今後はウチのスタッフと、@nプライベートで話すことは禁止します」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「チーフはいいのか…？」");
+	SetMessage(UNIT_REA, REA_0301IK, "玲愛", "@v02020180「私はっ！　あんたなんかと、@nプライベートで話したことなんか、@nこれっぽっちもないのっ！」");
+	SetMessage(UNIT_ETC, -1, "", "俺たちが今している会話は業務だったのか…");
+	SetMessage(UNIT_REA, REA_0302IK2, "玲愛", "@v02020181「そういうこと！@nじゃあね！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	DelWindow();
+
+	DelStand(CENTER, MOVE_LEFT);
+
+	Wait(50);
+
+	// ＜ＳＥ：ドアノック（二軒隣）＞
+	// ＜ＳＥ：チャイム（二軒隣）＞
+	SetVisual( BG_HITOSHIR_02A );
+	CrossFade();
+
+	ShakeScreen(8);
+	SEPlay("L_Knock01", 100, 1);
+	SEPlay("L_Bell08", 30);
+	Wait(50);
+	SEPlay("L_Bell08", 30);
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020182「開けなさい瑞奈！@n言い訳だけは聞いてあげるから！」");	// ★★二軒隣
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	DelWindow();
+
+	// ＜ＳＥ：ドアノック（二軒隣）＞
+	// ＜ＳＥ：チャイム（二軒隣）＞
+	ShakeScreen(8);
+	SEPlay("L_Knock01", 100, 1);
+	SEPlay("L_Bell08", 30);
+	Wait(50);
+	SEPlay("L_Bell08", 30);
+	Wait(50);
+	SEPlay("L_Gasagoso03", 50);
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020183「ちょっと出なさいよ！@nあ、こら、チェーンかけてるでしょ今！」");	// ★★二軒隣
+	DelWindow();
+
+	FadeOut();
+
+	// ＜ＳＥ：ドア閉じる＞
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：仁のマンションのリビング＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_HITOSHIG_01A );
+	SEPlay("L_Door08B");
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ごめんよ、川端さん」");
+	SetMessage(UNIT_ETC, -1, "", "今度、実家から送られてきた、@nカップラーメンを届けることにしよう。");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	Wait(50);
+
+	BGMFadeOut(SLOWER);
+	FadeOut(SLOW);
+	DelVisual();
+
+	Wait(300);
+
+	LoadEvent(EVENT_02_07_04);
+end();

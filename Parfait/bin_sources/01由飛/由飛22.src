@@ -1,0 +1,160 @@
+// ●由飛22：特訓開始
+// 種類：重要イベント
+// 条件：由飛ＴＲＵＥルートで、由飛21の直後に発生
+// 概要：由飛の試験対策開始。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+		DayEffect();
+		ShowMenu();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：大学のキャンパス＞
+	// ＜由飛の音大のキャンパスですが、仁と里伽子の大学の背景でも可＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_DAIGAKUY_01A );
+		BGMPlay(BGM_NICHIJOU1);
+		FadeIn();
+		SEPlay("L_Paper01");
+		Wait(100);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「これがカリキュラム」");
+
+		SetStand(RIKAKO_A102MU);
+
+		SetMessage(UNIT_RIKAKO, RIKAKO_A102MU, "里伽子", "@v01060058「ん～…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そんなに力いっぱい覗き込まなくても…@nほら、コピー取ってあるから」");
+
+		SEPlay("L_Paper06");
+		DelStand();
+
+		SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v01060059「ん」");
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「咥えるな」");
+		SetMessage(UNIT_ETC, -1, "", "里伽子にしてはお茶目な仕草で、@n俺の手から紙を受け取る。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「必修には赤で丸が打ってあるから。@nそいつの科目について調査してくれ」");
+
+		SetStand(RIKAKO_0101NO);
+
+		SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v01060060「まずはピアノ科の一年生を捕まえるのが早道かな…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「俺は掲示板とか、校舎内を調べるから、@n里伽子は食堂とか生協とか頼むな」");
+		SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v01060061「ん、了解。@nついでに講義見つけたら顔出しとく」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「大丈夫か？　バレたりしない？」");
+		SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v01060062「全然。よく色んな大学の講義にモグるけど、@n一度だってバレたことないよ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「悪いな、お前はもう、試験期間中だってのに」");
+		SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v01060063「ちょうど今日は試験なかったからいいよ。@nもう、卒業に必要な単位は揃えてるし」");
+		SetMessage(UNIT_ETC, -1, "", "自分の大学の単位もほとんど制覇して、@n他の大学の講義まで…");
+		SetMessage(UNIT_ETC, -1, "", "この勉強熱心さの、ほんの１％でも由飛にあれば…");
+		SetMessage(UNIT_ETC, -1, "", "あるいは、玲愛の爪の垢でも煎じて飲めてれば…");
+		SetMessage(UNIT_ETC, -1, "", "いや、やめよう。@n由飛だけでなく、俺まで惨めになってくる。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「それじゃ、ひとまず散るぞ。@nお礼は今度飯でもおごるから」");
+		SetMessage(UNIT_RIKAKO, RIKAKO_0102SA, "里伽子", "@v01060064「それなら本にして。@n図書券でも構わない」");
+		SetMessage(UNIT_ETC, -1, "", "味気ないなぁ、相変わらず…");
+		DelWindow();
+
+		// ＜画面暗転＞
+
+		Wait(50);
+		BGMFadeOut(SLOWER);
+		FilterFadeOut(SLOW, FADEFILTER_KAITEN);
+		DelStand();
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "………");
+		SetMessage(UNIT_ETC, -1, "", "……");
+		SetMessage(UNIT_ETC, -1, "", "…");
+		DelWindow();
+
+		Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：由飛のマンションのリビング＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_YUI_03B );
+		SetStand(YUI_A302OD2);
+		CurtainFadeIn();
+
+		SEPlay("L_Book02", 100, 1);
+		SEPlay("L_Paper01");
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「で、こいつがテストの時間割。@nこっちが試験範囲。で、これがノートのコピー」");
+		SetMessage(UNIT_YUI, YUI_A302OD2, "由飛", "@v01011055「ふわぁ～…」");
+		SetMessage(UNIT_ETC, -1, "", "次から次へと出てくる紙束に、@n由飛が感嘆の声を上げる。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「計画表作ってきた。とりあえず、必修科目を最優先に。@n選択科目は必要単位数だけ。@nそれでも、１日に２科目が一週間続くけどな」");
+		SetMessage(UNIT_YUI, YUI_A301OT, "由飛", "@v01011056「…死んじゃうよぉ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「これに実技試験が重なると確かに死ぬかもな…@nだから、実技は、本試験は捨てて、@n三月に実施される追試にかける」");
+		SetMessage(UNIT_YUI, YUI_A301HA, "由飛", "@v01011057「…追試だと、基準点が下がっちゃう」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「知ってる。ピアノ科の子たちに聞いた。@nでも、そこで得られる半月の猶予はでかい」");
+		SetMessage(UNIT_YUI, YUI_A301HA, "由飛", "@v01011058「そ、そう、なの？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「だってお前…ピアノ弾かなくなって、何ヶ月経つ？」");
+		SetMessage(UNIT_YUI, YUI_A301NO, "由飛", "@v01011059「え…？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「去年、留年してから、ほとんど弾いてないだろ？@n腕、完全に腐ってるんじゃないか？」");
+		SetMessage(UNIT_ETC, -1, "", "初めてここに来たときに気づいた違和感が、@n玲愛の話を聞いてようやく腑に落ちた。");
+		SetMessage(UNIT_ETC, -1, "", "このピアノ、埃かぶってた。@p@nつまり、全然使ってなかったってことだ。");
+		SetMessage(UNIT_YUI, YUI_A302KS, "由飛", "@v01011060「そ、そんなことないよ…@nほら、ブリックモールのアンティークピアノ、@n何度も弾いてたじゃない」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あんなのは遊びだろ。@nレッスン、去年は何回受けた？」");
+		SetMessage(UNIT_YUI, YUI_A302KS, "由飛", "@v01011061「………」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「何回受けた？」");
+		SetMessage(UNIT_YUI, YUI_A302KN_, "由飛", "@v01011062「わかったよ…本試験は捨てる」");
+		SetMessage(UNIT_ETC, -1, "", "つまり、そういうことか。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「とにかく、試験終了までの一ヶ月、死ぬ気で頑張れ。@nそれと、試験が終わるまではファミーユには来るな。@n勉強に集中するんだ」");
+
+		SetStand(YUI_A302OD);
+		JumpStand();
+
+		SetMessage(UNIT_YUI, YUI_A302OD, "由飛", "@v01011063@s0004「ええ～！？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あのなぁ…お前はもう後がないんだぞ？@n今はバイトをやってる場合じゃないだろ」");
+		SetMessage(UNIT_ETC, -1, "", "バイト先の店長の台詞ではないな…");
+		SetMessage(UNIT_YUI, YUI_A302KN_, "由飛", "@v01011064「う、うん…そう、だね…」");
+		SetMessage(UNIT_ETC, -1, "", "俺の、当たり前の提案にも、しゅ～んとうなだれる由飛。");
+		SetMessage(UNIT_YUI, YUI_A302KN_, "由飛", "@v01011065「でも…仁にも…会えないのぉ？@nそれだけは、やだなぁ」");
+		SetMessage(UNIT_ETC, -1, "", "…ちくしょう、俺の弱みに付け込んで、@n保護欲をかき立てやがって。");
+		SetMessage(UNIT_ETC, -1, "", "どうしても、甘いこと言ってやらないと@n気がすまなくなるじゃないか。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…試験の間は、俺が面倒見てやる」");
+
+		BGMFadePlay(BGM_YASURAGI, SLOWER);
+
+		SetMessage(UNIT_YUI, YUI_A302OD2, "由飛", "@v01011066「え…？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「実技は手の出しようがないけど、@n学科のほうなら何とか…」");
+		SetMessage(UNIT_ETC, -1, "", "現役の大学三年生だし、@n一応、由飛よりは勉強してたし。");
+		SetMessage(UNIT_ETC, -1, "", "音大の一般教養科目なら、教科書を読みながらなら、@n多分、大丈夫なはず。");
+		SetMessage(UNIT_YUI, YUI_A301KG, "由飛", "@v01011067「仁ぃ…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あと、晩飯とか、夜食とかも…」");
+		SetMessage(UNIT_YUI, YUI_A301KG, "由飛", "@v01011068「ほ…ほんとに？@n毎日、仁のごはん、食べれるの？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…お前が毎日来て欲しいって言うんなら、@n毎日来るけど」");
+		SetMessage(UNIT_YUI, YUI_A301KG, "由飛", "@v01011069「毎日…毎日毎日、ずぅ～っと毎日、来て、欲しいな」");
+		SetMessage(UNIT_ETC, -1, "", "即答かつ四度も言うな。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「だから、お前はしばらく勉強に専念しろ。@nなるべく早めに仕事終わらせて、ここに来るから」");
+		SetMessage(UNIT_YUI, YUI_A301EG, "由飛", "@v01011070「仁…仁、仁、仁…ひとしぃぃぃ～！」");
+		DelWindow();
+
+		DelStand();
+		ShakeScreen(8);
+		SEPlay("L_Fall01");
+		SEPlay("L_Nuno04");
+		FadeOut(FAST);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「うわっ！」");
+		SetMessage(UNIT_ETC, -1, "", "感激のあまり、由飛が俺を押し倒す。");
+		SetMessage(UNIT_ETC, -1, "", "その、強烈な握力で俺を押さえつけると、@n柔らかくて、あったかい身体を覆いかぶせてくる。");
+		SetMessage(UNIT_YUI, YUI_A301EG, "由飛", "@v01011071「仁…大好き、わたし、仁に出会えてよかったよぉっ！@n仁、仁ぃ…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ま、待て…盛るな。@nお前、しばらく体力使うの禁止！@n試験に備えろ～！」");
+		SetMessage(UNIT_YUI, YUI_A301KG, "由飛", "@v01011072「やだ…仁に抱かれたいよぉ。@nねえ、仁を愛してあげたいよぉ～」");
+		// 了解！
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「駄目だ！　駄目だ駄目だ駄目だ！@nとりあえず学科試験が終わるまで駄目～！」");
+		SetMessage(UNIT_ETC, -1, "", "実技試験が終わるまでと言わないところが、@n俺の弱さなんだろうなぁ。");
+		HideMenu();
+		DelWindow();
+
+		BGMFadeOut(SLOWER, 1);
+		Wait(300);
+
+		LoadEvent(EVENT_YUI_23);
+end();

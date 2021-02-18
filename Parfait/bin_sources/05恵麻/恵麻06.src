@@ -1,0 +1,453 @@
+// ●恵麻06：四回忌
+// 種類：重要イベント（恵麻攻略に必須）
+// 条件：第３クォーター休日、恵麻のマンションを選択（実際には高村家ですが、一度恵麻のマンションに寄っているので、選択としては間違っていないかと）
+// 概要：兄の四回忌のために実家に帰る。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	// ＜ＢＧ：高村家玄関＞
+
+	SetVisual( BG_TAKAMURAG_01A );
+	BGMFadePlay( BGM_NICHIJOU1 );
+	CurtainFadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ただ～いま～」");
+	SetMessage(UNIT_EMA, EMA_0501BS, "恵麻", "@v05050145「ただいま～」");
+	DelWindow();
+
+	SEPlay("L_Door19");
+	CurtainFadeOut();
+
+	// ＜ＳＥ：スリッパの音＞
+	SEFadePlay(0, "L_Walk06");
+	Wait(200);
+
+	// ＜このイベント時、できれば恵麻は黒のワンピース（喪に服しているため）で＞
+
+	SetVisual( BG_TAKAMURA_03B );
+	SEFadeOut(0);
+	CurtainFadeIn();
+
+	SetStand(MITSUE_0101YR);
+
+	SetWindow();
+	SetMessage(UNIT_FEMALE, MITSUE_0101YR, "みつえ", "@v05120001「もう、遅かったじゃないの！@nお昼には着くって言ってたから、@nご飯用意して待ってたのに」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま～姉ちゃんの『昼に着く』を信用してどうすんのさ。@n俺が呼びに行った時もまだ全然目が覚めてなかったよ」");
+
+	SetStand(EMA_0501SN, LEFT, MOVE_LEFT, FAST, 1);
+	MoveStand(CENTER, RIGHT);
+
+	SetMessage(UNIT_EMA, EMA_0501SN, "恵麻", "@v05050146「昨日は頑張って早く寝たのに～」");
+	SetMessage(UNIT_FEMALE, MITSUE_0101YR, "みつえ", "@v05120002「お父さんもさっきからずっと、まだかまだかって、@nもううるさいったら」");
+
+	//SetMessage(UNIT_MALE, MASASHI_0101NO, "征氏", "@v05110001「俺はそんなこと言っとらんぞ！」");	// ★★居間から声のみ
+	SetMessage(UNIT_MALE, -1, "征氏", "@v05110001「俺はそんなこと言っとらんぞ！」");		// ★★居間から声のみ
+
+	SetMessage(UNIT_FEMALE, MITSUE_0101NO, "みつえ", "@v05120003「それでどうする、お寺さん？@nお昼ご飯食べてからにしようか？」");
+	SetMessage(UNIT_EMA, EMA_0501MJ, "恵麻", "@v05050147「ダメ、３時からお願いしてるから、もう行かないと」");
+	SetMessage(UNIT_FEMALE, MITSUE_0101HI, "みつえ", "@v05120004「そうかい？　それじゃタクシー呼ばないとね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、それならさっき電車乗ってるときに呼んどいた。@nあと１０分くらいで来るはずだよ」");
+	SetMessage(UNIT_EMA, EMA_0501EG, "恵麻", "@v05050148「仁くん助かる～」");
+	SetMessage(UNIT_FEMALE, MITSUE_0101EG, "みつえ", "@v05120005「ああ、仁は頼りになるねぇ。@nそれにひきかえ恵麻ときたら…@n@t0640@h0101HIもう、いい年して」");
+	SetMessage(UNIT_EMA, EMA_0501IK2, "恵麻", "@v05050149「してないっ！」");
+
+	DelStand(LEFT, MOVE_STOP, FAST, 1);
+	DelStand(RIGHT);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「父さん、ご無沙汰してます」");
+
+	SetStand(MASASHI_A101NO);
+
+	SetMessage(UNIT_MALE, MASASHI_A101NO, "征氏", "@v05110002「仁…お前に話がある。@nちょっと座りなさい」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う…」");
+	DelWindow();
+
+	SEPlay("L_Car01", 70);
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0501MJ, "恵麻", "@v05050150「あ～ほら車来たよ。@nみんな早く仕度して～」");
+	SetMessage(UNIT_MALE, MASASHI_A101NO, "征氏", "@v05110003「なんだ？　もう来たのか？@n…後にするか」");
+	SetMessage(UNIT_ETC, -1, "", "…いいタクシー会社を選んだな、俺。");
+	DelWindow();
+
+	// ＜画面暗転＞
+	FadeOut( SLOW );
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "久々の帰郷。@nとはいえ、明日も仕事があるから日帰りだけど。");
+
+	BGMFadeOut( SLOWER );
+
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	Wait( 200 );
+
+	// ＜ＳＥ：お経（無理なら鐘とか木魚で）＞
+	SEPlay("L_Bell01");
+	Wait(100);
+	SEFadePlay(0, "L_Mokugyo01", SLOWER);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "今日は、兄ちゃん…杉澤一人の命日。");
+	SetMessage(UNIT_ETC, -1, "", "三年前の今日…@n兄ちゃんは、結婚したての姉さんを置いて、@n出張先の海外で、帰らぬ人となった。");
+	SetMessage(UNIT_ETC, -1, "", "まだ、披露宴すらしてなかった。");
+	SetMessage(UNIT_ETC, -1, "", "半年間の海外出張から帰ってきたら、@n式を挙げる約束で、入籍だけして旅立って…");
+	SetMessage(UNIT_ETC, -1, "", "そのまま、遺骨だけが、帰ってきた。");
+	SetMessage(UNIT_ETC, -1, "", "だから今日は、四回忌。");
+	SetMessage(UNIT_ETC, -1, "", "去年や一昨年は、三回忌や一周忌で、@n杉澤の親戚一同も集まった。");
+	SetMessage(UNIT_ETC, -1, "", "けど、四回忌という法事は、普通存在しないので、@n今年はこうして、身内だけでの小さな行事にした。");
+	SetMessage(UNIT_ETC, -1, "", "それに…杉澤の親族は、正直、来て欲しくない。");
+
+	SEFadeOut(0, SLOWER);
+
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+
+	DelWindow();
+
+	Wait( 200 );
+
+	// ＜ＢＧ：高村家座敷（夜）＞
+
+	SetVisual( BG_TAKAMURA_03B );
+	BGMFadePlay( BGM_NICHIJOU2 );
+	FadeIn();
+
+	SEPlay("L_Drink02");
+	SetStand(MASASHI_A101NO);
+
+	SetWindow();
+	SetMessage(UNIT_MALE, MASASHI_A101NO, "征氏", "@v05110004「ほれ仁、飲め」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、ども」");
+	SetMessage(UNIT_ETC, -1, "", "法要も無事終わり…");
+	SetMessage(UNIT_ETC, -1, "", "久々に、高村家が全員揃っての一家団らん。");
+	SetMessage(UNIT_FEMALE, MITSUE_0101NO, "みつえ", "@v05120006「ほら仁。こっち食べな。@nあ、煮物取ってあげようか」");
+	SetMessage(UNIT_MALE, MASASHI_A101EG, "征氏", "@v05110005「後で詰めて持たせてやりなさい、母さん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ありがと…」");
+
+	DelStand();
+
+	SetMessage(UNIT_ETC, -1, "", "食卓には、母さんの懐かしい味が並んでる。");
+	SetMessage(UNIT_ETC, -1, "", "俺と姉さんの好物も、数え切れないくらいだ。");
+	SetMessage(UNIT_ETC, -1, "", "こういう時…");
+	SetMessage(UNIT_ETC, -1, "", "俺は、この家に引き取られて良かったと、@n心底、思うことができるんだ。");
+	SetMessage(UNIT_ETC, -1, "", "…ま、卵料理は、俺がケチつけるって知ってるから、@n一つも並んでないけどな。");
+
+	SetStand(MITSUE_A101NO);
+
+	SetMessage(UNIT_FEMALE, MITSUE_A101NO, "みつえ", "@v05120007「まぁでも無事に終わって良かったねぇ。@n恵麻も仁もご苦労さん」");
+	SetMessage(UNIT_EMA, EMA_0501MJ, "恵麻", "@v05050151「本当に良かったのかしら？@n杉澤の人たちに声かけなくって…」");
+	SetMessage(UNIT_MALE, MASASHI_A101NO, "征氏", "@v05110006「いい、いい、あんな奴ら。@n弘文さんや一人君には悪いが、@n来たってロクなことにはならん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ごめん」");
+	SetMessage(UNIT_ETC, -1, "", "実際、三回忌のときも、一周忌のときも、@n揉めに揉めたからなぁ…");
+	SetMessage(UNIT_MALE, MASASHI_A101NO, "征氏", "@v05110007「なんで仁が謝る？@nお前には関係ないだろ」");
+	SetMessage(UNIT_FEMALE, MITSUE_A101NO, "みつえ", "@v05120008「そうよ、あんたは正真正銘ウチの子なんだから、@n妙な気を使うもんじゃありません」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うん…」");
+	HideDay();
+	DelWindow();
+
+	BGMFade(SLOW, 50);
+	FadeOut();
+	SetVisual(BG_TAKAMURAG_01A, FILTER_SEPIA);
+	DelStand();
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "高村の家は、俺を引き取るときに、@n杉澤の本家と大喧嘩して、それ以来、@n両家はほぼ断絶状態となっていた。");
+	SetMessage(UNIT_ETC, -1, "", "そこに、今度は兄ちゃんが、@n高村家の一人娘と結婚するってことで、@nさらに修復不能なまでの溝を作ってしまった。");
+	SetMessage(UNIT_ETC, -1, "", "…更に、兄ちゃんが結婚まもなく亡くなったものだから、@nもう杉澤の家は、兄ちゃんの早すぎる死さえも、@n高村家のせいだと信じている。");
+	SetMessage(UNIT_ETC, -1, "", "今でこそ、随分と明るく見える姉さんだけど、@n兄さんが亡くなった当時は、周りが、@nその死さえも悲しませてくれなかった。");
+	SetMessage(UNIT_ETC, -1, "", "俺が、姉さんの家の近くの大学を選んだのも、@nその辺の事情が、少しだけ…絡んでる。");
+	DelWindow();
+
+	BGMFade(SLOW, 100);
+	FadeOut();
+	SetVisual(BG_TAKAMURA_03B);
+	SetStand(MITSUE_A101NO);
+	FadeIn();
+
+	ShowDay();
+	SetWindow();
+	SetMessage(UNIT_FEMALE, MITSUE_A101NO, "みつえ", "@v05120009「けれど、もう３年になるのねぇ…」");
+	SetMessage(UNIT_MALE, MASASHI_0101NO, "征氏", "@v05110008「これからだったのになぁ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺…兄ちゃんが亡くなるとしたら、@n絶対肺ガンだと思ってたけど」");
+	SetMessage(UNIT_EMA, EMA_0501IK2, "恵麻", "@v05050152「こら！」");
+	SetMessage(UNIT_MALE, MASASHI_0101EG, "征氏", "@v05110009「はは…確かに一人君はよく吸ってたなぁ」");
+	SetMessage(UNIT_ETC, -1, "", "俺の兄貴の唯一の欠点…@p@nそれは、ヘビースモーカーであること、だった。");
+	SetMessage(UNIT_FEMALE, MITSUE_A101NO, "みつえ", "@v05120010「一人さんの建ててくれた家もねぇ…@nあんなことになってしまって」");
+	DelWindow();
+
+	BGMFade(SLOW, 50);
+	FadeOut();
+	DelStand();
+	SetVisual(BG_QFAMILLE_01A, FILTER_SEPIA);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "兄ちゃんの家…ファミーユ本店。");
+	SetMessage(UNIT_ETC, -1, "", "半年前、跡形もなくなってしまった、@n二人の、思い出の場所。");
+	DelWindow();
+
+	BGMFade(SLOW, 100);
+	FadeOut();
+	SetVisual(BG_TAKAMURA_03B);
+	SetStand(EMA_A501KS);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_A501KS, "恵麻", "@v05050153「いいのよ…@nそりゃ、当時はとても悲しかったけど、@nいつまでも塞ぎ込んでるわけには、いかないからね」");
+	SetMessage(UNIT_MALE, MASASHI_0101NO, "征氏", "@v05110010「………」");
+	SetMessage(UNIT_EMA, EMA_A501SM, "恵麻", "@v05050154「それに、物がなくなっても、心は残ってる…@n一人さんの記憶がある限り、@n何も、なくなったことにはならないわ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…そう、だね」");
+	SetMessage(UNIT_ETC, -1, "", "やっと…");
+	SetMessage(UNIT_ETC, -1, "", "そこまで、言えるようになったか。");
+	SetMessage(UNIT_FEMALE, MITSUE_0101NO, "みつえ", "@v05120011「もう…３年になるのねぇ」");
+	SetMessage(UNIT_EMA, EMA_A501KB, "恵麻", "@v05050155「…お母さんボケた？@n話がループしてるじゃない」");
+	SetMessage(UNIT_FEMALE, MITSUE_0101HI, "みつえ", "@v05120012「恵麻、あんた、幾つになった？」");
+
+	SetStand(EMA_A501NR);
+	JumpStand();
+
+	SetMessage(UNIT_EMA, EMA_A501NR, "恵麻", "@v05050156「っ！？」");
+	SetMessage(UNIT_ETC, -1, "", "やるな母さん…");
+	SetMessage(UNIT_ETC, -1, "", "最初に思い出話で姉さんを安心させておいて、@nすっかり和んだ雰囲気になったところで、@n今日の本題か。");
+	SetMessage(UNIT_FEMALE, MITSUE_0101NO, "みつえ", "@v05120013「実はお父さんの部下でね、@n１年前にやっぱり奥さんを亡くされた方がいて…」");
+	SetMessage(UNIT_EMA, EMA_A501IK, "恵麻", "@v05050157「だからぁ、まだ早いってばぁ！」");
+	SetMessage(UNIT_FEMALE, MITSUE_0101NO, "みつえ", "@v05120014「そりゃ、３年前はそう言って反対したわよ？@nでもあんた、聞かなかったじゃない」");
+	SetMessage(UNIT_EMA, EMA_A501SN, "恵麻", "@v05050158「う…うう…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「で、でもあの時は…ほら、兄ちゃんがいい歳だったし」");
+	SetMessage(UNIT_EMA, EMA_A501IK, "恵麻", "@v05050159「あんたそれフォローのつもり？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「せっかく援護してるのにっ！？」");
+	SetMessage(UNIT_ETC, -1, "", "二人が結婚したのは、姉さんが２０歳、@nそして兄ちゃんが２８歳のとき。");
+	SetMessage(UNIT_FEMALE, MITSUE_0101NO, "みつえ", "@v05120015「あんたは普通の独身とは訳が違うんだから、@n賞味期限だって…」");
+	SetMessage(UNIT_EMA, EMA_A501IK3, "恵麻", "@v05050160「人を開封済みみたいに言わないでよ！」");
+	SetMessage(UNIT_FEMALE, MITSUE_0101NO, "みつえ", "@v05120016「…わかってんじゃないの」");
+
+	SetStand(EMA_A501NK);
+	BowStand();
+
+	SetMessage(UNIT_EMA, EMA_A501NK, "恵麻", "@v05050161「うわあ！」");
+	SetMessage(UNIT_ETC, -1, "", "いつも思うんだが…あけすけな家だ。");
+	SetMessage(UNIT_ETC, -1, "", "引き取られるまでは、憧れのま～姉ちゃんが、@n家でこんな会話してるなんて思いもしなかった。");
+	SetMessage(UNIT_MALE, MASASHI_0101NO, "征氏", "@v05110011「恵麻…お前、もう結婚する気はないのか？」");
+	SetMessage(UNIT_EMA, EMA_A501MU, "恵麻", "@v05050162「父さんまで…@nそんなの、まだ考えられないわよ」");
+	SetMessage(UNIT_FEMALE, MITSUE_0101NO, "みつえ", "@v05120017「まだっていつまでよ？」");
+	SetMessage(UNIT_EMA, EMA_A501MU, "恵麻", "@v05050163「母さんうるさい！@nとにかく、今は仕事のことで精一杯なの。@nそんな先のことなんて考えられないよ」");
+	SetMessage(UNIT_MALE, MASASHI_0101NO, "征氏", "@v05110012「仕事って…ケーキ屋か？」");
+	SetMessage(UNIT_EMA, EMA_A501SM, "恵麻", "@v05050164「そうよ…@n仁くんが、わたしのために再開してくれたの」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「姉さん…」");
+	SetMessage(UNIT_MALE, MASASHI_0101UM, "征氏", "@v05110013「まぁ、何も今すぐ再婚しろとまでは言わないが、@nそろそろ、そういうこと考えてもいい頃じゃないのか？」");
+	SetMessage(UNIT_EMA, EMA_A501SN, "恵麻", "@v05050165「お父さん…」");
+	SetMessage(UNIT_FEMALE, MITSUE_0101NO, "みつえ", "@v05120018「いつまでも、亡くなった人のことを想い続けて、@nこのままでいたら、一人さんの方が困っちゃうわよ？」");
+	SetMessage(UNIT_EMA, EMA_A501SN, "恵麻", "@v05050166「………」");
+
+	DelStand();
+
+	SetMessage(UNIT_ETC, -1, "", "母さんの指摘は…実はいいところを突いてる。");
+	SetMessage(UNIT_ETC, -1, "", "俺の兄ちゃんは、そういう人だ。@nもしここにいたら、姉さんの幸せを一番に考えるだろう。");
+	SetMessage(UNIT_ETC, -1, "", "…だからこそ、絶対にかなわないって、@nそう思えてしまえるんだけど。");
+	SetMessage(UNIT_ETC, -1, "", "そして３年前…@nその差を、思い知らされる羽目になった訳だ。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+
+	SetMessage(UNIT_ETC, -1, "", "兄ちゃんと、姉さんが結婚するって話は、@n兄ちゃんの口から直接聞いた。");
+	SetMessage(UNIT_ETC, -1, "", "そのときの、俺の表情を…@n俺はいまだに、思い出すことができる。");
+	SetMessage(UNIT_ETC, -1, "", "鏡を見てたわけじゃないから、想像でしかないくせに、@n絶対、そんな顔をしてたって、確信をもっている。");
+	SetMessage(UNIT_ETC, -1, "", "俺は、妙に苦く感じるようになったビールを、@nぐいっとのどの奥に流し込んで…");
+
+	SetStand(MASASHI_A101EG);
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_MALE, MASASHI_A101EG, "征氏", "@v05110014「いくら待ったって、@nもう仁はお前をもらってくれないんだぞ？」");
+
+	ShakeScreen(16);
+	SEPlay("L_Buu01");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「ぶぶぶぶぶぶぅぅぅ～！？」");
+
+	SetMessage(UNIT_ETC, -1, "", "思い切り、吐き出した。");
+	SetMessage(UNIT_EMA, EMA_A501IK4, "恵麻", "@v05050167「お父さん！　ちょっとぉ！」");
+	SetMessage(UNIT_FEMALE, MITSUE_0101YR, "みつえ", "@v05120019「恵麻、ティッシュ取って」");
+
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ごほっ、ごほっ…ごほぉっ！？@nと、父さん…いきなり何を？」");
+
+	SetMessage(UNIT_ETC, -1, "", "俺が…@p姉さんを…@pもらう？");
+	SetMessage(UNIT_MALE, MASASHI_A101NO, "征氏", "@v05110015「だってなぁ…もともと仁は、@n恵麻の婿養子として迎えるはずだったんだぞ？」");
+
+	ShakeScreen(16);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「ごほごほごほごほっ！？」");
+
+	//ちゃんさま、ちゃんさま～
+	SetMessage(UNIT_ETC, -1, "", "ちょお青天の霹靂！？");
+	SetMessage(UNIT_MALE, MASASHI_A101NO, "征氏", "@v05110016「佐恵のとこは、男の子が２人いたし、@nウチは恵麻しかいなかったから、@n仁を高村の跡取りにするってことで…」");
+	SetMessage(UNIT_FEMALE, MITSUE_0101NO, "みつえ", "@v05120020「あ～あ…お父さん、@nいつの間にこんなに飲んでたのかしら？@n久しぶりにみんな揃って嬉しかったのね」");
+	SetMessage(UNIT_EMA, EMA_A501AS, "恵麻", "@v05050168「言ってないでやめさせてよ！@n恥ずかしいなぁもう！」");
+	SetMessage(UNIT_ETC, -1, "", "確かに、父さんは酔うと饒舌になる。");
+	SetMessage(UNIT_ETC, -1, "", "けど…嘘はつかない人だった…はず。");
+	SetMessage(UNIT_MALE, MASASHI_A101NO, "征氏", "@v05110017「結局、仁が成人する前に引き取ることになったから、@nその話は立ち消えになったけどな…」");
+
+	DelStand();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「か、か、母さん…？」");
+	SetMessage(UNIT_ETC, -1, "", "俺は、誰か否定する人を求めて、@n周りを見回す。");
+
+	SetStand(MITSUE_A101HI);
+
+	SetMessage(UNIT_FEMALE, MITSUE_A101HI, "みつえ", "@v05120021「もうこの際だから言うけどさ…」");
+	SetMessage(UNIT_EMA, EMA_A501NK, "恵麻", "@v05050169「この際でもなんでもないわよ！@nちょっとぉ、言わないでよ！」");
+	SetMessage(UNIT_FEMALE, MITSUE_A101HI, "みつえ", "@v05120022「仁を引き取るときも、恵麻が泣いて嫌がったんだよ。@n弟になったら、結婚できないって教えたらねぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "いや…この際ってレベルの話じゃないだろ、これは…");
+	SetMessage(UNIT_ETC, -1, "", "大体母さん、なにそのスッキリしたような表情は？@nまるで、穴を掘って大声で叫んで埋めたみたいな…");
+	SetMessage(UNIT_EMA, EMA_A501NK, "恵麻", "@v05050170「やめてって…言ってるのに。@n一体、何年前の話だと思ってるのよ」");
+	HideDay();
+	DelWindow();
+
+	FadeOut();
+	DelStand();
+
+	// ＜イベントＣＧ：１０年前の恵麻と仁（仁を抱きしめる恵麻）＞
+	SetVisual( VISUAL_EMA_06A );
+	Fade( SLOW, 70 );
+
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05050131@m00@f20今日からは…本当の、お姉ちゃん、だからね？");	// ★★１０年前
+
+	FadeOut( SLOW );
+
+	// ＜ＢＧ：高村家座敷（夜）＞
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "@m08あれって…あれって…？");
+	DelWindow();
+
+	SetVisual( BG_TAKAMURA_03B );
+	FadeIn();
+
+	ShowDay();
+	SetWindow();
+	SetMessage(UNIT_MALE, MASASHI_0101NO, "征氏", "@v05110018「おお、そうだ仁…お前、大学を休学したって…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_MALE, MASASHI_0101NO, "征氏", "@v05110019「仁？」");
+
+	// ＜画面暗転＞
+	FadeOut(SLOW, 1);
+
+	SetMessage(UNIT_ETC, -1, "", "@m00どういうことなんだよ…姉さん。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait( 200 );
+
+	// ＜ＳＥ：電車の走行音＞
+	// ＜ＢＧ：電車内（ショコラの香奈子ルートの背景を使い回しましょう＞
+	SetVisual( BG_TRAIN_01A );	// BG:電車内
+	SEFadePlay( 0, "L_Train02", SLOWER );
+	FadeIn( SLOW );
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0501IK, "恵麻", "@v05050172「ああもう…あれだから年寄りの昔話って嫌」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_EMA, EMA_0202AK, "恵麻", "@v05050173「何年何月におねしょしたとか、そういう大昔の、@n恥ずかしいことだけピンポイントで言い出すんだから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…姉さん」");
+	SetMessage(UNIT_EMA, EMA_0501MU, "恵麻", "@v05050174「…なによぉ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「嘘、だよね？」");
+	SetMessage(UNIT_EMA, EMA_0501IK, "恵麻", "@v05050175「…ふん」");
+	SetMessage(UNIT_ETC, -1, "", "姉さんの声が、えらくふてくされてる。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+
+	SetMessage(UNIT_ETC, -1, "", "あの後、俺は父さんの説教も上の空で、@n結局、高村の家を出るまで、@nほとんど喋れなかった。");
+	SetMessage(UNIT_ETC, -1, "", "それほど、あの、父さんの発言が気になったし、@nそして、そのことを気にする俺も、滅茶苦茶気になった。");
+	SetMessage(UNIT_ETC, -1, "", "…なんでこだわるんだよ、こんな、昔の話に。");
+	SetMessage(UNIT_ETC, -1, "", "姉さんが、兄ちゃんのものになるよりも、昔の話に。");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「姉さぁん…」");
+	SetMessage(UNIT_EMA, EMA_0501MU, "恵麻", "@v05050176「なによぉ、初恋の君」");
+
+	// ＜『初恋の君』＝『はつこいのきみ』＞
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「っ！？」");
+
+	SEFadeOut(0, SLOWEST);
+	BGMFadePlay(BGM_YASURAGI, SLOWER);
+
+	SetMessage(UNIT_EMA, EMA_0501MU, "恵麻", "@v05050177「１０年以上も前のこと蒸し返してぇ…@n仁もウチの年寄りとおんなじなんだ～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ね…姉…ちゃん」");
+	SetMessage(UNIT_ETC, -1, "", "初恋…って…");
+	SetMessage(UNIT_ETC, -1, "", "だって、俺は…え？");
+
+	SetMessage(UNIT_EMA, EMA_0501SN, "恵麻", "@v05050178「そんなに驚くこと？　子供の頃の話よ？@n年に数回しか会えない親戚の男の子に憧れたって、@n全然不思議じゃないでしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、それはそうだけど…」");
+	SetMessage(UNIT_EMA, EMA_0202SP, "恵麻", "@v05050179「それに、仁だったら、いっくらでもそう言ってくれる子、@nいたでしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いねえよ…」");
+	SetMessage(UNIT_EMA, EMA_0501BS2, "恵麻", "@v05050180「見る目ないなぁ、女ども」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それは身内びいきだよ…@n大体、なんで兄ちゃんじゃなくて俺？」");
+	SetMessage(UNIT_EMA, EMA_0501BS, "恵麻", "@v05050181「一人さんは、８つも年上のお兄さん。@n仁は、３つだけ年下の男の子。@nどっちに転ぶかは、当時なら自明の理」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、兄ちゃんだろ普通？@n俺の周りって、みんなそうだったぞ？」");
+	SetMessage(UNIT_EMA, EMA_0501KS, "恵麻", "@v05050182「一人さんは、その頃からもう大人だったからね。@n子供の恋愛対象としては、ちょっとね…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「子供だったら婿養子とか考えんなよ…」");
+	SetMessage(UNIT_EMA, EMA_0501MJ, "恵麻", "@v05050183「姉ちゃんはただ、ずっとこう言ってしつけられただけよ。@n@t0476@h0501HO『いい子にしてたら、仁くんがお婿さんに来てくれる』@n@t0950@h0501KS…ってね」");
+
+	// ＜ここの『仁くん』は"すぅぱぁ"『ひとしくん』です＞
+	/*
+	          ε
+	                                  WE JUST LIKE NAOKI
+	                                             SPACE
+	                              ●
+	                                 ギャー！
+	*/
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「母さん…」");
+	SetMessage(UNIT_ETC, -1, "", "俺の親になる前だからとはいえ、@nなんという即物的な教育方針…");
+	SetMessage(UNIT_EMA, EMA_0501IK, "恵麻", "@v05050184「…だから知られるの嫌だったのよ」");
+	SetMessage(UNIT_ETC, -1, "", "俺だったら、穴掘って生き埋めを選びそうだ。@nこれはおねしょよりも、百億倍恥ずかしい…");
+
+	SetMessage(UNIT_ETC, -1, "", "@g－@g－@g－杉澤恵麻。");
+	SetMessage(UNIT_ETC, -1, "", "今、俺の隣で不機嫌に振る舞うこの人は…");
+	SetMessage(UNIT_ETC, -1, "", "ま～姉ちゃんであり、恵麻義姉さんであり、@n従姉の女の子であり、幼なじみの女の子であり。");
+	SetMessage(UNIT_ETC, -1, "", "そして…実は許嫁だった。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…頭いて」");
+	SetMessage(UNIT_EMA, EMA_0501BS, "恵麻", "@v05050185「寝る？　肩にもたれてもいいよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「やだ、照れる」");
+	SetMessage(UNIT_EMA, EMA_0501BS, "恵麻", "@v05050186「今更照れたところで、@n仁が姉ちゃんの初恋の相手だってのは変わらないの」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「開き直るなよぉ」");
+	SetMessage(UNIT_EMA, EMA_0501BS, "恵麻", "@v05050187「じゃ、姉ちゃん先に寝るね？@n@t0430@h0501SMおやすみ」");
+
+	ShakeScreen(4);
+	SEPlay("L_Fall01", 50);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "肩に…もたれかかってきやがった。");
+	SetMessage(UNIT_EMA, EMA_0202NT, "恵麻", "@v05050188「んぅ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "多分今、俺は顔から火を噴いている。");
+	SetMessage(UNIT_EMA, EMA_0202NT, "恵麻", "@v05050189「すぅ…すぅ…」");
+	SetMessage(UNIT_ETC, -1, "", "@m08なぜなら…");
+	DelWindow();
+
+	BGMFadeOut( SLOWEST );
+	FadeOut( SLOWEST, 1 );
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "“@m00俺の初恋の相手”が、肩にもたれかかって、@n眠っているから、だ。");
+	HideMenu();
+	HideDay();
+	DelWindow();
+	DelVisual();
+
+	FadeWait();
+	Wait( 300 );
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

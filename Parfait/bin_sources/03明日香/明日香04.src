@@ -1,0 +1,286 @@
+// ●明日香04：サボリ
+// 種類：通常イベント
+// 条件：第２クォーター、フロアを選択
+// 概要：学園をサボってバイトに来た明日香。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア＞
+	//----------------------------------------------------------------------------
+	SetVisual(BG_FAMILLEF_01A);
+	BGMFadePlay(BGM_NICHIJOU2);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「皆さん、おはようございます」");
+	SetMessage(UNIT_FEMALE, -1, "全員", "@v03160001「おはようございま～す」");	// ★★由飛、明日香、かすり、恵麻
+	SetMessage(UNIT_ETC, -1, "", "いつものように、打てば響くような朝の挨拶。");
+	SetMessage(UNIT_ETC, -1, "", "ファミーユの朝礼は、いつも和気あいあいと進む。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「えっと、まずは連絡から。@n昨日のお客様の来店数と売り上げ個数は、@n平日としては最高記録を更新しました～」");
+
+	// ＜ＳＥ：皆の拍手＞
+	SEFadePlay(0, "L_Touch01");
+	SEFadePlay(1, "L_Touch02");
+	SEFadePlay(2, "L_Touch03");
+	SEFadePlay(3, "L_Touch04");
+
+	SetMessage(UNIT_KASURI, KASURI_0202NO, "かすり", "@v03040026「おお～」");
+	SetMessage(UNIT_YUI, YUI_0102EG, "由飛", "@v03010010「あれだけ働いたもんね～」");
+	SetMessage(UNIT_ETC, -1, "", "みんなから、どよめきと拍手が湧き起こる。");
+
+	SetStand(EMA_0101EG);
+
+	SetMessage(UNIT_ETC, -1, "", "その視線と拍手は、『結果を出した』@n姉さんへと集中している。");
+	SetMessage(UNIT_ETC, -1, "", "けれど姉さんは何処吹く風。@nにこにこと、一緒になって拍手してる。");
+	SetMessage(UNIT_ETC, -1, "", "大量の試食ケーキも、２００円という価格も、@nそして、自分の手がけたケーキが売れたという@n事実も、全部皆の手柄だって感じだ。");
+
+	DelStand();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「本日は土曜日…昨日以上のお客様のご来店が@n予想されます」");
+
+	// ＜ＳＥ：一人だけ拍手＞
+	SEFadeOut(1);
+	SEFadeOut(2);
+	SEFadeOut(3);
+
+	SetMessage(UNIT_ETC, -1, "", "と、その言葉を聞いた途端、@nかすりさんと由飛くんが凍る。");
+	SetMessage(UNIT_ETC, -1, "", "そりゃ、まぁ、そうだよなぁ…");
+
+	SEFadeOut(0);
+	SetStand(YUI_0101AS, LEFT, MOVE_LEFT, FAST, 1);
+	SetStand(KASURI_0202AS, RIGHT, MOVE_RIGHT);
+
+	SetMessage(UNIT_YUI, YUI_0101AS, "由飛", "@v03010011「きょ、今日は…あの地獄を超えるのかなぁ？」");
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v03040027「いつになったらキッチンに戻れるんだろう…」");
+	SetMessage(UNIT_YUI, YUI_0102KN_, "由飛", "@v03010012「わたし、お昼ご飯抜きだったですよ～」");
+	SetMessage(UNIT_KASURI, KASURI_0201KN, "かすり", "@v03040028「わたしも。しかも昨日は朝抜いてきたのよ…」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101MJ, "明日香", "@v03030081「みんな大変だったんだね…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え～と…済まないとは思ってます」");
+	SetMessage(UNIT_EMA, EMA_0101AS, "恵麻", "@v03050001「みんなごめんね～。@nわたし、無理させちゃってるね」");
+	SetMessage(UNIT_YUI, YUI_0102OD2, "由飛", "@v03010013「あ、そんな、恵麻さんは悪くないですよ」");
+	SetMessage(UNIT_KASURI, KASURI_0202BS, "かすり", "@v03040029「そうそう、恵麻さんはお客様を呼び込んでくれただけ。@n@t0415@h0202NY十分なキャパを用意できない店長の怠慢以外の@n何物でもない」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うわぁ…」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101BS, "明日香", "@v03030082「な、なんとかなるよぉ。@nみんなで力を合わせれば」");
+	SetMessage(UNIT_EMA, EMA_0102BS, "恵麻", "@v03050002「そ、そうそう！@n明日香ちゃんの言う通り」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうだよ！　今日は土曜日だから、@n明日香ちゃんも昼過ぎには来て…」");
+
+	BGMFadeOut(SLOWER);
+
+	SetMessage(UNIT_YUI, YUI_0102OD2, "由飛", "@v03010014「…あれ？」");
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v03040030「昼過ぎ…？」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん？」");
+	SetMessage(UNIT_ETC, -1, "", "今日は土曜だから、明日香ちゃんの学園も、@n授業は午前中まで。");
+	SetMessage(UNIT_ETC, -1, "", "だから、昼食どきの終わりの頃から、@nいつもより早めに合流…");
+	SetMessage(UNIT_ETC, -1, "", "………");
+
+	BGMPlay(BGM_ASUKA);
+	DelStand(LEFT, MOVE_LEFT, FAST, 1);
+	DelStand(RIGHT, MOVE_RIGHT);
+	SetStand(ASUKA_0101EG2);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0101EG2, "明日香", "@v03030083「…えへ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v03040031「………」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v03050003「………」");
+	SetMessage(UNIT_ETC, -1, "", "では、今、朝礼に参加している明日香ちゃんは、@n一体誰だ？");
+	SetMessage(UNIT_ETC, -1, "", "…いや、明日香ちゃんだろ。");
+	SetMessage(UNIT_YUI, YUI_0101AW, "由飛", "@v03010015「え～と…明日香ちゃん休講？」");
+	SetMessage(UNIT_KASURI, KASURI_0202NO, "かすり", "@v03040032「創立記念日？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「自分たちに都合のいい理由付けはやめろ。@n…明日香ちゃん、どういうこと？」");
+
+	SetMessage(UNIT_ASUKA, ASUKA_0102KS, "明日香", "@v03030084「え、え～と…学級閉鎖？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ならば学園に確認の電話を入れるがそれでいいな？」");
+
+	SetStand(ASUKA_0102OD);
+	JumpStand();
+
+	SetMessage(UNIT_ASUKA, ASUKA_0102OD, "明日香", "@v03030085「あ～タンマタンマ！@n@t0207@h0102KS担任の先生には知らせないでって@n校長先生からの伝言で～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それはまた頭越しな校長先生だな」");
+	SetMessage(UNIT_ETC, -1, "", "そんなんじゃ部下の信望は得られないぞ。");
+	SetMessage(UNIT_ASUKA, ASUKA_0102KS, "明日香", "@v03030086「そ、そうそう！@n私立だからワンマンでね？@n独裁体制？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102KS, "明日香", "@v03030087「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101KN, "明日香", "@v03030088「うう…」");
+	SetMessage(UNIT_ETC, -1, "", "俺が、ちょっとだけ怖い顔で睨むと、@n明日香ちゃんが涙目でうつむく。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…サボったろ？」");
+
+	BowStand();
+
+	SetMessage(UNIT_ASUKA, ASUKA_0101KN, "明日香", "@v03030089「………うん」");
+	SetMessage(UNIT_ETC, -1, "", "しかし、朝礼に一緒に並んでて、@n誰も気づかなかったのか、俺たちは。");
+	SetMessage(UNIT_ETC, -1, "", "なんて目の前の事実をフレキシブルに受け止める奴らだ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺、そこまで頼んだっけ？@n明日香ちゃんに、サボリまでしてバイトしろって、@nそんなこと一言でも言ったことあったっけ？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101KN, "明日香", "@v03030090「ふえぇ…」");
+
+	SetMessage(UNIT_EMA, EMA_0101AS, "恵麻", "@v03050004「じ、仁くん…なにもそこまで言わなくても」");
+	SetMessage(UNIT_KASURI, KASURI_0202TY, "かすり", "@v03040033「随分と頭ごなしな店長ね」");
+	SetMessage(UNIT_YUI, YUI_0102SN, "由飛", "@v03010016「あんなんじゃスタッフの信望は得られないですよね」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「黙れフロア組」");
+	SetMessage(UNIT_ETC, -1, "", "彼女たちの言葉には、@nあからさまに自分たちの都合が垣間見える。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺は明日香ちゃんの将来を心配して言ってるの！@n今からサボリを覚えたら、ロクな大人になれないぞ？@n大学生になったら、全然大学行かなくなっちゃうぞ？」");
+	SetMessage(UNIT_KASURI, KASURI_0201UT, "かすり", "@v03040034「仁くん、それ、自分のことじゃない…」");
+	SetMessage(UNIT_YUI, YUI_0101GR, "由飛", "@v03010017「………」");
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v03040035「…なんであんたが青ざめてるわけ？」");
+	SetMessage(UNIT_YUI, YUI_0101AS, "由飛", "@v03010018「気のせいじゃないですかぁ？@nわたしはダメな大人じゃないですよ～？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そりゃ、たった一日サボっただけかもしれない。@nしかも、俺たちのためっていう、@nめちゃくちゃありがたい理由だよ」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102OT, "明日香", "@v03030091「てんちょ…」");
+	SetMessage(UNIT_ETC, -1, "", "しゅんとうつむきながらも、@n明日香ちゃんは俺の話に耳を傾けてくれる。");
+	SetMessage(UNIT_ETC, -1, "", "だから俺も、雇い主らしく、@n公明正大な態度を取らなければならない。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「でも、今はきちんと学園には行くんだ。@nでないと俺は、君の両親や先生方に申し訳が立たない。@n…君をやめさせないといけなくなる」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102OD, "明日香", "@v03030092「そ、そんなの…ダメ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ダメでもなんでもクビ。そうなりたい？@n…俺は絶対に嫌だけど。@n明日香ちゃんといっしょに働けないのはさ」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101KN, "明日香", "@v03030093「わたしだって…絶対に嫌だよぉ」");
+
+	SEPlay("L_Walk02S");
+	DelStand();
+	SetStand(ASUKA_A101KN);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…決まりだ。@n一緒に、登校しよう？@n俺、送ってくから」");
+	SetMessage(UNIT_ETC, -1, "", "腰をかがめて、明日香ちゃんと視線を合わせて…");
+	SetMessage(UNIT_ETC, -1, "", "そして、にっこりと微笑んでみせる。");
+	SetMessage(UNIT_ETC, -1, "", "実は大学で取得した児童心理学の@n内容にのっとった対話の方法。");
+	SetMessage(UNIT_ETC, -1, "", "子ども扱いと知れば、@n明日香ちゃんは怒るかもしれないけど…");
+
+	SetMessage(UNIT_ASUKA, ASUKA_A101KN, "明日香", "@v03030094「てんちょ…ごめん、ごめんね…っ」");
+	SetMessage(UNIT_ETC, -1, "", "今は、効果てきめんだったりする。");
+
+	DelStand();
+
+	SetMessage(UNIT_EMA, EMA_0102MS, "恵麻", "@v03050005「ううっ…仁くん優しいっ！@nわたし、素晴らしい弟を持って幸せ…」");
+	SetMessage(UNIT_KASURI, KASURI_A202AS, "かすり", "@v03040036「ああっ、恵麻さんが弟賛美モードにっ」");
+	SetMessage(UNIT_YUI, YUI_0101OT, "由飛", "@v03010019「それはそうと、店長までいなくなるって…@n結局、地獄を見るのはわたしたちなんですね」");
+	DelWindow();
+
+	// ＜画面暗転＞
+	Wait(50);
+	BGMFadeOut(SLOWER);
+	FadeOut(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：学園廊下＞
+	//----------------------------------------------------------------------------
+
+	SetVisual(BG_GAKUENR_01A);
+	SEFadePlay(0, "L_Walk02R");
+	SEFadePlay(1, "L_Walk07R");
+	CurtainFadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03030095「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "当然だが、校門前には誰もいなかった。");
+	SetMessage(UNIT_ETC, -1, "", "校庭も、この時間は、体育の授業がないらしく、@n静まり返ったまま。");
+	SetMessage(UNIT_ETC, -1, "", "だから俺は、明日香ちゃんを連れて、@n教室が並ぶ廊下までやってきた。");
+	SetMessage(UNIT_ASUKA, ASUKA_0202NO, "明日香", "@v03030096「てんちょ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0201NO, "明日香", "@v03030097「そろそろ帰ったほうがいいよ？@nわたし、もうサボったりしないから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、教室まで送る。@n大丈夫だよ、みんなだって、@n１時間くらいは持ちこたえるさ」");
+	SetMessage(UNIT_ASUKA, ASUKA_0202AK, "明日香", "@v03030098「そういう意味じゃ…ないんだけどなぁ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…どういう意味？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0202UN, "明日香", "@v03030099「気づいてないんなら…いいけどぉ」");
+
+	SEFadeOut(0);
+	SEFadeOut(1);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「？」");
+
+	SEFadePlay(0, "L_Strange01", SLOWER, 30);
+	SEFadePlay(1, "L_Strange02", SLOWER, 30);
+
+	SetMessage(UNIT_ETC, -1, "", "@s0005@m00@f20@gざ@gわ…@gざ@gわ…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん？」");
+	SetMessage(UNIT_ETC, -1, "", "@s0005@m00@f20@gざ@gわ…@gざ@gわ…");
+	SetMessage(UNIT_ETC, -1, "", "@m08なんだ…？");
+	SetMessage(UNIT_ETC, -1, "", "@m08この、肌を刺すような緊張感。");
+	SetMessage(UNIT_ETC, -1, "", "@m08背筋を“ぞわり”と駆け上がる不快感。");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、明日香ちゃん…ちょっと待ってくれ。@nこの場所…何かおかしくないか？」");
+
+	SetStand( ASUKA_0202TR2 );
+
+	SetMessage(UNIT_ASUKA, ASUKA_0202TR2, "明日香", "@v03030100「あ、気づいた？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…てことは、やっぱり何かがあるんだな？@n学園が建つ前は廃病院で、その前が墓地とか」");
+	SetMessage(UNIT_ASUKA, ASUKA_0202TR2, "明日香", "@v03030101「ううん、山を切り崩したんだって。@n工事中に誰かが死んだとかもないよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「じゃあ、俺が感じるこの気配は…一体…」");
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0202AK, "明日香", "@v03030102「それは………@nてんちょ、周りを見てみたら？」");
+
+	DelStand();
+	SEFadePlay(0, "L_Zattou05", SLOWER);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@m08「周り………@e");
+
+	Wait(20);
+	BGMFadePlay(BGM_COMICAL, SLOWER);
+	ShakeScreen(16);
+	SEPlay("L_Slip01");
+	AddMessage("ひぃぃっ！？」");
+
+	SetMessage(UNIT_ETC, -1, "", "ふと目を上げた瞬間…@nそれこそ数十、いや、二桁では収まりきらないほどの、@n視線の束が、俺に襲いかかっていた。");
+	SetMessage(UNIT_ETC, -1, "", "…いや、よ～するに、@n廊下の窓際の学生がそろいもそろって、@n外へと視線を向けている。");
+	SetMessage(UNIT_ETC, -1, "", "というか、俺一人に視線が集中しているわけで。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そういえば明日香ちゃん…@n君の通ってるここ…」");
+
+	SetStand( ASUKA_0201NO );
+
+	SetMessage(UNIT_ASUKA, ASUKA_0201NO, "明日香", "@v03030103「うん、女子校」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「普段は男の人なんて…」");
+	SetMessage(UNIT_ASUKA, ASUKA_0202TR2, "明日香", "@v03030104「先生くらいだよ。@nそれもほとんど４０過ぎのおじさんばっかり」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あはは～」");
+	SetMessage(UNIT_ASUKA, ASUKA_0202TR, "明日香", "@v03030105「大遅刻して、しかもてんちょと登校なんて、@n多分わたし、今日は凄いことになるなぁ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ごめん」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃんのためと思い、送ってきたのだが…@nこれはひょっとして、大裏目？");
+	SetMessage(UNIT_ASUKA, ASUKA_0202KS, "明日香", "@v03030106「…そんなことよりも、てんちょが気をつけた方がいいよ。@nほら、みんなの携帯カメラが一斉にこっち向いてる」");
+	DelWindow();
+
+	DelStand();
+	SEPlay("L_Camera01");
+	FlashIn(FAST);
+	Wait(20);
+	SEPlay("L_Camera01");
+	FlashIn(FAST);
+	SEPlay("L_Camera01");
+	FlashIn(FAST);
+	Wait(10);
+	SEPlay("L_Camera01");
+	FlashIn(FAST);
+	SEPlay("L_Camera01");
+	FlashIn(FAST);
+	SEPlay("L_Camera01");
+	FlashIn(FAST);
+
+	SetWindow();
+	ShakeScreen(16);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「ひいいっ！？」");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	// ＜ＳＥ：シャッターの音（複数）＞
+	Wait(50);
+	SEFadeOut(0, SLOWER);
+	BGMFadeOut(SLOWER);
+	FilterFadeOut(SLOW, FADEFILTER_CIRCLE);
+	Wait(300);
+	DelVisual();
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

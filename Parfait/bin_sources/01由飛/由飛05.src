@@ -1,0 +1,226 @@
+// ●由飛05：由飛ワールド
+// 種類：通常イベント
+// 条件：第２クォーター、フロアを選択
+// 概要：接客中に歌い出す由飛
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_FAMILLEF_01A );
+		SEFadePlay(0, "L_Zattou04");
+		SEFadePlay(1, "L_Dish03", NORMAL, 30);
+		BGMPlay(BGM_KISSATEN);
+		FadeIn();
+
+		SetWindow();
+		BGMFade(NORMAL, 30);
+		SetMessage(UNIT_YUI, YUI_0101UT, "由飛", "@v01010119@m00「お客さま～、お客さま～@t0382@h0101UT2@nブルーベリータルトのお客さま～！」");
+		BGMFade(NORMAL, 100);
+		// ＜歌うように、適当な曲に乗せて朗々と＞
+
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160030「あ、はい、こっち…」");
+
+		SetStand(YUI_0101UT);
+		SEPlay("L_Dish02");
+		BowStand();
+
+		BGMFade(NORMAL, 30);
+		SetMessage(UNIT_YUI, YUI_0101UT, "由飛", "@v01010120@m00「お待たせしました焼きたてタルト。@t0371@h0101UT2@nほっぺが落ちないうちに～、@t0723@h0101EG召し上がれ～♪」");
+		BGMFade(NORMAL, 100);
+		// ＜歌うように、適当な曲に乗せて朗々と＞
+
+		SetMessage(UNIT_MALE, -1, "お客様１", "@v01160031「あ、あはは…どうも」");
+		SetMessage(UNIT_FEMALE, -1, "お客様２", "@v01160032「あ、あの、すいませ～ん」");
+		SetMessage(UNIT_YUI, YUI_0101UT2, "由飛", "@v01010121@m00「ご注文、お伺い、いたします～@t0358@h0101UT@n正確、確実、迅速に～。@n@t0712@h0101UT3でも！　@t0829@h0101EGお客さまは、ごゆっくり～♪」");
+		DelWindow();
+
+		SEFadeOut(0);
+		SEFadeOut(1);
+		FadeOut();
+		DelStand();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_FAMILLEC_01A );
+		SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+		SEFadePlay(1, "L_Dish03", NORMAL, 20);
+		SEFadePlay(2, "L_Factory01", NORMAL, 50);
+		FadeIn();
+
+		SetStand(EMA_0102AK, LEFT, MOVE_LEFT, FAST, 1);
+		SetStand(KASURI_0101AK, RIGHT, MOVE_RIGHT);
+
+		SetWindow();
+		SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v01040016「………」");
+		SetMessage(UNIT_EMA, EMA_0102AK, "恵麻", "@v01050001「………」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あは、あはは…」");
+		BGMFade(NORMAL, 30);
+		SetMessage(UNIT_YUI, -1, "由飛", "@o050@v01010122@m00「ガトーショコラにカプチーノですね！@nお任せを～」");	// ★★声のみ
+		BGMFade(NORMAL, 100);
+		// ＜歌うように、適当な曲に乗せて朗々と＞
+
+		SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v01040017「何とかしてよ、あれ…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「オーダーミスは減ったじゃん」");
+		SetMessage(UNIT_EMA, EMA_0102AK, "恵麻", "@v01050002「元気でいいとは思うけど…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そうだよね姉さん！？」");
+		SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v01040018「世界観が違うって…」");
+		DelWindow();
+
+		// ＜由飛、カウンター越しにキッチンに顔を出す＞
+		DelStand(LEFT, MOVE_LEFT, FAST, 1);
+		DelStand(RIGHT, MOVE_RIGHT);
+		SetStand(YUI_0101UT);
+
+		SetWindow();
+		BGMFade(NORMAL, 30);
+		SetMessage(UNIT_YUI, YUI_0101UT, "由飛", "@v01010123@m00「ガトーショコラにカプチーノです～@t0507@h0101UT3@n超特急低価格激美味で、@t1040@h0101UT2お願いしま～す～♪」");
+		BGMFade(NORMAL, 100);
+		// ＜歌うように、適当な曲に乗せて朗々と＞
+
+		SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v01040019「やめなさいそれ」");
+		SetMessage(UNIT_YUI, YUI_0101NO, "由飛", "@v01010124「はい？」");
+		SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v01040020「お客様がおいてきぼり食らってるって」");
+		SetMessage(UNIT_ETC, -1, "", "おいてきぼりはともかく…@nまぁ、面食らってることだけは確かだったり。");
+		SetMessage(UNIT_YUI, YUI_0101NO, "由飛", "@v01010125「あの…」");
+		SetMessage(UNIT_ETC, -1, "", "かすりさんの言うことはもっともだけど、@nこれで、今まで気持ちよく仕事してた由飛くんが、@n萎縮しなければいいんだけど…");
+		SetMessage(UNIT_YUI, YUI_0101NO, "由飛", "@v01010126「“それ”って何のことですか？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+		SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v01040021「………」");
+		SetMessage(UNIT_ETC, -1, "", "まさか…無意識か？　あれ。");
+		SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v01050003「由飛ちゃんって、歌のお勉強でもしてるの？@nとってもよく声が出るんで驚いたわ」");
+		SetMessage(UNIT_YUI, YUI_0101AW, "由飛", "@v01010127「え～？　そんな、お勉強なんておこがましい。@nちょっと趣味でオペラ研究会に入ってるだけです」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「オペラ…」");
+		SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v01050004「へえ、高尚な趣味ね」");
+		SetMessage(UNIT_ETC, -1, "", "その割に歌ってる歌はかなり即物的な即興だけど…");
+		SetMessage(UNIT_ETC, -1, "", "そう、どちらかと言えば、ミュージカルっぽいような。");
+		SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v01040022「店長一家はそこで思考停止しない」");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010128「あ、ひょっとして皆さんも興味あります？@nもしよろしかったら、ＣＤとか貸しましょうか？」");
+		SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v01050005「あ、いえ、そういうことじゃなくて」");
+		SetMessage(UNIT_KASURI, KASURI_0201MJ, "かすり", "@v01040023「大至急やめなって、歌うの」");
+		SetMessage(UNIT_YUI, YUI_0101NO, "由飛", "@v01010129「…？」");
+		SetMessage(UNIT_EMA, EMA_0102AK, "恵麻", "@v01050006「あ、あのね？@n楽しくて、面白そうだとは思うんだけど、@nちょっと前衛的と言うか～」");
+
+		SetStand(YUI_0101OD);
+		JumpStand();
+
+		SetMessage(UNIT_YUI, YUI_0101OD, "由飛", "@v01010130「ああ！@nそういえば歌ってましたね、わたし！」");
+		SetMessage(UNIT_KASURI, KASURI_0202OD, "かすり", "@v01040024「気づいてなかったんかい」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「遠回しが通用しない娘なんだよ…@nあ、あのさ、由飛くん」");
+		SetMessage(UNIT_YUI, YUI_0101OT, "由飛", "@v01010131「そうですね、変ですね、@t0309@k");
+		BGMFade(NORMAL, 30);
+		AddMessage("@h0101UT2@m00すいませ～ん♪」");
+		BGMFade(NORMAL, 100);
+		// ＜歌うように、適当な曲に乗せて朗々と＞
+
+		SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v01040025「いや、だからね…」");
+		SetMessage(UNIT_ETC, -1, "", "そこできっちり韻を踏むし…");
+
+		SetStand(YUI_0101EG);
+		BowStand();
+
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010132「ごめんなさい、わたし、調子に乗ると、@nこうなっちゃうんですよ。以後気をつけますね」");
+		SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v01050007「そ、そんなに気にすることないのよ？@n誰だって楽しい時は歌い出しちゃうものだし」");
+		SetMessage(UNIT_ETC, -1, "", "そんなことはない。");
+		SetMessage(UNIT_ETC, -1, "", "けど、俺は由飛くん全肯定派だから、@nあからさまにそういう反論はできない。");
+		SetMessage(UNIT_YUI, YUI_0102BS, "由飛", "@v01010133「いえっ、職場はチームワークが大事ですから！」");
+		SetMessage(UNIT_KASURI, KASURI_0101KS, "かすり", "@v01040026「う、うん…わかってくれれば、ね！」");
+		SetMessage(UNIT_ETC, -1, "", "ブツブツ言ってたかすりさんも、@n相変わらずの由飛くんの雰囲気に飲まれて、@n“ま、いっか”な態度になってる。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「はいこっち、カプチーノ。@n行ってらっしゃい由飛くん」");
+		SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v01010134「はい店長♪@n風美由飛、メイドさんモード発動です。@nしゃなりしゃなりと行って参りま～す」");
+
+		SELoopPlay(3, "L_Walk02");
+		SEFadeOut(3, SLOWEST);
+		DelStand(CENTER, MOVE_LEFT);
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あはは…」");
+		SetMessage(UNIT_ETC, -1, "", "まだなんか違う…");
+
+		SetStand(EMA_0101KS, LEFT, MOVE_LEFT, FAST, 1);
+		SetStand(KASURI_0101KS, RIGHT, MOVE_RIGHT);
+
+		SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v01050008「ふふっ…面白い娘ねぇ」");
+		SetMessage(UNIT_KASURI, KASURI_0101KS, "かすり", "@v01040027「面白すぎるけど」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「かすりさんに面白いと評される人って、@nかすりさん以外に見たことがないなぁ…」");
+		SetMessage(UNIT_KASURI, KASURI_0102NY, "かすり", "@v01040028「仁くん、あんたとは一度、@nベッドの中でとことん話し合う必要があると思うの」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「おい！　話し合いはいいが、場所をわきまえてよ！」");
+		DelWindow();
+
+		// ＜ＳＥ：カップの割れる音（フロアから）＞
+		BGMFadeOut();
+		SEPlay("L_Break01");
+		SEPlay("L_Break03");
+		ShakeScreen(8);
+
+		Wait(50);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_FAMILLEF_01A );
+		DelStand(LEFT);
+		DelStand(RIGHT);
+		SEFade(0, NORMAL, 100);
+		SEFade(1, NORMAL, 30);
+		SEFadeOut(2);
+		BGMFadePlay(BGM_COMICAL);
+		CrossFade();
+
+		SetStand(YUI_0101AS);
+		BowStand();
+
+		SetWindow();
+		SetMessage(UNIT_YUI, YUI_0101AS, "由飛", "@v01010135「申し訳ありませ～ん！@nお怪我、火傷はございませんか～？」");
+		SetMessage(UNIT_YUI, YUI_0101UT2, "由飛", "@v01010137@m00「みなさん落ち着いて～@t0202@h0101UT@nすぐに片づけに参りま～す♪」");
+		SetMessage(UNIT_YUI, YUI_0101UT2, "由飛", "@v01010138@m00「店長、店長、高村店長～@t0289@h0101UT@nモップとチリトリお願いしま～す♪」");
+		DelWindow();
+
+		// ＜歌うように、適当な曲に乗せて朗々と＞
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_FAMILLEC_01A );
+		DelStand();
+		SEFade(0, NORMAL, 50);
+		SEFade(1, NORMAL, 20);
+		SEFadePlay(2, "L_Factory01", NORMAL, 50);
+		CrossFade();
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "@m00「すぐに参ります～@w0050@nしばらくお待ちを～♪」");
+
+		SetStand(EMA_0102AK, LEFT, MOVE_LEFT, FAST, 1);
+		SetStand(KASURI_0101AK, RIGHT, MOVE_RIGHT);
+
+		SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v01040029「………」");
+		SetMessage(UNIT_EMA, EMA_0102AK, "恵麻", "@v01050009「………」");
+		HideMenu();
+		HideDay();
+		DelWindow();
+
+		Wait(100);
+		BGMFadeOut(SLOWEST);
+		SEFadeOut(0, SLOWEST);
+		SEFadeOut(1, SLOWEST);
+		SEFadeOut(2, SLOWEST);
+		FilterFadeOut(SLOWER, FADEFILTER_CIRCLE);
+		DelStand(LEFT);
+		DelStand(RIGHT);
+		DelVisual();
+
+		Wait(400);
+
+		NextEvent();
+		LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

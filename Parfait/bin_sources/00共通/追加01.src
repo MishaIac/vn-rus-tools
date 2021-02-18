@@ -1,0 +1,118 @@
+// ●追加01：感傷？
+//種類：通常イベント");
+//条件：第４クォーター、駅前を選択（休日イベント）");
+//概要：休日にブリックモールに足を運ぶ");
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	// ＜ＳＥ：町の喧騒＞
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：駅前＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_EKIMAE_01A );
+	BGMFadePlay(BGM_NICHIJOU1,SLOW);
+	SEFadePlay(0, "L_Water02", SLOWER, 50);
+	SEFadePlay(1, "L_Zattou06", SLOWER, 50);
+	SEFadePlay(2, "L_Town02", SLOWER);
+	SEFadePlay(3, "L_Town03", SLOWER);
+	FadeIn(SLOW);
+	SetWindow();
+
+	SetMessage(UNIT_ETC, -1, "", "クリスマス前の最後の定休日…");
+	SetMessage(UNIT_ETC, -1, "", "ブリックモールに店を構えてはじめての@nクリスマス。");
+	SetMessage(UNIT_ETC, -1, "", "冬休み＆祝日の明日と、@nクリスマスイブである明後日の二日間は@n戦場になるんだろうな。");
+	SetMessage(UNIT_ETC, -1, "", "それはファミーユだけでなく、@nブリックモール内の店舗すべてが@nそうだろう。");
+	SetMessage(UNIT_ETC, -1, "", "…今日はその前のちょっとした骨休め。");
+	SetMessage(UNIT_ETC, -1, "", "たまにはなんの用事も無く、@n駅前をぶらぶらするのも気分転換になって@nいいだろう…");
+
+	DelWindow();
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	SEFadeOut(3, SLOWER);
+	CurtainFadeOut(SLOW);
+
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "…とは思ったものの…");
+	DelWindow();
+
+	Wait(50);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ブリックモール外観＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_MALL_01A );
+	SEFadePlay(0, "L_Zattou06", SLOWER, 50);
+	SEFadePlay(1, "L_Town01", SLOWER);
+	SEFadePlay(2, "L_Town02", SLOWER);
+	SEFadePlay(3, "L_Town03", SLOWER);
+	CurtainFadeIn(SLOW);
+
+	SetWindow();
+
+	SetMessage(UNIT_ETC, -1, "", "なんとなくいつもの道に足が向き、@n気付けばブリックモールの前にいた。");
+	SetMessage(UNIT_ETC, -1, "", "大抵この時期は年末商戦ということで@n休みの無いところが多いが、@nブリックモールは今日はお休み。");
+	SetMessage(UNIT_ETC, -1, "", "いつもはかなりのスペースが埋まっている駐車場も@nがらがらだ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんかあっという間だったな…」");
+	SetMessage(UNIT_ETC, -1, "", "ここに来てはや３ヶ月近くになる。@p@n結構いろんなことがあったな。");
+	SetMessage(UNIT_ETC, -1, "", "始めはどうなることかと思ったが、@n今じゃ、あのキュリオとも対等に張り合えるまでになった、@n…と思う。");
+	HideDay();
+	DelWindow();
+
+	SetVisual(BG_SORA_01A);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…頑張ったよな、実際」");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	DelWindow();
+
+	SetVisual(BG_MALL_01A);
+	CrossFade();
+
+	ShowDay();
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "…って、何を感傷に浸っているんだ。@n俺は。");
+	SetMessage(UNIT_ETC, -1, "", "まだ終わった訳じゃないどころか、これからだ。");
+	SetMessage(UNIT_ETC, -1, "", "新しいのに古めかしさを感じさせる@n中世ヨーロッパ風の外観と、この寒空の所為で、@n一瞬人生の到達点な気分に浸ってしまった。");
+	SetMessage(UNIT_ETC, -1, "", "思わず惹き込まれてしまう、@nまさにブリックモールのコンセプトに沿った@n見事な世界観の構築。");
+	SetMessage(UNIT_ETC, -1, "", "ブリックモールおそるべし…");
+	SetMessage(UNIT_ETC, -1, "", "…なのか？");
+	DelWindow();
+
+	// ＜ＳＥ：風の音（ヒュー…）＞
+	SEPlay("L_Wind02");
+	Wait(70);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "寒…");
+	SetMessage(UNIT_ETC, -1, "", "か、帰るか。@n今風邪で倒れたらしゃれにならん。");
+	SetMessage(UNIT_ETC, -1, "", "客観的にブリックモールを見て@nある意味、気分転換の目的を果たしたことにして、@nそそくさと家路についた…");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	Wait(50);
+
+	BGMFadeOut(SLOWER);
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	SEFadeOut(3, SLOWER);
+	FadeOut(SLOW);
+	DelVisual();
+
+	Wait(200);
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

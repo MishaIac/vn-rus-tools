@@ -1,0 +1,403 @@
+// ●かすり03：かすりんの恋愛塾１
+// 種類：通常イベント
+// 条件：キッチンを選択、第２クォーター
+// 概要：客が忘れていったティーン向け雑誌が話題に。
+//		 明日香と由飛の会話。かすりに御伺いを立てる二人。
+//		 経験はないものの、耳年増なかすりはいかにもなことを語る。
+//		 妙な尊敬を受け、後に引けなくなるかすり。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ　キッチン＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEC_03A );
+	SEFadePlay(0, "L_Factory01", NORMAL, 50);
+	SetStand(KASURI_0201NO);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v04040058「じゃ、キッチンもそろそろ片づけるね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「よろしく」");
+
+	DelStand(CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_ETC, -1, "", "常に人手が足りない我がファミーユでは、@n店の後かたづけも、大仕事だ。");
+	SetMessage(UNIT_ETC, -1, "", "今日はかすりさんと俺で、店の前の清掃。@nこの後、俺はレジの締め、@nかすりさんは、キッチンの清掃が待っている。");
+	DelWindow();
+
+	// 時間経過のない場面転換を表現
+	SEFadeOut(0);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ　フロア＞
+	//----------------------------------------------------------------------------
+	SetVisual( BG_FAMILLEE_03A );
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v04010003「ありがとうございました～」");
+	DelWindow();
+
+	// ファミーユのドアベル
+	SEPlay("L_Door05A");
+	SEPlay("L_Bell02");
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "そして、今日最後のお客さんが店を出ていった。");
+	DelWindow();
+
+	SetVisual( BG_FAMILLEF_03A );
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「みんな、お疲れさま～」");
+
+	BGMFadePlay( BGM_YASURAGI, SLOWER );
+
+	SetStand(ASUKA_0101BS, CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0101BS, "明日香", "@v04030001「フロア、クリーニング入りま～す」");
+
+	SetStand(YUI_0101UT3, RIGHT, MOVE_RIGHT, FAST, 1);
+	MoveStand(CENTER, LEFT);
+
+	SetMessage(UNIT_YUI, YUI_0101UT3, "由飛", "@v04010004「はぁ、疲れた～」");
+
+	SetMessage(UNIT_ETC, -1, "", "今日もどうやら、無事に１日が終わりそうだ。@nフロア担当の二人は、せっせと片づけを始めている。");
+	SetMessage(UNIT_ETC, -1, "", "んじゃ、俺もレジ周りを片付けようかな。");
+	SetMessage(UNIT_ETC, -1, "", "売上はまぁまぁ。@nうん、この調子で行けば、打倒キュリオも夢じゃないかも。");
+	SetMessage(UNIT_ASUKA, ASUKA_0102NO, "明日香", "@v04030002「あれ？　忘れもの？」");
+
+	DelStand(LEFT,MOVE_LEFT);
+
+	SetMessage(UNIT_YUI, YUI_0102EG, "由飛", "@v04010005「なになに？@n雑誌？」");
+
+	DelStand(RIGHT, MOVE_LEFT);
+
+	SetMessage(UNIT_ETC, -1, "", "由飛くんが、すかさず近寄っていく。@n相変わらず、猫のような好奇心だ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…と」");
+	DelWindow();
+
+	SetVisual(BG_FAMILLEE_03A);
+	BGMFadeOut( SLOWER );
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "などと他人を気にしてる暇はない。");
+	SetMessage(UNIT_ETC, -1, "", "今日の伝票整理が終わらないと、@nいつまで経っても帰れない。");
+	SetMessage(UNIT_ETC, -1, "", "金勘定は、集中してやらないと。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	SetVisual( BG_FAMILLEF_03A );
+	BGMFadePlay( BGM_NICHIJOU3 );
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_ASUKA, ASUKA_0102OD, "明日香", "@v04030003「うそっ！？」");
+	SetMessage(UNIT_YUI, YUI_0102OD2, "由飛", "@v04010006「うわ～っ、これって本当かな？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え～と、１のかたまりが１０集まって…」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101TR2, "明日香", "@v04030004「こ、こっちのページなんか、ほらぁ」");
+	SetMessage(UNIT_YUI, YUI_0102OD, "由飛", "@v04010007「う、うわわわわ…」");
+	DelWindow();
+
+	SetVisual(BG_FAMILLEE_03A);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え～と…１９００円の会計で、２０００円預かって、@nおつりは…はい百万円だよ～」");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "いかん、全然集中できん。");
+	SetMessage(UNIT_ETC, -1, "", "何を騒いでるんだ？@nウチの若手組は？");
+	DelWindow();
+
+	SetVisual( BG_FAMILLEF_03A );
+	CrossFade();
+	SetStand(KASURI_0202NO, CENTER, MOVE_RIGHT);
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0202NO, "かすり", "@v04040059「お疲れ様～、@nキッチン、もう火ぃ落としたからね～@n@t0433@h0201KT…ってどうしたの？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101EG, "明日香", "@v04030005「あ、かすりさん、ちょうどいい所に！」");
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v04040060「ん？」");
+	SetMessage(UNIT_YUI, YUI_0101BS, "由飛", "@v04010008「そっか、かすりさんなら、詳しそう」");
+	SetMessage(UNIT_KASURI, KASURI_0202EG2, "かすり", "@v04040061「なになに？　一体なんの話かな～♪」");
+
+	//キャラがどこかへ移動してDelStandする時
+	DelStand(CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "とうとうかすりさんまで出てきて…@nフロアは一気に賑やかになった。");
+	SetMessage(UNIT_ETC, -1, "", "女３人で姦しい。@n良く言ったもんだ。");
+	SetMessage(UNIT_ETC, -1, "", "ったく、これじゃうるさくて勘定が…");
+	DelWindow();
+
+	BGMFade( SLOWER, 50 );
+	SetVisual(BG_FAMILLEE_03A);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	SetVisual( BG_FAMILLEF_03A );
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030006「………」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v04010009「………」");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040062「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…れ？」");
+	SetMessage(UNIT_ETC, -1, "", "いつの間にか、３人の話し声が随分と小さく…");
+	DelWindow();
+
+	// ＜以下四つの台詞、ヒソヒソ声で＞
+	BGMFadeOut();
+
+	//FadeOut();
+
+	Wait( 100 );
+
+	BGMFadePlay( BGM_COMICAL, SLOWER, 50 );
+
+	SetWindow();
+	SetMessage(UNIT_ASUKA, ASUKA_0102UN, "明日香", "@v04030007@s0002「……なんだよね」");
+	SetMessage(UNIT_YUI, YUI_0101OD, "由飛", "@v04010010@s0002「え～、それはいくら何でもつくってるでしょ？」");
+	SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v04040063@s0002「……だと思うけどな～」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102TR, "明日香", "@v04030008@s0002「かすりさん……すごい……」");
+
+
+	SetMessage(UNIT_ETC, -1, "", "かすりさんを見る、明日香ちゃんの目が@nキラキラしている。");
+	SetMessage(UNIT_ETC, -1, "", "そして、自慢げに小鼻を膨らますかすりさん。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "何が…何がそんなに凄いんだ！？");
+	SetMessage(UNIT_ETC, -1, "", "ったく、ひそひそ話ってのも困るぞ。@nこれじゃ気になって勘定が…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「一体なに話してるんだ？」");
+
+	BGMFade(SLOWER, 100);
+
+	SetStand(YUI_0102OD2, LEFT, MOVE_LEFT, FAST, 1);
+	SetStand(ASUKA_0102OD, RIGHT, MOVE_RIGHT);
+
+	SetMessage(UNIT_YUI, YUI_0102OD2, "由飛", "@v04010011「………」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102OD, "明日香", "@v04030009「………」");
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v04040064「………」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ど、どうした？」");
+	SetMessage(UNIT_ETC, -1, "", "な、なんだ？　この妙な間は。");
+	SetMessage(UNIT_ASUKA, ASUKA_0102TR, "明日香", "@v04030010「て、てんちょ、何でもないんだよ？」");
+	SetMessage(UNIT_ETC, -1, "", "明日香ちゃん…何故そんなに頬を赤く？");
+	SetMessage(UNIT_YUI, YUI_0101OD, "由飛", "@v04010012「………」");
+	SetMessage(UNIT_ETC, -1, "", "由飛くんまでっ！？");
+
+	DelStand(LEFT, MOVE_LEFT, FAST, 1);
+	DelStand(RIGHT, MOVE_RIGHT);
+	SetStand(KASURI_0202TR);
+
+	SetMessage(UNIT_KASURI, KASURI_0202TR, "かすり", "@v04040065「仁くん、あのね？」");
+	SetMessage(UNIT_ETC, -1, "", "そしてかすりさんは、@nかなり微妙な笑顔。");
+	SetMessage(UNIT_KASURI, KASURI_0202TR, "かすり", "@v04040066「女の子には色々秘密があるのよ@n…異性には聞かれたくない話とかね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「は？」");
+	SetMessage(UNIT_KASURI, KASURI_0202EG2, "かすり", "@v04040067「はい、気にしない気にしない。@nそれじゃ、着替えてきまーす！@n続きは更衣室でね～」");
+
+	//キャラがどこかへ移動してDelStandする時
+	SELoopPlay(0, "L_Walk03");
+	SEFadeOut(0, SLOWEST);
+	DelStand(CENTER, MOVE_RIGHT);
+	SetStand(YUI_0102OD, CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_YUI, YUI_0102OD, "由飛", "@v04010013「あ、わたしも行くっ！」");
+
+	SELoopPlay(0, "L_Walk03");
+	SEFadeOut(0, SLOWEST);
+	DelStand(CENTER, MOVE_RIGHT);
+	SetStand(ASUKA_0101AS, CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0101AS, "明日香", "@v04030011「フロア上がりま～す！@n@t0190@h0102ODあ、かすりさん、待って～！」");
+
+	SELoopPlay(0, "L_Walk03");
+	SEFadeOut(0, SLOWEST);
+	DelStand(CENTER, MOVE_RIGHT);
+
+	BGMFadeOut( SLOWEST );
+
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お～い…」");
+	SetMessage(UNIT_ETC, -1, "", "そして、一気に静寂。");
+	SetMessage(UNIT_ETC, -1, "", "３人が一気にいなくなったフロアは、@n妙に静かに感じる。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "こんなに静かだと、気になって勘定が…");
+
+	// ＜画面暗転＞
+	DelWindow();
+	FadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(100);
+
+	// ＜ＢＧ：更衣室前（あるいは黒）＞
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え～と…」");
+	SetMessage(UNIT_ETC, -1, "", "更衣室の扉に、ぴったりと耳をくっつけて。");
+	SetMessage(UNIT_ETC, -1, "", "ロケーションも、姿勢も、@n見つかったときの言い訳を許さないシチュエーションだ…");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030012「で、でもこの記事とか！」");	// ★★声のみ
+	SetMessage(UNIT_YUI, -1, "由飛", "@v04010014「どれどれ？@nうわ～っ、うわ～っ、うわ、うわ、うわ！」");	// ★★声のみ
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040068「彼氏の求めるままに、ＳＭプレイ？」");	// ★★声のみ
+
+	SEPlay("L_Touch02");
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「っ！？」");
+
+	SetMessage(UNIT_ETC, -1, "", "慌てて自分の口を塞ぐ。");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040069「ん～、ごく普通じゃない？」");	// ★★声のみ
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030013「そ、そうなの！？」");	// ★★声のみ
+	SetMessage(UNIT_ETC, -1, "", "そ、そうなの！？");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v04010015「か、かすりさん、経験豊富っ」");	// ★★声のみ
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040070「ま、そんなこともないけどね」");	// ★★声のみ
+	SetMessage(UNIT_ETC, -1, "", "うわ、結構まんざらでもなさそうな声…");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v04010016「これに載ってる体験談って@nけっこう過激だと思ってたけど」");	// ★★声のみ
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030014「実際はもっとスゴいんだね～」");	// ★★声のみ
+	SetMessage(UNIT_YUI, -1, "由飛", "@v04010017「で、でもコレなんてどうです？」");	// ★★声のみ
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040071「何々、彼氏に求められるままに…@nベランダ、でぇ？」");	// ★★声のみ
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "ベランダ…");
+	SetMessage(UNIT_ETC, -1, "", "青い…@nなんて青いんだ。");
+	SetMessage(UNIT_ETC, -1, "", "いや、多分一般的な用法とは違うけど。");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030015「これはないよね？@nかすりさんの体験から言ってどう？」");	// ★★声のみ
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040072「わたし？　わたしの体験でいうと……」");	// ★★声のみ
+	SetMessage(UNIT_YUI, -1, "由飛", "@v04010018「言うと？」");	// ★★声のみ
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040073「………」");	// ★★声のみ
+	SetMessage(UNIT_YUI, -1, "由飛", "@v04010019「…@s0002（わくわく）@s0003」");	// ★★声のみ
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030016「…@s0002（どきどき）@s0003」");	// ★★声のみ
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040074「………別に、その程度、ねぇ？」");	// ★★声のみ
+	SetMessage(UNIT_YUI, -1, "由飛", "@v04010020「え～～～っ！」");	// ★★声のみ
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030017「あるの！？」");	// ★★声のみ
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040075「い、今時外でするなんて当たり前でしょ？」");	// ★★声のみ
+	SetMessage(UNIT_YUI, -1, "由飛", "@v04010021「…あ、当たり前」");	// ★★声のみ
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうだったのかぁ…」");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040076「誰かに見られちゃうかも、@n声漏れちゃうかも……ってのが@n刺激的なのよね～」");	// ★★声のみ
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030018「し、刺激的……なのぉ？」");	// ★★声のみ
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうだったのかぁ！」");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040077「今時、そんなの当たり前よ？」");	// ★★声のみ
+	SetMessage(UNIT_YUI, -1, "由飛", "@v04010022「そ、そうなんだ～」");	// ★★声のみ
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v04030019「べ、勉強になる～」");	// ★★声のみ
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「た、確かに…」");
+	SetMessage(UNIT_ETC, -1, "", "そっかぁ、当たり前なんだぁ。@n俺って保守的だったんだなぁ。");
+	SetMessage(UNIT_ETC, -1, "", "そういえば、ジャンケンは必ず最初にグー出すしなぁ。");
+	SetMessage(UNIT_ETC, -1, "", "俺も、色々と認識を改めないと…");
+
+	DelWindow();
+
+	// ＜ＳＥ　バターン！＞
+	SEPlay( "L_Door02A" );	// ( ´∀`).oO( 締める音っぽいけど激しさ表現ならこっちのほうが…？
+
+	SetVisual( BG_FAMILLES_01A );
+	ShakeScreen( 8 );
+	FadeIn( FAST );
+	SetWindow();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+
+	BGMPlay( BGM_COMICAL );
+
+	SetStand(YUI_0101IK2);
+	SetMessage(UNIT_YUI, YUI_0101IK2, "由飛", "@v04010023「聞き耳頭巾はっけ～ん！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ゆ、由飛くん！？」");
+
+	// 二人目をウェイト無しで出して、真ん中にいたキャラは逆側に移動させる
+	SetStand(ASUKA_0102NR, LEFT, MOVE_LEFT, FAST, 1);
+	MoveStand(CENTER, RIGHT);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0102NR, "明日香", "@v04030020「てんちょ、盗み聞き？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「い、いや、決してそう言うわけではなく…」");
+	SetMessage(UNIT_YUI, YUI_0101IK, "由飛", "@v04010024「じゃ、覗き？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そんな構造には作ってない！」");
+
+	SetMessage(UNIT_ASUKA, ASUKA_0101IK, "明日香", "@v04030021「駄目だよてんちょ！@nかすりさんも何か言ってよぉ」");
+
+	DelStand( RIGHT, MOVE_STOP, FAST, 1 );
+	DelStand( LEFT );
+
+	SetStand(KASURI_0202AS);
+
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v04040078「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…あり？」");
+	SetMessage(UNIT_YUI, YUI_0102OD2, "由飛", "@v04010025「かすりさん？」");
+	SetMessage(UNIT_ETC, -1, "", "かすりさん、どうしたんだ？");
+	SetMessage(UNIT_ETC, -1, "", "こんな時には、誰よりも生き生きと@n責め立てる人だってのに。");
+	SetMessage(UNIT_KASURI, KASURI_0202TY, "かすり", "@v04040079「………」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102NO, "明日香", "@v04030022「かすりさん？」");
+
+	DelStand();
+
+	SetMessage(UNIT_ETC, -1, "", "かすりさんが、ちらっと目線をやった先には、@nさっき明日香ちゃんが拾った雑誌。");
+	SetMessage(UNIT_ETC, -1, "", "少女向けの情報誌って感じのイラストが@n表紙を飾っている。");
+	SetMessage(UNIT_ETC, -1, "", "しかし、その上に踊っている文字はと言えば…");
+	SetMessage(UNIT_ETC, -1, "", "@n『ロマンティックにエッチする聖夜』");
+	SetMessage(UNIT_ETC, -1, "", "@n『彼氏が虜になる！　お口のテクニック』");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "なるほど…@nこの雑誌の記事でワイ…いや、雑談してたんだな。");
+
+	SetStand( KASURI_0202AS );
+
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v04040080「き、聞いてた？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「心ならずも」");
+
+	DelStand();
+	SetStand(YUI_0101IK, LEFT, MOVE_LEFT, FAST, 1);
+	SetStand(ASUKA_0101IK, RIGHT, MOVE_RIGHT );
+
+	SetMessage(UNIT_YUI, YUI_0101IK, "由飛", "@v04010026「嘘つき発見！」");
+	SetMessage(UNIT_ASUKA, ASUKA_0101IK, "明日香", "@v04030023「同意！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え～！？」");
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v04040081「………」");
+
+	DelStand( LEFT, MOVE_LEFT, FAST, 1 );
+	DelStand( RIGHT, MOVE_RIGHT );
+	SetStand( KASURI_0202AS );
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…かすりさん？」");
+	SetMessage(UNIT_ETC, -1, "", "てっきり、二人と同調して、@nいや、それ以上に俺をからかってくると思ったんだけど…");
+
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v04040082「………」");
+
+	SetMessage(UNIT_ETC, -1, "", "かすりさんは、顔を真っ赤にして@n俺達のやりとりを聞いている。");
+	SetMessage(UNIT_ETC, -1, "", "この人にも照れとかあるのか…な？");
+	SetMessage(UNIT_ETC, -1, "", "でもまぁ、自分の性体験を赤裸々に異性に聞かれるのは…");
+	SetMessage(UNIT_ETC, -1, "", "確かに、照れるか…？");
+
+	SetMessage(UNIT_KASURI, KASURI_0202TS, "かすり", "@v04040083「ち、違うからね！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「は？　何がです？」");
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v04040084「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_KASURI, KASURI_0202TY, "かすり", "@v04040085「何がよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「聞いておるのは俺ですが…」");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	Wait(50);
+	BGMFadeOut( SLOWER );
+	FadeOut( SLOW );
+	Wait(200);
+
+	DelStand();
+	DelVisual();
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

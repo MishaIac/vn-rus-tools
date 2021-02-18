@@ -1,0 +1,255 @@
+// ●恵麻07：昼下がりの妄想
+// 種類：通常イベント
+// 条件：第３クォーター、キッチンを選択
+// 概要：恵麻にちょっかいを出す板橋。全く相手にされない。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+	SEFadePlay(1, "L_Dish03", NORMAL, 20);
+	SEFadePlay(2, "L_Factory01", NORMAL, 50);
+	BGMFadePlay( BGM_COMICAL );
+	SetStand(EMA_0101AS, LEFT);
+	SetStand(ITABASHI_0101NO, RIGHT);
+	FadeIn();
+	MoveStand(RIGHT, CENTERRIGHT);
+
+	SetWindow();
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080001「おおう…見事な手際ですねぇ」");
+	SetMessage(UNIT_EMA, EMA_0101AS, "恵麻", "@v05050190「ど、どうも…」");
+
+	MoveStand(CENTERRIGHT, CENTER);
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080002「この華奢な体のどこからこんな@nエネルギッシュな造形が…@n繊細かつ大胆。まさに天使の作ったデザート！」");
+	SetMessage(UNIT_EMA, EMA_0101AS, "恵麻", "@v05050191「あ、あの…板橋さん？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080003「ああっ、ボクのことは気にせずに！@nささ、お仕事お仕事～」");
+
+	ShakeScreen(8);
+	SEPlay("L_Fall02");
+	SetStand(ITABASHI_0101KT);
+	MoveStand(CENTER, RIGHT);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あんたがお仕事しろ」");
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v05080004「なんだ仁くんいたの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「人がちょっと休憩してたら性懲りもなく…@n大体、なんだその意味不明な美辞麗句は？」");
+	SetMessage(UNIT_ETC, -1, "", "ケーキ作るのに華奢とかエネルギッシュとか…");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080005「あ、それでですね。@n今日伺ったのは他でもないんですが、@n来週の定休日の都合をお伺いに…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あんたも懲りない人だな」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080006「実は偶然ですね…いやホント偶然！@nトリトンホテルのフレンチレストランのお食事券が！@nこれがまた、新聞契約したらついてきまして」");
+	SetMessage(UNIT_EMA, EMA_0101TO, "恵麻", "@v05050192「まあ、トリトン…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おい！　あそこのフレンチだったら、@n下手すると一年の新聞代より高いぞ？」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v05050193「詳しいわね仁くん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「色々あったんだよ…色々」");
+	SetMessage(UNIT_ETC, -1, "", "一度、見栄を張って予約しようとして、@n一番安いコースの値段を聞いて、@n電話口で平謝りした記憶がある。");
+	SetMessage(UNIT_ETC, -1, "", "誰を誘うつもりだったのかは、@n今となっては永遠の謎と言うことにしといてくれ。");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080007「いやほら、永年契約だから。@nおまけもパ～っと奮発したんじゃない？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「解約するとき“落とし前”とかいるんじゃないのか？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101MJ, "板橋", "@v05080008「ちょっと仁くんうるさいよ？@nボクは恵麻さんと話をしてるんだ。@n哀れな横恋慕男は黙っててくれないかな？」");
+	SetMessage(UNIT_ETC, -1, "", "いろいろな意味で哀れな表現だ…");
+
+	SetStand(ITABASHI_0101NO, RIGHT);
+	MoveStand(RIGHT, CENTERRIGHT);
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080009「ささ、恵麻さん。@nたまにはライバル同士、美味しいものでも食べて、@n急激に親睦を深めてみませんか？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う～ん、誘う場所としては@nいいとこ突いてるんだけど…５９点」");
+	SetMessage(UNIT_ETC, -1, "", "大学で言えば、ギリギリ『不可』。");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101MJ, "板橋", "@v05080010「だからね仁くん？@n今日は君と遊んでる暇はないんだよ。@nボクは真面目にデートのお誘いに来たんだ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、俺だっていつもあんたと@n遊んでる暇ないんだけど…」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080011「君の、姉さんを心配する気持ちはわかる。@nだけど残念ながら…」");
+	SetMessage(UNIT_EMA, EMA_0101EG2, "恵麻", "@v05050194「ほんと残念～。@n来週のお休みの日は、@n仁くんとトリトンホテルに行く約束だし…」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080012「ほら見たまえ。@n恵麻さんは快く来週トリトンに@t0380@h0101KT…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v05080013「…は？」");
+	SetMessage(UNIT_ETC, -1, "", "あ～あ…@n気の毒に。");
+	SetMessage(UNIT_EMA, EMA_0101BS2, "恵麻", "@v05050195「あ、そうだ仁くん。@n朝なんだけど、８時に来てくれないかな？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え～やだよ。@nそんな時間の姉さんになんか会いたくない」");
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v05050196「でもぉ…一次予選から見たいもの」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101AS, "板橋", "@v05080014「あ、あの…恵麻さん？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「一次なんて下ごしらえじゃん。@nそんなもののために、@nいわれのない罵詈雑言を受けるのは嫌だ」");
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v05050197「じゃ、じゃあ、@n３０分前には目覚ましセットしておくから～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「４つ…な。@nで、起きたらすぐシャワーに直行すること」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101AS, "板橋", "@v05080015「…デート？」");
+	SetMessage(UNIT_EMA, EMA_0101EG, "恵麻", "@v05050198「そうですけど何か？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101SN, "板橋", "@v05080016「君のお姉さんは、@n弟以外の男性に優しくないんじゃないかなぁ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「涙目はやめろ…」");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05050199「あ、休憩の時間だわ。@n仁くん、悪いけど…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ～いいよ。@n行っといで」");
+	SetMessage(UNIT_ETC, -1, "", "何しろ、明らかに鬱陶しそうだったし。");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101AS, "板橋", "@v05080017「あ、ああ…恵麻さん？」");
+	SetMessage(UNIT_EMA, EMA_0101EG, "恵麻", "@v05050200「それじゃ失礼しますね。@n@t0287@h0101HE板橋さんも、ゆっくりしてないで働いてください。@n@t0766@h0101IKちゃんと自分の店で」");
+
+	DelWindow();
+
+	// ＜ＳＥ：ドア開閉＞
+	BGMFadeOut( SLOWER );
+	DelStand(LEFT, MOVE_LEFT);
+	SEPlay("L_Door09A");
+	Wait(150);
+	SEPlay("L_Door09B");
+	MoveStand(CENTERRIGHT, CENTER);
+
+	SetWindow();
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101AS, "板橋", "@v05080018「あ、ああ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101AS, "板橋", "@v05080019「………」");
+	SetMessage(UNIT_ETC, -1, "", "そして後には、半泣きの中年男と、@n二人きりで取り残された俺。");
+
+	BGMFadePlay(BGM_NICHIJOU1, SLOWER);
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101SN, "板橋", "@v05080020「…朝っぱらからホテルにしけ込もうってか？@nお姉ちゃん相手に大ハッスル？」");
+	SetMessage(UNIT_ETC, -1, "", "中年の嫉妬は醜いうえにセンスがない。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…洋菓子コンクールだよ、トリトンの。@nあんたキュリオの店長のくせに@nそんなことも知らんのか？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080021「おお！　本店の店長室にトロフィーあるよ。橘くんの。@nそうか、今年は冬開催なんだ」");
+	SetMessage(UNIT_ETC, -1, "", "トリトンホテル主催の洋菓子コンクールは、@n若手パティシエの登竜門として、@n全国的にも有名な大会だったりする。");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v05080022「恵麻さん、出場するの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや今年はギャラリー」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v05080023「確かそろそろ参加資格が切れるんじゃ…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…それ、面と向かって姉さんに言うなよ？」");
+	SetMessage(UNIT_ETC, -1, "", "“若手”の登竜門であるこのコンクールは、@n参加資格が『２３歳まで』と限定されている。");
+	SetMessage(UNIT_ETC, -1, "", "来年からは、もう出られない…@p@nつまり、“若手”じゃない………");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080024「そっか…なぁんだ。@n恵麻さんがデートって言うからてっきり…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「姉さんは、俺と出かけるときは、@nいつでもデートって言うの」");
+	SetMessage(UNIT_ETC, -1, "", "ちょっと、こそばゆくて、@nそして、虚しい瞬間。");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v05080025「で、君以外の男とはお出かけしないの？@nやっぱりブラコン？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「夫に操を立ててるとか、@nどうしてそういう発想が出てこんのだ？」");
+	SetMessage(UNIT_ETC, -1, "", "まったく、俺と姉さんがちょっと仲良くしてるだけで、@n周りはすぐにブラコンだのシスコンだのと。");
+	SetMessage(UNIT_ETC, -1, "", "もうちょっと、家族愛というものに対して、@n理解を持ってもらいたいもんだ。");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080026「恵麻さんの亡くなったご主人って、@n確か仁くんの実のお兄さんなんだよね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…どうしてそれを知ってる？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080027「蛇の道は王道ってね」");
+	SetMessage(UNIT_ETC, -1, "", "…かすりさんだな。@nこういう姑息な人間に同調するのは。");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080028「で、そんなに立派な人だったの？@n亡くなってから３年も想い続けられるほど？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「帝王大卒。大手商事に勤務。２０代後半にして課長級。@n当時の年収一千万超。姉さんと結婚するにあたって、@n一戸建て兼喫茶店をポンと建てるような人間だ」");
+	SetMessage(UNIT_ETC, -1, "", "言いたくないが、スーパーマン。");
+	SetMessage(UNIT_ETC, -1, "", "それでいて、ちゃんと休日のデートも欠かさないし、@nカッコいいし、優しいし、頼もしいし、@nけど、ちょっとだけ関白だし。");
+	SetMessage(UNIT_ETC, -1, "", "…というのが、姉さんののろけ。");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101AS, "板橋", "@v05080029「その人って最初から君らの心の中にだけ@n生きてたんじゃないの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺の兄ちゃんを空想の産物にするな」");
+	SetMessage(UNIT_ETC, -1, "", "本当に、いたんだよ…");
+	SetMessage(UNIT_ETC, -1, "", "そんな、どう足掻いても勝てないような化け物が。");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080030「そっかぁ…それじゃ、よほどの男でないと、@n興味湧かないかもしれないねぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「かもしれないんじゃなくて、湧かないんだよ」");
+	SetMessage(UNIT_ETC, -1, "", "姉さんが、ずっと、母さんの縁談攻勢から@n逃げ続けてるのだって…");
+	SetMessage(UNIT_ETC, -1, "", "相変わらず、俺の前でちょっと無防備なのだって…");
+	SetMessage(UNIT_ETC, -1, "", "兄ちゃん以外の男を、男と認めていないからなんだ。");
+	SetMessage(UNIT_ETC, -1, "", "俺を含め、ただ一人の、例外もなく。");
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080031「そうか…だから仁くんしか残らないんだ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…あんた、今までの俺の話を聞いてたのか？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v05080032「聞いてたけど？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だったら、どうしてそういう仮定が出てくる？@n俺が姉さんに釣り合うとでも？」");
+	SetMessage(UNIT_ETC, -1, "", "いや、それ以前に、兄ちゃんと張り合えるとでも？");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080033「八橋大在学中、人気喫茶店に勤務。２０歳にして店長。@n年収はさておき、恵麻さんを元気づけるためだけに、@n大学をポンと一年休学するような人間だろ、君は？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…全部劣ってんじゃん」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080034「でも今、彼女の側にいるのは君だ」");
+
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080035「劣ってるか優れてるかは、@n恵麻さんの判断することであって、@n我々の常識は関係ないんじゃないの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…あんた、一体」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080036「それに…君はお兄さんによく似てるんだってね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…っ」");
+	SetMessage(UNIT_ETC, -1, "", "あ、あの口@s0002（か）@s0003軽@s0002（す）@s0003女@s0002（り）@s0003めぇ～！");
+	// ＜ここ、ルビが振れるなら、『口軽女』に『かすり』と振ってください＞
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080037「普通なら、君の顔を見るのも辛いんじゃないかな。@nそれでも近くにいるのはなんでだろうねぇ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お、俺は…その、ずっと前から、ま～姉ちゃんの弟で…」");
+	SetMessage(UNIT_ETC, -1, "", "１０年前、高村仁になったときから…@nもう、そんなことを思う資格は…");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080038「けど彼女は、今は君と姓が違うだろ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、そりゃ…そうだけど」");
+
+	SEFadeOut(0, SLOWEST);
+	SEFadeOut(1, SLOWEST);
+	SEFadeOut(2, SLOWEST);
+	FadeOut();
+
+	SetMessage(UNIT_ETC, -1, "", "ま～姉ちゃんは、俺の旧姓である杉澤で…");
+	SetMessage(UNIT_ETC, -1, "", "俺は、ま～姉ちゃんの旧姓である高村で…");
+	SetMessage(UNIT_ETC, -1, "", "これって…どうなんだ？@p@n俺たちって、今は、きょうだいなのか？");
+	DelWindow();
+
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080039「こうは考えられないだろうか？@n恵麻さんは、君と、姉弟に戻るのをためらっていると」");
+
+	// ＜『姉弟＝きょうだい』と読んでください＞
+	// ＜ＳＥ：落雷（昼メロ風）＞
+	BGMPlay(BGM_KANASHIMI);
+	SEPlay("L_Thunder02");
+	ShakeScreen(16);
+	FlashIn();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な…」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080040「確かに、君のお兄さんが忘れられないのかもしれない。@nでも…君の告白を待っているという可能性は、@n果たしてゼロなんだろうか？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	DelWindow();
+
+	FadeOut();
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "@m00ま～姉ちゃんが…@nいつまで経っても、高村の家に戻ってこないのは…？");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	HideDay();
+	DelWindow();
+
+	// ＜画面暗転で空想＞
+	SEFadePlay(0, "L_Water15");
+	FilterFlashOut(SLOW, FADEFILTER_LIGHT | FADEFILTER_NEGATIVE);
+
+	SetWindow(WINDOW_SIMPLE);
+	//伊藤：顔グラいらないかも？
+	SetMessage(UNIT_EMA, EMA_0201TO, "恵麻", "@v05050201「仁くん…やっと、言ってくれた」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ね…姉ちゃん…？」");
+	SetMessage(UNIT_EMA, EMA_0201SM, "恵麻", "@v05050202「ずっと待ってたの…@nあなたが、わたしを奪ってくれるのを…@n一人さんのことを、忘れさせてくれるのを」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ほ、ほんとに…本当に、俺で？」");
+	SetMessage(UNIT_EMA, EMA_0202SP, "恵麻", "@v05050203「ううん…仁くんでなきゃ、嫌…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ね…姉さんっ！」");
+	SetMessage(UNIT_EMA, EMA_0202MS2, "恵麻", "@v05050204「恵麻って…恵麻って呼んで…っ」");
+	DelWindow();
+
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	SetStand(ITABASHI_0101NO,LEFT);
+	SetStand(KASURI_0101AK,RIGHT);
+	FlashIn(SLOW);
+
+	// ＜いつの間にか、板橋の隣にかすり＞
+	ShowDay();
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「い、いけないよ恵麻…じゃないま～姉ちゃん！@nちょっ、そんな、俺、心の準備が…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、お、俺…ま～姉ちゃんのこと…@e");
+	Wait(20);
+	ShakeScreen(8);
+	AddMessage("@nああっ！　ダメだ、兄ちゃんごめんっ！@nああ、でも…くそぉ！」");
+	SetMessage(UNIT_ETC, -1, "", "お、俺は一体…どうすればいいんだ～！？");
+
+	BGMFade(SLOW, 50);
+	SEFade(0, SLOWER, 50);
+
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v05080041「まぁ、ふられたのは残念だけど、@n別の意味で楽しませてもらったからいっかぁ」");
+	SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v05040011「このシスコンちっとも直ってやがらないねぇ」");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	Wait(50);
+	BGMFadeOut(SLOWER);
+	SEFadeOut(0, SLOWER);
+	FilterFadeOut( SLOW, FADEFILTER_CIRCLE );
+	DelStand(LEFT);
+	DelStand(RIGHT);
+	DelVisual();
+
+	Wait( 300 );
+
+	LoadEvent(EVENT_03_02_04);
+end();

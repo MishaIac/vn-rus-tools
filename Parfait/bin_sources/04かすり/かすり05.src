@@ -1,0 +1,188 @@
+// ●かすり05：怪しい電話１
+// 種類：重要イベント（かすり攻略にかすり05、08のどちらかが必須）
+// 条件：第２クォーター、キッチンを選択
+// 概要：かすりの携帯に謎の電話がかかってくる。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+	SEFadePlay(1, "L_Dish03", NORMAL, 20);
+	SEFadePlay(2, "L_Factory01", NORMAL, 50);
+	BGMFadePlay( BGM_KISSATEN );
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_YUI, YUI_0102SW, "由飛", "@v04010035「ケーキ切れちゃいました～」");
+	SetMessage(UNIT_KASURI, KASURI_0202OD, "かすり", "@v04040125「もーちょっとだけ、待ってて～」");
+	SetMessage(UNIT_ETC, -1, "", "かすりさんの担当は、下ごしらえとデコレーション。@p@n今もせっせと、ショートケーキの飾り付けをやっている。");
+	SetMessage(UNIT_ETC, -1, "", "言葉は焦りながらも、@n手は機械のように正確に動かして。");
+	SetMessage(UNIT_ETC, -1, "", "それまで、ただのスポンジだったものが@nみるみるうちに美しく飾られてゆく。");
+	SetMessage(UNIT_ETC, -1, "", "この繊細な飾り付けだけは、@n姉さんにも真似できない。");
+	DelWindow();
+
+	// ＜ＳＥ：携帯着信音＞
+	BGMFadeOut( SLOWER );
+	SELoopPlay(3, "L_Tel15");
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v04040126「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "キッチンに場違いな音楽。@p@nかすりさんのポケットからだ。");
+
+	SetStand(KASURI_0201KS);
+
+	SetMessage(UNIT_KASURI, KASURI_0201KS, "かすり", "@v04040127「ごめ～ん、ちょっとだけいい？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ほんとはよくないけど…」");
+	SetMessage(UNIT_KASURI, KASURI_0201KS, "かすり", "@v04040128「すぐ終わるから～」");
+	SetMessage(UNIT_ETC, -1, "", "言いつつ、かすりさんはポケットから携帯を取り出す。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっとちょっとあんた…@n手がクリームまみれだって」");
+	SetMessage(UNIT_KASURI, KASURI_0202OD, "かすり", "@v04040129「うわ、べとべと…@t0240@h0201KTあ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん？」");
+	DelWindow();
+
+	SetStand( KASURI_0201IK );
+
+	// ＜ＳＥ：ピッ＞
+	SEStop(3);
+	SEPlay("L_Tel02");
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…れ？」");
+	SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v04040130「ふう」");
+
+	DelStand();
+
+	SetMessage(UNIT_ETC, -1, "", "着信画面を見たとたん、急に表情を険しくして…");
+	SetMessage(UNIT_ETC, -1, "", "かすりさんは、そのまま切ってしまった。");
+	SetMessage(UNIT_KASURI, KASURI_0202UN, "かすり", "@v04040131「ったく、こんな時に電話なんて@nかけてこないでよねっ！」");
+	SetMessage(UNIT_ETC, -1, "", "携帯をしまいこみ、@n再び作りかけのケーキに向かいながら@nぶつぶつ文句を言うかすりさん。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…いいの？」");
+	SetMessage(UNIT_KASURI, KASURI_0202TY, "かすり", "@v04040132「仕事中の私用電話はよくないって、@n店長がおっしゃいますので～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だって、すぐ終わるんだろ？」");
+	SetMessage(UNIT_ETC, -1, "", "何故だかさっきと会話が逆だ。");
+	SetMessage(UNIT_ETC, -1, "", "…あの素っ気ない対応。");
+	SetMessage(UNIT_ETC, -1, "", "誰が相手なんだ？@nかすりさんって開けっぴろげな割に@nプライベートは全然話してくれないからなぁ。");
+
+	SEPlay("L_Dish02");
+	SetStand(KASURI_0201NO);
+
+	SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v04040133「ほい、後は仕上げのホイップ」");
+
+	BGMFadePlay( BGM_NICHIJOU3 );
+	SetStand( YUI_0102EG, LEFT, MOVE_LEFT, FAST, 1 );
+	MoveStand(CENTER, RIGHT);
+
+	SetMessage(UNIT_YUI, YUI_0102EG, "由飛", "@v04010036「ね、ね、かすりさんっ@n今のって誰からですか？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…君はさっきまでフロアにいなかったか？」");
+	SetMessage(UNIT_YUI, YUI_0102BS, "由飛", "@v04010037「オーダー通しに来たついでですよ～。@n@t0330@h0102EGね、ね、例の彼氏からですか？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なっ…！？」");
+	SetMessage(UNIT_ETC, -1, "", "例…の？");
+	SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v04040134「何詮索してんのよ～」");
+	SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v04010038「だってほら～、@nこの間、すっごいこと言ってたじゃないですか～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "す、すごいこと…？");
+	SetMessage(UNIT_KASURI, KASURI_0202TY, "かすり", "@v04040135「う～ん、教えてあげてもいいけど、@n条件があるわね」");
+	SetMessage(UNIT_YUI, YUI_0101BS, "由飛", "@v04010039「なんですか？@nわたし、秘密は守りますよ～」");
+	SetMessage(UNIT_KASURI, KASURI_0201MJ, "かすり", "@v04040136「…あなたが受けて来たオーダー、まず通しなさい。@n今すぐ復唱できたら教えてあげる」");
+	SetMessage(UNIT_YUI, YUI_0101UN, "由飛", "@v04010040「………」");
+	SetMessage(UNIT_KASURI, KASURI_0201MJ, "かすり", "@v04040137「………」");
+	SetMessage(UNIT_YUI, YUI_0101AS, "由飛", "@v04010041「え、えっと…あはは～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………由飛くん」");
+	SetMessage(UNIT_ETC, -1, "", "またか…");
+
+	SEPlay("L_Dash03");
+	DelStand( LEFT, MOVE_LEFT );
+
+	SetMessage(UNIT_YUI, YUI_0101OD, "由飛", "@v04010042「聞き直してきます～！」");
+	DelWindow();
+
+	// ＜由飛消える＞
+	SetStand(KASURI_0202UN, RIGHT);
+	MoveStand(RIGHT, CENTER);
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0202UN, "かすり", "@v04040138「やっぱね…@nひとつのことに興味示すと、@n他のこと飛んじゃうのよね、あの子」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なるほど…」");
+	SetMessage(UNIT_ETC, -1, "", "それがわかってたから、@n普通だったら割に合わないはずの、@nあんな危険な賭に出たのか。");
+	SetMessage(UNIT_KASURI, KASURI_0202BS, "かすり", "@v04040139「さ、お仕事お仕事。@nホイップホイップ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あの…」");
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v04040140「ん？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「い、いや…なんでも」");
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v04040141「そう」");
+
+	DelStand();
+	SetMessage(UNIT_ETC, -1, "", "と、かすりさんは、あっさり会話を打ち切ると、@nホイップを両手に握り、デコレーションを始める。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "俺も仕方ないので、@nバックオーダーのブレンドを挽き始める。");
+	DelWindow();
+
+	// ちょっとした時間経過を表現
+	Wait(50);
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	FadeOut(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(100);
+
+	SetStand( KASURI_0201NO );
+	SEFadePlay(0, "L_Zattou04", SLOWER, 50);
+	SEFadePlay(1, "L_Dish03", SLOWER, 20);
+	SEFadePlay(2, "L_Factory01", SLOWER, 50);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v04040142「…気になる？」");
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「全然っ！」");
+	SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v04040143「何が？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う…」");
+	SetMessage(UNIT_ETC, -1, "", "あまりにも早いリアクションのせいで、@n逆に、こっちが興味津々なのがバレバレじゃないか。");
+	SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v04040144「ご想像にお任せするわ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「く…」");
+
+	DelStand();
+
+	SetMessage(UNIT_ETC, -1, "", "結局、かすりさんに余計な警戒心を抱かせてしまい、@n電話の相手を聞き出すことは不可能となってしまった。");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040145「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "誰だったのかなぁ…@nなんか、結構感情的になってたみたいだけど。");
+	SetMessage(UNIT_KASURI, KASURI_0202NY, "かすり", "@v04040146「男からだったわよ」");
+	DelWindow();
+
+	SEPlay("L_Inpact04");
+	SEPlay("L_Inpact05");
+	ShakeScreen( 16 );
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「うあちっ！？」");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	Wait(50);
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	BGMFadeOut( SLOWER );
+	FilterFadeOut( SLOW, FADEFILTER_CIRCLE );
+	DelVisual();
+
+	Wait( 200 );
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

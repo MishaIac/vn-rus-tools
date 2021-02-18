@@ -1,0 +1,711 @@
+// ●第２クォーター02
+//種類：強制イベント
+//条件：第２クォーターの全選択終了後に発生
+//概要：第２クォーターエピローグ
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+	ShowDay();
+
+	//----------------------------------------------------------------------------
+	//たぶんＢＧキッチン
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEC_03A );
+	SEFadePlay(0, "L_Factory01", NORMAL, 50);
+	SEFadePlay(1,"L_Cook05");
+	SEFadePlay(2,"L_Cook01");
+	FadeIn();
+
+	// ＜ＳＥ：キッチン＞
+	// ＜ＳＥ：スパゲティを炒める＞
+	SetStand( EMA_0302SP );
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0302SP, "恵麻", "@v00050140「仁くん、もう帰ろうよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、いいって。@n姉さんは最近一番忙しいんだし、@n先に帰ってゆっくり休みなって」");
+	SetMessage(UNIT_EMA, EMA_0302AK, "恵麻", "@v00050141「別に疲れてなんかいないけどなぁ…」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「今はテンション高いからね。@nこれがちょっとでも気を抜いたらぶっ倒れるから。@n何せもう若くな@e");
+	Wait(30);
+	SEPlay("L_Wind02");
+	SetStand(EMA_0301NR);
+	Wait(120);
+	AddMessage("@m00…んでもありません」");
+
+	SetMessage(UNIT_ETC, -1, "", "体感温度的にエアコンが切れたような寒さ。");
+	SetMessage(UNIT_ETC, -1, "", "室内に寒風が吹きすさぶ中、@n俺は姉さんの若々しい美しさが、@n不老不死の雪女のそれに重なり…@pこれ以上はやめとこう。");
+
+	SetMessage(UNIT_EMA, EMA_0301OD, "恵麻", "@v00050142「あ…」");
+	DelWindow();
+
+	SetVisual(BG_FAMILLEF_04A);
+	DelStand();
+	SEFade(0,NORMAL,0);
+	SEFade(1,NORMAL,30);
+	SEFade(2,NORMAL,30);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "けど、姉さんをこれ以上働かせるのは、@n俺の矜持から言っても許されないこと。");
+	SetMessage(UNIT_ETC, -1, "", "何しろ先週から今週にかけては、@n本当に、目が回るくらいに忙しかった。");
+	SetMessage(UNIT_ETC, -1, "", "ケーキメニューの刷新、ほぼ半額への値下げ。");
+	SetMessage(UNIT_ETC, -1, "", "それらの改革は、芽を出したと言っていい結果を残した。");
+	SetMessage(UNIT_ETC, -1, "", "はじめの週に、三日後に客足が鈍ったのと対照的に、@n三日後から、評判が評判を呼び始めた。");
+	SetMessage(UNIT_ETC, -1, "", "１個２００円のケーキは飛ぶように売れ、@nそして…予想通り、赤字へと転落した。");
+	SetMessage(UNIT_ETC, -1, "", "けど、初週の頃と比べて、皆に悲壮感はない。@p@n明らかに、展望が見えてきてるから。");
+	DelWindow();
+
+	SetVisual( BG_FAMILLEC_03A );
+	SetStand(EMA_0301KS);
+	SEFade(0,NORMAL,50);
+	SEFade(1,NORMAL,100);
+	SEFade(2,NORMAL,100);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0301KS, "恵麻", "@v00050143「ごめん、気が利かなかった。@nそういうことだったんだ～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうそう、せっかく気を利かせたんだから、@n早く帰って早く寝て早く起きて早く目を覚ましてくれ」");
+	DelWindow();
+
+	DelStand(CENTER, MOVE_LEFT);
+
+	// ＜ＳＥ：ドアベル＞
+	SEPlay("L_Door05A",50);
+	SEPlay("L_Bell02",50);
+	Wait(80);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, -1, "恵麻", "@o050@v00050144「それじゃあリカちゃん、ごゆっくり～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうそう、里伽子はゆっくりしてって…@p@k");
+
+	SEPlay("L_Cook06");
+	SEFadeOut(1);
+	SEFadeOut(2, SLOWER);
+	ShakeScreen(8);
+	AddMessage("って@s0004@n何ぃっ！？」");
+	DelWindow();
+
+	SEFadeOut(0, SLOWER);
+	CurtainFadeOut();
+	Wait(50);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア（薄暗く）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_04A );
+	CurtainFadeIn(SLOW );
+
+	SetStand(RIKAKO_0102SA);
+
+	SetWindow();
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102SA, "里伽子", "@v00060100「………」");
+	SetMessage(UNIT_ETC, -1, "", "姉さんが出てったドアの前に、@nいつもと同じように、つまらなそうな表情の…");
+
+	BGMFadePlay(BGM_RIKAKO,SLOWER);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…いらっしゃい」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102NO, "里伽子", "@v00060101「まぁね」");
+
+	DelStand();
+
+	SEPlay("L_Chair01");
+
+	SetMessage(UNIT_ETC, -1, "", "意味不明の受け答えをして、@n近くのテーブルに腰掛ける里伽子。");
+
+	SetStand(RIKAKO_A102NO);
+	SEPlay("L_Dish07");
+
+	SetMessage(UNIT_ETC, -1, "", "俺は…火にかけていたフライパンを置くと、@n手を洗い、湯を沸かし、@nとりあえず、お冷やを一杯。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ブレンドでいいか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v00060102「そうね…飲み物はそれで」");
+	SetMessage(UNIT_ETC, -1, "", "飲み物『は』？");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101BS, "里伽子", "@v00060103「いい匂いがするじゃない。仁の夜食？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ～、ま、結果的には」");
+	SetMessage(UNIT_ETC, -1, "", "キッチンから漂うパスタの香ばしい香り。@n里伽子に鼻聡く嗅ぎつけられてしまった。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101BS, "里伽子", "@v00060104「じゃ、それ、あたしにも分けてもらえない？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「飯、食ってないのか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060105「ま、ね」");
+	SetMessage(UNIT_ETC, -1, "", "晩飯をたかりに来たのかこいつは…？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「わかったよ…ミートソースでいいな？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v00060106「あとは…カルボナーラとペペロンチーノ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…なに？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060107「それに、エビピラフとカレーライス、@nクラブハウスサンドに…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おいおいおい！」");
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060108「なに？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前はウチの軽食メニューを全部食うつもりか！？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101BS, "里伽子", "@v00060109「正解。安心して、ちゃんとお金は払うから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、ちょっと待て…@nそもそも今日はもう閉店してる」");
+	SetMessage(UNIT_ETC, -1, "", "てっきり話でもあるのかと思ったら、@n体型を変えるほどの腹ごしらえでもするつもりかよ。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101OD, "里伽子", "@v00060110「どうせ、いくつかは作るつもりだったんでしょ？」");
+
+	BGMFadeOut(SLOWER);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え…？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101BS, "里伽子", "@v00060111「別に時間は気にしないし、@n毒見要員は沢山いた方がいいんじゃない？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんで…」");
+	SetMessage(UNIT_ETC, -1, "", "俺が、研究始める気だって、気づいた？");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KS, "里伽子", "@v00060112「そろそろ頃合かなと思って」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんの…？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KS, "里伽子", "@v00060113「仁が、落ち込み始めるのの、ね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「っ！？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v00060114「自分が役に立ってない…@nそう思い始めてるでしょ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前…エスパー？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v00060115「どちらかというと、記憶力がいいだけよ。@n過去の仁の思考パターンを紐解いたら、@nそろそろ反動が来る頃かなと思って」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	SetMessage(UNIT_ETC, -1, "", "その、通りだ。");
+	SetMessage(UNIT_ETC, -1, "", "今の俺は、ファミーユに貢献してない。");
+	SetMessage(UNIT_ETC, -1, "", "姉さんが来て、繁盛すればするほど、@nその思いは色濃く、俺の中に宿っていく。");
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KS, "里伽子", "@v00060116「恵麻さんのお菓子が評判になるのを、@n一番喜ぶのが仁なら…@n一番嫉妬するのも仁だからねぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、それは…」");
+	SetMessage(UNIT_ETC, -1, "", "その、通りだ。");
+	SetMessage(UNIT_ETC, -1, "", "姉さんは洋菓子、俺は軽食。@nファミーユが立ち上がったときからの分担。");
+	SetMessage(UNIT_ETC, -1, "", "そして、ファミーユはいつしか、@n『ケーキのおいしい喫茶店』という評判を広めていった。");
+	SetMessage(UNIT_ETC, -1, "", "素直に嬉しいし、姉さんを誇りに思う。@p@nけど…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060117「恵麻さんが来てから、@nケーキばかり売れるようになった…」");
+	SetMessage(UNIT_ETC, -1, "", "たまには、食事目当てのお客様だって、@nいてもいいじゃんかなぁ…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060118「でもそれは当然よ。@n何しろ、あのケーキが２００円なんだから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…お前が考えたんだろ？@nあの無茶な価格設定」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v00060119「さあ…どうだったかな？」");
+	SetMessage(UNIT_ETC, -1, "", "姉さんと里伽子の間には、@nときどき、俺の入り込めない“秘密”が存在する。");
+	SetMessage(UNIT_ETC, -1, "", "今回だって、裏で助言してたのは、@n絶対にこいつの筈なのに、@n姉さんは絶対にそのことを口に出さない。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「先週から、かなり忙しくなった。@nお前には感謝してるよ」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v00060120「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「でも、俺のしたことと言えば、@n姉さんの下ごしらえの手伝いと、仕入れと、@nあと、ショーケースでケーキ売ってばっかりで…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KT, "里伽子", "@v00060121「そんなに料理したい？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや全然」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KS, "里伽子", "@v00060122「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「別に俺、料理が趣味な訳でも、@n得意な訳でもないしなぁ…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KS, "里伽子", "@v00060123「そのくせ負けず嫌いなんだから…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ケーキが採算取れない以上、@n軽食で稼ぐしかないと思わんか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101BS, "里伽子", "@v00060124「で、本音は？」");
+
+	SEPlay("L_Inpact05");
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「何でみんな俺の作ったものを食わないんだよ！」");
+
+	SetMessage(UNIT_ETC, -1, "", "全体の売り上げは上がってる。@nそれはもう、劇的なくらいに。");
+	SetMessage(UNIT_ETC, -1, "", "けど、部門別の売り上げを見ると…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「このままだと、軽食やめてケーキだけの方が儲かるわ。@nなんか悔しいなぁ…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060125「で、もっと腕に磨きをかけようと考えた、と」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま、まぁ…」");
+
+	BGMFadePlay(BGM_RIKAKO,SLOWER);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102NO, "里伽子", "@v00060126「なら、ミートソースとカルボナーラとペペロンチーノと、@nエビピラフとカレーライスとクラブハウスサンド、@nエトセトラ、エトセトラ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…日付変わっても知らんぞ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KS, "里伽子", "@v00060127「大丈夫、夜食はたっぷりある。@n…眠気覚ましのコーヒーも飲み放題でしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…勝手に注いでけよ」");
+	DelWindow();
+
+	FadeOut(SLOW);
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "…長い夜になりそうだ。");
+	DelWindow();
+
+	// ＜画面暗転＞
+	Wait(50);
+
+	//----------------------------------------------------------------------------
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Factory01", SLOW, 50);
+	CurtainFadeIn();
+
+	// ＜ＳＥ：料理の音（油で炒める、煮る、切るなど適当に取り混ぜて）＞
+	SEPlay("L_Cook12");
+	Wait(300);
+	SEFadePlay(1,"L_Cook11");
+	Wait(300);
+	SEFadeOut(1,SLOW);
+	SEFadePlay(1,"L_Cook07");
+	Wait(300);
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	FadeOut(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア（薄暗く）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_04A );
+	CurtainFadeIn();
+
+	SEPlay("L_Dish02");
+
+	SetWindow();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ほれ、まずはスパゲティのトリプル」");
+
+	SetStand(RIKAKO_A101NO);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060128「ん、ありがと」");
+	SetMessage(UNIT_ETC, -1, "", "一人分のパスタを３つの皿に分けて出す。@p@nけど、手間は三人分。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ピラフとサンドはもうすぐできる。@n他のはちょっと待て」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060129「うん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060130「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…食べないのか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101OD, "里伽子", "@v00060131「…作らないの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「冷めるぞ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101OD, "里伽子", "@v00060132「遅くなるわよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前が食ったら残りも作る」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v00060133「仁が作り始めたら食べる」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v00060134「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v00060135「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…待ってろ、すぐ戻る」");
+	DelWindow();
+
+	FadeOut();
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "…別に根負けした訳じゃないからな。");
+	SetMessage(UNIT_ETC, -1, "", "ただ、こんなつまらない意地の張り合いで、@n帰宅時間が更に遅くなるのはお互い不幸であると、@n冷静に冷厳に冷徹に判断しただけだ。");
+
+	//BGMFade(SLOWER,0);
+
+	SetMessage(UNIT_ETC, -1, "", "…くそぅ。");
+
+	DelWindow();
+
+	Wait(50);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Factory01", SLOW, 50);
+	CurtainFadeIn();
+
+	// ＜ＳＥ：料理の音（油で炒める、煮る、切るなど適当に取り混ぜて）＞
+	SEFadePlay(1,"L_Cook01");
+	Wait(300);
+	SEFadeOut(1,SLOW);
+	SEFadePlay(1,"L_Cook08");
+	Wait(300);
+	SEFadeOut(1,SLOW);
+	SEFadePlay(1,"L_Cook03");
+	Wait(300);
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	FadeOut(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア（薄暗く）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_04A );
+	CurtainFadeIn();
+
+	SEPlay("L_Dish02");
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@m16「ほれエビピラ…@e");
+	Wait(30);
+	ShakeScreen(8);
+	AddMessage("うわぁっ！？」");
+
+	SetStand(RIKAKO_A101MM);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101MM, "里伽子", "@v00060136「ごちそうさま」");
+	SetMessage(UNIT_ETC, -1, "", "あれから５分しか経ってないのに、@n三皿のスパゲティを完食してやがる！？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お、お前…いつの間に？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102NO, "里伽子", "@v00060137「だから早く作れって言ったのよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…そんなに腹減ってるのか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060138「解釈はご随意に」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v00060139「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…待ってろ、次はサンドな」");
+	SetMessage(UNIT_ETC, -1, "", "いや…いくらなんでも、なぁ。");
+	SetMessage(UNIT_ETC, -1, "", "もしかしてあいつは、先週、@nガムテープが羽に絡まって動けないでいたところを、@n可哀想にと助けてやったあのカラスの化身では？");
+
+	DelWindow();
+	BGMFadeOut(SLOWER);
+	FadeOut(SLOWER,1);
+	DelStand();
+	Wait(50);
+
+	SetMessage(UNIT_ETC, -1, "", "@m08@f20『あたしが食べるところを、決して覗かないでください』");
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	DelWindow();
+
+	// ＜画面暗転＞
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+
+	// ＜ＳＥ：料理の音（油で炒める、煮る、切るなど適当に取り混ぜて）＞
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Factory01", SLOW, 50);
+	CurtainFadeIn();
+	SEFadePlay(1,"L_Cook03");
+	Wait(300);
+	SEFade(0,NORMAL,30);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "よし、カモフラージュ完了。@p@nまさか里伽子も、今炒められているのが、@n金ダワシなどとは思うまい。");
+	SetMessage(UNIT_ETC, -1, "", "さて、俺を追い払った後に、一体なにを…？");
+	HideDay();
+	DelWindow();
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	CurtainFadeOut();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：眼鏡な里伽子（食事中、絶対に左手は使わずに）＞
+	//----------------------------------------------------------------------------
+	Wait(100);
+
+	SetVisual( VISUAL_RIKAKO_01A );
+	SEFadePlay(0, "L_Dish03", SLOW, 30);
+	BGMFadePlay(BGM_RIKAKO, SLOWER);
+	FadeIn(SLOW);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "…それだけ？@nねえ、それだけ？");
+	SetMessage(UNIT_ETC, -1, "", "あいつが超のつく近眼だってのは、@n初めて会ったときから知ってる。");
+	SetMessage(UNIT_ETC, -1, "", "ただ、その頃からずっとコンタクトだったから、@n確かにあいつの眼鏡なんか見たことないけど。");
+	SetMessage(UNIT_ETC, -1, "", "…一度しか、な。");
+	SetMessage(UNIT_ETC, -1, "", "そんなに気にするものなんかなぁ…");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "それでも…");
+	SetMessage(UNIT_ETC, -1, "", "あいつが近眼だって知ってて、@n電気もつけてやってなかった俺のほうが悪い、かな？");
+	DelWindow();
+
+	// ＜画面暗転＞
+	SEFadeOut(0, SLOW);
+	FadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア（明るく）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_04A );
+	FadeIn();
+	Wait(30);
+	SetVisual( BG_FAMILLEF_03A );
+	SEPlay("L_Switch01");
+	CrossFade();
+
+	SetStand(RIKAKO_A102AS);
+	ShowDay();
+	SetWindow();
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AS, "里伽子", "@v00060140「あ…」");
+
+	SEPlay("L_Dish02");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ほれ、クラブハウスサンド。@nクォーターサイズだけど」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KN, "里伽子", "@v00060141「ご…ごちそう、さま…」");
+	SetMessage(UNIT_ETC, -1, "", "ちゃんと眼鏡外してるし、@nちゃんと料理も平らげてる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「大丈夫か？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101KM, "里伽子", "@v00060142「な、何の…@t0100@hA101KM2うぷ…@t0150@hA101KMこと…？」");
+	SetMessage(UNIT_ETC, -1, "", "なんだか、なぁ。");
+	SetMessage(UNIT_ETC, -1, "", "呆れるやら、にやけるやら。");
+	SetMessage(UNIT_ETC, -1, "", "こいつは…まだ、俺に対して、@n飾ろうって思ってくれてるって…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺、今から時間かけて作るから」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101OD, "里伽子", "@v00060143「え…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だから里伽子も、ゆっくり味わって食ってくれ」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101OD, "里伽子", "@v00060144「………」");
+	SetMessage(UNIT_ETC, -1, "", "だったら…@n変な見栄を張るなら、@nとことんまで誤魔化されてやるから。");
+	SetMessage(UNIT_ETC, -1, "", "できれば、ずうっと、どんな形であれ、@n続いていてくれれば、俺も嬉しい。");
+	DelWindow();
+
+	// ＜画面暗転＞
+
+	Wait(50);
+
+	BGMFadeOut(SLOWEST);
+	FadeOut(SLOWER);
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア（明るく）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_03A );
+	BGMFadePlay(BGM_NICHIJOU1,SLOW);
+	FadeIn(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「で、どうだった？」");
+	SetMessage(UNIT_ETC, -1, "", "結局里伽子は、俺の作った料理１０品を、@nことごとく完食した。");
+	SetMessage(UNIT_ETC, -1, "", "ついでに俺の差し出した胃薬も貪るように飲んだ。");
+	SetMessage(UNIT_ETC, -1, "", "それから１０分近く、喋ることもできずに、@nずっと天井を見上げていたのはご愛嬌。");
+
+	SetStand( RIKAKO_A102NO );
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102NO, "里伽子", "@v00060145「…まず、スパゲティ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うん」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060146「カルボナーラが９０点」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おお！」");
+	SetMessage(UNIT_ETC, -1, "", "これは幸先が…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060147「ミートソースとペペロンチーノが３０点」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「をを…」");
+	SetMessage(UNIT_ETC, -1, "", "これは行く末が…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060148「オムライスは８５点」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「よしっ！」");
+	SetMessage(UNIT_ETC, -1, "", "これで盛り返し…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060149「エビピラフ２０点。クラブハウスサンド４５点、@nカレーライスが３５点、それから…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "そこまで、言う？");
+	SetMessage(UNIT_ETC, -1, "", "さっきまで、里伽子の可愛らしい見栄に、@n癒されていた俺ってピエロ？");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060150「………で、平均４０点」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060151「ちなみに大学生らしく、合格点は６０点」");
+	SetMessage(UNIT_ETC, -1, "", "不可…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v00060152「何か言うことは？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…腹いっぱいのときに美味いなんて思えねえよ」");
+	SetMessage(UNIT_ETC, -1, "", "あれだけ食ったら、審査だって辛くなるに決まって…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060153「最初に食べたミートソースが３０点。@n二番目に食べたペペロンチーノも３０点。@n三番目に食べたカルボナーラは９０点」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101KM2, "里伽子", "@v00060154「仁…あんたバランス悪すぎ。@n前からわかってたことだけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「里伽子ぉ…どうしよう」");
+	SetMessage(UNIT_ETC, -1, "", "その欠点は、@n今までも散々指摘されてきたことだったりする。");
+	SetMessage(UNIT_ETC, -1, "", "要するに俺は…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v00060155「久しぶりに、仁の黄金チャーハン食べたいな」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…は？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v00060156「食材、あるわよね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そりゃ、あるけど…」");
+	SetMessage(UNIT_ETC, -1, "", "卵とご飯。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060157「それじゃ、最後の注文。@nとっとと作ってきて」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、それウチのメニューにないし」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060158「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060159「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…待ってろ、すぐ戻る」");
+	DelWindow();
+
+	FadeOut();
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "…別に根負けした訳じゃないからな。");
+	SetMessage(UNIT_ETC, -1, "", "ただ、せっかく俺の料理がもっと食いたいと、@n懇願する里伽子に対しての誠意というか…");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "まだ、誠意を示す必要があるかはともかく、な。");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Factory01", SLOW, 50);
+	CurtainFadeIn();
+
+	// ＜ＳＥ：料理の音（油で炒める）＞
+	SEFadePlay(1,"L_Cook08");
+	Wait(300);
+	SEFadeOut(1,SLOW);
+	SEFadePlay(1,"L_Cook01");
+	Wait(500);
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	FadeOut(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア（明るく）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_03A );
+	CurtainFadeIn();
+
+	SEPlay("L_Dish02");
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お待たせ」");
+
+	SetStand( RIKAKO_A102NO );
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102NO, "里伽子", "@v00060160「うん…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「食えるのか本当に？」");
+	SetMessage(UNIT_ETC, -1, "", "さっき、胃薬飲んだばっかりで、@nしかも、チャーハンみたいに脂っこいもの。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060161「いただきます」");
+	DelStand();
+
+	SEPlay("L_Dish01");
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_ETC, -1, "", "けど、そんな俺の心配をよそに、@n里伽子は、右手のスプーンで、@nチャーハンをすくっては、口に運ぶ。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+
+	SEPlay("L_Dish01");
+
+	SetMessage(UNIT_ETC, -1, "", "二口、三口…");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…よう食うなぁ」");
+
+	SetStand(RIKAKO_A102KS);
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KS, "里伽子", "@v00060162「初めて食べたとき、@n結構ショックだったのよね」");
+
+	BGMFadePlay(BGM_YASURAGI,SLOWER);
+	FadeOut(NORMAL,1);
+
+	SetMessage(UNIT_ETC, -1, "", "そういえば…@nこいつに初めてご馳走したのって…");
+	SetMessage(UNIT_ETC, -1, "", "２年と、３ヶ月くらい前。");
+	SetMessage(UNIT_ETC, -1, "", "テスト前の日に、里伽子にノート借りて、@nコピー取ってたら夜中になって。");
+	SetMessage(UNIT_ETC, -1, "", "お礼に飯おごるってことになったんだけど、@n財布の中には３９０円。");
+	SetMessage(UNIT_ETC, -1, "", "『コンビニでおにぎり２個』を提案したら、@n里伽子にあっさり却下されて…");
+	SetMessage(UNIT_ETC, -1, "", "仕方ないから、閉店後のファミーユに忍び込んで、@nけれど、冷蔵庫をあけたら、卵しか入ってなくて。");
+	SetMessage(UNIT_ETC, -1, "", "『卵かけご飯』を提案したら、@nまたしてもあっさり却下されて、それで…");
+	DelWindow();
+
+	SetStand(RIKAKO_A101BS);
+	FadeIn(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101BS, "里伽子", "@v00060163「…ごちそうさま」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「また薬、飲むか？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101BS, "里伽子", "@v00060164「いいわ。これは別腹だから」");
+	SetMessage(UNIT_ETC, -1, "", "本当に、苦しそうじゃない。");
+//	SetMessage(UNIT_ETC, -1, "", "なんなんなんだかなぁ。");
+	SetMessage(UNIT_ETC, -1, "", "なんなんだかなぁ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「点数は？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060165「９９点」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「何が１点足りない？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060166「空腹というスパイス」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺のせいじゃねえ」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KS, "里伽子", "@v00060167「そうね、惜しかったわね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KS, "里伽子", "@v00060168「………」");
+	SetMessage(UNIT_ETC, -1, "", "お互いに、苦笑を交えて、視線が絡み合う。");
+	SetMessage(UNIT_ETC, -1, "", "懐かしくて、そして、愛しいって、まだ思える時間。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v00060169「提案」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「伺いましょう」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101NO, "里伽子", "@v00060170「軽食のメニューの種類を、今の１０から３へ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…そんなの飽きるだろ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KN, "里伽子", "@v00060171「３０点の食べ物を出すよりはマシ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ぐ…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v00060172「で、その３つのメニューだけど…@nまずは、カルボナーラ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まぁ、あれは当然」");
+	SetMessage(UNIT_ETC, -1, "", "一応、売れない中でも人気メニューだし。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v00060173「サンドウィッチ。@nけど、クラブハウスサンドじゃなくて、@nエッグサンドで」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…そんなシンプルなメニューでいいのか？」");
+	SetMessage(UNIT_ETC, -1, "", "材料費も手間も、段違いに安上がりなんだが。");
+	SetMessage(UNIT_ETC, -1, "", "まぁ、身内用の朝食だと、確かによく作るし、@n誰にも飽きたなどと言わせない自信はあるけど。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v00060174「最後に…」");
+	SetMessage(UNIT_ETC, -1, "", "そうか、もう一つは、今の…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101OD, "里伽子", "@v00060175「オムライス。@nだけど、こっちはちょっと手を加えて半熟オムライスに」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102MJ, "里伽子", "@v00060176「不満？@nメニューの数を減らしたんだから、@nそのくらいの手間は惜しまないの」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、そうじゃなくて…黄金チャーハンは？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060177「…そんな中華料理を喫茶店のメニューに@n入れられるわけないでしょ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「じゃお前、何のために頼んだの？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102SA, "里伽子", "@v00060178「久しぶりに食べたかったからって、@n言ったはずだけど？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "伏線かと思ったのに…");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101IK, "里伽子", "@v00060179「メニューは絞る、けど質を上げる。@n…この３品なら、仁は絶対に外さない」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まぁ、な…」");
+	SetMessage(UNIT_ETC, -1, "", "要するに俺は…");
+	SetMessage(UNIT_ETC, -1, "", "卵以外の食材は、@nちょぉ適当に料理してしまう人間だということらしい。");
+	SetMessage(UNIT_ETC, -1, "", "いや、そんな自覚はないんだけど。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A101IK, "里伽子", "@v00060180「ファミーユは、もともとケーキがメインのお店なの。@nあんたは、主役になろうとしない」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そりゃ、そうだけど…でも」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102KS, "里伽子", "@v00060181「その代わり…@n一週間もしてごらん？@nきっと、何かが変わるから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「何かって…？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_A102AK, "里伽子", "@v00060182「さあ、ね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちぇっ」");
+	SetMessage(UNIT_ETC, -1, "", "相変わらず、肝心なところをはぐらかす奴だ。");
+	SetMessage(UNIT_ETC, -1, "", "だから俺は、その、言葉にならない感情の機微を、@nああでもない、こうでもないと想像し…");
+	SetMessage(UNIT_ETC, -1, "", "そして、大外ししたりする訳なんだけど。");
+
+	SEPlay("L_Chair01");
+	DelStand();
+	Wait(20);
+	SetStand( RIKAKO_0101NO );
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v00060183「帰るわ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「送ってくぞ」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102SA, "里伽子", "@v00060184「大丈夫。@nまだ、終電に間に合う」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そうか…」");
+	SetMessage(UNIT_ETC, -1, "", "だから教訓…");
+	SetMessage(UNIT_ETC, -1, "", "里伽子と接する場合、@nこいつの指定したボーダーラインの中には踏み込まない。");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KN, "里伽子", "@v00060185「後片付け、手伝えなくて悪いけど…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「また…ご来店ください」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KN, "里伽子", "@v00060186「………」");
+
+	DelStand();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "それでも…@n踏み込めるギリギリのライン上には、いたいから。");
+	SetMessage(UNIT_ETC, -1, "", "深々と頭を下げて、@nそして、ちらっとその表情を窺う。");
+	SetMessage(UNIT_ETC, -1, "", "里伽子は…また、ちょっとだけ、苦笑してた。");
+
+	SetStand(RIKAKO_0102KS);
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v00060187「…来る」");
+
+	DelWindow();
+	DelStand();
+
+	Wait(50);
+
+	// ＜画面暗転＞
+
+	FadeOut(SLOW);
+
+	// ＜ＳＥ：ドアベル＞
+	SEPlay("L_Door05A");
+	SEPlay("L_Bell02");
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ありがとうございましたぁ！」");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	BGMFadeOut(SLOWEST, 1);
+
+	DelVisual();
+
+	Wait(300);
+
+	LoadEvent(EVENT_03_01);
+end();

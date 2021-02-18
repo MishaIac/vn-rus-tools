@@ -1,0 +1,122 @@
+// ●恵麻24：仁くんを、わたしにください
+// 種類：重要イベント
+// 条件：恵麻ＴＲＵＥルートで、恵麻23の直後に発生
+// 概要：里伽子に土下座する恵麻
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	// ＜イベントＣＧ：恵麻土下座＞
+	// (;´∀`).oO( ないみたいだけど…？
+	// (´-`)ないとつらいのぅ
+	// ＜背景は、里伽子の部屋が理想なんですが、恵麻の部屋でも構いません＞
+
+	SetVisual( VISUAL_EMA_16A );
+	//(；´ー`).oO( BGMなにがいいだろ…
+	FadeIn(SLOWER);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051350「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101KM, "里伽子", "@v05060152「………」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051351「この通り！」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101KM, "里伽子", "@v05060153「………」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051352「リカちゃん！@nわたしの、一生のお願い！」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101OD, "里伽子", "@v05060154「なに…言ってんですか…」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051353「もう一度、言えばいい？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101KM2, "里伽子", "@v05060155「あたしに…そんなこと言って、@nどうしようってんですかぁ…」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051354「ここから始めないと…ダメなの。@nわたし、どうしてもリカちゃんに認めて欲しいの！」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102AK, "里伽子", "@v05060156「だって…こんなの…おかしい」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051355「おかしくたって、何だって構わない…@nだから、もう一度言う」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102IK, "里伽子", "@v05060157「い、言わなくていいっ」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051356「仁くんを…わたしにくださいっ！」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101KM2, "里伽子", "@v05060158「～っ！」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051357「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101KM2, "里伽子", "@v05060159「え…恵麻、さん…」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051358「お願い。@n認めて、ください」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102AK, "里伽子", "@v05060160「………」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051359「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101IK, "里伽子", "@v05060161「あたしが認めなかったら…@nあたしが泣いて嫌がったら…@nどうする、つもりなんですかぁ…」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051360「待つ！」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101OD, "里伽子", "@v05060162「な…」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051361「リカちゃんが認めてくれるまで、待ち続ける。@nおばさんになっても、おばあちゃんになっても…@nそしたら仁くんに捨てられるかもしれないけど」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101KM, "里伽子", "@v05060163「そんな覚悟…嘘です」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051362「嘘じゃない…仁くんと、誓った。@nリカちゃんが幸せになるまで、待とうって」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101KM, "里伽子", "@v05060164「なんで…あたしをそんなに気にするんですか。@n勝手にすればいいじゃないですかぁ…」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051363「だって、わたしはリカちゃんを裏切ったんだもん。@nあなたを背負う義務がある」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101KM2, "里伽子", "@v05060165「意味が…わかりません」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051364「知ってるから…@nリカちゃんの気持ち、今も変わってないこと、@n知ってるから」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102AK, "里伽子", "@v05060166「なんのことか…さっぱりです」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051365「応援するって、言ってたのに…@nでも、わたし、仁くんを奪おうとしてる。@n本当なら、許されることじゃない」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101KM2, "里伽子", "@v05060167「だからぁ、あたしには全然関係ない…@nどうしてそんなふうに決めつけるの？」");
+	DelWindow();
+
+	FadeOut(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0202SP, "恵麻", "@v05051366「だって、リカちゃん…@nわたしとおんなじ目で、仁くんを見るんだもん。@n今でも、全然変わってないんだもん」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v05060168「………」");
+	SetMessage(UNIT_EMA, EMA_0201KS, "恵麻", "@v05051367「ものすごい説得力、でしょ？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v05060169「………」");
+	SetMessage(UNIT_EMA, EMA_0201MJ, "恵麻", "@v05051368「でもわたし、やっぱりリカちゃんも好き。@n絶交、したくない」");
+	SetMessage(UNIT_EMA, EMA_0201MJ, "恵麻", "@v05051369「二年前、ファミーユに来てくれて、一緒に盛り立ててくれて、@n一生懸命、お店のために、尽くしてくれて…@n本当に、感謝してる」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v05060170「………」");
+	SetMessage(UNIT_EMA, EMA_0201MJ, "恵麻", "@v05051370「だから、リカちゃんが、笑顔で許してくれるまで待つ。@n待つのは…とっても苦手だけど、待つの」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v05060171「恵麻さん…」");
+	SetMessage(UNIT_EMA, EMA_0201NO, "恵麻", "@v05051371「わたしと仁くんは、世間から見ると、@n許される二人じゃない…と思う」");
+	SetMessage(UNIT_EMA, EMA_0201NO, "恵麻", "@v05051372「それでも、ど真ん中を行こうって、約束した。@nみんなに笑顔で祝福されるまで、戦うって誓った」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v05060172「きっと…色々と、大変ですよ？」");
+	SetMessage(UNIT_EMA, EMA_0201BS, "恵麻", "@v05051373「それでも戦うの。@n二人で両手を取りあって、狭い世界を作ったりしない。@n片手は、みんなと、外と、繋がろうって、思う」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v05060173「………」");
+	DelWindow();
+
+	FadeIn(SLOW);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051374「これは、その、最初にして最大の一歩…@nリカちゃん…わたしたち家族に…加わって」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101OD, "里伽子", "@v05060174「恵麻、さん…」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051375「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v05060175「………」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051376「………」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MJ, "里伽子", "@v05060176「あたしは…あたしはね…」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051377「うん…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102MJ, "里伽子", "@v05060177「あなたに、色々と言いたいことがあったの。@n大声で、とんでもない内容で、何時間だって、@n噴き出してくる言葉があったの」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051378「…聞く。@nなんでも、言って」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102AK, "里伽子", "@v05060178「はぁ、もういい、馬鹿馬鹿しい。@nこんな変なひとだなんて思わなかった」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051379「リカちゃん…」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v05060179「全然、逃げてもくれないんだもの。@nちっとも、倒れそうにないんだもの」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051380「…こっちも、色々とあったから」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0101NO, "里伽子", "@v05060180「恵麻、さん」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051381「ん…？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KN, "里伽子", "@v05060181「今は…祝福なんて、できないけど」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051382「うん…」");
+
+	BGMFadePlay( BGM_KANDOU1, SLOWEST );
+
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v05060182「いつか…笑ってみせるよ」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051383「っ！？」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v05060183「ちょっと、二人を待たせるかもしれないけれど…@nかならず、心の底から…っ」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051384「リカちゃん…っ」");
+	SetMessage(UNIT_RIKAKO, RIKAKO_0102KS, "里伽子", "@v05060184「だから…よろしくね。@n面倒、かけるかもしれないけど…一緒に、いてね？」");
+	SetMessage(UNIT_EMA, -1, "恵麻", "@v05051385「う、うん…何でも、背負う…だからっ！@nこれからも、よろしくお願いしますっ！」");
+	HideMenu();
+	DelWindow();
+
+	// ＜ここで必ず一度スタッフロール等、エンディングを見せてください＞
+	// ＜絶対にノーウェイトで恵麻25に行かないこと！＞
+	Wait(200);
+	FlashOut(SLOWEST);
+	Wait(100);
+	BGMFadeOut(800);
+	FadeOut(800);
+
+	Wait(300);
+
+	DelVisual();
+
+	SetFlg(FLG_ENDING, 1);
+	LoadScript("System.bin", SYSTEMBANK_STAFFROLL);
+end();

@@ -1,0 +1,775 @@
+// ●由飛20：バレンタインＨ（由飛編）
+// 種類：重要イベント
+// 条件：由飛ＴＲＵＥルートで、由飛19・玲愛19の直後に発生
+// 概要：バレンタインフェア終了後の店内で、由飛とＨ。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	ShowMenu();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フロア（薄暗く）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_04A );
+	ShakeScreen(8);
+	SEFadePlay(0, "L_Cook09");
+	SEPlay("L_Fall01");
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ふぃ～」");
+	SetMessage(UNIT_ETC, -1, "", "床掃除も、テーブル拭きも、全て終了した途端、@n床にへたり込みそうになり、慌てて椅子に腰掛ける。");
+	SetMessage(UNIT_ETC, -1, "", "今日のバレンタインフェアでの制服交換イベントは、@n大成功のうちに幕を閉じた。");
+	SetMessage(UNIT_ETC, -1, "", "ただのお遊び企画みたいなものだったんだけど、@n予想外の繁盛っぷりだった。");
+	SetMessage(UNIT_ETC, -1, "", "ただ、そのおかげで、いつも以上に疲れて、@nこうして掃除をする体力も残ってないくらいだ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お～い、まだか？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010911「もうちょ～い！」");	// ★★キッチンから
+	SetMessage(UNIT_ETC, -1, "", "だから…");
+	SetMessage(UNIT_ETC, -1, "", "今日のお茶出し当番の交代は、@n背に腹は代えられない事態ということになる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まさか煮立てたりしてないよな？」");
+	SetMessage(UNIT_ETC, -1, "", "キッチンから、こぽこぽ、こぽこぽといった音が、@nフロアにまで溢れ出してくる。");
+
+	SEFadeOut(0, SLOWER);
+
+	SetMessage(UNIT_ETC, -1, "", "もう、他に誰もいない店内だからこそ、@nその程度の沸騰音でも、気になってしょうがない。");
+	SetMessage(UNIT_YUI, YUI_0201BS, "由飛", "@v01010912「はい、できたよ～」");
+	SetMessage(UNIT_ETC, -1, "", "ティーポットとカップとお皿をトレイに載せて、@n由飛が、いつもの軽い足取りで、フロアになだれ込む。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「気をつけろよ」");
+	SetMessage(UNIT_ETC, -1, "", "ちなみに、まだキュリオの制服のままだったりする。");
+	SetMessage(UNIT_YUI, YUI_0201EG, "由飛", "@v01010913「だ～い丈夫だいじょぶ！」");
+	SetMessage(UNIT_ETC, -1, "", "最近では、落としたり割ったりぶちまけたりすることも@n減ったけど、最初の頃のイメージは、@nそう容易く払拭されるものではない。");
+
+	SEPlay("L_Dish01");
+	SEPlay("L_Dish02");
+	SetStand(YUI_0201EG);
+	BowStand();
+
+	SetMessage(UNIT_YUI, YUI_0201EG, "由飛", "@v01010914「はい、お待たせしました～@nロシアンティーでございま～す♪」");
+	SetMessage(UNIT_ETC, -1, "", "カップの中には、胸のすく香りのするジャム。@nどうやら、今日はママレードらしい。@p@nそれと、鼻腔をくすぐる、ブランデー。");
+
+	SEPlay("L_Drink01");
+
+	SetMessage(UNIT_ETC, -1, "", "ポットからカップに由飛がお茶を注ぐ。@p@nその途端、甘い香りにお茶のすがすがしさが混ざり、@n更に期待をさせる出来映えだ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	DelStand();
+	ShakeScreen(4);
+	SEPlay("L_Fall01", 50);
+	SEPlay("L_Nuno02");
+
+	SetMessage(UNIT_YUI, YUI_0201MU, "由飛", "@v01010915「ちゃあんと、特訓してあるんですからね～」");
+	SetMessage(UNIT_ETC, -1, "", "由飛が得意げに、俺の隣に座り、肩を寄せてくる。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…飲んでみるまでは何とも言えないな」");
+	SetMessage(UNIT_ETC, -1, "", "わざと意地悪な物言いで、@n俺はゆっくりとカップを手に取る。");
+	SetMessage(UNIT_ETC, -1, "", "…確かに、香りは合格点。@p@nなら、味は？");
+	SetMessage(UNIT_YUI, YUI_0201HA, "由飛", "@v01010916「………」");
+	DelWindow();
+
+	SEPlay("L_Zuzu01", 100, 1);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…？」");
+	SetMessage(UNIT_ETC, -1, "", "口の中に、じんわりと広がる渋みと甘さ。");
+
+	SEPlay("L_Dish01");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "薄目を開き、口を半開きにして、@n首を斜めに傾げ、中空を見上げる。");
+	SetMessage(UNIT_YUI, YUI_0201HA, "由飛", "@v01010917「どう？　どう？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「しやわせ～、な感じ～」");
+
+	SetStand(YUI_A201EG);
+	BGMFadePlay(BGM_YUI, SLOWER);
+	JumpStand();
+
+	SetMessage(UNIT_YUI, YUI_A201EG, "由飛", "@v01010918「やったぁ！　仁を倒したぁ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………@e");
+	ShakeScreen(8);
+	AddMessage("はっ！？」");
+	SetMessage(UNIT_ETC, -1, "", "つい、オレンジ畑を、裸でヴェールを掲げて@n駆け回るイメージが、浮かんできたので、@n激しく頭を左右に振る。");
+	SetMessage(UNIT_ETC, -1, "", "やっぱ、疲れてるんだ、俺。");
+	SetMessage(UNIT_ETC, -1, "", "でも…確かにこれは、@n由飛が淹れたとは思えないテイスト。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ありがと」");
+	SetMessage(UNIT_YUI, YUI_A201EG, "由飛", "@v01010919「うんっ」");
+
+	SetMessage(UNIT_ETC, -1, "", "だから、今日は素直に感謝。@p@n何しろ、日本で二番目に聖なる日でもあるし。");
+	SetMessage(UNIT_ETC, -1, "", "で…それはともかく。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「こっちは…？」");
+	SetMessage(UNIT_YUI, YUI_A201BS, "由飛", "@v01010920「そりゃぁ…バレンタインだもん」");
+	SetMessage(UNIT_ETC, -1, "", "由飛が、会心の照れの表情を見せる。@n…いや、日本語ちょっとおかしいけど、そんな感じ。");
+	SetMessage(UNIT_ETC, -1, "", "本人的には、ここで俺の感激のコメントと、@nホワイトデーでの誠意ある行動の約束を@n取り付けたいところだろう。");
+	SetMessage(UNIT_ETC, -1, "", "けど…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんて書いてあんだ？　これ…」");
+	SetMessage(UNIT_YUI, YUI_A202SN, "由飛", "@v01010921「やだなぁ、そんなこと言わせる気？@n仁って結構意地悪なんだ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、そ～でなく」");
+	//伊藤：空気嫁
+	SetMessage(UNIT_YUI, YUI_A202SN, "由飛", "@v01010922「口で言えないからメッセージにしたためたのに～。@nもう、空気読んでよ～」");
+
+	DelStand();
+	ShakeScreen(4);
+	SEPlay("L_Fall01", 50);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…読めねえよ、いや、字が」");
+	SetMessage(UNIT_ETC, -1, "", "もたれかかってくる由飛の頭を押さえて、@n俺は…そのハート形のチョコレートの表面を指差す。");
+	SetMessage(UNIT_YUI, YUI_A201NO, "由飛", "@v01010923「…え？」");
+
+	SetStand(YUI_A201NO);
+
+	SetMessage(UNIT_ETC, -1, "", "由飛は、チョコレートの表面にのたくっている、@n紐みたいなホワイトチョコレートの幾何学模様を@nしばらく見つめて…");
+	SetMessage(UNIT_YUI, YUI_A202KS, "由飛", "@v01010924「…なんて書いてあるんだろうね？　これ」");
+
+	ShakeScreen(8);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺が聞いてるんだよ！」");
+	SetMessage(UNIT_ETC, -1, "", "結構、知りたいことが書いてあるような気がするのに。");
+	SetMessage(UNIT_YUI, YUI_A202KS, "由飛", "@v01010925「あ、あはは～。@nそういえばわたし、ちょっとお習字とかも苦手で～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ピアノが弾けるんだから手先は器用なはずだろ？」");
+	SetMessage(UNIT_YUI, YUI_A202SN, "由飛", "@v01010926「それは偏見だよ～、仁。@nわたし、音楽以外の成績なんて、酷いもんなんだから。@n美術だって赤点スレスレだったんだよ～？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…威張るなよ」");
+	SetMessage(UNIT_ETC, -1, "", "つか、音楽だけで生きてるような奴が、@n同じ芸術である美術まで苦手ってのはどうよ？");
+	SetMessage(UNIT_ETC, -1, "", "と、そんなことより…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「で、何て書いてあったんだ？」");
+	SetMessage(UNIT_YUI, YUI_A202SW, "由飛", "@v01010927「え…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、だからさ。@nこの上のホワイトチョコって、メッセージだったんだろ？@nどういうこと書かれてたんだ？」");
+	SetMessage(UNIT_YUI, YUI_A202SW, "由飛", "@v01010928「あ～…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まさか、自分でも何書いたか忘れたってか？」");
+	SetMessage(UNIT_YUI, YUI_A202KS, "由飛", "@v01010929「いや～、忘れちゃいないけど…ほら、ねぇ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ねえじゃわからん」");
+	SetMessage(UNIT_YUI, YUI_A201OT, "由飛", "@v01010930「う～…」");
+	SetMessage(UNIT_ETC, -1, "", "どうせ、大したことじゃない。");
+	SetMessage(UNIT_ETC, -1, "", "ちょっとした愛の言葉と、@n可愛らしいマークくらいなもののはず。");
+	SetMessage(UNIT_YUI, YUI_A201OT, "由飛", "@v01010931「うう～…」");
+	SetMessage(UNIT_ETC, -1, "", "それでも、一度照れが入ってしまうと、@nもうダメだ。いや、俺も経験上わかるから。");
+	SetMessage(UNIT_ETC, -1, "", "でも…だからといって、@n許すわけじゃないんだなぁ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「言ってみろよ。@nお前が、俺に伝えるつもりだったメッセージ。@n俺、聞きたいよ」");
+	SetMessage(UNIT_YUI, YUI_A201OT, "由飛", "@v01010932「ううう～…っ」");
+	SetMessage(UNIT_ETC, -1, "", "いや、聞かされたところで、@n今度は俺が照れることになるのはわかってるが。");
+	SetMessage(UNIT_ETC, -1, "", "でも、それでも聞きたい男心。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ゆ～いっ！」");
+
+	ShakeScreen(4);
+	SEPlay("L_Fall01");
+	SEPlay("L_Nuno04");
+	SEPlay("L_Walk03S");
+	DelStand();
+	SetStand(YUI_0201EG);
+
+	SetMessage(UNIT_YUI, YUI_0201EG, "由飛", "@v01010933「あ、そだそだ！@nねえ、この制服どうかな？@n玲愛ちゃんの借りたんだよ～」");
+	DelWindow();
+
+	DelStand();
+	SEPlay("L_Walk03H");
+	SEPlay("L_Nuno02");
+	SEPlay("L_Nuno03");
+	SEPlay("L_Nuno05");
+	Wait(100);
+	SetStand(YUI_0201EG);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あからさま過ぎんぞおい」");
+	SetMessage(UNIT_ETC, -1, "", "急に立ち上がり、スカートを翻して一回転。");
+
+	BowStand();
+
+	SetMessage(UNIT_YUI, YUI_0201EG, "由飛", "@v01010934「ご主人さまっ、ご主人さまぁっ、@n似合ってますか～？」");
+	SetMessage(UNIT_ETC, -1, "", "今度は、スカートの裾をつまんで、@nぴょこんと、軽快にお辞儀を一つ。");
+	SetMessage(UNIT_ETC, -1, "", "…なんて強引過ぎる話題転換だ。");
+	DelWindow();
+
+	DelStand();
+	SEPlay("L_Walk03H");
+	SEPlay("L_Nuno02");
+	SEPlay("L_Nuno03");
+	SEPlay("L_Nuno05");
+	Wait(100);
+	SetStand(YUI_0201EG);
+	BowStand();
+
+	SetWindow();
+	SetMessage(UNIT_YUI, YUI_0201EG, "由飛", "@v01010935「ほらほらほらぁっ。@nお帰りなさいませ～、ご主人さまぁ」");
+
+	SetMessage(UNIT_ETC, -1, "", "ころころ表情を変えて、@nくるくる俺の周りを回って。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そんなダンサブルなメイドはおらん」");
+	SetMessage(UNIT_YUI, YUI_0201MU, "由飛", "@v01010936「そぉ～んなことないよぉ～。@nご主人さまのいじわるぅ～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そんなことよりも言えよぉ！」");
+	SetMessage(UNIT_YUI, YUI_0201EG, "由飛", "@v01010937「なら、捕まえてごらんなさい～♪@nあは、あはは、あははははっ」");
+
+	SEPlay("L_Walk03H");
+	DelStand(CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_ETC, -1, "", "今度は、店内を縦横無尽に駆け抜けて、@n軽やかなステップで踊り出す。");
+	SetMessage(UNIT_ETC, -1, "", "いかん…こうなったときの由飛は、@nもう、当初の目的を忘れてしまっている。");
+
+	SEPlay("L_Chair01");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「てめぇっ！@nそこまで言うなら、そこ動くなぁっ！」");
+	SetMessage(UNIT_ETC, -1, "", "なら…俺も、当初の目的なんか、@n知ったことか。");
+	SetMessage(UNIT_YUI, YUI_0201EG, "由飛", "@v01010938「や～だよ～！@n動かなかったら、捕まっちゃうじゃない～」");
+	SetMessage(UNIT_ETC, -1, "", "と、俺を翻弄するかのように、@nくるくるとフロアを回って、逃げ回る。");
+	SetMessage(UNIT_ETC, -1, "", "けど俺は、駆け出したりせずに、@nゆっくりと、大股で歩きながら、由飛を追いかける。");
+	DelWindow();
+
+	FilterFadeOut(SLOW, FADEFILTER_UZU);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	FilterFadeIn(SLOW, FADEFILTER_UZU);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "そして…");
+
+	SetStand(YUI_A202KS);
+
+	SetMessage(UNIT_YUI, YUI_A202KS, "由飛", "@v01010939「あ、あれ？　あれぇ…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「甘いな」");
+	SetMessage(UNIT_ETC, -1, "", "歩いたまま、コーナーに追い詰めた。");
+	SetMessage(UNIT_ETC, -1, "", "そう、相手の動きを読んで、@n次にどっちへ動くか予測できれば、@n先回りすることで、歩いてでも追い詰めることが可能だ。");
+	SetMessage(UNIT_YUI, YUI_A202KS, "由飛", "@v01010940「ちょっ、ちょっと…@t0193@hA202OD2やっ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「どこを突破する？@n右か？　左か？　それとも正面か？@n…けど、もう道はないぞ？」");
+	SetMessage(UNIT_YUI, YUI_A202OD2, "由飛", "@v01010941「う、うそ…ちょっと…仁」");
+	SetMessage(UNIT_ETC, -1, "", "別に、追い詰めたからっていって、@nそんな絶望的な表情されても困るんだが。");
+	SetMessage(UNIT_ETC, -1, "", "だって、これだと…@nまるで俺が、これからいけないことをするような…");
+
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、そか」");
+	SetMessage(UNIT_YUI, YUI_A202IN, "由飛", "@v01010942「な、なに…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛…」");
+	SetMessage(UNIT_YUI, YUI_A202IN, "由飛", "@v01010943「え？　@t0170@hA202OD2え？　@t0345@hA202ODあ…っ！？」");
+	SetMessage(UNIT_ETC, -1, "", "いけないこと…しちゃえばいいんじゃないかぁ。");
+	DelWindow();
+
+	ShakeScreen(8);
+	SEPlay("L_Fall01");
+	SEPlay("L_Nuno04");
+	FadeOut(FAST);
+	DelStand();
+	BGMPlay(BGM_H1);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010944「んっ！？　ん…あ、んむっ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…由飛…っ」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010945「あ、ちょっと…仁っ…ん、あふぁっ…」");
+	SetMessage(UNIT_ETC, -1, "", "軽く唇を塞いで、ほんの少し舌を入れ、@nそして、軽く唇を離す。");
+	SetMessage(UNIT_ETC, -1, "", "子供の遊びの、終わりの合図。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010946「仁…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「もっかい…今度は強く」");
+	SetMessage(UNIT_ETC, -1, "", "そして…今度のキスが、@n大人の遊びの、始まりの合図。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010947「んっ！@nん、ん…ふぅぅん～っ！」");
+	SetMessage(UNIT_ETC, -1, "", "壁際に手をついて、追い詰めた獲物を激しく貪る。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010948「ん…んちゅ…くふ…は、ぁんっ、@nん、ん、ん…ちゅぷ…ふぁっ」");
+	SetMessage(UNIT_ETC, -1, "", "すると…あろうことか、@n獲物の方まで、俺を貪ってくるじゃないか。");
+	SetMessage(UNIT_ETC, -1, "", "だったら…負けてたまるか。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん、く…あ、あむ…んむぅ…っ、んく」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010949「は、ぁぁ…仁…ぁぁ…っ、ん、ひと、ひぃ…っ@nあ、あむ…ん、ちゅぶ…ん、ぷっ、ふぅぅっ」");
+
+	// ＜画面暗転＞
+
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：椅子に座った主人公の上に座って、横を向いてキス。主人公は背中から由飛の胸を揉む＞
+	// ＜『椅子に座って』が体勢的に難しければ、『床に座って』でも構いません＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( VISUAL_YUI_10B );
+	FadeIn(SLOW);
+
+	SetWindow( WINDOW_SIMPLE );
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010950「あ、あ、あ…ちゅ、ぷぅ…ん、んむ…んぅ…@nはぁ、はぁ…あっ」");
+	SetMessage(UNIT_ETC, -1, "", "追い詰めた獲物を、背中から抱きしめて、@n俺の膝の上に座らせる。");
+	SetMessage(UNIT_ETC, -1, "", "そのまま、無理やり横を向かせ、@n飽きるまで、柔らかい唇をむさぼり尽くす。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010951「あ、ん、む…はむぅっ…ん、んぅ…@nひ、ひほひぃ…っ、んんっ…んちゅ…ぅぅ…」");
+	SetMessage(UNIT_ETC, -1, "", "声を出そうにも、完全に口を塞いで、@n吐息までも吸い尽くそうと、舌で口中を掻き取る。");
+	SetMessage(UNIT_ETC, -1, "", "甘い唾液が、とくとくと、こぼれ、@nお互いの唇の周りを垂れていく。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…じゅぷ…あ、む…」");
+	SetMessage(UNIT_ETC, -1, "", "それすら勿体ないので、@n舌を伸ばして、一滴も零さないように、舐め取る。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010952「は、あ、あっ！@nん、んん…ん～っ！　あ、んむ、あんっ、あ、や…」");
+	SetMessage(UNIT_ETC, -1, "", "その間にも、制服越しに、胸をずっと愛撫し続けている。");
+	SetMessage(UNIT_ETC, -1, "", "全身が柔らかい由飛の、さらに、もっとも柔らかい部分。");
+	SetMessage(UNIT_ETC, -1, "", "玲愛のサイズに合わせた服のせいで、@nちょっとばかり、はちきれそうになってるのはご愛敬。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010953「ん～…ん、あ、あむぅ…あ、はぁ、はぁぁ…@nあ、ちゅ…ぷ…ん、く、ふぅ…あ、仁…仁ぃ…」");
+	DelWindow();
+
+	SEPlay("L_Nuno02");
+	SEPlay("L_Nuno03");
+	FadeOut();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "制服の、胸の部分に手をかけると、@nその複雑な構造に閉口しつつも、@nなんとか、まくり上げていく。");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：上記イベントの、胸だけ出した差分＞
+	//----------------------------------------------------------------------------
+	SetVisual( VISUAL_YUI_10C );
+	FadeIn(SLOW);
+
+	SetWindow( WINDOW_SIMPLE );
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010954「あ…や…っ」");
+	SetMessage(UNIT_ETC, -1, "", "敏感な部分が空気に触れたのに気づいて、@n由飛が、戸惑いの声を上げる。");
+	SetMessage(UNIT_ETC, -1, "", "けど俺は、そんな可愛い反応を更に楽しみたくて、@nゆっくり、なで回すように、由飛の乳房を揉み始める。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010955「あ、あ、あ～…や、仁…っ、@nど、どうやって、脱がした、のぉ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「さあ…俺にもよくわからんけど、@nなんかめくれた」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010956「ちょっ、や…胸だけ出ちゃってるぅ…@nな、なんか、えっちくない…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だって…えっちなこと、してるじゃん、俺たち」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010957「た、たちって…仁が勝手に…ぃっ！？@nあ、あ…ふぁぁっ、や、くぅぅっ？」");
+	SetMessage(UNIT_ETC, -1, "", "両胸を持ち上げるように愛撫して、@n人差し指で、乳首をこりこりと、引っ掻いてみる。");
+	SetMessage(UNIT_ETC, -1, "", "本当は、もっと感じ始めてからの方がいいんだろうけど、@n由飛、胸いじられると、折れやすくなるから…");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010958「ちょっとぉ、仁ってばぁ、もう…@nこれ、玲愛ちゃんに返さないといけないのにぃ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…うるさい、もう止まらん。@n逃げ惑う由飛が悪いんだ」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010959「あ、やっ…あぁ…あ、あれはぁ………？@nなんで、逃げてたんだっけ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…さあ？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010960「あっ…あ、あ…あ、あつい…@n仁ぃ…先っぽ、しびれるよぉ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「感じるようになってきたよな…乳首」");
+	SetMessage(UNIT_ETC, -1, "", "指でつまんで引っ張って、@nついでに先を指や爪でこすって…");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010961「きゃっ…ちょっ、強いよぉ…@nやさしく、やさしくってばぁ…@nあ、あ～っ、あ…ぁぁ」");
+	SetMessage(UNIT_ETC, -1, "", "ちょっと強めにやると、潰れて、@n由飛が、ちょっとだけ悲鳴を上げるけど。");
+	SetMessage(UNIT_ETC, -1, "", "指を離すと、すぐに、ぷっくりとふくれて、@nなんだか前より大きくなってたりする。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010962「ふぅ～っ、ん、ふあぁ…@nえ、えっち…ぃぃ…あ～あぁ～…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛だって、えっちな声出してる…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010963「や、やだぁ…出したくない…@n仁ぃ、塞いでぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…どうやって？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010964「だからぁ…ちゅっ、ちゅっ、て…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…わかった。@nほれ、お口を大きく開けて～」");
+
+	SetVisual( VISUAL_YUI_10D );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010965「あ～………んむぅっ！？@nん、ん～っ、んん～っ！」");
+	SetMessage(UNIT_ETC, -1, "", "由飛が、ぱっくりと開いた口に向けて、@n深く、深く、舌を差し込む。");
+	SetMessage(UNIT_ETC, -1, "", "ぐちゅぐちゅに唾液を混ぜ合わせて、@nそして、由飛の喘ぎ声を塞ぐ。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010966「ん～、ん～…♪@nん、ん、あ、あむ…あんっ、あっ、ちゅる…」");
+	SetMessage(UNIT_ETC, -1, "", "由飛の『ちゅっちゅって、して』は、@n別に、声を出さないためのものじゃない。");
+	SetMessage(UNIT_ETC, -1, "", "ただ、純粋に…@nそうしてるときが、えっちの中でも一番気持ちいいらしい。");
+	SetMessage(UNIT_ETC, -1, "", "…頑張らないとな、俺も。@nもっと、色んなことで、由飛を感じさせてあげたい。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010967「あ、む、ちゅ、ばぁっ、あ、あ…あぁぁ…@nひ、ひとしぃ…だいすき………あ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…？　どした？」");
+
+	SetVisual( VISUAL_YUI_10C );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010968「答え…言っちゃった」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "あの、ミミズがのたくったようなホワイトチョコが@n描いていた軌跡が…");
+	SetMessage(UNIT_ETC, -1, "", "“だいすき”って、たったの４文字だったっての？");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010969「ああ、恥ずかしいなぁ…@nだいすきだってさ…@n仁のこと、だいすきなんだってさぁ…あはは」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「っ…由飛」");
+
+	SetVisual( VISUAL_YUI_10D );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010970「ん…ん～っ！@nあ、ん、らいふひぃ…ん、んむぅ…らいすき～っ」");
+	SetMessage(UNIT_ETC, -1, "", "単純な、けど強烈なボディーブローを積み重ねられて、@n唇を離していることが、我慢できなくなった。");
+	SetMessage(UNIT_ETC, -1, "", "だから、何度も、何度も、何度も、キスをしよう。");
+	SetMessage(UNIT_ETC, -1, "", "だって…こいつの口を塞がないと、俺がおかしくなる。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010971「ん～、ん～、ん～っ…あ、む…@nだいすきっ、あむっ…らい、ふふぃ～…@nあ、だい…ちゅ…ぷ…すきぃ…」");
+	SetMessage(UNIT_ETC, -1, "", "クリンチしてるのにお構いなしかよ！");
+	SetMessage(UNIT_ETC, -1, "", "こ、こうなったら…@nキスよりも、乳首いじりよりも、@n更に強い刺激を…");
+	DelWindow();
+
+	SEPlay("L_Nuno03");
+	SEPlay("L_Nuno06");
+	FadeOut();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：片足を持ち上げて、下から左腕をくぐらせ、ショーツの横から指を入れて、右手は胸を愛撫している差分＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( VISUAL_YUI_11B );
+	FadeIn(SLOW);
+
+	SetWindow( WINDOW_SIMPLE );
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010972「ふぅぅぅぅんっ！？@nあ、あむっ、あ～っ、あ、あ…@nひ、ひろひぃ…あうっ、ん…あぁぁ」");
+	SetMessage(UNIT_ETC, -1, "", "いきなり下着をずらして、@n指を、その熱い泉の中に埋没させる。");
+	SetMessage(UNIT_ETC, -1, "", "…いや、喩えじゃなく、本当に熱い。@nこれも、俺たち二人で、少しずつ鍛えた結果だ。");
+
+	SetVisual( VISUAL_YUI_11A );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010973「あぁぁ…ゆび、ゆびがぁ…@nや、あ、んむ…ひぅっ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛…あっつい…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010974「だ、だってぇ…@n仁が、えっちなことばっかぁ…うああっ…@nあ、あ、あ～…はぁ、はぁぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "中指を、くりくりと押し込みながら、@n人差し指は、先端の弱点をいじる。");
+	SetMessage(UNIT_ETC, -1, "", "俺もだいぶやり方を覚えたからな…由飛の身体を使って。");
+
+	SetVisual( VISUAL_YUI_11B );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010975「はぁ、はぁ、はぁぁぁぁ…あ、いたっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あっ、ご、ごめん…」");
+	SetMessage(UNIT_ETC, -1, "", "覚えた、はずなのに…");
+
+	SetVisual( VISUAL_YUI_11A );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010976「う、ううん…ちょっと、刺激が強かっただけ…@n仁があやまること…ないよぉ」");
+	SetMessage(UNIT_ETC, -1, "", "俺の肩に頭を乗せて、@n由飛が、俺の首筋に、熱い吐息を吹きかけながら、@n俺を、安心させようと、言葉を紡ぐ。");
+	SetMessage(UNIT_ETC, -1, "", "…好きな女を痛がらせて、気まで使われて。");
+	SetMessage(UNIT_ETC, -1, "", "精進、しないとな。@nもっと、すごいこと、いっぱいしたいし。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「指…入れていいか？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010977「い…入れてるくせにぃ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや…もっと奥に」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010978「どうせ、嫌だって言ってもするくせにぃ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、今日は嫌だと言われたらやめようかと…」");
+
+	SetVisual( VISUAL_YUI_11D );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010979「でも…えっちは…するんでしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そりゃ…まぁ…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010980「だったら…いきなりよりも、@n準備してくれた方が…よくない？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "それは…一理ありすぎ。");
+	SetMessage(UNIT_ETC, -1, "", "馬鹿か俺は。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「じゃ、入れるぞ。@nちょっと痛いかもしんないけど、我慢な」");
+	
+	SetVisual( VISUAL_YUI_11B );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010981「う、うん…っ、く、う、あぁ…@nは、はぁぁ…ん、はぁ、はぁ…仁…ん～…」");
+	SetMessage(UNIT_ETC, -1, "", "また、“ちゅっちゅ”を求める仕草。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん…むぅ…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010982「ん…ん～っ、あ、ふぅ、あぁ…んんっ！@nんぐっ、ん、くふぅっ、あ、んむ…ちゅぷ…」");
+	SetMessage(UNIT_ETC, -1, "", "キスで誤魔化しながら、@n左手の指を、由飛のショーツの中から、@n更に、由飛の中心部に向かって挿し入れる。");
+	SetMessage(UNIT_ETC, -1, "", "右手は、柔らかい胸を揉みしだき、@nときどき、乳首を引っ張って刺激を与える。");
+	SetMessage(UNIT_ETC, -1, "", "でも、爪を立てる時はデリケートに。@nあまりやりすぎると痛がるし。");
+	SetMessage(UNIT_ETC, -1, "", "けど、時々、気持ちよさそうな表情してくれるから、@nやめられないんだけど。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010983「ん、ん、ちゅぅぅ…んぷ、ふむぅぅ…@nあ、あっ、はぁぁ…あんっ、あっ、はぁぁ…っ」");
+	SetMessage(UNIT_ETC, -1, "", "キスを繰り返し、胸をいじくり回し、@n秘所に指を埋没させ、ぐりぐりと動かす。");
+	SetMessage(UNIT_ETC, -1, "", "由飛の身体を、隅から隅までさわらせてもらえる幸福。");
+	SetMessage(UNIT_ETC, -1, "", "由飛の身体の、柔らかいとこ、熱いとこ、しめってるとこ、@n開いたり、導いたりして、いじらせてもらえる至福。");
+
+	SetVisual( VISUAL_YUI_11A );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010984「うああっ、あ…や、やだよぉ…@nなんか、もう…すごいことになってる…」");
+	SetMessage(UNIT_ETC, -1, "", "思う存分、由飛の身体に溺れて、@n由飛も、俺に溺れてくれる。");
+	SetMessage(UNIT_ETC, -1, "", "俺にとっての女神を。その、肉感的な身体を。@n思う存分楽しむという、背徳感。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010985「仁…ひとしぃ…怖いよぉ…@nわたし、仁に溺れちゃう…@nこれ以上好きになったらどうすればいいのよぉ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「んなこと言ったって…俺の方が好きだし」");
+
+	SetVisual( VISUAL_YUI_11B );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010986「や～っ、そ、そんなこと、ない…っ、@nう、あ、あ～…はぁ、はぁぁ…あ、あぅっ、@nもう、とっくにわたしのが上だよぉ…っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「んなわけ…ないだろう、が…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010987「あるもんっ…ん、んむ…@nぷはっ…わ、わたし…最初っから、あ、あ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「嘘…つけぇ」");
+	SetMessage(UNIT_ETC, -1, "", "一度断られた恨み、まだ忘れちゃいないぞぉ。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010988「あっ、あ、あ～っ！？@nい、あ、は、はいって…くる…？@nや、んっ、も、ちょっと…ひぅっ！？」");
+	SetMessage(UNIT_ETC, -1, "", "もうちょっと優しく…って言いたいんだろう。");
+	SetMessage(UNIT_ETC, -1, "", "でも、ちょっとだけ、以前の恨みを晴らしてしまった。");
+	SetMessage(UNIT_ETC, -1, "", "結構優しくない奴…");
+	SetMessage(UNIT_ETC, -1, "", "それもこれも、由飛が、こんなに俺を狂わせるから。");
+	SetMessage(UNIT_ETC, -1, "", "ここまで、我慢できなくさせてしまうから。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛…も、もう…っ」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010989「あ、あ………あぁぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "口を半開きにして、涙を流しながら、@n俺を見上げる由飛の…");
+	SetMessage(UNIT_ETC, -1, "", "なんて、色っぽいことか。");
+
+	SetVisual( VISUAL_YUI_11D );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010990「仁、わたしと、えっち、したいのぉ？」");
+	SetMessage(UNIT_ETC, -1, "", "その、かすれた声が、@nどれだけ俺の全身を刺激することか。");
+	SetMessage(UNIT_ETC, -1, "", "お前…わかってんの、か？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛が…許してくれなくても、する」");
+
+	SetVisual( VISUAL_YUI_11C );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010991「あ、あはは…仁、それ強姦だよぉ…」");
+	SetMessage(UNIT_ETC, -1, "", "そういうことを笑いながら言ってくれるな…");
+	SetMessage(UNIT_ETC, -1, "", "だいたい、ここまでさせてくれておいて、@n最後の一線だけ越えさせてくれなかったら、@nそれはそれで悪質な犯罪だぁ。");
+
+	SetVisual( VISUAL_YUI_11D );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010992「で、でも、でも…っ、@nも、もちろん、いいよ…@n仁、きて、いいよぉ…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「さんきゅ…由飛」");
+	SetMessage(UNIT_ETC, -1, "", "感謝のしるしに、耳たぶにキス。");
+
+	SetVisual( VISUAL_YUI_11C );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010993「ひゃっ…ん、もうっ…くすぐったいなぁっ」");
+	SetMessage(UNIT_ETC, -1, "", "文句を垂れつつも、くすっと笑ってくれる。");
+	SetMessage(UNIT_ETC, -1, "", "目を真っ赤にしての笑顔って…@nああ、やっぱ由飛って…愛しいよぉ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「行く、入る…@n由飛のなか、入れる」");
+
+	SetVisual( VISUAL_YUI_11D );
+	CrossFade();
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010994「う、うん…はじめは、ゆっくり、ね？」");
+	DelWindow();
+
+	BGMFadeOut(SLOWEST);
+	FadeOut(SLOW);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "その言葉を、俺は…");
+	SetMessage(UNIT_ETC, -1, "", "ほんとに、はじめだけ、実践してみせた。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	//伊藤：指定長い。長すぎる。ふぇちすぎる。えろーす
+	//( ´∀`).oO( 改行～
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：同じ体勢のまま、背面座位で挿入差分か、または、片足を持ち上げての後背位での新規イベントＣＧ。
+	//	どちらにしても、胸は揉んだまま、首筋にキス。下着は脱がせずに、横にずらしたままで挿入＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( VISUAL_YUI_12A );
+	BGMPlay(BGM_H2);
+	ShakeScreen(3, SLOW);
+	FadeIn(SLOW);
+
+	SetWindow( WINDOW_SIMPLE );
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010995「あ…あ、あ…っ、@nああ、ああ、ああぁぁぁ…っ！」");
+	SetMessage(UNIT_ETC, -1, "", "ずぶり、ずぶりと、音を立てていくように、@n一度、二度、三度と、奥に入っていく。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…あぁぁぁぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "ものすごい達成感。@p@nとてつもない快感。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010996「はぁ、はぁ、はぁ…は、入った…@n仁の、はいった、ね…っ」");
+	SetMessage(UNIT_ETC, -1, "", "ぐいっと、奥まで挿入すると、@n俺の腰と、由飛のお尻がくっつく。");
+	SetMessage(UNIT_ETC, -1, "", "もう俺は、由飛の一番奥まで入れられる。@nこれぞ、何度も愛し合った賜物。");
+	SetMessage(UNIT_ETC, -1, "", "全てを由飛に包まれると、@n由飛のあったかさと、締めつけのきつさが、@n全身に染み渡っていく。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010997「ん、ん…あぁ、はぁぁぁぁ…っ、@nはぁ、はぁ、はぁ…よ、よし、大丈夫だ、よっ」");
+	SetMessage(UNIT_ETC, -1, "", "それは、俺と由飛との約束ごと。");
+	SetMessage(UNIT_ETC, -1, "", "俺が入れた後、由飛が落ち着くまでは動かさないって。");
+	SetMessage(UNIT_ETC, -1, "", "確か、二度目か三度目のときに、@nこれを無視して由飛を泣かせたことがある。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010998「う、うごいて…うごいていいよぉ。@nね、ねぇ、仁ぃ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ん？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01010999「わたしを、愛してあげて、ください…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛…っ」");
+	SetMessage(UNIT_ETC, -1, "", "今の言葉…");
+	SetMessage(UNIT_ETC, -1, "", "ちょっと…射精しそうになった。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011000「ん、あ、あぁぁっ…あ、ああ…はぁぁ…@nんっ…く、ぅぁ…あぁぁぁぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "一度、半分以上抜き出して、@nそして、もう一度、ゆっくり奥まで挿入。");
+	SetMessage(UNIT_ETC, -1, "", "由飛の全身を抱きしめて。");
+	SetMessage(UNIT_ETC, -1, "", "思いの丈をぶつけたいけど、@nでもそうすると、すぐ出てしまいそうで、@nだから、ちょっともどかしくて。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011001「う、うぁぁっ、あ、ん…っ。@n仁…あ、ん…ねえ…いい？@n仁的には、気持ち、いいかなぁ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「っ…しゅ、集中させろ…@n俺の心を乱すな…っ」");
+	SetMessage(UNIT_ETC, -1, "", "なんとも理不尽な文句。");
+	SetMessage(UNIT_ETC, -1, "", "けど、そんな蠱惑的な言葉、@nさわられたり、なめられたり、しゃぶられたりするより、@n感じちまうじゃんかよ…");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011002「あ、んっ、で、でもっ、あ、あぁっ…@n仁のことば…聞きたい、もん…@nなんでもいいから、喋って、よぉっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「む…昔々、あるところに…っ」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011003「ばかっ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、く…だ、だからぁっ…@nあんまえっちなこと言ったら、出るっ」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011004「う、あ、あぁ…だ、だからぁ…@nえっちなことじゃなくてもいいよぉ…@nそ、その…安心させてくれることば、とかぁ」");
+	SetMessage(UNIT_ETC, -1, "", "…言って欲しいことば、わかった。");
+	SetMessage(UNIT_ETC, -1, "", "由飛が、チョコレートの上に書いた奴だ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん、んなこと…っ、あっ、あっ、あっ…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011005「んぅぅっ！？　あ、あんっ、だ、だめぇ…@n言ってってばぁ…あっ、ん、い、やぁっ」");
+	SetMessage(UNIT_ETC, -1, "", "言えるか…そんなん。");
+	SetMessage(UNIT_ETC, -1, "", "なんか、それって、変に熱くて、恥ずかしいぞ。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011006「あ、あ～、あ～…仁の…ばかぁ…っ、@nひっ、ん、も、もう…させてあげないっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「嫌だ…ん…」");
+	SetMessage(UNIT_ETC, -1, "", "言葉の代わりに、首筋に舌を這わせ、@n優しく、唇で吸う。");
+	SetMessage(UNIT_ETC, -1, "", "由飛の、ミルクのような甘い香りを、@n鼻腔と、粘膜で、同時に味わう。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011007「あっ、ん…だ、だめ、それもだめぇっ…@nあ、あと…あと、ついちゃう…っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「大丈夫…つかないように、するから」");
+	SetMessage(UNIT_ETC, -1, "", "…本当は、歯も当てたいけど。");
+	SetMessage(UNIT_ETC, -1, "", "でも、確かに明日も出勤だから、@nあんまり、強く吸うことはできない。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011008「ほ、ほんとぉ…？@nんっ、ほんとうに、大丈夫ぅ？@nんっ、あ、あんっ、やっ…強いぃ」");
+	SetMessage(UNIT_ETC, -1, "", "俺は、首筋から、背中へと、キスを下げていく。");
+	SetMessage(UNIT_ETC, -1, "", "けど背中は、制服が邪魔になって、@nあまり舌が届かない。");
+	SetMessage(UNIT_ETC, -1, "", "だから、見えるか見えないかギリギリのところで、@nゆっくり、やさしめに、キスを繰り返す。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、うん…由飛、いい匂い…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011009「あ…うん…ありがと…っ」");
+	SetMessage(UNIT_ETC, -1, "", "由飛は髪、長いから…@n大丈夫、大丈夫だ…多分。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011010「あ、んっ、あぁ…仁…いい、感じ。@nわたし、わたし…だいぶ、いい、よ…っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、うん…うんっ」");
+	SetMessage(UNIT_ETC, -1, "", "そうしている間にも、俺の腰はちっとも休まず、@n由飛のなかに、何度も、何度も、打ちつけている。");
+	SetMessage(UNIT_ETC, -1, "", "まるで、タガが外れたみたいに、@nギチギチに密着して、突っ込んで、堪能してる。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011011「あ、あんっ…ん、くぅっ…あ、はぁ…はぁぁ…@nひ…ひと、しっ…ん、んく…ちゅ、むぅっ」");
+	SetMessage(UNIT_ETC, -1, "", "そしてまた、ちゅっちゅの時間。");
+	SetMessage(UNIT_ETC, -1, "", "思い切り吸い合って、唇をぶつけ合って、@n時々、額なんかがぶつかると、笑い合ったりして。");
+	SetMessage(UNIT_ETC, -1, "", "汗と、涙で濡れた由飛の顔は、@nやっぱり、最初に出会った時の、女神のイメージと、@nきっちりとダブり。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011012「んっ、んっ…ちゅっ、んぷっ…あ、んっ…@nあ、あは…っ、あ、ん、んん…あぁぁっ」");
+	SetMessage(UNIT_ETC, -1, "", "やっぱり…口に、出したくなってしまう。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011013「あ、んっ…ひ、ひとし、ぃっ…あ、んっ…@nだ、大丈夫、だいじょぶ…わ、わたし、ぃっ！@nい、いい、からぁ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うん…ありがとうな…@n俺のこと、大好きって、言ってくれて」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011014「んっ…や、やだ、なぁ…@nこんなときに…照れる、よぉ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺も…大好きだから、な？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011015「っ………ばかぁ」");
+	SetMessage(UNIT_ETC, -1, "", "うあ…可愛い。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ゆ…由飛…ぃ」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011016「ん…あああっ、す、すご…やぁぁっ、@nい、い、い…は、激しっ、仁っ」");
+	SetMessage(UNIT_ETC, -1, "", "これで、思い残すことはない。");
+	SetMessage(UNIT_ETC, -1, "", "ラストスパートに向かって、@n一気に、駆け出していく。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うあ、あっ、ああっ…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011017「仁…仁っ、あ、ああ、あああっ！@nひっ、ひぅっ、んっ、あぁぁっ、や、やっ」");
+	SetMessage(UNIT_ETC, -1, "", "俺の腕の中で悶える由飛。");
+	SetMessage(UNIT_ETC, -1, "", "その髪も、肌も、その上を伝う汗も、@n全身から発する匂いも、柔らかさも、@n温かさも、気持ちよさも…");
+	SetMessage(UNIT_ETC, -1, "", "いつまでも、俺の腕の中にしまっておきたい。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011018「んっ、あ、あ、あ…ああああっ、@nく、くる…仁が、おっきくなってるっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、く…っ」");
+	SetMessage(UNIT_ETC, -1, "", "由飛の言う通り、@n俺のが、由飛のなかで、一気に膨張した。");
+	SetMessage(UNIT_ETC, -1, "", "これは…もう、果てる…");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011019「あ、あ、あ、あ、あ…あ…あああ…っ！」");
+	SetMessage(UNIT_ETC, -1, "", "あ…でも、今日は…中は、マズいかも！？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ゆ、由飛…そ、外にっ…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011020「え？　あ、あ…でもっ…あああああっ！？」");
+	DelWindow();
+
+	Fade(SLOW, 120);
+
+	SetWindow(WINDOW_SIMPLE);
+	ShakeScreen(2, SLOW);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、ああああっ！」");
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011021@s0004@m00「ああああああああああああ～～～っ！？」@k");
+	ShakeScreen(3, SLOW);
+	FlashOut(SLOWER);
+	FadeOut();
+	MessageWait();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：精液を手で受ける由飛の差分＞
+	//----------------------------------------------------------------------------
+
+	SetMessage(UNIT_ETC, -1, "", "寸前で、由飛のなかから引き抜いて…");
+	SetMessage(UNIT_ETC, -1, "", "@s0004どくんっ@k");
+	DelVisual();
+	ShakeScreen(16);
+	FlashIn(FAST);
+	MessageWait();
+
+	SetMessage(UNIT_ETC, -1, "", "一気に、破裂する。");
+	DelWindow();
+
+	SetVisual(VISUAL_YUI_12B);
+	FadeIn();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011022「あっ、ここ、ここにっ！」");
+	SetMessage(UNIT_ETC, -1, "", "と、由飛の手が、俺のものを包み込む。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うあっ！？」");
+	DelWindow();
+
+	BGMFadeOut(SLOWEST);
+	Fade(NORMAL, 140);
+	ShakeScreen(16);
+	Fade(0, 190);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 130);
+	ShakeScreen(12);
+	Fade(0, 180);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 120);
+	ShakeScreen(8);
+	Fade(0, 170);
+	Fade(NORMAL, 100);
+
+	Fade(NORMAL, 110);
+	ShakeScreen(4);
+	Fade(0, 160);
+	Fade(SLOW, 100);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "その刺激が全身に伝わり、@n次から、次へと、放出していく。");
+	DelWindow();
+
+	Fade(NORMAL, 140);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011023「あ、あ、あ………あ～っ」@k");
+	ShakeScreen(16);
+	Fade(0, 190);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 130);
+	ShakeScreen(12);
+	Fade(0, 180);
+	Fade(FAST, 100);
+
+	Fade(NORMAL, 120);
+	ShakeScreen(8);
+	Fade(0, 170);
+	Fade(NORMAL, 100);
+
+	Fade(NORMAL, 110);
+	ShakeScreen(4);
+	Fade(0, 160);
+	Fade(SLOW, 100);
+	MessageWait();
+	
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、く、あぁぁ…あ？　ゆ、由飛…？」");
+	SetMessage(UNIT_ETC, -1, "", "俺が出したものは、飛び散らずに…");
+	SetMessage(UNIT_ETC, -1, "", "全部、由飛の、手のひらの中に溜まっていく。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011024「は、はぁ…はっ、あ…@nこれ、本当に、熱ぅい…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、お、おい…っ…く…」");
+	SetMessage(UNIT_ETC, -1, "", "こいつ…手で、受けやがった。@n俺の精液。");
+	SetMessage(UNIT_ETC, -1, "", "それはつまり、由飛の手の中に、@n思いっきり放出したということで…");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011025「は、はぁ、はぁ、はぁぁ…っ@nひ、ひと、しぃ～…あ、あっ、あっ…」");
+	SetMessage(UNIT_ETC, -1, "", "まだ、俺の腕の中におさまったままの由飛が、@n二度、三度と、びくっ、びくって、震える。");
+	SetMessage(UNIT_ETC, -1, "", "それは、俺の、あれの、断末魔の放出に近い感じで。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ゆ、由飛…なんで…大丈夫、か？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011026「え？　な、なに、がぁ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、だって…それ…」");
+	SetMessage(UNIT_ETC, -1, "", "と、俺は由飛の手の中を覗き込む。");
+	SetMessage(UNIT_ETC, -1, "", "そこには、俺の出したモノが、@n大量に溜まってるって…ことだよなぁ。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011027「あ、あ～…ごめんね。@nだって、その…これ、玲愛ちゃんに借りた制服だし」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "すっかり忘れてた…");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011028「汚したら、悪いかなって。@n…どっちみち、シワになっちゃったけどねぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…返す前に、クリーニングに出すって」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011029「あ…そなんだぁ。@nあ、あは…」");
+	SetMessage(UNIT_ETC, -1, "", "けど、確かに、だからって、@n俺のあんなので汚したって知れたら…");
+	SetMessage(UNIT_ETC, -1, "", "玲愛に、十回以上生き返っても死ねるくらいに@n殺されるんだろうなぁ。");
+	DelWindow();
+
+	FadeOut();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011030「うあ…これが仁の…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「見ないで」");
+	SetMessage(UNIT_ETC, -1, "", "手のひらを広げて、まじまじとそれを見つめる由飛。");
+	SetMessage(UNIT_ETC, -1, "", "恥ずかしくて、穴があったら入りたい。@nいや、今出てきたばかりだけど。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011031「…ねばねば」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「広げるな…」");
+	SetMessage(UNIT_ETC, -1, "", "右の手のひらに溜めたものを、@n左の指でもてあそんでいる…");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011032「ん…ん～…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「や、やめろっ！」");
+	SetMessage(UNIT_ETC, -1, "", "指にくっついた精液を、@n恐る恐る口の中に持って行こうとする由飛を、@n必死の思いで止める。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011033「やっ、ちょっと…止めないでぇ…@nその、ひとくちだけ…ん～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「や、やめて、やめてぇ…」");
+	SetMessage(UNIT_ETC, -1, "", "泣きそうになる俺をよそに、@n由飛は、手のひらの上のねばねばの味が、@n気になって仕方がないらしい。");
+	SetMessage(UNIT_ETC, -1, "", "しかし男としては、その最中だったらまだしも、@nこうして、一度スッキリして、素面に戻った後だと…");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011034「あ、やっ…ふいちゃやだぁ…」");
+	SetMessage(UNIT_ETC, -1, "", "強引に、由飛を押さえつけ、@n電光石火の勢いで取り出したポケットティッシュで、@nその右手をぬぐうしかなかった。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011035「ん…んむ…んく」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…ああっ…」");
+	SetMessage(UNIT_ETC, -1, "", "それでも、左手の指に絡めた方は、@nとうとう、拭き取ることかなわず…");
+	SetMessage(UNIT_ETC, -1, "", "由飛は、濡れた左手の指を、口の中で転がした。");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v01011036「………う～ん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お願いだからその微妙な表情はやめて」");
+	SetMessage(UNIT_ETC, -1, "", "@m08由飛に、変な興味を抱かせてしまったことに…");
+	SetMessage(UNIT_ETC, -1, "", "@m00俺は、マントル層よりも深く反省した。");
+	HideMenu();
+	DelWindow();
+	DelVisual();
+
+	SetSceneFlg(SCENE_YUI_02);
+
+	Wait(300);
+
+	LoadEvent(EVENT_YUI_21);
+end();

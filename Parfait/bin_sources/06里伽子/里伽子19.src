@@ -1,0 +1,414 @@
+// ●里伽子19：家族だから、できること
+// 種類：重要イベント
+// 条件：里伽子ＴＲＵＥルートで、里伽子18の直後に発生
+// 概要：恵麻をかいがいしく看病する仁。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+		ShowMenu();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：恵麻のマンション＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_EMA_03A );
+		BGMFadePlay(BGM_EMA,SLOWER);
+		FadeIn(SLOW);
+		SetWindow();
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「湿布よし、包帯よし…痛くない？」");
+		SetMessage(UNIT_EMA, EMA_0201KS, "恵麻", "@v06050029「だからぁ、大丈夫だって」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「風呂よし、食事…ふわふわ卵の中華スープと、@n茶碗蒸し、どっちがいい？」");
+		SetMessage(UNIT_EMA, EMA_0201NO, "恵麻", "@v06050030「…やっぱり、卵料理から攻めるのね」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「何か問題でも？」");
+		DelWindow();
+
+		SetVisual(BG_EMAK_01A);
+		CrossFade();
+
+		SetWindow();
+		SetMessage(UNIT_EMA, EMA_0201EG, "恵麻", "@v06050031「茶碗蒸し…仁くんの熱々茶碗蒸し～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「はいはい…銀杏ある？」");
+		SetMessage(UNIT_EMA, EMA_0201BS, "恵麻", "@v06050032「野菜室～」");
+
+		SEPlay("L_Door04A");
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「りょ～かい。@nあ、で、メインだけど…ニラ玉でいい？」");
+		SetMessage(UNIT_EMA, EMA_0201NO, "恵麻", "@v06050033「…デザートはカスタードプディング？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「よくわかったね。エスパー？」");
+		SetMessage(UNIT_EMA, EMA_0202AK, "恵麻", "@v06050034「………」");
+
+		// ＜画面暗転＞
+		DelWindow();
+		SEPlay("L_Cook04");
+		SEFadePlay(0, "L_Cook05", SLOWER);
+		FadeOut(SLOW);
+
+		// ＜ＳＥ：料理の音＞
+		SEFadePlay(1,"L_Cook03");
+		Wait(100);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "………");
+		SetMessage(UNIT_ETC, -1, "", "……");
+		SetMessage(UNIT_ETC, -1, "", "…");
+		DelWindow();
+
+		SEFadeOut(0);
+		SEFadeOut(1, SLOWEST, 1);
+		Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：恵麻のマンション＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_EMA_03A );
+		FadeIn(SLOW);
+
+		SetStand(EMA_A201BS);
+
+		SetWindow();
+		SetMessage(UNIT_EMA, EMA_A201BS, "恵麻", "@v06050035「仁くん、仁く～ん、次、ニラ玉～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「はいよ～」");
+		SetMessage(UNIT_EMA, EMA_A201HO, "恵麻", "@v06050036「あ～ん…」");
+
+		SEPlay("L_Dish01");
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ほら…」");
+		SetMessage(UNIT_EMA, EMA_A201KM, "恵麻", "@v06050037「ん…んぐ…@n@t0304@hA202BSうん、やっぱり卵だけ美味しい」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ニラだって美味いよ…」");
+		SetMessage(UNIT_EMA, EMA_A201SN, "恵麻", "@v06050038「…ちょっと炒め切れてないような」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…うるしゃい」");
+		SetMessage(UNIT_ETC, -1, "", "口の中がモゴモゴするかも。");
+		SetMessage(UNIT_ETC, -1, "", "でもいいんだ、卵の半熟加減の方が大事なんだから。");
+		SetMessage(UNIT_EMA, EMA_A201NO, "恵麻", "@v06050039「先にニラをもうちょっと炒めておけば…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「だって、ニラなんざ興味ない」");
+		SetMessage(UNIT_EMA, EMA_A201KS, "恵麻", "@v06050040「んもう…@t0167@hA201EGあ、お味噌汁～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「はい…」");
+		SetMessage(UNIT_ETC, -1, "", "姉さんのリクエストに従い、@n味噌汁のお椀を口元に持って行く。");
+
+		DelStand();
+
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050041「ずず………」");
+		SetMessage(UNIT_ETC, -1, "", "姉さんは、左手の箸を使い、@n具と汁をすする。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「どう？」");
+
+		SetStand(EMA_A201SN);
+
+		SetMessage(UNIT_EMA, EMA_A201SN, "恵麻", "@v06050042「具がゆで卵…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「美味いだろ？@n醤油で下味つけてあるんだよ」");
+		SetMessage(UNIT_EMA, EMA_A201KS, "恵麻", "@v06050043「…ま、まぁ、仁くんの作る料理だし」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「う～ん、そうだな。@n男の料理だから、大ざっぱでごめん」");
+		SetMessage(UNIT_EMA, EMA_A201KS, "恵麻", "@v06050044「そういう意味じゃ…ないんだけどな～」");
+		SetMessage(UNIT_ETC, -1, "", "まぁしかし、手が使えなくても、@nこうして俺と姉さんだと、問題なく食事が進む。");
+		DelWindow();
+
+		BGMFade(SLOW, 50);
+		FadeOut();
+		SetVisual(VISUAL_RIKAKO_12B, FILTER_SEPIA);
+		DelStand();
+		FadeIn();
+
+		SetWindow(WINDOW_SIMPLE);
+		SetMessage(UNIT_ETC, -1, "", "里伽子のときは、パニックだったからなぁ。");
+		DelWindow();
+
+		BGMFade(SLOW, 100);
+		FadeOut();
+		SetVisual(BG_EMA_03A);
+		SetStand(EMA_A201NO);
+		FadeIn();
+
+		SetWindow();
+		SetMessage(UNIT_EMA, EMA_A201NO, "恵麻", "@v06050045「…ねえ、仁くん」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ん？」");
+		SetMessage(UNIT_EMA, EMA_A201NO, "恵麻", "@v06050046「リカちゃんにも、してあげた？　こういうこと」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+		SetMessage(UNIT_ETC, -1, "", "なんてタイムリーな。");
+		SetMessage(UNIT_EMA, EMA_A201BS, "恵麻", "@v06050047「そっか…そうなんだ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「い、いや、その…えっと、@e");
+		Wait(20);
+		ShakeScreen(8);
+		AddMessage("そんな馬鹿なっ！？」");
+		SetMessage(UNIT_EMA, EMA_A201BS, "恵麻", "@v06050048「喜んだでしょ、リカちゃん？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、メチャクチャ恥ずかしがって、@n話にならなかった」");
+		SetMessage(UNIT_EMA, EMA_A201KB, "恵麻", "@v06050049「………」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+		SetMessage(UNIT_ETC, -1, "", "墓穴…掘った。");
+		SetMessage(UNIT_EMA, EMA_A201KB, "恵麻", "@v06050050「ふぅぅぅん…ど～いうふうにしたのかなぁ？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、その…」");
+		SetMessage(UNIT_EMA, EMA_A201BS2, "恵麻", "@v06050051「こうやって、差し向かいであ～んって？@nそれだけで、そんなに恥ずかしがっちゃった？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「うん…」");
+		SetMessage(UNIT_EMA, EMA_A201BS2, "恵麻", "@v06050052「ふぅん」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「で、全然食べようとしないから…」");
+		SetMessage(UNIT_EMA, EMA_A201EG2, "恵麻", "@v06050053「…から？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+		SetMessage(UNIT_EMA, EMA_A201EG2, "恵麻", "@v06050054「………」");
+		SetMessage(UNIT_ETC, -1, "", "今度は掘った墓穴に自ら足を踏み入れた。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「い、いや、あの…それは…」");
+
+		BGMFadeOut(SLOWER);
+
+		SetMessage(UNIT_EMA, EMA_A201EG2, "恵麻", "@v06050055「では、再現フィルムでどうぞ…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「な？　再現…？」");
+
+		BGMFadePlay(BGM_RIKAKO);
+		SetStand(EMA_A202MS);
+		ShakeStand();
+
+		SetMessage(UNIT_EMA, EMA_A202MS, "恵麻", "@v06050056「や～ん仁、里伽子恥ずかしくって食べられない～♪」");
+		// ＜ここの『仁』は『ひとし』と読んでください～♪＞
+
+		ShakeScreen(8);
+		SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「なめんなオラァっ！」");
+		SetMessage(UNIT_ETC, -1, "", "ちょっと逆鱗。");
+		SetMessage(UNIT_EMA, EMA_A201KS, "恵麻", "@v06050057「冗談よ冗談。@n@t0240@hA201BSそうね、こんな感じかな？@n@t0640@hA201SN『ちょっ、ちょっと…仁ぃ』」");
+		// ＜ここの『仁』も『ひとし』と読んでくださぃ＞
+
+		ShakeScreen(4, SLOW);
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「～～～っ！！！」");
+		SetMessage(UNIT_EMA, EMA_A201BS2, "恵麻", "@v06050058「…キたでしょ？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「う、うう…」");
+		SetMessage(UNIT_ETC, -1, "", "似てる…@n琴線震わすほどに。");
+		SetMessage(UNIT_EMA, EMA_A201BS2, "恵麻", "@v06050059「食べさせたくなっちゃったでしょ？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「く、くぅっ」");
+		SetMessage(UNIT_EMA, EMA_A201EG2, "恵麻", "@v06050060「じゃ、仁くん…あ～ん…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+		SetMessage(UNIT_ETC, -1, "", "し…仕方ない。");
+		DelWindow();
+
+		// ＜画面暗転＞
+		Wait(50);
+		BGMFadeOut(SLOWER);
+		FadeOut(SLOW);
+		DelStand();
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "………");
+		DelWindow();
+
+		Wait(100);
+
+		// 状況からすると、イベントCGだった部分だし…？一応保留
+		//伊藤：一応顔入れしてあり。面白そうだったので
+
+		BGMFadePlay(BGM_COMICAL,SLOW);
+		FilterFadeIn(NORMAL, FADEFILTER_CIRCLE);
+
+		SetWindow();
+		SetMessage(UNIT_EMA, EMA_0201OD, "恵麻", "@v06050061「ちょっと、ちょっと…仁くぅん」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「うわ！　素で恥ずかしがらないで～」");
+		SetMessage(UNIT_EMA, EMA_0201AS , "恵麻", "@v06050062「本当にリカちゃんにこんなことしたのぉ！？@nこ、こんなの…やりすぎよぉ」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、そうかなぁ…」");
+		SetMessage(UNIT_EMA, EMA_0202NM2, "恵麻", "@v06050063「なんて…うらやましい…」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「は？」");
+		SetMessage(UNIT_EMA, EMA_0201KS, "恵麻", "@v06050064「あ、なんでもない。@nうん、なんでもないの～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、それじゃ…やめるよ」");
+		SetMessage(UNIT_EMA, EMA_0201AS, "恵麻", "@v06050065「ええ～！？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「どっちやねん」");
+		SetMessage(UNIT_EMA, EMA_0201SN, "恵麻", "@v06050066「リカちゃんにはしてあげたのに～@n姉ちゃんには出来ないって言うんだ～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「今恥ずかしがっただろ今！」");
+		SetMessage(UNIT_EMA, EMA_0201SN, "恵麻", "@v06050067「でもリカちゃんには、@n無理やりしたんでしょ？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「それは………」");
+		SetMessage(UNIT_EMA, EMA_0201BS2, "恵麻", "@v06050068「だったらここも、無理やりするのが@n礼儀ってもんじゃないのかなぁ？」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「なんてセクハラな礼儀だ…」");
+		SetMessage(UNIT_EMA, EMA_0201EG2, "恵麻", "@v06050069「と、いうわけで～」");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「うう…」");
+		DelWindow();
+
+		FilterFadeOut(NORMAL, FADEFILTER_CIRCLE);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "………");
+		SetMessage(UNIT_ETC, -1, "", "そして…");
+		SetMessage(UNIT_ETC, -1, "", "姉さんは、けらけら笑いながら、@n大喜びでゆっくりと完食した。");
+
+		BGMFadeOut(SLOWER);
+
+		SetMessage(UNIT_ETC, -1, "", "………");
+		SetMessage(UNIT_ETC, -1, "", "……");
+		SetMessage(UNIT_ETC, -1, "", "…");
+		DelWindow();
+
+		Wait(200);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：恵麻のマンション（もしくは風呂場）＞
+	//----------------------------------------------------------------------------
+
+		SEPlay("L_Water11");
+		Wait(50);
+
+		// ＜恵麻が風呂に入ってるときに、洗面所で控えているという設定です＞
+		SetVisual( BG_EMAD_03A );
+		//伊藤：SE new　風呂場でのぴちょーんて音？があれば
+		SEFadePlay(0, "L_Water09", SLOWER);
+		SEFadePlay(1, "L_Water10", SLOWER);
+		FadeIn(SLOW);
+
+		// ( ´∀`).oO( イベントCGではないけど声のみ～
+
+		SetWindow();
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050070「ふぅ…い～気持ち」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「湯加減はどう？」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050071「完璧～。@n仁くんも入って来ればいいのに」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ぐ…」");
+		SetMessage(UNIT_ETC, -1, "", "落ち着け、そこにいるのは姉だ…@nま～姉ちゃんだ、俺の三つ上の、@n子供の頃から憧れの…");
+
+		SEPlay("L_Water12");
+		SetMessage(UNIT_ETC, -1, "", "………");
+
+		SetMessage(UNIT_ETC, -1, "", "アホか俺は。@n自らを追い込んでどうする。");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050072「にしても…さすがに今日は疲れたわ。@n午後からなんて、もう痛くて吐きそうだった」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「誰にも言わずに無理するからだ。@n今度から、俺にはちゃんと相談してくれよ。@nそしたら、どんなときでも駆けつけるから」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050073「それは…」");	// ★★声のみ、エコー＞
+
+		// ＜ＳＥ：ちゃぷん＞
+		SEPlay("L_Water13");
+
+		SetMessage(UNIT_ETC, -1, "", "姉さんが、湯船の中で、おとなしくなった。");
+		SetMessage(UNIT_ETC, -1, "", "さすがに今回のことは、ちょっと堪えてるんだろう。@p@n何しろ、お菓子職人にとって、右手は命だ。");
+		SetMessage(UNIT_ETC, -1, "", "医者の話だと、全治一週間ってことだから、@n少なくともその間は、大好きなケーキ作りができない。");
+		SetMessage(UNIT_ETC, -1, "", "これ、姉さんにとっては、致命的だからなぁ。");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050074「ねえ、仁くん…」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ん？」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050075「よかったね」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ちっともよかない。@n下手したら骨折してたかもしれないんだぞ？」");
+
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050076「リカちゃんのことよ…」");	// ★★声のみ、エコー＞
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+		SetMessage(UNIT_ETC, -1, "", "そういえば…いつの間にか、皆に気づかれてた。");
+		SetMessage(UNIT_ETC, -1, "", "俺と里伽子が、ヨリを戻した…っていうか、@nつきあい始めたこと。");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050077「やっぱり、仁くんには、リカちゃんがお似合いだよ。@n誰も…入り込めないくらいに」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、その………そう？」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050078「…ぷっ」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「な、なんだよ…」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050079「ずっと好きでいて、よかったね。@nやっと、報われたね」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………ん」");
+		SetMessage(UNIT_ETC, -1, "", "俺と里伽子のこと、ずっと見てきた姉さんの言葉だから、@n素直に受け止めることができる。");
+		SetMessage(UNIT_ETC, -1, "", "ファミーユを、一から始めた三人のうちのひとりの言葉で、@n俺の、最愛の家族の言葉、だから。");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050080「もう、絶対に手放しちゃダメよ」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…わかってるって、そんなの」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050081「わかってない、仁くんわかってないなぁ」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「なんで決めつけるんだよ？」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050082「だって今日の態度、なにあれぇ？」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「なに…って？」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050083「せっかく会いに来てくれた恋人ほっぽっといて、@n姉ちゃんの病院に付き添うなんて、@n一体どうやったらそんな行動になっちゃうのよぉ？」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「おかしいかな？」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050084「…はぁ、仁くんの場合、@nまず、その思考回路から何とかすべきよね」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_ETC, -1, "", "けど、姉さんだって、@n俺が付き添うって言ったときには、@n何も言わずに黙ってたような…");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050085「リカちゃんだって怪我してるのよ？@nそれなのに…」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あいつのは火傷で、もう治りかけだし」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050086「そういう問題じゃないのよ…」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「里伽子なら、わかってくれるって。@nどんだけの付き合いだと思ってるんだよ」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050087「…大した時間じゃないわよ」");	// ★★声のみ、エコー、小声＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「俺が、何よりも家族を優先するって…@nそういうこと、わかってて付き合ってくれてるから、@nだから、あいつといると安心なんだよ」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050088「違うと思う…それ」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「違わないって。@n何根拠のないこと言ってるんだよま～姉ちゃん」");
+		SetMessage(UNIT_ETC, -1, "", "何でもわかってくれてるから…@n態度とは裏腹に、とてもいい奴だから…@nどんなときでも、頼られてくれるから…");
+		SetMessage(UNIT_ETC, -1, "", "だから俺は、里伽子が一番好きだ。");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050089「根拠…あるわよ」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ？」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050090「半年前…」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「半年前って………もしかして」");
+		DelWindow();
+
+		SEFadeOut(0, SLOWER);
+		SEFadeOut(1, SLOWER);
+		FlashOut(FAST);
+		SetVisual(VISUAL_RIKAKO_04A, FILTER_SEPIA);
+		FlashIn(NORMAL, 1);
+
+		SetWindow(WINDOW_SIMPLE);
+		SetMessage(UNIT_ETC, -1, "", "俺が、振られた時のこと？@n@p@k");
+
+		FlashOut(FAST);
+		SetVisual(VISUAL_FIRE, FILTER_SEPIA);
+		FlashIn(NORMAL, 1);
+
+		AddMessage("それとも、火事の時のこと？");
+		DelWindow();
+
+		FadeOut();
+		SetVisual(BG_EMAD_03A);
+		FadeIn();
+
+		SetWindow();
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050091「多分、仁くんの想像してる、両方」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…それが？」");
+
+		BGMFadePlay(BGM_SHITTORI,SLOW);
+
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050092「リカちゃんが仁くんをふったのって…@n多分、姉ちゃんのせいよ」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…は？」");
+		SetMessage(UNIT_ETC, -1, "", "それは、全くもって唐突な仮定。");
+		SetMessage(UNIT_ETC, -1, "", "想像どころか、創作すらできそうにない状況。");
+
+
+
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050093「姉ちゃん、二人の大事なときに、@n仁くんを一週間もひとりじめした」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「え？　え？」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050094「仁くん、姉ちゃんのために、@nずっとつきっきりでいてくれて…@n携帯の電源だって切って」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あれは…あの時は、仕方ないだろ」");
+		SetMessage(UNIT_ETC, -1, "", "そうでもしなければ、姉さんは…");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050095「でも、大事な約束、すっぽかしたのよね？@nあのとき…」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「どうしてそこまで知ってるの…」");
+		SetMessage(UNIT_ETC, -1, "", "俺の告白が、一週間延期になったこと…");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050096「仁くんは、あの一週間、リカちゃんの連絡を拒否した」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ちゃんと事前に説明したって…ある程度は」");
+		SetMessage(UNIT_ETC, -1, "", "言いにくいこともあったけど、@n最低限の事情は説明して、納得してもらった。");
+		SetMessage(UNIT_ETC, -1, "", "里伽子だって、@n『ああ、それならしょうがないね、お大事に』@nって…心配してくれたんだ。");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050097「繰り返しちゃ、ダメよ。@nもう、姉ちゃんのことは放っておきなさい。@nリカちゃんのことだけ考えるの」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「やだね」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050098「仁くん…っ」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「大体俺は、姉ちゃんの言ってること理解できない。@n里伽子はそんな心の狭い奴なんかじゃないんだ。@nあいつのことは、俺が一番良く知ってるんだ」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050099「それは…心が狭いとか、そういう問題じゃない…」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「何と言われようと、俺は今の考えを改めるつもりはない。@nまた姉ちゃんがピンチになったら、@n何をおいても駆けつける」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050100「仁、くん…」");	// ★★声のみ、エコー＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「やだって言っても、絶対来るからな。@nこれだけは、譲れない」");
+
+		SetMessage(UNIT_ETC, -1, "", "父さんも、母さんも、兄ちゃんも…@n高村の父さんも、母さんも、そしてま～姉ちゃんも…");
+		SetMessage(UNIT_ETC, -1, "", "今、ここにいる家族も、@n今はここにはいない家族も。");
+		SetMessage(UNIT_ETC, -1, "", "俺にとっては、誰よりも、大事なひとたちだから。");
+		DelWindow();
+
+		FadeOut();
+
+		SetWindow();
+		SetMessage(UNIT_EMA, -1, "恵麻", "@o050@v06050101「ごめん…リカちゃん」");	// ★★声のみ、エコー、泣き声＞
+		SetMessage(UNIT_EMA, -1, "恵麻", "@o050@v06050102「わたし…もう、何も言えないよ…@nううん…否定したくない…ごめんね」");	// ★★声のみ、エコー、泣き声＞
+		DelWindow();
+
+		// ＜ＳＥ：ちゃぽん＞
+		SEPlay("L_Water13");
+		Wait(150);
+
+		FadeIn();
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+		// ＜画面暗転＞
+		DelWindow();
+
+		Wait(50);
+
+		BGMFadeOut(SLOWEST);
+		FadeOut(SLOWER, 1);
+
+		Wait(100);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "@m08姉さんは、それから３０分も、@n湯船から出てこなかった。");
+		SetMessage(UNIT_ETC, -1, "", "@m08…というより、のぼせたところを、@n俺が引き上げて身体をふいて、@n着替えさせたんだけど。");
+		HideMenu();
+		DelWindow();
+		DelVisual();
+
+		Wait(300);
+
+		LoadEvent(EVENT_RIKAKO_20);
+end();

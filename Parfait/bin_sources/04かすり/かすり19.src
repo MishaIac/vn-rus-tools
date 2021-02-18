@@ -1,0 +1,105 @@
+// ●かすり19　彼女のいない日々
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	// ＜ＢＧ：フロア＞
+	SetVisual( BG_FAMILLEF_01A );
+	BGMFadePlay( BGM_HUAN );
+	FadeIn();
+
+	SetStand( ASUKA_0102UN2 , LEFT , MOVE_STOP , FAST , 1);
+	SetStand( YUI_0101OT    , RIGHT );
+
+	SetWindow();
+
+	SetMessage(UNIT_ASUKA, ASUKA_0102AK, "明日香", "@v04030109「はぁ～」");
+	SetMessage(UNIT_YUI, YUI_0101OT, "由飛", "@v04010123「ふぅ～」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102AK, "明日香", "@v04030110「なんか雰囲気違うよね～」");
+	SetMessage(UNIT_YUI, YUI_0101OT, "由飛", "@v04010124「うん、午後になってもかすりさんいないし～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「こら、フロア担当、何だらけてんの！」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102AK, "明日香", "@v04030111「だって～」");
+	SetMessage(UNIT_YUI, YUI_0102KN_, "由飛", "@v04010125「ねぇ～～」");
+
+	DelStand( LEFT , MOVE_STOP , FAST , 1);
+	DelStand( RIGHT );
+
+	SetMessage(UNIT_ETC, -1, "", "かすりさんが店を出て行って、@nそろそろ半月になる。");
+	SetMessage(UNIT_ETC, -1, "", "アパートに電話しても、いつも留守番電話。@n携帯にかけても出てくれない。@n実家に帰ったようすもないし、");
+	SetMessage(UNIT_ETC, -1, "", "一体どこにいっちゃったんだろう。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ…」");
+
+	SetMessage(UNIT_ASUKA, ASUKA_0102NR2, "明日香", "@v04030112「…てんちょもため息ついてるし」");
+	DelWindow();
+
+	SetVisual(BG_FAMILLE_01A);
+	CrossFade(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "かすりさんがいなくなった穴は、@n予想以上に大きかった。");
+	SetMessage(UNIT_ETC, -1, "", "キッチンでは姉さんが頑張ってるけど、@nやっぱり一人ってのはキツイみたいだ。");
+	SetMessage(UNIT_ETC, -1, "", "このままだと、ケーキ２００円ってのも量的にまずい。@n生産が需要に追いつかないんだよな。");
+	SetMessage(UNIT_ETC, -1, "", "そして…俺も…");
+	SetMessage(UNIT_ETC, -1, "", "胸に穴があいたような…ってのは、きっと@nこういう感じなんだろうな。");
+	SetMessage(UNIT_ETC, -1, "", "時々無意識のうちに@nため息をついていることに気がつく。");
+	SetMessage(UNIT_ETC, -1, "", "結局、俺はなんのアクションもできないでいる。@nこのままじゃいけない。@nそれだけはわかってるけど…");
+	SetMessage(UNIT_ETC, -1, "", "でも、一体どうすればいいのか。@p@nなんの答えも出せないまま、俺は日々を重ねていた。");
+	DelWindow();
+
+	BGMFadeOut(SLOWEST);
+	SetVisual(BG_CURIO_01A);
+	CrossFade(SLOW);
+	Wait(100);
+
+	// ＜ＢＧ：キュリオフロア＞
+	SetVisual( BG_CURIOF_01A );
+	CrossFade(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080025「それじゃ、２号店からきた@n新入社員を紹介するね@nどうぞ！」");
+
+	SetStand(KASURI_0301MJ);
+	BowStand();
+	SetMessage(UNIT_KASURI, KASURI_0301MJ, "かすり", "@v04040773「涼波かすりです、よろしくお願いします」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101MJ, "瑞奈", "@v04070001「えっ…あの人って」");
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101AK, "芳美", "@v04100001「ファミーユの…パティシエールさんだよね？」");
+	SetMessage(UNIT_REA, REA_0102IK, "玲愛", "@v04020001「店長、どういうつもりです？」");
+	DelWindow();
+
+	FadeOut();
+	SetStand(ITABASHI_0101NO);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080026「だってさ～、もったいないじゃない？@nあのファミーユのケーキをつくってた人だよ？」");
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v04020002「でも…だって…」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080027「いいから、ボクに任せておいて」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080028「あの子はまだまだ伸びるよ。@nでも、あそこじゃ、二人ともダメになっちゃうからね」");
+	SetMessage(UNIT_REA, REA_0102HT, "玲愛", "@v04020003「二人？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080029「いやいや、カトレアくんは気にしないで。@nあの子を上手く使ってちょうだいね」");
+	SetMessage(UNIT_REA, REA_0101IK, "玲愛", "@v04020004「カトレア言うなっ！」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080030「これで寂れてたキッチンも@nやっと役に立つわけだしさ。@nまぁ頑張ってもらいましょ、ね、涼波君」");
+	DelWindow();
+
+	FadeOut();
+	SetStand(KASURI_0301MJ);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_0301MJ, "かすり", "@v04040774「…はい」");
+	HideMenu();
+	DelWindow();
+
+	Wait(50);
+	FadeOut( SLOWER );
+	DelStand();
+	DelVisual();
+
+	Wait(300);
+
+	LoadEvent(EVENT_KASURI_20);
+end();

@@ -1,0 +1,526 @@
+// ●玲愛05：深夜のチェイス
+// 種類：通常イベント
+// 条件：第２クォーター、フードコート（curio）を選択
+// 概要：夜遅く一緒になって、一緒に帰宅？
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ファミーユ店内（消灯）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_04A );
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ガスの元栓ＯＫ、消灯ＯＫ…」");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ブリックモール＞
+	//----------------------------------------------------------------------------
+
+	// ＜ＳＥ：ドアベル＞
+	SEPlay("L_Door05A");
+	SEPlay("L_Bell02");
+	FadeOut();
+	SetVisual( BG_FAMILLE_04A );
+	Wait(100);
+	FadeIn();
+	SEPlay("L_Door05B");
+	Wait(100);
+	SEPlay("L_Lock01", 100, 1);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「施錠ＯＫ…って、@nもうこんな時間か」");
+	SetMessage(UNIT_ETC, -1, "", "なんてこった…@nもうすぐ、明日になりそうだ。");
+	SetMessage(UNIT_ETC, -1, "", "軽食メニューの研究をしてたら、@nすっかり時間を忘れてしまった。");
+	SetMessage(UNIT_ETC, -1, "", "…ついでに割った卵の数も忘れたいが。@n明日、姉さんに怒られるかなぁ？");
+	DelWindow();
+
+	SetVisual(BG_FOODCOURT_03B);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ま、いいや、帰ろ」");
+	SetMessage(UNIT_ETC, -1, "", "卵なら、明日始業前に買ってくれば済む話…");
+	DelWindow();
+
+	SetVisual( BG_CURIO_04A );
+	CrossFade();
+
+	// ＜ＳＥ：ドアベル（キュリオの）＞
+	SEPlay("L_Door05A");
+	SEPlay("L_Bell03");
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "と、お向かいさんもこんなに遅くまで大変…");
+
+	SetStand(REA_0402HT, CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_REA, REA_0402HT, "玲愛", "@v02020133「あ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+	SetMessage(UNIT_REA, REA_0402IK, "玲愛", "@v02020134「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…お、お疲れ」");
+
+	SEFadePlay(0, "L_Walk03FR");
+	DelStand(CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020135「………」");
+	DelWindow();
+
+	// ＜ＳＥ：早足で歩く（かつかつかつ）＞
+	// ＜夜中で誰もいないので足音は反響します＞
+	SetVisual( BG_FOODCOURT_03B );
+	SEFadePlay(1, "L_Walk02FR");
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「こら待て！　挨拶くらいしてけ！」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02020136「お疲れ様っ！」");
+
+	// ＜ＳＥ：早足で歩く（かつかつかつ）＞
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「人と話すときはちゃんと顔を見ろ～！」");
+	DelWindow();
+
+	FadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "迂闊だった…");
+	SetMessage(UNIT_ETC, -1, "", "キュリオで一番最後まで残ってるのって、@nいつも同じやつに決まってるじゃないか。");
+	DelWindow();
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER, 1);
+
+	Wait(200);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：駅前（夜）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_EKIMAE_03A );
+	SEFadePlay(0, "L_Town01", SLOWER);
+	SEFadePlay(1, "L_Town03", SLOWER);
+	SEFadePlay(2, "L_Walk01", SLOWER);
+	SEFadePlay(3, "L_Walk02", SLOWER);
+	CurtainFadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0402IK2, "玲愛", "@v02020137「ふう…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「遅かったな、今日は」");
+	SetMessage(UNIT_REA, REA_0402TN, "玲愛", "@v02020138「………」");
+
+	// ＜ＳＥ：足音＞
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「少しはご近所づきあいというものを@n考えたことはあるのかお前は？」");
+	SetMessage(UNIT_ETC, -1, "", "出勤先はお向かいだわ帰宅先はお隣だわというのに、@nこの疎遠さはまるで東京砂漠…");
+	SetMessage(UNIT_REA, REA_0402TN, "玲愛", "@v02020139「倒すべき敵で、情けない男で、@nしかも救いがたいシスコンと話す口なんかないの」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっと待て！@n二番目は訂正しろ！」");
+
+	SEFadeOut(2);
+	SEFadeOut(3);
+	SetStand(REA_0401IK, CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_REA, REA_0401IK, "玲愛", "@v02020140「最後のを訂正させないとこなんか最低っ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え～、なんで？」");
+	SetMessage(UNIT_ETC, -1, "", "本当にこいつは理由もなく怒る…");
+
+	SetMessage(UNIT_REA, REA_0402TN, "玲愛", "@v02020141「ふんっ」");
+
+	SEFadePlay(2, "L_Walk02F");
+	DelStand(CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、おい待てって」");
+
+	SEFadePlay(3, "L_Walk01F");
+	SetMessage(UNIT_ETC, -1, "", "すたすたすた");
+	SetMessage(UNIT_ETC, -1, "", "すたすたすた");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「どうせ帰る方向一緒じゃないか」");
+	SetMessage(UNIT_REA, REA_0402IK2, "玲愛", "@v02020142「だからこそついてくるな…」");
+
+	SetMessage(UNIT_ETC, -1, "", "すたすたすたすた");
+	SetMessage(UNIT_ETC, -1, "", "すたすたすたすた");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前、今何時だと思ってるんだ？@n女の一人歩きは危険だろが！」");
+	SetMessage(UNIT_REA, REA_0402TN, "玲愛", "@v02020143「別に怖くもなんともないわよ！」");
+
+	SetMessage(UNIT_ETC, -1, "", "すたすたすたすたすたすたすたすた");
+	SetMessage(UNIT_ETC, -1, "", "すたすたすたすたすたすたすたすた");
+	SetMessage(UNIT_ETC, -1, "", "ちなみにこれは一秒間の歩数だ。");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「犯罪者はこっちの気持ちなんか汲んでくれないぞ！」");
+	SetMessage(UNIT_REA, REA_0402IK2, "玲愛", "@v02020144「平気な顔してれば襲ってこないものよ」");
+	DelWindow();
+
+	BGMFadePlay(BGM_COMICAL, SLOWER);
+	SEFade(0, SLOWER, 70);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	SEFadeOut(3, SLOWER);
+	SEFadePlay(1, "L_Dash05", SLOWER);
+	SEFadePlay(2, "L_Dash06", SLOWER);
+	CurtainFadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "たったったったったったったったったったったっ");
+	SetMessage(UNIT_ETC, -1, "", "たったったったったったったったったったったっ");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なっ…ま、待て！」");
+	SetMessage(UNIT_ETC, -1, "", "とうとう走り出しやがった！");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：路地＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_ROJI_03A );
+	CurtainFadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0401IK, "玲愛", "@v02020145「あんたの方がよっぽど危険よ！」");
+
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	SEFadePlay(1, "L_Dash07", SLOWER);
+	SEFadePlay(2, "L_Dash08", SLOWER);
+
+	SetMessage(UNIT_ETC, -1, "", "たたたたたたたたたたたたたたたたたたたたたっ");
+	SetMessage(UNIT_ETC, -1, "", "たたたたたたたたたたたたたたたたたたたたたっ");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっと待て！　俺の話を聞けって！@nここらって結構痴漢とか多いんだぞ！」");
+	SetMessage(UNIT_REA, REA_0402TN, "玲愛", "@v02020146「こうやって追いつかれなければいいんでしょ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そりゃそうだけどっ、@nスポーツ万能で成績優秀な@n文武両道の痴漢だったらどうする気だ！？」");
+	SetMessage(UNIT_REA, REA_0401IK, "玲愛", "@v02020147「そ、そんな男の人だったら、@nそもそもっ、痴漢なんてやんないでしょうが！」");
+
+	// ＜玲愛、息が切れてきてます＞
+	ShakeVisual(1, 0);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	SEFadePlay(1, "L_Dash09", SLOWER);
+	SEFadePlay(2, "L_Dash10", SLOWER);
+
+	SetMessage(UNIT_ETC, -1, "", "だだだだだだだだだだだだだだだだだだだだだっ");
+	SetMessage(UNIT_ETC, -1, "", "だだだだだだだだだだだだだだだだだだだだだっ");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ち、ち、痴漢ってのはなぁ！@n性的欲求の不満だけじゃないんだぞ～！@n勉強のしすぎでストレス溜まってたらどうするよ！？」");
+	SetMessage(UNIT_REA, REA_0402IK, "玲愛", "@v02020148「だ、だ、だったら！@nスポーツで発散させればいいじゃない！@n文武両道なんでしょ～！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だ、だだ、大学受験でそれどころじゃねえんだよ～！」");
+	SetMessage(UNIT_REA, REA_0402IK3, "玲愛", "@v02020149「そ、そそ、そんななまった奴だったら、@n私になんか追いつけないわよ～だ！」");
+
+	ShakeVisual(2, 0);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	SEFadePlay(1, "L_Dash11", SLOWER);
+	SEFadePlay(2, "L_Dash12", SLOWER);
+
+	SetMessage(UNIT_ETC, -1, "", "ずだだだだだだだだだだだだだだだだだだだだっ");
+
+	ShakeVisual(2, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+
+	ShakeVisual(2,SLOW);
+
+	SetMessage(UNIT_ETC, -1, "", "ずだだだだだだだだだだだ………とぼ、とぼ…");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お、追いつけん…@nなんて持久力のある奴だ」");
+	SetMessage(UNIT_ETC, -1, "", "確かに、あれだけ体力があるなら、@n生半可な痴漢（？）では襲えそうもないが…");
+	SetMessage(UNIT_ETC, -1, "", "しかし！　奴はまだ、この辺りの地理がわかってない！");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「行くぞ…」");
+	DelWindow();
+
+	SEFadeOut(0, SLOWER);
+	SEFadePlay(0, "L_Walk01");
+	CurtainFadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "あいつの走っていった方向から東へ９０度。@n要するに、右の細い道へと入っていく。");
+	SetMessage(UNIT_ETC, -1, "", "そう、これこそが、@n俺がいつも帰り道として使っている、近道。");
+	SetMessage(UNIT_ETC, -1, "", "確かに、あいつの走っていった道は、@nそのまま俺たちのマンションに辿り着くが、@n実はかなり大回りしているってのは気づきにくい事実だ。");
+	SetMessage(UNIT_ETC, -1, "", "そして、こっちの道を行けば、@n実は、徒歩にして５分ほどの短縮が可能なのだ！");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「待ってろよ花鳥玲愛…@nお前の驚く顔が目に浮かぶようだぜ」");
+	SetMessage(UNIT_ETC, -1, "", "まぁ………細くて寂しい道だから痴漢が心配だけどな。");
+
+	// ＜画面暗転＞
+	BGMFadeOut(SLOWER);
+	SEFadeOut(0, SLOWER);
+
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(200);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：路地＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_ROJI2_03A );
+	SEFadePlay(0, "L_Town01", SLOW);
+	CurtainFadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ、はぁ…ふ、ふふ…」");
+	SetMessage(UNIT_ETC, -1, "", "全力疾走で、合流点に辿り着いた。");
+	SetMessage(UNIT_ETC, -1, "", "これで後は、あいつが唖然とする表情を拝んで、@n今日のお仕事は終わり。");
+	SetMessage(UNIT_ETC, -1, "", "今夜の一服は美味いだろうなぁ…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ふ、ふふ、ふふふふふ…」");
+	SetMessage(UNIT_ETC, -1, "", "自然とこぼれ出る含み笑いをかみ殺しながら、@n俺は、わくわくしながら、花鳥玲愛を待つ。");
+	DelWindow();
+
+	// ＜画面暗転＞
+	SEFadeOut(0, SLOWER);
+	FilterFadeOut(SLOW, FADEFILTER_UZU);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：路地＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_ROJI2_03A );
+	SEFadePlay(0, "L_Town01", SLOW);
+	FilterFadeIn(SLOW, FADEFILTER_UZU);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "５分経過。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「遅いな…」");
+	SetMessage(UNIT_ETC, -1, "", "あそこからなら、歩いても１０分くらいだから、@nもう着いていてもおかしくないのに…");
+	SetMessage(UNIT_ETC, -1, "", "走りすぎて、疲れのせいで歩くこともままならないか？");
+	SetMessage(UNIT_ETC, -1, "", "だとしたら…間抜けだ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「は、はは、ははははは…」");
+	SetMessage(UNIT_ETC, -1, "", "地団駄を踏みつつ、とぼとぼと歩いてくるあいつの姿を@n想像して、またしても邪悪な笑みがこぼれる。");
+	DelWindow();
+
+	// ＜画面暗転＞
+	SEFadeOut(0, SLOWER);
+	FilterFadeOut(SLOW, FADEFILTER_UZU);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：路地＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_ROJI2_03A );
+	SEFadePlay(0, "L_Town01", SLOW);
+	FilterFadeIn(SLOW, FADEFILTER_UZU);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "１０分経過。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっと待て」");
+	SetMessage(UNIT_ETC, -1, "", "いくら何でも遅すぎないか？");
+	SetMessage(UNIT_ETC, -1, "", "普通だったら、もうマンションに着いてる時間だぞ？");
+	SetMessage(UNIT_ETC, -1, "", "他の近道…てことはあり得ない。@n俺たちのマンションに行くためには、@n必ず通らなけりゃならない交差点なんだ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	FadeOut();
+
+	SetMessage(UNIT_ETC, -1, "", "『犯罪者はこっちの気持ちなんか汲んでくれないぞ！』");
+
+	FadeIn();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「っ！？」");
+	SetMessage(UNIT_ETC, -1, "", "自分の、少し前に発した言葉に寒気がした。");
+	SetMessage(UNIT_ETC, -1, "", "まさか…");
+	SetMessage(UNIT_ETC, -1, "", "待て…俺…");
+	SetMessage(UNIT_ETC, -1, "", "なんであいつを、一人にしたんだ…？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「か…花鳥…？」");
+
+	// ＜ＳＥ：足音＞
+	SEFadePlay(1, "L_Walk01F");
+
+	SetMessage(UNIT_ETC, -1, "", "疲れ切った足に、もう一度鞭を打つ。");
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadePlay(1, "L_Dash13", SLOWER);
+	CurtainFadeOut(NORMAL);
+
+	SetMessage(UNIT_ETC, -1, "", "そして来た道…ではなく、大通りを、@n駅前に向かって全力で駆ける。");
+
+	// ＜画面暗転＞
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「お～い！　花鳥玲愛～！」");
+	SetMessage(UNIT_ETC, -1, "", "真夜中、閑静な住宅地、そして大声。");
+	SetMessage(UNIT_ETC, -1, "", "イコール、近所迷惑。");
+	SetMessage(UNIT_ETC, -1, "", "んなこと、構ってられるか。");
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「返事をしろぉぉぉ～！！！」");
+
+	SEFadeOut(1, SLOWER);
+
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：駅前（夜）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_EKIMAE_03A );
+	SEFadePlay(0, "L_Town01", SLOW);
+	SEFadePlay(1, "L_Town03", SLOW);
+	CurtainFadeIn();
+
+	SetStand(REA_0401OD);
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0401OD, "玲愛", "@v02020150「…っ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な…」");
+	SetMessage(UNIT_REA, REA_0401OD, "玲愛", "@v02020151「なんで………こっちから来んのよ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんで………こんなとこにいるんだよ」");
+	SetMessage(UNIT_ETC, -1, "", "ここは、駅前。@p@nブリックモールは、目と鼻の先。");
+	SetMessage(UNIT_ETC, -1, "", "俺たちが、走り始めた場所。");
+	SetMessage(UNIT_REA, REA_0401KM, "玲愛", "@v02020152「あんたが…いなくなったから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え…」");
+	SetMessage(UNIT_ETC, -1, "", "俺から必死で逃げてたくせに、@nいなくなったら気にするってのは一体…");
+
+	SetMessage(UNIT_REA, REA_0401SN, "玲愛", "@v02020153「忘れ物とかだったらいいけど、@n犯罪者はこっちの気持ちなんか汲んでくれないし…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あの…まさか…@n俺が痴漢に遭ってるとでも？」");
+	SetMessage(UNIT_REA, REA_0401SN, "玲愛", "@v02020154「スポーツ万能で成績優秀で、@nそいでもって、@t0314@h0401SN_その……の痴漢がいたらどうするのよ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "“……”の部分まで聞こえてしまった…");
+	SetMessage(UNIT_REA, REA_0402IK, "玲愛", "@v02020155「で？　結局何やってたのよ？　あんた」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…すまん」");
+
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	FadeOut(NORMAL);
+
+	SetMessage(UNIT_ETC, -1, "", "頭を下げるしかなかった…");
+	SetMessage(UNIT_ETC, -1, "", "こいつの真面目さ…というか、口とは裏腹な、@n人に対する気づかいの細やかさに対して…");
+	SetMessage(UNIT_ETC, -1, "", "俺の行き当たりばったりな言動が、@nとてつもなく恥ずかしく感じられたから。");
+	SetMessage(UNIT_ETC, -1, "", "だから、正直に、ありのままの、俺の悪巧みを…");
+	DelWindow();
+
+	SetStand(REA_0401IK);
+	FadeIn();
+
+	SetWindow();
+	BGMPlay(BGM_REA);
+	ShakeScreen(8);
+	SetMessage(UNIT_REA, REA_0401IK, "玲愛", "@v02020156@s0004「悪鬼、@t0085@k");
+	ShakeScreen(8);
+	AddMessage("鬼畜、@t0140@k");
+	ShakeScreen(8);
+	AddMessage("畜生、@t0217@k");
+	ShakeScreen(8);
+	AddMessage("生物兵器、@t0330@k");
+	ShakeScreen(8);
+	AddMessage("器量悪し！」");
+
+	// ＜『器量悪し』は『きりょうあし』と読んでください＞
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だから、すまないって…」");
+	SetMessage(UNIT_ETC, -1, "", "しりとり縛りのせいで、最後の方が苦しそうだ。");
+	SetMessage(UNIT_REA, REA_0401IK, "玲愛", "@v02020157「何が『女の一人歩きは危険だろが』よ！@n安心させといてハシゴを外すなんて、@n余計タチ悪いじゃない！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前の言う通りだ…ごめん」");
+	SetMessage(UNIT_REA, REA_0401IK, "玲愛", "@v02020158「～～～っ！@n帰る！」");
+
+	DelStand(CENTER, MOVE_RIGHT);
+
+	SetMessage(UNIT_ETC, -1, "", "今までも相当怒りを買っていたが、@n今度ばかりは修復不能っぽい。");
+	SetMessage(UNIT_ETC, -1, "", "俺は、彼女の背中が視界から消えるまで、@n呆然と駅前に佇んでいた。@k");
+	DelWindow();
+
+	// ＜画面暗転＞
+	Wait(50);
+	BGMFade(SLOWER, 0);
+	FadeOut(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "……");
+	SetMessage(UNIT_ETC, -1, "", "…");
+	DelWindow();
+
+	Wait(50);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：駅前（夜）＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_EKIMAE_03A );
+	BGMFade(NORMAL, 100);
+	FadeIn();
+	SetStand(REA_0401IK, CENTER, MOVE_RIGHT);
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0401IK, "玲愛", "@v02020159「ちょっと！@nいつになったら帰るのよ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…は？」");
+	SetMessage(UNIT_ETC, -1, "", "あれから数分…");
+	SetMessage(UNIT_ETC, -1, "", "彼女は、ちっとも視界から消えてなかった。");
+	SetMessage(UNIT_REA, REA_0401IK, "玲愛", "@v02020160「いい加減にしなさいよ。@nもう何時だと思ってるの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや…何で待ってるの？」");
+	SetMessage(UNIT_REA, REA_0402IK2, "玲愛", "@v02020161「待ってないわよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@m16「だったら帰れば……@e");
+
+	SetStand(REA_0402IK);
+	ShakeScreen(8);
+	AddMessage("…っ！？」");
+	SetMessage(UNIT_REA, REA_0402IK, "玲愛", "@v02020162「………」");
+
+	// ＜玲愛、もの凄い表情で睨む＞
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な、なななな…？」");
+	SetMessage(UNIT_ETC, -1, "", "なんだなんだ一体？@n今度は俺、どうやって怒りを大人買いした？");
+	SetMessage(UNIT_REA, REA_0401IK, "玲愛", "@v02020163「スポーツ万能で成績優秀で」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…え？」");
+	SetMessage(UNIT_REA, REA_0402IK2_, "玲愛", "@v02020164「そいでもって…@nノーマルな痴漢がいたらどうするのよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+
+	SetMessage(UNIT_REA, REA_0402IK2, "玲愛", "@v02020165「さっきのは半分しか事実を言ってないんだから…@n@t0405@h0402TN_そのくらいは察しなさい」");
+	SetMessage(UNIT_ETC, -1, "", "半分って…つまり、@n俺を気遣って戻ったというのが半分で…");
+	SetMessage(UNIT_ETC, -1, "", "じゃ、残りの半分は…？");
+	SetMessage(UNIT_REA, REA_0402TN_, "玲愛", "@v02020166「半径１０メートル以上、@n２０メートル以内。@n…そのポジションを死守しなさい」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「花鳥…」");
+	SetMessage(UNIT_REA, REA_0402TN, "玲愛", "@v02020167「行くわよ」");
+
+	SetMessage(UNIT_ETC, -1, "", "なんともまぁ…");
+	SetMessage(UNIT_ETC, -1, "", "異常なまでに、素直じゃない奴…");
+	SetMessage(UNIT_REA, REA_0402IK, "玲愛", "@v02020168「返事は？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「任しとけ。@n絶対に逃げ切れないくらいに、@nしつこくストーキングしてやる」");
+	SetMessage(UNIT_REA, REA_0402BS, "玲愛", "@v02020169「………よし」");
+	HideDay();
+	DelWindow();
+
+	SetVisual(BG_SORA_03A);
+	DelStand();
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "そうして俺たちは…");
+	SetMessage(UNIT_ETC, -1, "", "それ以降、一言も口を聞かないまま、@n同じマンションまでの、家路を、ゆっくりと歩いた。");
+	SetMessage(UNIT_ETC, -1, "", "もちろん、大通り沿いに、遠回りして。");
+	HideMenu();
+	DelWindow();
+
+	Wait(50);
+
+	BGMFadeOut(SLOWER);
+	FadeOut(SLOW);
+	DelVisual();
+
+	Wait(300);
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

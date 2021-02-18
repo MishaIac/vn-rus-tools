@@ -1,0 +1,521 @@
+// ●第３クォーター01
+//種類：強制イベント");
+//条件：第２クォーター02の直後に必ず発生");
+//概要：第３クォータープロローグ");
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+	ShowDay();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：curioフロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_CURIOF_03A );
+	BGMFadePlay(BGM_NICHIJOU2);
+	FadeIn(SLOW);
+	SetStand( ITABASHI_0101NO );
+
+	SetWindow();
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080034「それじゃ、準備はできたかな？@nじゃ、今日もお疲れさまでした。@nかんぱ～い！」");
+	SetMessage(UNIT_REA, REA_0102IK3, "玲愛", "@v00020053「紅茶でそういう気勢をあげないでください」");
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101EG, "芳美", "@v00100006「まぁまぁチーフ。@nせっかくの店長の『たまの』ご厚意なんだから」");
+	SetMessage(UNIT_FEMALE, HIKARI_0101BS, "ひかり", "@v00090006「そうですよぉ。@n終業後のお茶会なんて、今まで一月ここで働いてたけど、@n初めてじゃないですか～」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101SN, "板橋", "@v00080035「…ひょっとして、新人教育失敗した？　ボク」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101AK, "瑞奈", "@v00070007「店長がいつどこで何を教育してたんですか…@n玲愛とわたしに任せっきりだったくせに」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101MJ, "板橋", "@v00080036「きょ、今日のお茶会のお菓子を、提供したのは@nどこの誰なのか、よく考えてから@n発言するべきだと思うんだよ、ボクは～！」");
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v00020054「早く帰って洗濯しなきゃ…」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101SN, "板橋", "@v00080037「…冷めるから早く飲んでね」");
+
+	DelWindow();
+
+	FilterFadeOut(NORMAL, FADEFILTER_RYUUSEN | FADEFILTER_MIRROR);
+	DelStand();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ファミーユキッチン＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Factory01", NORMAL, 50);
+	SEFadePlay(1,"L_Cook01",NORMAL);
+	SEFadePlay(2,"L_Cook05",NORMAL);
+	FilterFadeIn(NORMAL, FADEFILTER_RYUUSEN);
+
+	SEFadePlay(3, "L_Dish06", SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_YUI, YUI_0102NS, "由飛", "@v00010101「店長～、お～な～か～すいたよ～」");
+
+	// ＜ＳＥ：スプーンで皿を叩く＞
+	//伊藤：SE new?
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっとは大人しく待てんのか君は」");
+	SetMessage(UNIT_ETC, -1, "", "カウンター越しに、皿をスプーンで激しく叩く音が響く。");
+	SetMessage(UNIT_ETC, -1, "", "こっちが半熟具合に集中している最中に…");
+
+	SEFadeOut(3);
+	SetStand(YUI_0101MU);
+
+	SetMessage(UNIT_YUI, YUI_0101MU, "由飛", "@v00010102「だってだって～…@nめちゃくちゃいい匂いじゃないですか～！」");
+	SetMessage(UNIT_ETC, -1, "", "と、そういってる間にも、デミグラスソースがいい具合だ。");
+	SetMessage(UNIT_ETC, -1, "", "ケチャップをブレンドして、甘みを強めにする。@nチキンライスには、ケチャップが必須だからな。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あと３分待つこと～」");
+
+	ShakeStand();
+
+	SetMessage(UNIT_YUI, YUI_0101MU, "由飛", "@v00010103「ああん、もう！@n@t0155@h0101OD卵はいいから、その、チキンライスだけでも～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「貴様ぁっ！@n言ってはならんことを～！」");
+	SetMessage(UNIT_ETC, -1, "", "卵を…卵をないがしろにしたぁっ！？");
+	SetMessage(UNIT_YUI, YUI_0102NS, "由飛", "@v00010104「あ～もう我慢できないっ！@n店長のぉ、早く…早く食べさせてぇ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…主語を省略するな」");
+	DelWindow();
+
+	SEFadeOut(0);
+	SEFadeOut(1);
+	SEFadeOut(2);
+	FilterFadeOut(NORMAL, FADEFILTER_RYUUSEN | FADEFILTER_MIRROR);
+	DelStand();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：curioフロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_CURIOF_03A );
+	FilterFadeIn(NORMAL, FADEFILTER_RYUUSEN);
+
+	SetStand( YOSHIMI_0101AK , LEFT , MOVE_STOP ,FAST,1 );
+	SetStand( HIKARI_0101NO , RIGHT );
+
+	SetWindow();
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101MJ, "瑞奈", "@v00070008「あれ？　そういえば石田君は？」");
+	SetMessage(UNIT_FEMALE, HIKARI_0101NO, "ひかり", "@v00090007「ああ、石田さんならさっき電話がかかってきて、@n慌てて帰っていきましたよ？」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101NY, "瑞奈", "@v00070009「例の望ちゃん？」");
+	SetMessage(UNIT_FEMALE, HIKARI_0101HN, "ひかり", "@v00090008「いいえぇ、電話口では『麻美ちゃん』って…」");
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101AK, "芳美", "@v00100007「わたし、『くるみ』って人からの電話@n受けたことありますけど」");
+
+	DelStand(  LEFT , MOVE_STOP ,FAST,1	);
+	DelStand(  RIGHT			);
+	SetStand(MIZUNA_0101MJ);
+
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101MJ, "瑞奈", "@v00070010「彼って、玲愛狙いだったんじゃなかったの？」");
+
+	DelStand();
+	SetStand( REA_0102NO );
+
+	SetMessage(UNIT_REA, REA_0102NO, "玲愛", "@v00020055「一度、仕事終わった後にデートに誘われたけど、@n一時間説教したら、二度と誘わなくなったわよ？」");
+	SetMessage(UNIT_FEMALE, HIKARI_0101NO, "ひかり", "@v00090009「………」");
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101AK, "芳美", "@v00100008「………」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080038「要するにアレだ…カトレア君にこっぴどくふられて、@nそのトラウマを克服するために、手当たり次第に@n店と関係ない女の子に手を出し始めた、と」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101NY, "瑞奈", "@v00070011「男の人生操ってるね～、玲愛。@nしかも悪い方向に」");
+	SetMessage(UNIT_REA, REA_0102TN, "玲愛", "@v00020056「そんな根性なしに用なんかないわ。@n大体、仕事中は仕事のことだけ考えなさいっての。@n…@t0680@h0102IKあとカトレア言わないでください店長」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080039「そういうキツイことばっか言ってるから、@n君の周りの男って、仁くんだけになっちゃうんだよ？」");
+
+	SEPlay("L_Inpact12");
+	ShakeScreen(16);
+
+	SetMessage(UNIT_REA, REA_0102MS, "玲愛", "@v00020057「げほっ！　ごほっ！？」");
+
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101AS, "瑞奈", "@v00070012「うわきったな」");
+
+	DelWindow();
+	FilterFadeOut(NORMAL, FADEFILTER_RYUUSEN | FADEFILTER_MIRROR);
+	DelStand();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ファミーユフロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_03A );
+	FilterFadeIn(NORMAL, FADEFILTER_RYUUSEN);
+
+	SEPlay("L_Dish02");
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はいお待たせ。@nよくかき混ぜて味わうんだぞ」");
+
+	SetStand(YUI_A101KG);
+	ShakeScreen(4);
+	SEPlay("L_Touch01");
+
+	SetMessage(UNIT_YUI, YUI_A101KG, "由飛", "@v00010105「うわあああ…夢にまで見たよ～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「大げさな…@nただのオムライスだよ」");
+	SetMessage(UNIT_YUI, YUI_A101KG, "由飛", "@v00010106「だってだって～、いつも運ぶときいい匂いしてたし、@n@t0464@hA102SN2『え～、てんちょの半熟オムライス、食べたことないの？』@n@t0968@hA102KNって、明日香ちゃんに馬鹿にされたし～」");
+
+	SetMessage(UNIT_ETC, -1, "", "まぁ、そんなこんなで…");
+	SetMessage(UNIT_ETC, -1, "", "今日の終業後になって、由飛くんが急に、@n『店長の半熟オムライス食べたい～』と、駄々をこねた。");
+	SetMessage(UNIT_ETC, -1, "", "まぁ、俺としても、せっかくのリクエストだし、@nかなり悪い気がしなかったんで、二つ返事で居残りをした。");
+
+	SetMessage(UNIT_YUI, YUI_A102BS, "由飛", "@v00010107「このメニューが始まってから、@n残してる人見たことないんですよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ありがたいね、そりゃ」");
+	SetMessage(UNIT_ETC, -1, "", "確かに、下げられてくる皿は、@n大抵が綺麗に何も残ってない。");
+	SetMessage(UNIT_ETC, -1, "", "普通のオムライスに比べて成功率が低いからって、@n今までメニューに加えてなかった半熟オムライス。");
+	SetMessage(UNIT_ETC, -1, "", "けど、肝心のメニュー数を減らしたことで、@nなんとかお客様に提供できるだけの目処が立った。");
+	SetMessage(UNIT_ETC, -1, "", "で、蓋を開けてみれば、これがなかなかの反響。");
+
+	SEPlay("L_Dish01");
+
+	SetMessage(UNIT_YUI, YUI_A101KG, "由飛", "@v00010108「あああああ…@n世の中に、こんな柔らかくて、美味しい@nオムライスがあっていいんでしょうか～！？」");
+	SetMessage(UNIT_ETC, -1, "", "ほら、こんな具合に。");
+	SetMessage(UNIT_ETC, -1, "", "里伽子には、感謝だな。@nあいつはいつも、本質を突いてきやがる。");
+	SetMessage(UNIT_YUI, YUI_A101KG, "由飛", "@v00010109「卵がとろっとろで、ソースもぴったりで～、@n@t0512@hA101UN…チキンライスは普通だけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…よく見破ったな」");
+	SetMessage(UNIT_ETC, -1, "", "だってチキンライス炒めるのめんどくさいんだもん。@nそれなら半熟卵のとろけ具合に力を注いだ方が楽しい。");
+	SetMessage(UNIT_YUI, YUI_A101EG, "由飛", "@v00010110「店長って…店長って…@n卵の王子様だね～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんだそりゃ」");
+
+	SEPlay("L_Dish01");
+
+	SetMessage(UNIT_YUI, YUI_A101KG, "由飛", "@v00010111「美味しいよぉ…また作ってくださいね？@n@t0500@hA101EGさしあたっては来週？　別に明日でも構わないけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…よく味わって食えよ。@n食後にコーヒーも淹れるから」");
+	SetMessage(UNIT_ETC, -1, "", "由飛くんは、気持ちいいくらいにがっついてくれる。");
+	SetMessage(UNIT_ETC, -1, "", "こういうワガママは…@nなんとなく、許せてしまう俺が可愛い。");
+	SetMessage(UNIT_YUI, YUI_A101KG, "由飛", "@v00010112「ああ…しやわせ～」");
+
+	DelWindow();
+	FilterFadeOut(NORMAL, FADEFILTER_RYUUSEN | FADEFILTER_MIRROR);
+	DelStand();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：curioフロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_CURIOF_03A );
+	FilterFadeIn(NORMAL, FADEFILTER_RYUUSEN);
+
+	SetStand( REA_0102MS );
+	SetWindow();
+
+	ShakeScreen(8);
+
+	SetMessage(UNIT_REA, REA_0102MS, "玲愛", "@v00020058「ごほっ、ごほぉっ…な、なんて…ことを…？」");
+	SetMessage(UNIT_FEMALE, HIKARI_0101NO, "ひかり", "@v00090010「そういえば…@n一月経った今でも飽きずに言い争いしてますね」");
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101AK, "芳美", "@v00100009「高村さんって罵られるのが好きなのかなぁ？」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101AK, "瑞奈", "@v00070013「いや、それは…ちょっと言い過ぎなんじゃ？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101MJ, "板橋", "@v00080040「面と向かって言っちゃってナンだけど、@nボクは、君と仁くんは、あやしいと思ってるんだよ」");
+	SetMessage(UNIT_REA, REA_0102TN, "玲愛", "@v00020059「よくもまぁそんな…@n@t0253@h0102IK2私はですねぇ、ああいった礼儀知らずで、@n自分勝手で、独善的な男は大っ嫌いなんです！」");
+
+	SetMessage(UNIT_FEMALE, HIKARI_0101HN, "ひかり", "@v00090011「そうでしょうか…？@n礼儀正しいし、優しそうな感じがしますけど」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101NO, "瑞奈", "@v00070014「同じマンションに住んでるけど、廊下で会っても@nきちんと挨拶するし、正直いい人だよ」");
+	SetMessage(UNIT_REA, REA_0102TN, "玲愛", "@v00020060「そういう、誰にでもいい顔するところが気に入らない」");
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101AK, "芳美", "@v00100010「…礼儀知らずで自分勝手なところが@n気に入らなかったんじゃないんですか？」");
+
+	SEPlay("L_Walk03S");
+	DelStand();
+	SetStand(REA_A102IK);
+
+	SetMessage(UNIT_REA, REA_A102IK, "玲愛", "@v00020061「っ！」");
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101NK, "芳美", "@v00100011「ひぃっ！？」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101MJ, "瑞奈", "@v00070015「…真理を突かれたからって凄まないの。@n芳美、泣きそうになってるじゃない」");
+
+	SEPlay("L_Walk03S");
+	DelStand();
+	SetStand(REA_0102TN);
+
+	SetMessage(UNIT_REA, REA_0102TN, "玲愛", "@v00020062「ふ、ふんっ」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080041「あ、そうだ、せっかくだから、@n仁くんもお茶会に呼ぼうよ？」");
+
+	SEPlay("L_Inpact12");
+	ShakeScreen(16);
+
+	SetMessage(UNIT_REA, REA_0102MS, "玲愛", "@v00020063「ぐふっ、げほっ、ごほぉっ！？」");
+
+	DelWindow();
+	DelStand();
+	SetWindow();
+
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101AK, "瑞奈", "@v00070016「…さっきからきったないなぁ、もう」");
+
+	SetStand(ITABASHI_0101NO);
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080042「この時間なら多分帰ってないからさ。@n呼ぼう呼ぼう、生贄をもう一人…じゃなくて、@nお向かいさんとも、親睦を深めなきゃね～」");
+	SetMessage(UNIT_FEMALE, HIKARI_0101NO, "ひかり", "@v00090012「…楽しそうですわね、店長」");
+
+	DelWindow();
+	FilterFadeOut(NORMAL, FADEFILTER_RYUUSEN | FADEFILTER_MIRROR);
+	DelStand();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ファミーユフロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_03A );
+	FilterFadeIn(NORMAL, FADEFILTER_RYUUSEN);
+
+	SetStand( YUI_A101EG );
+	SEPlay("L_Touch01");
+	Wait(20);
+	BowStand();
+
+	SetWindow();
+	SetMessage(UNIT_YUI, YUI_A101EG, "由飛", "@v00010113「…ごちそうさまでした～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おそまつさまでした」");
+	SetMessage(UNIT_ETC, -1, "", "両手をきっちりと合わせて、@n深々とお辞儀をする由飛くんに、@n俺は、思わず頭を撫でそうになる。");
+	SetMessage(UNIT_ETC, -1, "", "いやほら、他意はないぞ？@n自分の飯を美味いと言ってくれたら、@nそりゃ、誰だって嬉しいだろ？　なっ？");
+	SetMessage(UNIT_YUI, YUI_A102BS, "由飛", "@v00010114「店長って…やっぱりすごいなぁ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「オムライス一つでそこまで言われても…」");
+	SetMessage(UNIT_YUI, YUI_A101BS, "由飛", "@v00010115「オムライスだけじゃないですよ。@nまだ若いのに、こうしてお店切り盛りして…@n苦労人なのに、そんなのおくびにも出さないし」");
+	SetMessage(UNIT_ETC, -1, "", "…何か、由飛くんのイメージの中では、@n俺のことが変に美化されているような？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「別に苦労なんか…@nもともと姉さんのやってた店だし、@n今だって、責任は取ってもらってるし」");
+	SetMessage(UNIT_YUI, YUI_A101AW, "由飛", "@v00010116「そうやって、苦労を苦労とも思ってないところも、@n尊敬に値すると思ってますよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、本当に苦労なんかしてないし」");
+	SetMessage(UNIT_ETC, -1, "", "ひょっとして、何か欲しいものでもあるんだろうか？");
+	SetMessage(UNIT_ETC, -1, "", "などと、親の勘ぐりをしてしまうくらいに、@n由飛くんが、俺を持ち上げる。");
+
+	BGMFade(SLOWEST, 0);
+
+	SetMessage(UNIT_YUI, YUI_A102KN_, "由飛", "@v00010117「わたしは、嫌なことがあったらすぐに逃げちゃうから…@n正面から向き合うこと、しないから…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…由飛、くん？」");
+	SetMessage(UNIT_YUI, YUI_A102KN_, "由飛", "@v00010118「だから、成長もしないし、@nいつまでたっても、仲直りできない」");
+	SetMessage(UNIT_ETC, -1, "", "かと思ったら、今度は自分を省みて…@n何故だか、ちょっと、落ち込みの表情を見せる。");
+	SetMessage(UNIT_ETC, -1, "", "ていうか、仲直りって…？");
+	SetMessage(UNIT_YUI, YUI_A101MJ, "由飛", "@v00010119「ねえ、店長…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なに？」");
+	SetMessage(UNIT_YUI, YUI_A101MJ, "由飛", "@v00010120「恵麻さんと、きょうだい、やっていくのって、@nずっと、楽しいことばかりでしたか？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それは…どういう意味？」");
+	SetMessage(UNIT_YUI, YUI_A102NO, "由飛", "@v00010121「本当のお姉さんじゃない、お姉さんができたとき…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え…」");
+	SetMessage(UNIT_YUI, YUI_A101MJ, "由飛", "@v00010122「嬉しかったですか？　戸惑ったりしなかったですか？@nどうやって笑ったらいいか、ちゃんと知ってました？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	DelWindow();
+	FilterFadeOut(NORMAL, FADEFILTER_RYUUSEN | FADEFILTER_MIRROR);
+	DelStand();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：curioフロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_CURIOF_03A );
+	BGMFade(SLOWER, 100);
+	FilterFadeIn(NORMAL, FADEFILTER_RYUUSEN);
+	SetWindow();
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080043「というわけだからさぁ、花鳥君、頼むよ。@n仁くん連れてきてよ～」");
+
+	SetStand( REA_0102TN );
+
+	SetMessage(UNIT_REA, REA_0102TN, "玲愛", "@v00020064「なんで一番嫌がってる私に@nそんな役目を押しつけるんですか！@n他の人に行かせればいいでしょ！」");
+	SetMessage(UNIT_FEMALE, HIKARI_0101NO, "ひかり", "@v00090013「嫌がってる割には、反対しないんですね…」");	// ★★小声
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101AK, "瑞奈", "@v00070017「この辺が、玲愛のよくわかんないとこなのよねぇ」");	// ★★小声
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080044「だってさぁ、ウチの中では、@n明らかに君が一番仲いいんだもん」");
+	SetMessage(UNIT_REA, REA_0101IK, "玲愛", "@v00020065「店長の『明らか』には、重大な誤用があります！」");
+	DelWindow();
+
+	FadeOut();
+	SetStand(YOSHIMI_0101AK);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101AK, "芳美", "@v00100012「あ、でも、いいのかなぁ…今呼びに行っちゃって。@nお邪魔なんじゃ？」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101MJ, "瑞奈", "@v00070018「いいんじゃないの？@nもう後かたづけとかも終わった頃でしょ」");
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101AK, "芳美", "@v00100013「いえ、そういう意味じゃなくて…@n実はさっき、お茶会のちょっと前に、@nファミーユさんの前を通りかかったら…」");
+	SetMessage(UNIT_REA, REA_0102HT, "玲愛", "@v00020066「…通りかかったら？」");
+	SetMessage(UNIT_MIZUNA, MIZUNA_0101MJ, "瑞奈", "@v00070019「…いつの間に聞き耳立ててたのよ？」");
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101AS, "芳美", "@v00100014「あ、その…二人っきりで楽しそうに話してたから…」");
+
+	DelStand();
+
+	SetStand(REA_0101OD ,LEFT ,MOVE_STOP ,FAST,1	);
+	SetStand(ITABASHI_0101NO , RIGHT		);
+
+	//SetMessage(UNIT_REA, REA_0101OD, "玲愛", "@v00020067「誰と！？」");
+	//SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v00080045「誰と！？」");
+	// ＜玲愛と板橋、同時に＞
+
+	//伊藤：ボイス加工の必要ある？
+	SetMessage(UNIT_REA, -1, "板橋＆玲愛", "@v00020067a「誰と！？」@n@k");
+	AddMessage("@i08「誰と！？」");
+
+	SetMessage(UNIT_FEMALE, HIKARI_0101NO, "ひかり", "@v00090014「この二人、本質的には同じ…？」");	// ★★小声
+	SetMessage(UNIT_FEMALE, YOSHIMI_0101AS, "芳美", "@v00100015「えっと、ほら…風美さん、だっけ？@nほら、時々、仕事中に歌ってる娘」");
+	SetMessage(UNIT_REA, REA_0101IN, "玲愛", "@v00020068「………」");
+
+	DelWindow();
+	BGMFadeOut(SLOWER);
+	FilterFadeOut(SLOW, FADEFILTER_RYUUSEN | FADEFILTER_MIRROR);
+	DelStand( LEFT );
+	DelStand( RIGHT );
+
+	Wait(200);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：ファミーユフロア＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEF_03A );
+	BGMFadePlay(BGM_SHITTORI,SLOW);
+	FilterFadeIn(SLOW, FADEFILTER_RYUUSEN);
+
+	SetWindow();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっと…苦しかった、かな？」");
+
+	SetStand( YUI_A101HA );
+
+	SetMessage(UNIT_YUI, YUI_A101HA, "由飛", "@v00010123「あ…」");
+	SetMessage(UNIT_ETC, -1, "", "由飛くんが、驚きの表情に、@nほっとした表情を混ぜ込んでくる。");
+	SetMessage(UNIT_ETC, -1, "", "けど…それは違うんだよなぁ。@p@n俺の感覚は、たぶん、彼女の想像しているものと違う。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ほれ、なんつ～か初恋…だったからなぁ。@nま～姉ちゃんが」");
+	SetMessage(UNIT_YUI, YUI_A102OD2, "由飛", "@v00010124「え…あ…」");
+	SetMessage(UNIT_ETC, -1, "", "“初恋”つ～のは、男がこうしてマジで口にすると、@n物凄い滑稽だというのが今わかったことだけでも収穫。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「弟として可愛がられることは、@n嬉しかったけど、戸惑ったし、@nやっぱり…どう笑えばいいのか、わかんなかったなぁ」");
+	SetMessage(UNIT_YUI, YUI_A102NO, "由飛", "@v00010125「………」");
+	SetMessage(UNIT_ETC, -1, "", "つか、恥ずかしい。@p@nけど、質問の答えとしては、最適だし、う～ん。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「答えに…なってないだろ？@nこんな特殊ケース」");
+	SetMessage(UNIT_YUI, YUI_A101OT, "由飛", "@v00010126「そ…っか…」");
+	SetMessage(UNIT_ETC, -1, "", "三つ年上の、いとこのお姉さん。");
+	SetMessage(UNIT_ETC, -1, "", "親戚中で、ただ一人、@n兄ちゃんよりも、俺の方を可愛がってくれたひと。");
+	SetMessage(UNIT_ETC, -1, "", "そして…");
+	SetMessage(UNIT_ETC, -1, "", "数年後、兄ちゃんのお嫁さんになったひと。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「えっと…みんなには結構バレてるけど、@n一応、秘密ってことになってるから、@n他言無用な」");
+	SetMessage(UNIT_YUI, YUI_A101BS, "由飛", "@v00010127「うん…」");
+	SetMessage(UNIT_ETC, -1, "", "いかん…");
+	SetMessage(UNIT_ETC, -1, "", "由飛くんの、いつもとは違う神妙な態度にほだされて、@nついつい余計なことをバラしてしまった。");
+	SetMessage(UNIT_YUI, YUI_A101BS, "由飛", "@v00010128「ままならないね…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え…？」");
+	SetMessage(UNIT_YUI, YUI_A101BS, "由飛", "@v00010129「大好きで、ずっと話したかったひとが、@n今までよりも、ずっと近くになったからって…」");
+	SetMessage(UNIT_YUI, YUI_A101NO, "由飛", "@v00010130「それが…@n幸せってことになるとは限らないんだから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「由飛、くん…」");
+	SetMessage(UNIT_YUI, YUI_A102EG, "由飛", "@v00010131「わたしたち、ちょっとだけ似たもの同士ですね♪」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そ、そう、かなぁ？」");
+	SetMessage(UNIT_ETC, -1, "", "俺の境遇しか話してないから、@n由飛くんの事情を知らないと、なんとも判断できない。");
+	SetMessage(UNIT_YUI, YUI_A101HA, "由飛", "@v00010132「あのね店長…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うん？」");
+	SetMessage(UNIT_YUI, YUI_A101MJ, "由飛", "@v00010133「今夜、もうちょっとだけ時間取れますか？@n…聞いて欲しい話があるんです」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いいけど…@n別に今夜、話さないでもいいんじゃないか？」");
+	SetMessage(UNIT_ETC, -1, "", "時計を見ると、結構な時間だ。");
+	SetMessage(UNIT_ETC, -1, "", "長くなりそうだから、今日のところはここまでにしといて、@n今度の休みの日とかで、ゆっくり話を聞いた方がいいかも。");
+	SetMessage(UNIT_YUI, YUI_A101HA, "由飛", "@v00010134「いえ、今、聞いて欲しいんです。@n実はわたし…」");
+
+	DelWindow();
+	//BGMFadeOut(SLOWER);
+	BGMFade(SLOWER,50);
+	FadeOut(SLOW);
+	DelStand();
+
+	Wait(50);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：フードコート＞
+	//----------------------------------------------------------------------------
+
+	// ＜ドア越しに中の会話を盗み聞きしてしまう玲愛＞
+	SetVisual( BG_FAMILLE_03A );
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_YUI, -1, "由飛", "@v00010135@s0002「大好き………、@n今までよりも、ずっと………」");
+	DelWindow();
+
+	SetStand( REA_0101IN );
+	SetWindow();
+
+	SetMessage(UNIT_REA, REA_0101IN, "玲愛", "@v00020069「え…？」");
+	// ＜上記の由飛の台詞を外から聞いて、妙な誤解をするという演出です＞
+
+	SetMessage(UNIT_YUI, -1, "由飛", "@v00010136@s0002「…………@n幸せ………」");
+	SetMessage(UNIT_REA,  REA_0101OD_ , "玲愛", "@v00020070「ちょっ…ちょっとぉ？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v00010137@s0002「今夜、もうちょっと………@n………欲しい………」");
+	//伊藤：ここはひらがなじゃないとまずくないかな？
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0002「いいけど…@n……今夜、離さない………」");
+	SetMessage(UNIT_REA, REA_0101IK, "玲愛", "@v00020071@s0002「～～～っ！？」");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+
+	// ＜ＳＥ：ドアベル（激しく）＞
+	//伊藤：ドアベル激がないのでドアを激しく開けてみる
+	BGMFadeOut(SLOW);
+	DelStand();
+	ShakeScreen(16);
+	SEPlay("L_Door02A");
+	SEPlay("L_Bell02");
+	FadeOut();
+	SetVisual( BG_FAMILLEF_03A );
+	FadeIn();
+
+	SetWindow();
+	ShakeScreen(8);
+	SetMessage(UNIT_REA, REA_0101IK, "玲愛", "@v00020072@s0004「お店の中で何やってんのよ～由飛！」@e");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v00010138「妹がキュリオにいるんです…」");
+	// ＜ウェイトなしで繋げてください＞
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「え？」");
+	SetMessage(UNIT_ETC, -1, "", "妹？");
+	DelWindow();
+
+	SetStand( REA_0101OD );
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0101OD, "玲愛", "@v00020073「あれ？」");
+	SetMessage(UNIT_YUI, YUI_0102OD, "由飛", "@v00010139「って、玲愛ちゃん！？」");
+	SetMessage(UNIT_ETC, -1, "", "玲愛ちゃん？");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あの…どしたの花鳥？」");
+	SetMessage(UNIT_ETC, -1, "", "てか、こいつ何でいきなり乱入してきたの？");
+	SetMessage(UNIT_REA, REA_0101SN, "玲愛", "@v00020074「え？　いや、それは、ほらあの…ねえ？」");
+	SetMessage(UNIT_YUI, YUI_0102SW, "由飛", "@v00010140「どうして、わたしがここにいるって…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はい？」");
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v00020075「いや、そっちは…ずっと前から気づいてたけど。@nちっとも隠れてなかったし…姉さん」");
+
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「はいぃ？」");
+
+	SetMessage(UNIT_ETC, -1, "", "姉、さん…？");
+	DelWindow();
+
+	SetVisual(BG_FAMILLEE_03A);
+	DelStand();
+	CrossFade();
+
+	// ＜ＳＥ：ドアベル＞
+	SEPlay("L_Door05A");
+	SEPlay("L_Bell02");
+
+	SetStand( ITABASHI_0101NO, CENTER, MOVE_LEFT );
+
+	SetWindow();
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v00080046「お～い、まだかい？　花鳥君。@n@t0464@h0101KTって、あれ？　修羅場？」");
+	DelWindow();
+
+	SetVisual(BG_FAMILLEF_03A);
+	DelStand();
+	SetStand(REA_0102KM, LEFT);
+	SetStand(YUI_0102SW, RIGHT);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v00020076「………」");
+	SetMessage(UNIT_YUI, YUI_0102SW, "由飛", "@v00010141「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前ら…ええ？」");
+	DelWindow();
+
+	SetVisual(BG_FAMILLE_03A);
+	DelStand(LEFT);
+	DelStand(RIGHT);
+	CrossFade(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "@m08１１月も半ばに差し掛かったブリックモール。");
+	SetMessage(UNIT_ETC, -1, "", "@m08クリスマス商戦を一月後に控え、@nそれとは全然関係ない衝撃の事実。");
+	SetMessage(UNIT_ETC, -1, "", "@m00冬の夜の～、@w0050寒さも凍らす、@w0050姉妹かな～？@k");
+
+	Wait(100);
+	FadeOut(SLOWER);
+	MessageWait();
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	DelVisual();
+
+	Wait(300);
+
+	SetEventNo(EVENT_03_01_01);
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

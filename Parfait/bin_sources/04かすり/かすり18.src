@@ -1,0 +1,106 @@
+// ●かすり18　さよならかすりさん
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	// ＜ＢＧ：フロア＞
+
+	SetVisual( BG_FAMILLEF_03A );
+	BGMFadePlay( BGM_HUAN );
+	FadeIn();
+	SetWindow();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ…」");
+	SetMessage(UNIT_YUI, YUI_0102SW, "由飛", "@v04010121「どうしたんだろ、ため息なんかついて」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102UN2, "明日香", "@v04030107「わかんないよ。@n男心って難しいからね」");
+	SetMessage(UNIT_ETC, -1, "", "結局、今日はかすりさん来なかった。@p@n昨日の電話から、連絡も取れない。");
+	SetMessage(UNIT_ETC, -1, "", "本当に辞めちゃうんだろうか。@p@nああ、あの電話をちゃんととれていたら。");
+
+	SetStand(EMA_0101MJ, CENTER, MOVE_RIGHT);
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v04050205「キッチン閉めるわよ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はい、お疲れさま」");
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v04050206「それでかすりちゃんから連絡は？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「依然なし」");
+	SetMessage(UNIT_EMA, EMA_0102SP, "恵麻", "@v04050207「辞めるなんて、嘘よね」");
+	DelStand();
+
+	SetStand(YUI_0102OD);
+	ShakeScreen( 8 );
+	JumpStand();
+	SetMessage(UNIT_YUI, YUI_0102OD, "由飛", "@v04010122@s0004「え～～～っ！@nかすりさん、辞めちゃうの？」");
+	SetMessage(UNIT_ETC, -1, "", "と、俺と姉さんの会話を耳にした由飛が@n会話に割り込んできた。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん、そう言う知らせが昨日あってね」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102OD, "明日香", "@v04030108「なんでなんで！　@t0186@h0102OT寂しいよ」");
+	SetMessage(UNIT_ETC, -1, "", "しょんぼりと明日香ちゃんが言う。");
+	SetMessage(UNIT_ETC, -1, "", "寂しい…か。@p@n俺だって寂しい。");
+	SetMessage(UNIT_ETC, -1, "", "今ここに顔を出してくれたら、@nみんなでかすりさんを引き止められるのに。");
+	SetMessage(UNIT_ETC, -1, "", "かすりさん…どこにいるんだよ。");
+	DelWindow();
+	FadeOut( SLOW );
+	DelStand();
+
+	Wait( 100 );
+
+	// ＜ＢＧ：ブリックモール夜＞
+	SetVisual( BG_MALL_03A );
+	SEFadePlay(0, "L_Town01", SLOWER);
+	SEFadePlay(1, "L_Wind04", SLOWER);
+	FadeIn( SLOWER );
+
+	//伊藤：さよならジュピター
+	SetWindow();
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040759「さよなら…ファミーユ…」");
+
+	BGMFadeOut( SLOWER );
+	SetStand(ITABASHI_0101NO, CENTER, MOVE_LEFT);
+
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080009「ちょっとそこの人！」");
+	SetMessage(UNIT_KASURI, KASURI_0402OD, "かすり", "@v04040760「な、なにっ！？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080010「どーしたの？@nそんな暗い顔して～。@n空はこんなに明るくて鳥たちは高らかに歌ってるのに」");
+	SetMessage(UNIT_KASURI, KASURI_0401AK, "かすり", "@v04040761「もうすっかり夜ですけど…」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080011「いやまぁボクの心の中では…ってことで」");
+	SetMessage(UNIT_KASURI, KASURI_0401KT, "かすり", "@v04040762「板橋さん…なんだってここに？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080012「ん～散歩？」");
+	SetMessage(UNIT_KASURI, KASURI_0401UT, "かすり", "@v04040763「こんなところで@n油売ってていいんですか？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080013「ウチは優秀なマネージャーがいるからね～」");
+	SetMessage(UNIT_KASURI, KASURI_0401KT, "かすり", "@v04040764「キュリオ…そっか…」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101KT, "板橋", "@v04080014「そうだ…」");
+	SetMessage(UNIT_KASURI, KASURI_0401MJ2, "かすり", "@v04040765「わたしを…」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080015「あのね…」");
+
+	// ＜二人のセリフ、同時に＞
+	// (´-`)要加工
+	SetMessage(UNIT_KASURI, -1, "かすり＆板橋", "@v04040766「キュリオで雇って頂けませんか？」@n@k");
+	AddMessage("@i07「ウチで働いてみない？」");
+
+	SetMessage(UNIT_KASURI, KASURI_0402OD, "かすり", "@v04040767「…っ！？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080017「おや、気が合うね？@nファミーユを辞めてきたんでしょ？」");
+	SetMessage(UNIT_KASURI, KASURI_0401OT, "かすり", "@v04040768「はい…実は…」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080018「うん、知ってる知ってる」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080019「んで、高村くんとつきあってたんでしょ？」");
+	SetMessage(UNIT_KASURI, KASURI_0401OT, "かすり", "@v04040769「…それは…」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080020「腕を磨きたいんだよね」");
+	SetMessage(UNIT_KASURI, KASURI_0401KT, "かすり", "@v04040770「…わかります？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080021「あそこのパティシエールは、天才だけど@n人に教えるのはてんでダメだったからね～」");
+	SetMessage(UNIT_KASURI, KASURI_0401SK, "かすり", "@v04040771「恵麻さんは、そんなじゃないですっ！@nわたしが覚えわるいだけでっ！」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080022「ウチのケーキ職人は…上手いよ@nつくるのも教えるのも」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080023「もしウチに来てもらえるなら、@n橘女史が直々に教えてくれる機会も@nつくってあげられるけど？」");
+	SetMessage(UNIT_KASURI, KASURI_0401MJ, "かすり", "@v04040772「…よろしく…お願いしますっ！」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080024「うん、ようこそ、キュリオへ@n涼波かすりさん」");
+	HideMenu();
+	DelWindow();
+
+	Wait(100);
+	SEFadeOut(0, SLOWEST);
+	SEFadeOut(1, SLOWEST);
+	FadeOut( SLOWER );
+	DelStand();
+	DelVisual();
+	Wait(300);
+
+	LoadEvent(EVENT_KASURI_19);
+end();

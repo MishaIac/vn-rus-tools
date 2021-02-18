@@ -1,0 +1,237 @@
+// ●里伽子21：里伽子ＢＡＤエンディング
+// 種類：エンディング
+// 条件：里伽子ＮＯＲＭＡＬエンドを見ていない。@n　　　里伽子20の直後に発生
+// 概要：街でベージュのコートを見かけると、腕にルビーのブレスレットを探すのさ～あなたを失ってから～♪（(C)寺尾聡）
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+		DayEffect();
+		ShowMenu();
+	//----------------------------------------------------------------------------
+	// ＜画面暗転＞
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：街中（仁の実家方面なのであまり汎用的でないものを）＞
+	//----------------------------------------------------------------------------
+
+		//伊藤：明日香とかでちょこちょこ使ってるけど問題ないかな？
+		//伊藤：だめでした・・・・orz
+		SetVisual( BG_TOWN_00A );
+		SEFadePlay(0, "L_Town01");
+		SEFadePlay(1, "L_Town02");
+		SEFadePlay(2, "L_Town03");
+		FadeIn(SLOW);
+
+		// ＜ＳＥ：街の喧騒＞
+
+		SetWindow();
+
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ふぅ…」");
+		SetMessage(UNIT_ETC, -1, "", "朝の日差しも弱く、突き刺す寒さは相変わらず厳しい。");
+		SetMessage(UNIT_ETC, -1, "", "それでも、駅前を行く人たちは、@n皆、それが当たり前のように行き過ぎる。");
+		SetMessage(UNIT_ETC, -1, "", "だから俺だって、不満を漏らしてるだけじゃ駄目だ。@p@n今日もまた、一歩を踏み出して、お仕事お仕事。");
+		DelWindow();
+
+		SELoopPlay(3,"L_Tel01");
+		// ＜ＳＥ：携帯の着信音＞
+		Wait(50);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「と…」");
+		SetMessage(UNIT_ETC, -1, "", "と、気合を入れ直したところに…");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…あれ？」");
+		SetMessage(UNIT_ETC, -1, "", "着信ディスプレイには、@nこの時間にかかってくるはずのない…");
+		DelWindow();
+
+		// ＜ＳＥ：着信ボタン押す＞
+		SEPlay("L_Tel02");
+		SEStop(3);
+		Wait(50);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「おはよ、ま～姉ちゃん」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050103「…寝てないわよ」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ～、道理で」");
+		SetMessage(UNIT_ETC, -1, "", "そういえば今日は…");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「メリー・クリスマス。@nま～姉ちゃん」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050104「イブ、よ」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あはは…どう？@n今年の売れ行きは？」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050105「去年の２倍は予約入ってる。@nもう忙しくて死にそう」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「よかったじゃん、順調で」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050106「店長がいないことを除けば、ね」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+		SetMessage(UNIT_ETC, -1, "", "ちくりと、来た。");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050107「…ま、そんなこと言いたくてかけたんじゃないの。@n仁くん、今年の正月はちゃんとウチにいるわよね？」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「…俺はいつも、正月は家にいるだろ？」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050108「お盆は山登りに行ってた。@n一人さんの命日はスキーに行ってた」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050109「…どうして、姉ちゃん避けるの？」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「偶然だよ…」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050110「どうして………大学、やめちゃったの？」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「それは…」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050111「どうして、お店もやめちゃったの？@nどうして、いきなり実家に帰っちゃったの？」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「何度も言ってんじゃん。@n働きたくなったからって」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050112「どうして…@nリカちゃんと、別れちゃったの？」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+		SetMessage(UNIT_ETC, -1, "", "もう、１０ヶ月も前の話なのに、なぁ。");
+
+		FadeOut();
+
+		SetMessage(UNIT_ETC, -1, "", "………");
+		DelWindow();
+
+		BGMFadePlay(BGM_HUAN, SLOWER);
+		SEFadeOut(0, SLOWEST);
+		SEFadeOut(1, SLOWEST);
+		SEFadeOut(2, SLOWEST);
+		FadeOut();
+		SetVisual(BG_TAKAMURAG_01A, FILTER_SEPIA);
+		FadeIn();
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "俺は、あの後、すぐに実家に帰った。");
+		SetMessage(UNIT_ETC, -1, "", "休学中の大学を退学して、地元で就職したいって、@n両親に相談したら、すごく複雑な反応だった。");
+		SetMessage(UNIT_ETC, -1, "", "親としては、俺が地元で働くのは願ってもないことだけど、@n大卒の資格を捨ててとなると、二の足を踏んでたみたいだ。");
+		SetMessage(UNIT_ETC, -1, "", "けど俺が、どうしてもと頭を下げて頼んだら、@n結局は子供に甘い父さんが、就職先を世話してくれた。");
+		SetMessage(UNIT_ETC, -1, "", "今は、小さな事務機器メーカーの新入社員として、@n忙しくも、それなりに充実した日々を送っている。");
+		SetMessage(UNIT_ETC, -1, "", "そう…それなりに、な。");
+
+		FadeOut();
+
+		SetMessage(UNIT_ETC, -1, "", "………");
+		DelWindow();
+
+		SetVisual( BG_TOWN_00A );
+		FadeIn();
+
+		SetWindow();
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050113「で、来年は３日までいるから、@n今度こそ、ゆっくりと話させてね」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「へいへい…わかりましたよ」");
+		SetMessage(UNIT_ETC, -1, "", "さて…年末年始は昔からの友達の家でも渡り歩くかな。");
+		SetMessage(UNIT_ETC, -1, "", "正直…まだ、あの話を笑ってすることなんかできない。");
+		SetMessage(UNIT_ETC, -1, "", "それに、全部正直に話したら、@n俺だけでなく、姉さんも傷つく。");
+		SetMessage(UNIT_ETC, -1, "", "そんなの、絶対に、駄目だ。@p@n俺の姉さんを傷つける奴は、許さない。");
+		SetMessage(UNIT_ETC, -1, "", "たとえ…世界一好きだったひとでも、だ。");
+
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050114「あ、と…最初に言っとくべきだったけど…@n元気でやってる？」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「うん…まぁね」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050115「そう…それなら…いいけど」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あは………@e");
+
+		// ＜街中、里伽子の後ろ姿（立ち絵でも可）＞
+		// ＜一瞬で消える＞
+		//伊藤：ここはブレスレットぼかしにコートで
+		BGMFadeOut(SLOWER);
+		SEFadePlay(0, "L_Town01", SLOWEST);
+		SEFadePlay(1, "L_Town02", SLOWEST);
+		SEFadePlay(2, "L_Town03", SLOWEST);
+		SetStand(RIKAKO_0502SA, LEFTLEFT, MOVE_RIGHT);
+		Wait(20);
+		DelStand(LEFTLEFT, MOVE_LEFT);
+
+		AddMessage("は？」");
+
+		SetWindow();
+
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050116「まぁ、食事の方はお母さんいるから心配してないけど@n…仁くん？」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…あ…っ！」");
+
+		DelWindow();
+
+		// ＜走り出す＞
+		SEPlay("L_Dash03");
+
+		// ＜画面暗転＞
+		CurtainFadeOut(NORMAL);
+
+		SetWindow();
+
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050117「仁くん？　ちょっと、どうしたの？」");	// ★★電話越し＞
+
+		// ( ´∀`).oO( 立ちじゃない場合は注意です。
+		SetMessage(UNIT_ETC, -1, "", "今の…今の、後ろ姿…");
+		SetMessage(UNIT_ETC, -1, "", "それは、笑ってしまうくらいに、低い確率。");
+		SetMessage(UNIT_ETC, -1, "", "だってここは、俺や、あいつのいた、@n八橋大の周辺でもなければ、@nブリックモールの近所でもない。");
+		SetMessage(UNIT_ETC, -1, "", "ただの、俺の実家の、最寄り駅の駅前。");
+		SetMessage(UNIT_ETC, -1, "", "なのに…");
+		SetMessage(UNIT_ETC, -1, "", "………");
+		DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：街中（仁の実家方面なのであまり汎用的でないものを）＞
+	//----------------------------------------------------------------------------
+
+		SetVisual( BG_TOWN_00A );
+		SEFadeOut(0, SLOWEST);
+		SEFadeOut(1, SLOWEST);
+		SEFadeOut(2, SLOWEST);
+		BGMFadePlay(BGM_HUAN, SLOWER);
+		CurtainFadeIn();
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「はは…」");
+		SetMessage(UNIT_ETC, -1, "", "違った。");
+		SetMessage(UNIT_ETC, -1, "", "顔は、確認してない。@nそれでも、確実に、違った。");
+		SetMessage(UNIT_ETC, -1, "", "だって…");
+		SetMessage(UNIT_ETC, -1, "", "ブレスレット、してない…");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050118「ちょっとぉ！　仁くん！　返事して！@n何があったのよぉ！？」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+		SetMessage(UNIT_ETC, -1, "", "ブレスレット、してないから、里伽子じゃない。");
+		SetMessage(UNIT_ETC, -1, "", "こんな簡単で、当たり前の識別法。");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050119「大丈夫？　具合でも悪いの？」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「いや…ごめん。@nちょっと考え事してただけ」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050120「…本当に？」");	// ★★電話越し＞
+		SetMessage(UNIT_ETC, -1, "", "だって、あいつは、俺のプレゼントした、@nあのブレスレットを、これから一生、はめ続けるんだから。");
+		SetMessage(UNIT_ETC, -1, "", "俺のかけた鎖に、永遠に繋がれ続けるんだから。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「ホントホント…@nあ、もうすぐ会社なんで切るよ？」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050121「うん…じゃ、元気でね。@n来週、そっち行くからね」");	// ★★電話越し＞
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「うん…あ、姉さん…@nメリー・クリスマス」");
+		SetMessage(UNIT_EMA, -1, "恵麻", "@v06050122「イブ、だってば」");	// ★★電話越し＞
+		DelWindow();
+
+		// ＜ＳＥ：電話切れる＞
+		SEPlay("L_Tel05");
+		Wait(50);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「はは…」");
+		SetMessage(UNIT_ETC, -1, "", "あいつは、俺の鎖から逃れられないんだから。");
+		SetMessage(UNIT_ETC, -1, "", "だって…右手にかけた手錠は…@nあいつの左手では、外せないんだから…");
+		DelWindow();
+
+		SetVisual(BG_SORA_01B);
+		CrossFade(SLOW);
+
+		SetWindow();
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「さ…今日も、頑張るか」");
+		SetMessage(UNIT_ETC, -1, "", "空は相変わらず薄曇り。@n雪でも降ってきそうな天気。");
+		SetMessage(UNIT_ETC, -1, "", "それもいい…@nそうなれば、ホワイトクリスマスだ。");
+		SetMessage(UNIT_HITOSHI, -1, "仁", "「イブ、か…」");
+		DelWindow();
+
+		SetVisual(BG_TOWN_00A);
+		CrossFade(SLOW);
+
+		SetWindow();
+		SetMessage(UNIT_ETC, -1, "", "@m08コートの襟を立て、青信号とともに、歩き出す。");
+		SetMessage(UNIT_ETC, -1, "", "@m08里伽子は、ここにはいない。@p@nだって、本当にいる場所を知っているから。");
+		SetMessage(UNIT_ETC, -1, "", "@m08それでも俺は、こんな、あり得ない場所で、@n偶然の再会を信じて、待っている。");
+		SetMessage(UNIT_ETC, -1, "", "@m08なぜなら…会いに行く勇気がないから。@n償いきれない罪を背負っているって、知っているから。");
+		SetMessage(UNIT_ETC, -1, "", "@m00だから…こうして…");
+		SetMessage(UNIT_ETC, -1, "", "@m00絆だけを信じて、いつまでも、動けないままでいる。");
+		HideMenu();
+		DelWindow();
+
+		// ＜エンディングへ＞
+		Wait(100);
+
+		BGMFadeOut(800);
+		FadeOut(800);
+		DelVisual();
+
+		Wait(300);
+
+		LoadScript("System.bin", SYSTEMBANK_TITLE);
+end();

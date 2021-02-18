@@ -1,0 +1,275 @@
+// ●玲愛23：狂い出す歯車
+// 種類：重要イベント
+// 条件：玲愛ＴＲＵＥルートで、玲愛22の直後に発生
+// 概要：近くにいるのに遠い二人。
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	ShowMenu();
+
+	// ＜ＳＥ：カーテン開ける＞
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：仁のマンションのリビング＞
+	//----------------------------------------------------------------------------
+
+	SEFadePlay(0, "L_Bird01");
+	Wait(100);
+	FlashOut();
+	SetVisual( BG_HITOSHI_01A );
+	BGMPlay(BGM_NICHIJOU2);
+	SEPlay("L_Curtain01");
+	FilterFlashIn(NORMAL, FADEFILTER_LEFTRIGHT);
+	SetStand(REA_0302EG, CENTER, MOVE_LEFT);
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0302EG, "玲愛", "@v02021147「お～い、朝よ～@n起きなさい！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「う、あぁ…？」");
+	SetMessage(UNIT_REA, REA_0302EG2, "玲愛", "@v02021148「さあさ、いい天気だよ。@n絶好の引きこもり日和！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんだってんだそりゃ…」");
+	SetMessage(UNIT_ETC, -1, "", "そういえば、今日は週に一度の水曜日…@nブリックモールの定休日か…");
+	SetMessage(UNIT_ETC, -1, "", "それにしても…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛…お前、朝から元気だなぁ」");
+
+	SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v02021149「だってせっかくの休日じゃない。@nたまった洗濯物片づけて、部屋も綺麗にしないと」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「もうちょっと浮かれたこと考えろよ…ふああ…」");
+	SetMessage(UNIT_ETC, -1, "", "俺たちの時間は、残り少ないのに…");
+	SetMessage(UNIT_ETC, -1, "", "それにしても、こいつは変わらないな。");
+
+	SetMessage(UNIT_REA, REA_0302BS, "玲愛", "@v02021150「仁はお疲れだね。@n昨夜も遅かったみたいだし」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、ああ…その、ちょっと新メニューの研究を」");
+	SetMessage(UNIT_REA, REA_0302KM, "玲愛", "@v02021151「…そう、なんだ？　一人で？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん、まぁな」");
+	SetMessage(UNIT_REA, REA_0302KM, "玲愛", "@v02021152「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…玲愛？」");
+
+	SetMessage(UNIT_REA, REA_0301OD, "玲愛", "@v02021153「あ、あれ？　仁もしかして昨日お風呂入ってない？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん？　ああ…そういや、ベッドに倒れ込んで、@nそのままだったなぁ」");
+	SetMessage(UNIT_REA, REA_0301KM, "玲愛", "@v02021154「汚いなぁ、今からシャワー浴びておいでよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「一日くらいいいじゃん」");
+
+	SetMessage(UNIT_REA, REA_0301SN, "玲愛", "@v02021155「嫌、匂いがつくから。@t0347@h0302IKちゃんと洗いなさい。@nそのうちに朝ごはんの支度しておくから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、ああ…そうするか」");
+	SetMessage(UNIT_ETC, -1, "", "匂いがつくようなこと…するつもりなんだな。");
+	SetMessage(UNIT_ETC, -1, "", "にしても、一瞬だけ元気がなくなった気がしたけど…@n俺の気のせいだったか。");
+	SetMessage(UNIT_REA, REA_0302BS, "玲愛", "@v02021156「あ、脱いだ服洗濯機の中入れといてね。@n仁が入ったら回しとくから」");
+	SetMessage(UNIT_ETC, -1, "", "すっかり自分の家としての地位を確立してるな…");
+	SetMessage(UNIT_ETC, -1, "", "まぁ、掃除、洗濯、炊事の手間が飛躍的に減ったから、@n歓迎っちゃあ歓迎なんだけど。");
+
+	// ＜画面暗転＞
+	DelWindow();
+	SEFadeOut(0);
+	FadeOut();
+	DelStand();
+
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：浴室＞
+	//----------------------------------------------------------------------------
+
+	// ＜ＳＥ：シャワーをひねる＞
+	SEFadePlay(0, "L_Water01", SLOWER);
+	SEPlay("L_Hineru01", 100, 1);
+	Wait(50);
+	SEPlay("L_Hineru01", 100, 1);
+
+	SetVisual( BG_HITOSHIH_01A );
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021157「パンツとタオル、ここに置いとくからね」");	// ★★声のみ
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…ああ」");
+
+	SELoopPlay(1, "L_Tel07", 30);
+
+	SetMessage(UNIT_ETC, -1, "", "下着の位置まで把握されてるのか、俺…");
+	DelWindow();
+
+	// ＜ＳＥ：洗濯機回す＞
+
+	// ＜画面暗転＞
+	SEFade(0, SLOWER, 10);
+	FadeOut();
+
+	Wait(100);
+
+	// ＜ＳＥ：電話の呼び出し音＞
+
+	// ＜ＳＥ：浴室のドア閉じる＞
+	SetVisual( BG_HITOSHI_01A );
+	SEFade(1, SLOW, 100);
+	CurtainFadeIn();
+
+	SetStand(REA_0302NO, CENTER, MOVE_LEFT);
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0302NO, "玲愛", "@v02021158「はいはいはい………@t0265@h0301INあ」");
+
+	// ＜ＳＥ：電話の呼び出し音＞
+
+	SetMessage(UNIT_REA, REA_0302NY, "玲愛", "@v02021159「さすがに…出るわけにはいかないわよね」");
+
+	SEStop(1);
+
+	// ＜ＳＥ：留守番電話の開始音＞
+
+	SetMessage(UNIT_FEMALE, -1, "留守電の声", "@v01160066「ただ今、留守にしております。@n発信音の後に、ご用件をどうぞ」");
+	DelWindow();
+
+	// ＜ＳＥ：留守番電話の発信音（ピー）＞
+	SEPlay("L_Tel08", 100, 1);
+	BGMFadeOut(SLOWEST);
+
+	SetWindow();
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010041「仁…もう出かけちゃった？」");	// ★★電話越し
+	SetMessage(UNIT_REA, REA_0301IN, "玲愛", "@v02021160「っ！？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010042「もしかしたら、寝てるだけなんじゃないの？@nお～い、起きろ～」");	// ★★電話越し
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010043「ねえ、仁、仁ってば…@nいないのかな…大事な話なんだけどな」");	// ★★電話越し
+	SetMessage(UNIT_REA, REA_0301IN, "玲愛", "@v02021161「あ…あ…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010044「いいや…後で電話してくれない？@nできれば、今日どっかで会いたいんだけど…」");	// ★★電話越し
+	SetMessage(UNIT_REA, REA_0302KM, "玲愛", "@v02021162「ダメ…だってば…@n@t0403@h0302KN出るわけに、いかないんだってばぁ…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010045「それじゃ、連絡待ってます…」");	// ★★電話越し
+	DelWindow();
+
+	DelStand();
+
+	// ＜ＳＥ：受話器を取る＞
+	SEPlay("L_Tel04");
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021163「っ…由飛」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010046「…え？」");	// ★★電話越し
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021164「なんか…用？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010047「玲愛…ちゃん？」");	// ★★電話越し
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021165「仁なら…お風呂入ってる。@n用があるなら…私が伝えるけど？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010048「あ…え、その…あ、あの…@nな、なんでもないっ！」");	// ★★電話越し
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021166「由飛…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010049「え～と、本当になんでもないの！@nちょっと退屈だったから、暇つぶしに@nかけてみただけ！」");	// ★★電話越し
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021167「本当に、いいの？@n大事な用、あったんじゃないの？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010050「ないない、そんなのあるわけないじゃない。@nやだなぁ、玲愛ちゃんこそ、もしかして、@n昨夜からずっと一緒？」");	// ★★電話越し
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021168「…そんなこと、ない。@n今来たところ」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010051「ごめんね、邪魔しちゃったみたいで。@nそれじゃ、切るから」");	// ★★電話越し
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021169「あ…由飛？」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010052「え…？」");	// ★★電話越し
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021170「昨夜、遅かったね…@n部屋の方、電話したけど、ずっと出なくて…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010053「あ…」");	// ★★電話越し
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021171「………」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010054「う、うん、ちょっとね。@n…大学のお友達と会ってたら話が弾んじゃって」");	// ★★電話越し
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021172「…そう、なんだ」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010055「うん、ごめん。@nどんな用だったの？」");	// ★★電話越し
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021173「あ………別に。@nただ、お母さんが心配してたから…」");
+	SetMessage(UNIT_YUI, -1, "由飛", "@v02010056「あ、それじゃ後で家にもかけとくから。@nそれじゃ、その…ごゆっくり…」");	// ★★電話越し
+	SetMessage(UNIT_REA, -1, "玲愛", "@v02021174「う、うん…」");
+	DelWindow();
+
+	// ＜ＳＥ：電話切れる＞
+	SEPlay("L_Tel05");
+	Wait(50);
+	SELoopPlay(1, "L_Tel09");
+	Wait(100);
+	SEFadeOut(1, SLOWER);
+	SetStand(REA_0301KN);
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0301KN, "玲愛", "@v02021175「………」");
+	SetMessage(UNIT_REA, REA_0301KN, "玲愛", "@v02021176「口裏…合わせてある…」");
+
+	// ＜画面暗転＞
+	DelWindow();
+	SEFadeOut(0, SLOWER);
+	FadeOut(SLOW);
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	Wait(200);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：仁の部屋のリビング＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_HITOSHI_01A );
+	BGMFadePlay(BGM_HUAN, SLOWER);
+	FadeIn(SLOW);
+	SetStand(REA_A301KN);
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_A301KN, "玲愛", "@v02021177「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_REA, REA_A301KN, "玲愛", "@v02021178「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あのさ…」");
+	SetMessage(UNIT_REA, REA_A301KN, "玲愛", "@v02021179「っ、な、なに…？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…おかわり、いい？」");
+	SetMessage(UNIT_REA, REA_A302KM, "玲愛", "@v02021180「あっ、あ、ええ…うん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…？」");
+	SetMessage(UNIT_ETC, -1, "", "俺を起こした時の元気はどこへ…？");
+	SetMessage(UNIT_ETC, -1, "", "もしかして、空元気だったか？");
+
+	SetMessage(UNIT_REA, REA_A302BS, "玲愛", "@v02021181「はい。どうぞ。@nお味噌汁は？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…そっちはまだあるからいいや」");
+	SetMessage(UNIT_REA, REA_A302KM, "玲愛", "@v02021182「そう…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_REA, REA_A302KM, "玲愛", "@v02021183「………」");
+
+	SetMessage(UNIT_ETC, -1, "", "う～む…");
+	SetMessage(UNIT_ETC, -1, "", "なんか朝からこう、しぼんでいくなぁ…");
+	SetMessage(UNIT_ETC, -1, "", "いつもなら、憎まれ口とも軽口とも取れる、@nきっつい言葉の応酬があって…");
+	SetMessage(UNIT_ETC, -1, "", "で、その後に、流れを無視してキスしたり、@n何の前触れもなく抱きついてきたり。");
+	SetMessage(UNIT_ETC, -1, "", "で、そのままベッドに入ろうとすると、@n今度は煮込んでおいたカレーを思い出したり。");
+	SetMessage(UNIT_ETC, -1, "", "退屈なんて言葉とは無縁な、俺たちの休日、だったのに…");
+
+	SetMessage(UNIT_REA, REA_A302KM, "玲愛", "@v02021184「ねえ、仁…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ん？」");
+	SetMessage(UNIT_REA, REA_A302KM, "玲愛", "@v02021185「やっぱり、私が戻っちゃうの、嫌？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_REA, REA_A301KN, "玲愛", "@v02021186「嫌、なのかな？@n別に、永遠の別れってわけじゃないし、@n月に２、３回は会えると思うんだけど…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…なんで蒸し返すんだよ？」");
+	SetMessage(UNIT_ETC, -1, "", "そんな、余計にしぼむ話題を…");
+
+	SetMessage(UNIT_REA, REA_A301KM, "玲愛", "@v02021187「だってさ、ほら…@nやっぱり、お互い納得してからにしたいよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛…」");
+
+	//伊藤：new希望
+	SetMessage(UNIT_REA, REA_A301KM, "玲愛", "@v02021188「もっとさ、ちゃんと話し合って…@nだって、私たち大丈夫なんだから…@n障害でもなんでもないよ、こんなの」");
+	SetMessage(UNIT_ETC, -1, "", "だったら…どうしてそんなに必死になるんだよ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「心配、するなって…」");
+
+	SetMessage(UNIT_REA, REA_A301KN, "玲愛", "@v02021189「仁…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「玲愛が決めたことだから…俺は、もう、いいよ。@nそれに元々の約束だったんだろ？」");
+	SetMessage(UNIT_REA, REA_A301KN, "玲愛", "@v02021190「『もういい』じゃ嫌…@n仁、我慢してるように聞こえるよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「我慢なんてしてないって。@n大丈夫。笑って送り出してやる」");
+
+	SetMessage(UNIT_REA, REA_A302KM, "玲愛", "@v02021191「…私のことなんてどうでもいいんだ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「どないすりゃええんじゃ…」");
+	SetMessage(UNIT_ETC, -1, "", "いじけてもダメ、@n開き直ってもダメ。");
+	SetMessage(UNIT_ETC, -1, "", "でもここで逆ギレなんかしたら、@nそれこそ、玲愛をもっと悲しませてしまう。");
+	SetMessage(UNIT_REA, REA_A302KM, "玲愛", "@v02021192「あ、ゴメン、食事どきにする話じゃなかったね。@n忘れて」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、ああ…」");
+
+	SetMessage(UNIT_REA, REA_A301KN, "玲愛", "@v02021193「おかわり、いる？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まださっきから一口も進んでねえよ…」");
+	DelWindow();
+
+	Wait(50);
+	BGMFadeOut(SLOWEST);
+	FadeOut(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	SetMessage(UNIT_ETC, -1, "", "@m08朝食後…@n玲愛は、用事を思い出したからと言って、@n自分の部屋へと戻り…");
+	SetMessage(UNIT_ETC, -1, "", "@m08そのまま、俺の部屋の鍵を開けることはなかった。");
+	SetMessage(UNIT_ETC, -1, "", "@m00せっかく、風呂入ったのになぁ…");
+	HideMenu();
+	DelWindow();
+	DelVisual();
+
+	Wait(300);
+
+	LoadEvent(EVENT_REA_24);
+end();

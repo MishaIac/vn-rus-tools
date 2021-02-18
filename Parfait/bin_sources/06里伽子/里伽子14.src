@@ -1,0 +1,207 @@
+// ●里伽子14：里伽子ＧＯＯＤエンディング
+// 種類：エンディング
+// 条件：里伽子ルートに入って、里伽子ＴＲＵＥの条件未達。@n　　　里伽子13の直後に発生
+// 概要：結婚して、子供を抱く里伽子
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	//----------------------------------------------------------------------------
+	// ＜画面暗転＞
+	//----------------------------------------------------------------------------
+
+	BGMFadePlay(BGM_YASURAGI,SLOWER);
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「もうちょっと…こんな感じじゃね？」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060594「あ～駄目それじゃ。泣く泣く」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うあっ！？@nま、待て…@nファーストショットくらい笑ってたいだろ夏海？」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060595「だったら余計な手出しはしないの、仁は」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺の娘だぞぉ！？」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060596「あたしがお腹を痛めた」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺が気持ちよかった！」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060597「…最低」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…さ、笑って笑って」");
+
+	DelWindow();
+
+	// ＜ＳＥ：デジカメのシャッター音＞
+
+	SEPlay("L_Camera01");
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：赤ん坊を抱いた、ファインダー越しの里伽子＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( VISUAL_RIKAKO_20A );
+	FlashIn(FAST);
+	Wait(100);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060598「どう？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「こんな感じ」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060599「うん…やっぱり夏海は可愛いね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あたりめ～だろ」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060600「旧姓夏海も、可愛いね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「夏海にゃ負けるけどな」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060601「…やっぱ、この名前ってややこしいね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「でも…いい名前だろ？」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060602「…まあね」");
+
+	BGMFade(SLOW,50);
+	Fade(NORMAL,70);
+
+	SetMessage(UNIT_ETC, -1, "", "@g－@g－@g－高村夏海。");
+	SetMessage(UNIT_ETC, -1, "", "今は笑ってるけど、めっちゃ気まぐれで、@nすぐに泣いたりするこの女、@n………俺の娘。");
+	SetMessage(UNIT_ETC, -1, "", "ちなみに母親は、高村里伽子…数年前まで夏海里伽子。@p@n要するに、母親の旧姓を、そのまま名前に持ってきた。");
+	SetMessage(UNIT_ETC, -1, "", "これ、結構、夏海家の人々には不評だったんだけど、@n『娘を旧姓に戻さないという不退転の決意の表れ』@nということで、強引に押し込んだ。");
+	SetMessage(UNIT_ETC, -1, "", "何しろ、俺と里伽子が別れて、夏海家が夏海を@n引き取ったりする事態になったら、この娘の氏名は@n『夏海夏海』という、非常に脱力系なものになってしまう。");
+	SetMessage(UNIT_ETC, -1, "", "だから、絶対に別れるわけにはいかないのだ。");
+	SetMessage(UNIT_ETC, -1, "", "…里伽子には『当たり前だバカ』と怒られたけど。");
+
+	BGMFade(SLOW,100);
+	Fade(NORMAL,100);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「よし、それじゃ夏海が泣き出す前に、@nもう２、３枚撮っておかないとな」");
+
+	SetMessage(UNIT_ETC, -1, "", "産まれたのは、一週間前の…７月２０日。@p@nいや、結構狙ったけど、的中するとは思ってなかった。");
+	SetMessage(UNIT_ETC, -1, "", "今まで、散々保育器で泣く夏海を、@nガラスにへばりついて眺めていたけど、@n今日は、めでたい解禁日。");
+	SetMessage(UNIT_ETC, -1, "", "だから、取るものとりあえず、@n現状の最高画素数のデジカメを買ってきた。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「夏海…笑ってろよ？　笑ってろよ？@nよし、今だ」");
+	DelWindow();
+
+	// ＜ＳＥ：デジカメのシャッター音＞
+	SEPlay("L_Camera01");
+	FlashIn(FAST);
+	Wait(50);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060603「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「くぅ～っ！　いい表情！@nなぁ、こいつモデルの素質あると思わねえ？」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060604「…バカ親」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「バカ親上等。@nお前だって子供を持てばわかるようになる」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060605「夏海はあたしの娘よ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「俺の娘だぞぉ！？」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060606「どっちも正しいってば」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うるちゃいママはほっといて～@nシャッターチャーンス！」");
+	DelWindow();
+
+	// ＜ＳＥ：デジカメのシャッター音＞
+	SEPlay("L_Camera01");
+	FlashIn(FAST);
+	Wait(50);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060607「もう、仁ってば…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「許せ里伽子…夢がかなったんだ。@nもうちょっとばかし、バカのままでいさせてくれよ」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060608「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「けど、この娘本当に泣かないなぁ。@nなんていい娘なんだ」");
+	DelWindow();
+
+	// ＜ＳＥ：デジカメのシャッター音＞
+	SEPlay("L_Camera01");
+	FlashIn();
+	Wait(50);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060609「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「角度を変えて…こっちからも」");
+	DelWindow();
+
+	// ＜ＳＥ：デジカメのシャッター音＞
+	SEPlay("L_Camera01");
+	FlashIn(FAST);
+	Wait(50);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060610「………っ」");
+
+	BGMFadeOut(SLOWEST);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「今度は反対側…お～い里伽子、@nお前もちょっとこっち向いて…？」");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：赤ん坊を抱いた、ファインダー越しの里伽子（泣き差分）＞
+	//----------------------------------------------------------------------------
+
+	//伊藤：ここはVISUAL_RIKAKO_20B
+
+	SetVisual( VISUAL_RIKAKO_20B );
+	BGMFadePlay(BGM_KANDOU1,SLOWER);
+	CrossFade(SLOW);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060611「っ…ぅ……ぅぅ…ぅぁぁ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…何やってんだ、お前？」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060612「う…うあ…ご、ごめん…ごめんね…」");
+	SetMessage(UNIT_ETC, -1, "", "娘が泣き出す前に、母親が泣き出してしまった…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お腹すいたか？　それともオシメ？」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060613「ばかぁ…っ、う、くっ…ぅぅ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「じゃ…どした？@n内容次第では、抱きしめてやるぞ？」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060614「だって…だってぇ…っ@n自分の子を抱けるなんて…思えなかったんだもん…っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060615「夜、眠るのが怖いの。@n次の日目覚めたら、タチの悪い冗談だったって…@nそんな夢オチになるのが嫌で…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ならねえよ」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060616「そうなんだけど…そうなんだけどぉ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「この、臆病者め」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060617「う、あ…うあああああ…っ、@n仁…仁ぃ…ううっ…」");
+	SetMessage(UNIT_ETC, -1, "", "せっかく娘はおとなしくしてるのに、@n母親がぐずるから、撮影中止。");
+	SetMessage(UNIT_ETC, -1, "", "…今夜、夏海の家に電話して、笑い物にしてやろ。");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060618「あたしは…母親に、なれたんだよね？@nふたつめの夢も、叶ったんだよね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お前の死に物狂いの努力でな。@n胸張れ、笑えっ」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060619「仁ぃ…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「でも、今日は思いっきり泣いていい…」");
+	SetMessage(UNIT_ETC, -1, "", "俺が…抱きしめててやるから。");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060620@s0004@m00「ふえぇぇぇぇぇ…うああああああ～っ！」@k");
+	Wait(100);
+	SEFadePlay(0, "L_Baby01", SLOWER);
+	SetVisual( VISUAL_RIKAKO_20C );
+	CrossFade(SLOW, 1);
+
+	MessageWait();
+
+	//伊藤：SE new
+	// ＜ＳＥ：赤ん坊の泣き声＞
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ、あはは…共鳴しちまいやがんの」");
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060621「あ、あんただって、あんただって…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うるさい、こっち向くな…っ」");
+
+	// ＜ＳＥ：赤ん坊の泣き声＞
+
+	SetMessage(UNIT_RIKAKO, -1, "里伽子", "@v06060622「仁ぃ…ありがとう…@n今まで、ずっと、ずっとぉ…ありがとうね？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@m00「本当に…@w0030しょうがねえなぁ…@w0030里伽子はぁ…っ」");
+	DelWindow();
+
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20とうとう、@w0030親子三人、@w0030みんな同じ状態。");
+
+	Wait(50);
+	SetVisual( BG_SORA_01A );
+	SEFadeOut(0, SLOWER);
+	CrossFade(SLOWER,1);
+	Wait(100);
+
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20周りから見れば、@w0030実に滑稽な光景。@w0030@nけれど、@w0030俺たちにとっては、@w0030やっと、@w0030辿り着いた聖地。");
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20今は、@w0030はばかることなく…");
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20辛く、@w0030長く、@w0030厳しかった戦いの日々を、@w0030@n過去に押しやることができた幸せを、@e");
+	FlashOut(SLOWEST,1);
+	Wait(240);
+	SetMessage(UNIT_ETC, -1, "", "@m00@f50噛みしめよう。");
+	HideMenu();
+
+	Wait(200);
+	BGMFadeOut(800);
+	FadeOut(800);
+
+	Wait(300);
+
+	DelVisual();
+
+	// ＜エンディングへ＞
+	LoadScript("System.bin", SYSTEMBANK_STAFFROLL);
+end();

@@ -1,0 +1,156 @@
+// ●恵麻10：怒涛の新メニュー
+// 種類：通常イベント
+// 条件：第４クォーター、キッチンを選択
+// 概要：次から次へと新ケーキを試作してしまう恵麻
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	BGMFadePlay( BGM_EMA );
+	SEFadePlay(0, "L_Factory01", NORMAL, 50);
+	FadeIn();
+	SetWindow();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v05040026「………」");
+
+	SetStand(EMA_0101BS);
+
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05050294「ね？　ね？　いい感じでしょ？@n我ながら上手くできたと思うのよね～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、そりゃ確かに…よくできてるけど」");
+	SetMessage(UNIT_KASURI, KASURI_0101NO, "かすり", "@v05040027「ちゃんとシューも綺麗に積まれてるし、@nクリスマスツリーっぽくできてる」");
+	SetMessage(UNIT_EMA, EMA_0101EG, "恵麻", "@v05050295「そうでしょ？　良かったぁ。@nこれでますます楽しくなりそうね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「却下」");
+
+	SetStand(EMA_0101OD);
+	BowStand();
+
+	SetMessage(UNIT_EMA, EMA_0101OD, "恵麻", "@v05050296「え～！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「誰がこの期に及んで@nさらに新メニューを増やせと頼んだの？」");
+
+	DelStand();
+
+	SetMessage(UNIT_ETC, -1, "", "２４日のクリスマスケーキの大量生産モードに@n入っているかと思っていたのに…");
+	SetMessage(UNIT_ETC, -1, "", "今、目の前にあるのは、@nまるで、クリスマスツリーのように積み上げられたシュー。");
+	SetMessage(UNIT_ETC, -1, "", "クロカンブッシュ…@nシューを積み上げて、飴で固めたお菓子。@nフランスで、お祝い事によく使われる。");
+	SetMessage(UNIT_ETC, -1, "", "その形がツリーっぽく見えるので、@nクリスマスケーキとして扱われることもある。");
+	SetMessage(UNIT_ETC, -1, "", "…そのことが、姉さんの創作意欲を刺激したらしい。");
+
+	SetStand(EMA_0101BS);
+
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05050297「考えたんだけどさ…@n『世界のクリスマスフェア』っての、どうかな？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「世界って…」");
+	SetMessage(UNIT_EMA, EMA_0101EG, "恵麻", "@v05050298「いろんな国の、クリスマス菓子を片っ端から作るの。@nね？　面白そうでしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_KASURI, KASURI_0101AK, "かすり", "@v05040028「………」");
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v05050299「クリスマスプディングやフルーツケーキやパネトーネは@n熟成に時間がかかるから、残念ながら無理だけど」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「姉さん…」");
+	SetMessage(UNIT_EMA, EMA_0101KM, "恵麻", "@v05050300「こんなことなら、半年前から準備しておくんだったなぁ。@nあ～、失敗した」");
+	SetMessage(UNIT_ETC, -1, "", "半年前は家が焼けてそれどころじゃなかったろうに。");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05050301「ま、それでも、これで３種類。@n頑張って、あと２～３種類くらいは」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だから却下」");
+
+	SetStand(EMA_0101SN);
+	BowStand();
+
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v05050302「ええ～！？」");
+	SetMessage(UNIT_ETC, -1, "", "あからさまに不満そうな姉さんを、@nもはや憐れみの表情で見つめる俺とかすりさん。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ブッシュ・ド・ノエルを増やしただけで、@n俺としては最大限の譲歩なの。@nこれ以上種類増やして、かすりさんを殺す気？」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v05050303「そうなの？　かすりちゃん？」");
+
+	SetMessage(UNIT_KASURI, KASURI_0102AS, "かすり", "@v05040029「え？　あ、いや…ねぇ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ねえじゃねえだろ」");
+	SetMessage(UNIT_ETC, -1, "", "姉さんを尊敬してるせいで、@nイマイチいつもの『好き勝手』が出てこない。");
+	SetMessage(UNIT_ETC, -1, "", "しかし、ここは退くわけにはいかない。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「姉さんがどんどん新メニューの開発に入ってったら、@nデコレーションケーキの方は誰が焼くんだよ？」");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05050304「それなら大丈夫。@n種類が５倍になれば、１種類辺りの量は、@n５分の１になるわ…ほら負担が減った」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「コストは？」");
+	SetMessage(UNIT_ETC, -1, "", "いやそれ以前にその計算には@n致命的な欠陥があるのだが…");
+	SetMessage(UNIT_EMA, EMA_0101NO, "恵麻", "@v05050305「だから一種類あたりの個数がかなり減るから…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それって、一個あたりのコストが高くなるって@n意味だということはわかるよね？」");
+	SetMessage(UNIT_EMA, EMA_0101NO, "恵麻", "@v05050306「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	DelStand();
+
+	SetStand( KASURI_0101KS );
+
+	SetMessage(UNIT_KASURI, KASURI_0101KS, "かすり", "@v05040030「え、え～と、ここは一つ、@nわたしが一両を負担するということで…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「黙れ忠相」");
+	// ＜忠相＝ただすけ：大岡越前守忠相のこと＞
+	SetStand(KASURI_0102OD);
+	JumpStand();
+
+	SetMessage(UNIT_KASURI, KASURI_0102OD, "かすり", "@v05040031「上様！？」");
+	// ＜上様：徳川八代将軍吉宗（暴れん坊将軍）のこと＞
+
+	DelStand();
+
+	SetStand( EMA_0101SN );
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いい姉さん？　これは店長命令。@nこれ以上、クリスマスケーキのメニューを増やすの禁止」");
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v05050307「…総店長に逆らうの？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「現場を指揮するのは俺だ」");
+	SetMessage(UNIT_EMA, EMA_0101OD, "恵麻", "@v05050308「酷いわ、店長横暴～！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「横暴結構。@n店長には、スタッフの健康を守る義務があるの」");
+	SetMessage(UNIT_EMA, EMA_0101MU, "恵麻", "@v05050309「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	SetMessage(UNIT_ETC, -1, "", "ここで甘い顔を見せてはいけない。");
+	SetMessage(UNIT_ETC, -1, "", "今の姉さんは、ただの@n『クリスマスを前に浮かれている子供』だ。");
+	SetMessage(UNIT_ETC, -1, "", "他人の迷惑も、店の売り上げも関係なく、@nクリスマスを楽しく過ごすことしか考えてない。");
+	SetMessage(UNIT_ETC, -1, "", "だから、ここで譲ってはいけない。");
+	SetMessage(UNIT_ETC, -1, "", "なぜなら、いい子にしてないと、@nサンタクロースはやって来ないからだ。");
+
+	SetMessage(UNIT_EMA, EMA_0101NR, "恵麻", "@v05050310「………」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+
+	DelStand();
+
+	SetMessage(UNIT_KASURI, KASURI_0102AS, "かすり", "@v05040032「ちょっ、ちょっとぉ…」");
+	SetMessage(UNIT_ETC, -1, "", "店長と総店長の睨み合いは、@nその後しばらく続き…");
+	DelWindow();
+
+	BGMFade( NORMAL, 50 );
+
+	//SetMessage(UNIT_ETC, -1, "", "………");
+	//SetMessage(UNIT_ETC, -1, "", "……");
+	//SetMessage(UNIT_ETC, -1, "", "…");
+
+	// ＜ＳＥ：オーブンのタイマー（チーン）＞
+	SEPlay( "L_Cook10" );
+	Wait(300);
+
+	BGMFade( NORMAL, 100 );
+	SetStand(EMA_0101EG);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101EG, "恵麻", "@v05050311「あ、シュトーレン焼けた♪」");
+
+	ShakeScreen(8);
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まだ作っとったんかい！」");
+	DelWindow();
+
+	SEFadeOut(0, SLOWER);
+	BGMFadeOut( SLOWER );
+	FadeOut( SLOW, 1 );
+	DelStand();
+	Wait(50);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "@m08そしてすぐに言い争いに発展したらしい。");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	Wait( 200 );
+	DelVisual();
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

@@ -1,0 +1,183 @@
+// ●かすり20　ある提案
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	// ＜ＢＧ：フロア＞
+	SetVisual( BG_FAMILLEF_01A );
+	BGMPlay( BGM_KISSATEN );
+	SEFadePlay(0, "L_Zattou04");
+	SEFadePlay(1, "L_Dish03", NORMAL, 30);
+	FadeIn();
+
+	SetStand( ASUKA_0102UN2	, LEFT	, MOVE_LEFT , FAST, 1	);
+	SetStand( YUI_0102KG	, RIGHT	, MOVE_RIGHT		);
+
+	SetWindow();
+	SetMessage(UNIT_ASUKA, ASUKA_0102UN2, "明日香", "@v04030113「ねぇ…最近キュリオ、妙に元気じゃない？」");
+	SetMessage(UNIT_YUI, YUI_0102KG, "由飛", "@v04010126「うん、新作のケーキもバンバンでてるみたいだし」");
+	SetMessage(UNIT_ASUKA,  ASUKA_0102NR2 , "明日香", "@v04030114「比べてこっちは…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な、なんだよ？」");
+	SetMessage(UNIT_YUI, YUI_0102SN, "由飛", "@v04010127「いいえ、なんでも～」");
+	SetMessage(UNIT_ASUKA, ASUKA_0102TN, "明日香", "@v04030115「はーい、なんでもないでーす」");
+	DelWindow();
+
+	DelStand( LEFT , MOVE_LEFT , FAST , 1);
+	DelStand( RIGHT, MOVE_RIGHT );
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "実際人手が一人分へったってのは大ダメージだ。@n特にかすりさんは、キッチンもフロアもできる@nマルチプレイヤーだったし。");
+	SetMessage(UNIT_ETC, -1, "", "姉さんも、今のラインナップの制作に追われて@n新作にまで手が回らない。");
+	SetMessage(UNIT_ETC, -1, "", "いなくなってみて初めて、ファミーユにとって@nかすりさんがどれほど貢献してくれていたかよくわかる。");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「愚痴ってても始まらない。@nほら、お仕事お仕事っ！」");
+	SetMessage(UNIT_YUI, -1, "由飛＆明日香", "@v04160018「はーい」@k");
+	AddMessage("@n@i03「はーい」");
+	DelWindow();
+
+	SEFadeOut(0, SLOW);
+	SEFadeOut(1, SLOW);
+	SELoopPlay(0, "L_Walk02");
+	CurtainFadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "二人をたきつけておいて、キッチンに向かう。");
+	DelWindow();
+
+	//ＢＧきっちんだろう
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadeOut(0, SLOW);
+	SEFadePlay(0, "L_Zattou04", SLOW, 50);
+	SEFadePlay(1, "L_Dish03", SLOW, 20);
+	SEFadePlay(2, "L_Factory01", SLOW, 50);
+	CurtainFadeIn();
+
+	SetStand(EMA_0101BS);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101NO, "恵麻", "@v04050208「お疲れさま」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お疲れさま。調子はどう？」");
+	SetMessage(UNIT_EMA, EMA_0102SP, "恵麻", "@v04050209「ん、かすりちゃん、戻ってきてくれないかな。@nまた一緒にケーキつくりたいなぁ」");
+	SetMessage(UNIT_ETC, -1, "", "ってことは忙しいんだよな。@nいくら姉さんが達人でも、やっぱり限度はあるし。");
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v04050210「ところで、仁くん、話があるって顔してるけど？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「バレバレだな～。実はね？」");
+	DelWindow();
+
+	SEFadeOut(0);
+	SEFadeOut(1);
+	SEFadeOut(2);
+	BGMFade(SLOWER, 50);
+	FadeOut();
+	DelStand();
+
+	// ＜回想＞
+	//ＢＧぶりっくぅる
+	//( ´∀`).oO( Cool
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "あれは昼間の休憩時間。@n俺が息抜きに、ブリックモールの中を@nうろついている時だった。");
+	DelWindow();
+
+	SetVisual( BG_ENTRANCE_01A , FILTER_SEPIA );
+	SetStand(ITABASHI_0101NO);
+	SEFadePlay(0, "L_Zattou01", SLOW);
+	SEFadePlay(1, "L_Zattou06", SLOW);
+	MosaicFadeIn( SLOW );
+	
+	SetWindow();
+	
+	//伊藤：板橋→高村・仁への呼称統一されてないぽい。かすりシナリオ以外では仁君
+	
+	SetMessage(UNIT_ITABASHI, -1, "板橋", "@v04080031「高村くん？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あれ、板橋店長」");
+	SetMessage(UNIT_ETC, -1, "", "いかにも人を食ったような笑みを浮かべて@n俺に近づいてくる板橋キュリオ店長。");
+
+	SEPlay("L_Paper01");
+
+	SetMessage(UNIT_ITABASHI, -1, "板橋", "@v04080032「実はね、ブリックモールの主催で、@nこんなイベントが企画されてるんだ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「バレンタイン・ケーキコンテスト？」");
+	
+	//伊藤：「ん、そうだよ」がばっさり無いです。
+	//SetMessage(UNIT_ITABASHI, -1, "板橋", "@v04080033「ん、そうだよ。@nせっかく美味しいケーキのお店が二軒もあるんだしね」");
+	SetMessage(UNIT_ITABASHI, -1, "板橋", "@v04080033「せっかく美味しいケーキのお店が二軒もあるんだしね」");
+	
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「コンテストですか…うーん」");
+	SetMessage(UNIT_ITABASHI, -1, "板橋", "@v04080034「ウチは負けないよ？　理由があるからね」");
+	SetMessage(UNIT_ETC, -1, "", "相変わらずの軽い口調だけど、妙に自信ありげだ。@p@n俺のこと、挑発してる？");
+	SetMessage(UNIT_ETC, -1, "", "花鳥ならともかく、@nこの人がこんなこと言ってくるなんて…@nなにか裏があるのか？");
+	SetMessage(UNIT_ITABASHI, -1, "板橋", "@v04080035「聞いてるよ～？@nそっちって、今キッチン一人しかいないんでしょ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「な、なぜそれをっ！」");
+	SetMessage(UNIT_ITABASHI, -1, "板橋", "@v04080036「語るに落ちてるね～、高村くん。@nまぁそんな状態で、ウチと勝負するのが@nイヤだって言うなら無理にはとは言わないよ、もちろん」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…橘さんって人が@nどれくらい腕のいいパティシエールか知りませんが@nうちの…恵麻姉さんが負けるとでも？」");
+	SetMessage(UNIT_ITABASHI, -1, "板橋", "@v04080037「さてね？@nじゃ、そっちは自信ありってことで、いいのかな？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…いいですよ@nコンテスト、やりましょう」");
+	DelWindow();
+
+	// ＜回想終了＞
+	BGMFade(SLOWER, 100);
+	SEFadeOut(0, SLOW);
+	SEFadeOut(1, SLOW);
+	MosaicFadeOut( SLOW );
+	DelStand();
+
+	Wait(50);
+
+	//ＢＧきっちんだろう
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Zattou04", NORMAL, 50);
+	SEFadePlay(1, "L_Dish03", NORMAL, 20);
+	SEFadePlay(2, "L_Factory01", NORMAL, 50);
+	SetStand(EMA_0101MJ);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…と、言うわけなんだ」");
+	SetMessage(UNIT_ETC, -1, "", "我ながら安い挑発にのってしまった。@nかすりさんがいないってことで、@nやっぱり心が不安定になってるのかな、俺。");
+	
+	SetMessage(UNIT_ETC, -1, "", "チョコケーキは姉さんが苦手にしてるジャンルだし@nどうかとも思ったんだけど…");
+	//SetMessage(UNIT_ETC, -1, "", "チョコケーキは恵麻さんが苦手にしてるジャンルだし@nどうかとも思ったんだけど…");
+
+	SetMessage(UNIT_EMA, EMA_0101BS2, "恵麻", "@v04050211「特訓あるのみねっ！」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「おお、姉さんがやる気にっ！」");
+	SetMessage(UNIT_EMA, EMA_0102BS, "恵麻", "@v04050212「ここの所、仁くん落ち込んでたからね。@nテンション上げるためにも勝ちにいきましょ！」");
+	SetMessage(UNIT_ETC, -1, "", "姉さん、励ましてくれてるんだ。@p@nよし！　俺も気合いいれよう！");
+	DelWindow();
+
+	Wait(50);
+	SEFadeOut(0, SLOWER);
+	SEFadeOut(1, SLOWER);
+	SEFadeOut(2, SLOWER);
+	BGMFadeOut(SLOWER);
+	FadeOut(SLOW);
+	DelStand();
+	Wait(200);
+
+	// ＜ＢＧ：キュリオフロア＞
+	SetVisual( BG_CURIOF_01A );
+	FadeIn(SLOW);
+
+	SetWindow();
+	SetMessage(UNIT_REA, REA_0101KN, "玲愛", "@v04020005「でも本当にいいの？@n古巣相手に競争することになるのよ？」");
+
+	SetStand(KASURI_0301MJ);
+
+	SetMessage(UNIT_KASURI, KASURI_0301MJ, "かすり", "@v04040775「…望むところよ」");
+	SetMessage(UNIT_REA, REA_0102KM, "玲愛", "@v04020006「涼波さんがそう言うなら、いいけどね」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080038「まぁまぁ花鳥くん。@n橘女史も認めた逸材だよ？@nここは彼女に任せてみない？」");
+	SetMessage(UNIT_ITABASHI, ITABASHI_0101NO, "板橋", "@v04080039「ほんの一週間で、@nあれだけの技術を吸収した人だからね～」");
+	SetMessage(UNIT_KASURI, KASURI_0301MJ, "かすり", "@v04040776「やります、やらせてください」");
+	HideMenu();
+	DelWindow();
+
+	Wait(100);
+	FadeOut( SLOWER );
+	DelStand();
+	DelVisual();
+
+	Wait(300);
+
+	LoadEvent(EVENT_KASURI_21);
+end();

@@ -1,0 +1,273 @@
+// ●明日香21：明日香ＴＲＵＥエンディング
+// 種類：エンディング
+// 条件：明日香ルート。@n　　　明日香20の直後に発生
+// 概要：先輩と、後輩と
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン＞
+	//----------------------------------------------------------------------------
+	Wait(100);
+
+	SetVisual( BG_FAMILLEC_01A );
+	BGMPlay(BGM_SHITTORI);
+	FadeIn();
+
+	SEPlay("L_Dish02");
+	SetStand(EMA_0101BS);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v03050091「よし…と。完成～」");
+
+	SetStand(YUI_0101KG, RIGHT, MOVE_RIGHT, FAST, 1);
+	MoveStand(CENTER, LEFT);
+
+	SetMessage(UNIT_YUI, YUI_0101KG, "由飛", "@v03010059「わ～すっご～い」");
+	SetMessage(UNIT_KASURI, KASURI_0201IK, "かすり", "@v03040085「いきなりつまみ食いしようとしないの」");
+
+	SetStand(YUI_0102SN, RIGHT);
+	BowStand(RIGHT);
+
+	SetMessage(UNIT_YUI, YUI_0102SN, "由飛", "@v03010060「え～、@nこんなに美味しそうなのに～」");
+	SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v03040086「いや、それ理由になってないから」");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v03050092「これは閉店後のお楽しみ。@n@t0285@h0101MU大体、今は仕事中でしょ？@nどうして由飛ちゃんがここにいるのよ？」");
+
+	SetMessage(UNIT_YUI, YUI_0102EG, "由飛", "@v03010061「あ～大丈夫大丈夫。@n最近は京ちゃんも翼ちゃんもしっかりしてるし。@n任せっきりにしてても全然問題ないって」");
+	// ＜きょうちゃんつばさちゃん＞
+
+	SetMessage(UNIT_KASURI, KASURI_0201AK, "かすり", "@v03040087「わたしはこのフロアチーフにこそ@n問題があると思うんだけど…」");
+	SetMessage(UNIT_YUI, YUI_0102EG, "由飛", "@v03010062「だ～いじょうぶだいじょぶ。@t0316@h0102BS@n…だって、明日からは…」");
+	SetMessage(UNIT_EMA, EMA_0101SM, "恵麻", "@v03050093「………」");
+	SetMessage(UNIT_KASURI, KASURI_0202BS, "かすり", "@v03040088「とうとう…一年、経ったねぇ」");
+	SetMessage(UNIT_YUI, YUI_0101UT, "由飛", "@v03010063「うん…」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v03050094「あの娘…どうしてなんだろ」");
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v03040089「それは…その…」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v03050095「どうして…入学しなかったのかな？@nせっかく合格したのに」");
+	DelWindow();
+
+	// ＜画面暗転＞
+	Wait(50);
+	FadeOut(SLOW);
+	DelStand(LEFT);
+	DelStand(RIGHT);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：大学キャンパス＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_DAIGAKUS_01B );
+	SEFadePlay(0, "L_Zattou07", SLOW, 50);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_FEMALE, -1, "学生１", "@v03160094「は～い、入学おめでと～！@nそして演劇同好会入会おめでと～！」");
+	SetMessage(UNIT_FEMALE, -1, "学生２", "@v03160095「テニス同好会“スカッシュ”の受付はこちらで～す。@n今なら女の子だけ会費無料～」");
+
+	// (´-`)板橋店長なにしてるんですかこんなところで
+	SetMessage(UNIT_MALE, -1, "学生３", "@v03160096「あ、君、君、可愛いね。@nどう？　ちょっとだけ、僕の詩集読んでいかない？」");
+
+	// ＜ＳＥ：喧騒＞
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「…なべて世はこともなく」");
+	SetMessage(UNIT_ETC, -1, "", "桜の舞う、大学の正門前。");
+	SetMessage(UNIT_ETC, -1, "", "久々に復学した俺にも、@nちょっとだけ敷居は高く感じた。");
+	SetMessage(UNIT_ETC, -1, "", "俺でさえこれなんだから、@n新入生の浮き足立ちっぷりは見てて微笑ましい。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+
+	SetMessage(UNIT_ETC, -1, "", "４月１日。");
+	SetMessage(UNIT_ETC, -1, "", "八橋大の、入学式。");
+	SetMessage(UNIT_ETC, -1, "", "今日は、新入生だけのための日だけれど、@nその機会を逃すサークル主宰者はいない。");
+	SetMessage(UNIT_ETC, -1, "", "あちこちで、派手なのぼりを立てて、@n新入部員勧誘に余念がない。");
+	SetMessage(UNIT_ETC, -1, "", "俺も、その中を、ぶらぶらと歩いているけど、@n年の功か、それとも滲み出る慣れた雰囲気か、@n一向に声がかからない。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「五分咲き…か」");
+	SetMessage(UNIT_ETC, -1, "", "桜並木をゆっくりと見上げて、@n一つ、大きなため息をつく。");
+	DelWindow();
+
+	SetVisual( BG_SORA_01A );
+	SEFade(0, NORMAL, 20);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "その視線を空に移し、この、一年間の出来事を、@nゆっくり、ゆっくりと思い返す。");
+	SetMessage(UNIT_ETC, -1, "", "………");
+
+	SetMessage(UNIT_ETC, -1, "", "頑張った。");
+	SetMessage(UNIT_ETC, -1, "", "二人三脚で、死に物狂いで頑張った。");
+	SetMessage(UNIT_ETC, -1, "", "彼女には、本気の努力を強いた。@p@nそして俺は、本気の我慢を貫いた。");
+	SetMessage(UNIT_ETC, -1, "", "彼女の隣で、いつも励まし続け、@nキスも、それ以上のことも、我慢して、我慢して…");
+	SetMessage(UNIT_ETC, -1, "", "たまに、彼女が爆発したら、@nちょっとだけ、許しあって…");
+	SetMessage(UNIT_ETC, -1, "", "でも、そんなことがあった日は、@nいつもより、努力して、努力して、努力して…");
+	SetMessage(UNIT_ETC, -1, "", "春が過ぎ、夏は駆け抜け、秋がすり抜けて…@nそして、最後の勝負の冬…");
+	SetMessage(UNIT_ETC, -1, "", "俺たちは…");
+	SetMessage(UNIT_ETC, -1, "", "思いもよらない結果に…翻弄された。");
+	SetMessage(UNIT_ETC, -1, "", "周囲の風当たりは、想像以上に激しく、厳しく…@n俺たちを、幾度も、幾度も、引き裂こうと吹き荒れた。");
+	SetMessage(UNIT_ETC, -1, "", "そんな中で、俺たちは…");
+
+	BGMFadeOut(SLOWER);
+
+	SetMessage(UNIT_ASUKA, -1, "？？？", "@v03031550「せ～んぱいっ」");
+	DelWindow();
+
+	SetVisual( BG_DAIGAKUS_01B );
+	SEFade(0, NORMAL, 50);
+	CrossFade();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ…」");
+
+	SEFadeOut(0, SLOWER);
+	BGMPlay(BGM_YASURAGI);
+	SetStand(ASUKA_0402KS);
+
+	SetMessage(UNIT_ASUKA, ASUKA_0402KS, "明日香", "@v03031551「やっと追いついた～。@nもう５メートルも歩かないうちに、@n次の勧誘に捕まるんだもん～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「相変わらずどんくさいな、明日香ちゃんは」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402OD, "明日香", "@v03031552「ど、ど、ど…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「どうだった？@n入学式」");
+	SetMessage(UNIT_ASUKA, ASUKA_0401AS, "明日香", "@v03031553「寂しかった～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それだけかよ」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402UN2, "明日香", "@v03031554「だってだって～@n入学したら、後はずっとせんぱいと一緒だって@n思ってたのに～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「入学式なんかに出れるか…@n俺はもう５年だ」");
+	SetMessage(UNIT_ETC, -1, "", "４年で卒業できるはずなのに、な。");
+	DelWindow();
+
+	Wait(50);
+	FadeOut(SLOW);
+	DelStand();
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：キッチン＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_FAMILLEC_01A );
+	FadeIn();
+
+	SetStand(EMA_0101AS);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101AS, "恵麻", "@v03050096「だってさぁ…明日香ちゃん、帝王大蹴ったのよ？@n信じられる？」");
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v03040090「そりゃ…八橋大が第一志望だったし、@n帝王大は、ほんの力試しだったし…」");
+	SetMessage(UNIT_YUI, YUI_0101EG, "由飛", "@v03010064「ちょっと頑張り過ぎちゃったよね～」");
+	SetMessage(UNIT_EMA, EMA_0101MJ, "恵麻", "@v03050097「明日香ちゃんの学園からは、@n初めての合格者だったんだって…」");
+	SetMessage(UNIT_KASURI, KASURI_0201NO, "かすり", "@v03040091「もう二度とないだろうねぇ…」");
+	SetMessage(UNIT_YUI, YUI_0102EG, "由飛", "@v03010065「ある意味伝説になっちゃったね～」");
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v03050098「ほんとに…どういうことなんだろう…」");
+	SetMessage(UNIT_KASURI, KASURI_0201KT, "かすり", "@v03040092「どういうもこういうも…@n恵麻さん、ホントに気づいてないの？」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v03050099「なにが？」");
+	SetMessage(UNIT_YUI, YUI_0101BS, "由飛", "@v03010066「明日香ちゃんが、どうして八橋大しか@n眼中になかったかってこと～」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v03050100「なんで？」");
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v03040093「………」");
+	SetMessage(UNIT_YUI, YUI_0101AS, "由飛", "@v03010067「………」");
+	SetMessage(UNIT_EMA, EMA_0101AS, "恵麻", "@v03050101「…なんなの？」");
+
+	DelStand();
+
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v03040094「あのさぁ…多分、今日…@n宣言するよね？　あの二人…」");
+	SetMessage(UNIT_YUI, YUI_0102KS, "由飛", "@v03010068「わたし…欠席しようかなぁ…歓迎会」");
+	DelWindow();
+
+	Wait(50);
+	FadeOut(SLOW);
+
+	Wait(100);
+
+	//----------------------------------------------------------------------------
+	// ＜ＢＧ：大学キャンパス＞
+	//----------------------------------------------------------------------------
+
+	SetVisual( BG_DAIGAKUS_01B );
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_MALE, -1, "学生４", "@v03160097「あ、君、ちょっと！@n俺たち、スノボサークルなんだけどさ～@nねね、春合宿でフィジーに行くんだよね」");
+
+	SetStand(ASUKA_0402OD);
+	JumpStand();
+
+	SetMessage(UNIT_ASUKA, ASUKA_0402OD, "明日香", "@v03031555「きゃっ！？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「なんでスノボサークルがフィジーなんだ…」");
+	SetMessage(UNIT_MALE, -1, "学生４", "@v03160098「細かいこと言いっこなし。@nあと定員が二名で締切なんだけど…お得だよ？」");
+	SetMessage(UNIT_ASUKA, ASUKA_0402TR, "明日香", "@v03031556「に…二名だって！　せんぱいっ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや俺には声かけてないから…@nつか君引っかかりすぎ！」");
+	SetMessage(UNIT_ETC, -1, "", "さっきまで俺に追いつけなかったのはこれが原因か…");
+	SetMessage(UNIT_ASUKA, ASUKA_0402EG, "明日香", "@v03031557「で、でもでも…@nやっぱたのしそうだよぉ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ…明日香ちゃん、ほら」");
+	DelWindow();
+
+	ShakeScreen(4);
+	SEPlay("L_Touch01");
+	BGMFadeOut(SLOWER);
+	FadeOut(FAST);
+	DelStand();
+
+	SetWindow();
+	SetMessage(UNIT_ASUKA, ASUKA_0401TR2, "明日香", "@v03031558「あ…っ」");
+	DelWindow();
+
+	Wait(50);
+
+	//----------------------------------------------------------------------------
+	// ＜イベントＣＧ：桜並木、手を繋いで歩く二人＞
+	// ＜構図はお任せしますが、背中を向いててもいいかも＞
+	//----------------------------------------------------------------------------
+
+	SetVisual(VISUAL_ASUKA_18A);
+	BGMPlay(BGM_KANDOU1);
+	FadeIn(SLOW);
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "相変わらず小さな手を、ぎゅっと握る。");
+	SetMessage(UNIT_ETC, -1, "", "このままほっといたら、また５メートルごとに、@n３０秒は立ち止まることになるから。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ついてこいよ。@n絶対に、離れるなよ」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031559「…うんっ」");
+	SetMessage(UNIT_ETC, -1, "", "一度は、俺を追い越して行ってしまいそうになった、@nその、あったかい手。");
+	SetMessage(UNIT_ETC, -1, "", "本来、戦わなくてもいい色んな常識と、@n図らずも戦うハメになり…");
+	SetMessage(UNIT_ETC, -1, "", "それもこれも、まるで手抜きのできない@n俺たちの自業自得なんだけど…");
+
+	// (´-`)CGが左手だったため変更
+	//SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031560「あれ…せんぱい…その右手」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031560「あれ…せんぱい…」");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「４月だと、ちと暑い」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031561「…ぷっ」");
+
+	//SetMessage(UNIT_ETC, -1, "", "左手は、明日香ちゃんの右手であっためられて…");
+	SetMessage(UNIT_ETC, -1, "", "@m08右手は、明日香ちゃんの左手であっためられて…");
+
+	//SetMessage(UNIT_ETC, -1, "", "右手は、毛糸の手袋であっためられて…");
+	SetMessage(UNIT_ETC, -1, "", "@m08左手は、毛糸の手袋であっためられて…");
+
+	//SetMessage(UNIT_HITOSHI, -1, "仁", "「早く左手の方も欲しいぞ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@m08「早く右手の方も欲しいぞ」");
+
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031562@m08「あはは…すっかり忘れてた」");
+	SetMessage(UNIT_ETC, -1, "", "@m04本当は、別に急いでない。");
+	SetMessage(UNIT_ETC, -1, "", "@m00だって、俺たちの時間は、@nもう、いくらでもあるんだから。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@m08「それじゃ、ファミーユに…帰るよ？」");
+	SetMessage(UNIT_ASUKA, -1, "明日香", "@v03031563@m00@f20「うん…@t0120ただいま、@t0231てんちょ」");
+	HideMenu();
+	DelWindow();
+
+	Wait(200);
+	FlashOut(SLOWEST);
+	Wait(100);
+	BGMFadeOut(800);
+	FadeOut(800);
+
+	Wait(300);
+
+	DelVisual();
+
+	SetFlg(FLG_ENDING, 1);
+	LoadScript("System.bin", SYSTEMBANK_STAFFROLL);
+end();

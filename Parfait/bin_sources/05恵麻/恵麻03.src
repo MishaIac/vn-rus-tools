@@ -1,0 +1,180 @@
+// ●恵麻03：まぁでっかいケーキ
+// 種類：通常イベント
+// 条件：第２クォーター、キッチンを選択
+// 概要：お得すぎるケーキに文句を言う仁
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "ＡＭ７：３０");
+	DelWindow();
+
+	SEPlay( "L_Cook10" );
+	Wait(300);
+
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	BGMFadePlay( BGM_EMA );
+	SEFadePlay(0, "L_Factory01", SLOWER, 50);
+	FilterFadeIn(SLOW, FADEFILTER_KAITEN);
+
+	// ＜ＳＥ：オーブンのタイマー（チーン）＞
+
+	SetStand(EMA_0101BS);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05050069「仁くん、スポンジお願～い」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あ？　ああ」");
+	SetMessage(UNIT_ETC, -1, "", "メレンゲの心地良い角の立ち具合に恍惚となっていた俺は、@nオーブンのタイマーの音で我に返った。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それじゃ、今朝の第一号…」");
+	SetMessage(UNIT_EMA, EMA_0101EG, "恵麻", "@v05050070「オーブンをオープン～」");
+
+	DelStand();
+	SEPlay("L_Door04A");
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	SetMessage(UNIT_ETC, -1, "", "いや、姉さんも普段はこんなに@nセンスがないわけじゃないんだ。@nこれもひとえに、朝方の血糖値のせいなんだよ。");
+	SetMessage(UNIT_ETC, -1, "", "しかし…");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「お～…完璧」");
+	SetMessage(UNIT_ETC, -1, "", "オーブンを開けた途端に、@nむわっとする熱気とともに溢れる、@n洋菓子特有の、バタくさい甘い香り。");
+	SetMessage(UNIT_ETC, -1, "", "この、ちょっと下品かってくらいの濃い香りが、@n我がファミーユのお菓子の特徴だったりする。");
+
+	SetStand(EMA_0101BS);
+
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05050071「うん…中まで火も通ってるし、@nわたしの朝イチの作品にしては上出来～」");
+	SetMessage(UNIT_ETC, -1, "", "表面の部分を少しこそぎ落として、@n俺の口の中に放り込んでくる。");
+	SetMessage(UNIT_ETC, -1, "", "…確かに、上出来。");
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05050072「それじゃ、今度はタルト生地の方お願い。@nこっちは冷ましてから飾り付け始めるからね」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「了解」");
+	SetMessage(UNIT_ETC, -1, "", "ファミーユの朝は比較的早い。");
+	DelWindow();
+
+	// ＜画面暗転＞
+	SEFadeOut(0, SLOWER);
+	FilterFadeOut(SLOW, FADEFILTER_KAITEN);
+	DelStand();
+
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "ＡＭ：８：１５");
+	DelWindow();
+
+	SEPlay( "L_Cook10" );
+	Wait(300);
+
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Factory01", SLOWER, 50);
+	FilterFadeIn(SLOW, FADEFILTER_KAITEN);
+	SetStand(EMA_0101BS);
+
+	// ＜ＳＥ：オーブンのタイマー（チーン）＞
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05050073「お次はババロア行こっか～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ちょっと休ませて…」");
+	SetMessage(UNIT_ETC, -1, "", "姉さんがお菓子作りにノってくると、@n時間と他人の犠牲を忘れる傾向にある。");
+	SetMessage(UNIT_ETC, -1, "", "というわけで、ずっと白身を泡立て続けていた俺は、@nいつの間にか、右腕がパンパンになっている。");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v05050074「泡立て器使ってもいいんだよ？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それは駄目。@n微妙に空気の泡が粗くなる」");
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v05050075「こだわり過ぎだって～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「結果を見てから言って欲しいなぁそういうことは」");
+	SetMessage(UNIT_EMA, EMA_0101MU, "恵麻", "@v05050076「む～…確かに。@n@t0361@h0101SM仁くんに手伝ってもらうと、ふんわり感が違うのよね～」");
+
+	BGMFade(SLOW, 50);
+	SEFade(0, SLOW, 25);
+	Fade(NORMAL, 70);
+
+	SetMessage(UNIT_ETC, -1, "", "卵の扱いで、人の意見を聞くつもりはない。");
+	SetMessage(UNIT_ETC, -1, "", "何しろ、子供の頃から姉さんのお菓子作りにおける、@nかき混ぜ係を仰せつかってきたんだ。");
+	SetMessage(UNIT_ETC, -1, "", "姉さんが、ケーキの腕を上げるのと同時に、@n俺は卵“のみ”に対する腕をめきめきと上げていった。");
+	SetMessage(UNIT_ETC, -1, "", "…要するに、力仕事しか手伝わせてくれなかったんだけど。");
+	SetMessage(UNIT_ETC, -1, "", "姉さんは、お菓子作りの腕は確かなんだけど、@n実際に作る段階で、なかなか他人の協力を介在させない。");
+	SetMessage(UNIT_ETC, -1, "", "直弟子を自称するかすりさんも、姉さんにかかっては、@n粉ふるい要員に成り下がってしまう。@n技術を覚えるには、盗むしかないのだ。");
+	SetMessage(UNIT_ETC, -1, "", "…がんこ職人？");
+
+	BGMFade(SLOW, 100);
+	SEFade(0, SLOW, 50);
+	Fade(NORMAL, 100);
+
+	SetMessage(UNIT_EMA, EMA_0101NO, "恵麻", "@v05050077「さてと…それじゃ仁くんは卵黄を泡立てて」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「あのさぁ、白身のほう余るよね？@nマカロン作っていい？」");
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v05050078「…まだ泡立てたいのね」");
+	DelWindow();
+
+	// ＜画面暗転＞
+	SEFadeOut(0, SLOWER);
+	FilterFadeOut(SLOW, FADEFILTER_KAITEN);
+	DelStand();
+
+	Wait(100);
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "ＡＭ：８：４５");
+	DelWindow();
+
+	// ＜ＢＧ：キッチン＞
+	SetVisual( BG_FAMILLEC_01A );
+	SEFadePlay(0, "L_Factory01", SLOWER, 50);
+	FilterFadeIn(SLOW, FADEFILTER_KAITEN);
+	SetStand(EMA_0101BS);
+
+	SetWindow();
+	SetMessage(UNIT_EMA, EMA_0101BS, "恵麻", "@v05050079「苺ショート第一号完成～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「はぁ、はぁ、はぁ…」");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v05050080「どうして朝からそんなに疲れてるのよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「右手の筋が…」");
+	SetMessage(UNIT_ETC, -1, "", "明日は、久々の筋肉痛が楽しめそうだぜ。");
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v05050081「馬っ鹿ね。@nあとでマッサージしてあげるから、休んでなさい」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、そういうわけにも…カットしないと」");
+	SetMessage(UNIT_EMA, EMA_0101KS, "恵麻", "@v05050082「そんなのは姉さんに任せて。仁くんは休憩」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「いや、やっぱり俺が切るよ。@n姉さんだと６等分しそうで」");
+	SetMessage(UNIT_ETC, -1, "", "ホールのケーキを６等分して、１ピース２００円…@n材料費と俺の筋肉痛に見合った価格設定とは思えない。");
+	SetMessage(UNIT_EMA, EMA_0101KT, "恵麻", "@v05050083「…４等分にした方がよかった？」");
+	SetMessage(UNIT_ETC, -1, "", "これだよ。");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「１０等分…せめて８等分にして」");
+	SetMessage(UNIT_EMA, EMA_0101MU, "恵麻", "@v05050084「そんなのお得感がないじゃない」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「女性客は小さいのがいいんだよ…@n食べきれない人だっているんだからさぁ」");
+	SetMessage(UNIT_ETC, -1, "", "誰もが姉さんのような別腹を持っている訳じゃない。");
+	SetMessage(UNIT_EMA, EMA_0101EG, "恵麻", "@v05050085「じゃあ、６等分なら２００円だけど、@nさらにハーフサイズで半額ってオプションを」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「１００円ショップかよ！」");
+	SetMessage(UNIT_EMA, EMA_0101MU, "恵麻", "@v05050086「大きい方がいいに決まってるじゃない。@n何が不満なのよ仁くんは…」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「だから、その、お好み焼き屋のおばちゃん的な@n思想はやめてくれよぉ」");
+	SetMessage(UNIT_ETC, -1, "", "ケーキにご飯と味噌汁つけて『ケーキ定食』とか@nやらかしそうで…");
+	SetMessage(UNIT_EMA, EMA_0101SN, "恵麻", "@v05050087「もう、どうして仁くんはそんなに細かいのよぉ！@n美味しくてお腹いっぱいになればみんな喜ぶわよ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「繊細という言葉の意味をいい加減覚えてよ」");
+
+//	SetMessage(UNIT_ETC, -1, "", "………");
+	DelWindow();
+	BGMFade(SLOW, 50);
+	SEFadeOut(0, SLOW);
+	FilterFadeOut(NORMAL, FADEFILTER_RYUUSEN | FADEFILTER_MIRROR);
+	DelStand();
+
+	// ＜ＢＧ：フロア＞
+	SetVisual( BG_FAMILLEF_01A );
+	SetStand( KASURI_0202AS );
+	FilterFadeIn(NORMAL, FADEFILTER_RYUUSEN);
+	SEPlay("L_Door05A");
+	SEPlay("L_Bell02");
+
+	SetWindow();
+	SetMessage(UNIT_ASUKA, ASUKA_0402EG, "明日香", "@v05030001「おはよ…@t0150@h0401NOって、何してんのかすりさん？」");
+	SetMessage(UNIT_KASURI, KASURI_0202AS, "かすり", "@v05040001「…水がいらなすぎて入っていけない」");
+	HideMenu();
+	HideDay();
+	DelWindow();
+
+	BGMFadeOut( SLOWER );
+	FilterFadeOut( SLOW, FADEFILTER_CIRCLE );
+	DelStand();
+	DelVisual();
+
+	Wait( 200 );
+
+	NextEvent();
+	LoadScript("System.bin", SYSTEMBANK_SELECTMAP);
+end();

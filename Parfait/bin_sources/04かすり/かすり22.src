@@ -1,0 +1,148 @@
+// ●かすり22　ハッピーエンド！
+
+#include "Script.h"
+#include "protdef.h"
+
+start(0);
+	DayEffect();
+	ShowMenu();
+
+	// ＜ＢＧ：仁の部屋＞
+
+	SetVisual( BG_HITOSHI_01A );
+	BGMFadePlay( BGM_NICHIJOU2 );
+	FadeIn();
+	SetWindow();
+
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「それじゃ、頼んだよ」");
+
+	SetStand(KASURI_0402EG2);
+
+	SetMessage(UNIT_KASURI, KASURI_0402EG2, "かすり", "@v04040898「頼まれた！」");
+	SetMessage(UNIT_ETC, -1, "", "にっこり笑って答えるかすりさん。@n俺の部屋には、かすりさんの甘いにおいが漂っている。@n一緒に暮らしてから、もうずいぶん経つよな～。");
+	SetMessage(UNIT_ETC, -1, "", "そろそろもう少し広い部屋に引っ越すことも@n考えた方が良いかもしれない。");
+	SetMessage(UNIT_KASURI, KASURI_0402AS, "かすり", "@v04040899「でもわたしに勤まるかなぁ～？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「その話は何度もしたじゃない」");
+	SetMessage(UNIT_KASURI, KASURI_0401KS, "かすり", "@v04040900「ん～そうだけど～」");
+	DelWindow();
+
+	FadeOut();
+	DelStand();
+	SetVisual(BG_MALL_01A, FILTER_MONO);
+	Fade(SLOW, 70);
+
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20今日から俺とかすりさんは@n違う場所で働くことになる。");
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20ようやく復興した、ファミーユ本店。");
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20俺と姉さん、@nそしてバイトに復帰してくれた里伽子は今日から@nそっちで仕事をすることになったのだ。");
+	SetMessage(UNIT_ETC, -1, "", "@m00@f20そしてブリックモール店には@n由飛と明日香ちゃん、そしてかすりさんが残る。");
+
+	Wait(50);
+	FadeOut(SLOW);
+	SetVisual( BG_HITOSHI_01A );
+	SetStand(KASURI_0401KS);
+	FadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「まぁ人手不足とは思うけど、@nよろしく頼むね、店長」");
+	SetMessage(UNIT_KASURI, KASURI_0402AS, "かすり", "@v04040901「あ～～～慣れないなぁ～～～、その呼びかた」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「でも実際に店長さんなんだし」");
+	DelWindow();
+
+	DelStand();
+	SetStand(KASURI_A402BS);
+	BowStand();
+
+	SetWindow();
+	SetMessage(UNIT_KASURI, KASURI_A402BS, "かすり", "@v04040902「ん、頑張るよ！」");
+	SetMessage(UNIT_ETC, -1, "", "大きく頷きながら、かすりさんは@n顔を近づけてくる。");
+	SetMessage(UNIT_KASURI, KASURI_A401OT, "かすり", "@v04040903「でも心配だな～～。リカちゃんも一緒だし」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「心配ご無用。俺はかすりさん一筋なんだからさ」");
+	SetMessage(UNIT_KASURI, KASURI_A402NO, "かすり", "@v04040904「ほんと？」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ほんと」");
+	SetMessage(UNIT_KASURI, KASURI_A402NY, "かすり", "@v04040905「それじゃ、チュウして」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「こんな朝っぱらから～～」");
+	SetMessage(UNIT_KASURI, KASURI_A402NY, "かすり", "@v04040906「はい、チュウ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「………」");
+	DelWindow();
+
+	FadeOut();
+
+	SetWindow();
+	SetMessage(UNIT_ETC, -1, "", "たやすくおねだりに負ける俺。@p@nまぁかすりさんには負けっぱなしなんだけどさ。");
+	DelWindow();
+	DelStand();
+
+	Wait( 100 );
+
+	// ＜ＢＧ：駅前＞
+	SetVisual( BG_EKIMAE_01A );
+	SEFadePlay(0, "L_Water02", SLOW, 50);
+	CurtainFadeIn();
+
+	SetWindow();
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「そう言えば、今度またコンテスト出るんだよね？」");
+
+	SetStand(KASURI_0401NO);
+
+	SetMessage(UNIT_KASURI, KASURI_0401NO, "かすり", "@v04040907「ん、任せて！@nまたファミーユの名前売って来ちゃうよ～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「名パティシエで店長さんかぁ。@nなんか俺、負けてない？」");
+	SetMessage(UNIT_KASURI, KASURI_0402EG, "かすり", "@v04040908「あはは～、仁くんあってのファミーユですから」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「ほんきでいってる？」");
+	SetMessage(UNIT_KASURI, KASURI_0402NY, "かすり", "@v04040909「ほんきほんき、いつだってわたしは大まじめ～」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「信用できないな～」");
+
+	BGMFadeOut(SLOWER);
+
+	SetMessage(UNIT_KASURI, KASURI_0402OD, "かすり", "@v04040910「…って仁くん、@nストロベリートークしてる場合じゃないよ、ほら！」");
+	SetMessage(UNIT_ETC, -1, "", "かすりさんの指さす先には、@n無情にも７：３０を示す時計が。");
+
+	ShakeScreen(8);
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「うわッ！　遅刻じゃん」");
+	SetMessage(UNIT_KASURI, KASURI_0402AS2, "かすり", "@v04040911「あはは～、わたしもだ～～」");
+	DelWindow();
+
+	DelStand();
+	SEPlay("L_Dash03");
+	SEPlay("L_Dash16");
+	SEFadeOut(0);
+	BGMPlay(BGM_KASURI);
+	CurtainFadeOut(NORMAL);
+	Wait(50);
+
+	// ＜ＣＧ：交差点で手を振りながら別れる二人＞
+	SetVisual( VISUAL_KASURI_18A );
+	FadeIn();
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_ETC, -1, "", "街を走り抜け、二人は大きな交差点で@n右と左に分かれる。");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040912「それじゃ、頑張ってね～～っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "「かすりさんも！@nお店のこと頼んだよ～～～っ！」");
+	SetMessage(UNIT_KASURI, -1, "かすり", "@v04040913@s0004「任せて～～、好きよ、大好きだからね～～～っ」");
+	SetMessage(UNIT_HITOSHI, -1, "仁", "@s0004「俺も、好き～～～っ」");
+	SetMessage(UNIT_ETC, -1, "", "@m08大声で声をかけあう俺たち。@p@n例え離れて仕事してても、俺たちはいつも一緒だ。");
+	SetMessage(UNIT_ETC, -1, "", "@m00いままでも、そしてこれからも。");
+	DelWindow();
+
+	Wait( 100 );
+
+	SetWindow(WINDOW_SIMPLE);
+	SetMessage(UNIT_REA, -1, "玲愛", "@v04020015「…あの二人、またやってるし」");
+	SetMessage(UNIT_MIZUNA, -1, "瑞奈", "@v04070008「みんなに聞かせたいんでしょ、@n好き好きコールを」");
+	SetMessage(UNIT_REA, -1, "玲愛", "@v04020016「…まったく、バカばっかり！」");
+	SetMessage(UNIT_MIZUNA, -1, "瑞奈", "@v04070009「いいんじゃないの、幸せならば～♪」");
+	HideMenu();
+	DelWindow();
+
+	Wait(200);
+	FlashOut(SLOWEST);
+	Wait(100);
+	BGMFadeOut(800);
+	FadeOut(800);
+
+	Wait(200);
+
+	DelVisual();
+
+	SetFlg(FLG_ENDING, 1);
+	LoadScript("System.bin", SYSTEMBANK_STAFFROLL);
+end();

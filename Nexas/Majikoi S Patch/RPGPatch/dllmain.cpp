@@ -1,4 +1,4 @@
-//dllmain.cpp - главный файл проекта
+//dllmain.cpp - главный файл проекта. Сделано специально для Red Plow Group :)
 #include "stdafx.h"
 #include <Windows.h>
 #include "detours.h"
